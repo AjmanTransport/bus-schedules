@@ -97,13 +97,13 @@
   <div class="card" style="margin-top:12px">
     <h2 style="margin:0 0 10px 0">Next Departures</h2>
     <div class="kpi" id="nextPanel"></div>
-    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771179883</div>
+    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771180771</div>
   </div>
 
   <div class="card" style="margin-top:12px">
     <div class="row" style="align-items:center;justify-content:space-between">
       <h2 id="tableTitle" style="margin:0">Timetable</h2>
-      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771179883" style="text-decoration:none">Download PDF (optional)</a>
+      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771180771" style="text-decoration:none">Download PDF (optional)</a>
     </div>
 
     <div class="tablewrap" style="margin-top:10px">
@@ -318,15 +318,20 @@ function renderNextPanel(){
   const busFilter = document.getElementById("busSelect").value || "ALL";
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
 
-  const nowM = nowMinutes();
+  // If you are viewing a date other than today, show the earliest departures for that date.
+  const todayISO = (new Date()).toISOString().slice(0,10);
+  const isToday = (date === todayISO);
+  const nowM = isToday ? nowMinutes() : 0;
   let all = [];
   day.buses
     .filter(b => busFilter==="ALL" ? true : b.bus===busFilter)
     .forEach(b=>{
       uniqueSorted(b.departures || []).forEach(t=>{
         const diff = toMinutes(t) - nowM;
-        if(diff >= 0 && diff <= 180){
-          all.push({bus:b.bus, t, diff});
+        if(isToday){
+          if(diff >= 0 && diff <= 180){ all.push({bus:b.bus, t, diff}); }
+        } else {
+          if(diff >= 0){ all.push({bus:b.bus, t, diff}); }
         }
       });
     });
@@ -335,7 +340,9 @@ function renderNextPanel(){
   const top = all.slice(0, 6);
 
   if(top.length===0){
-    panel.innerHTML = '<div class="box"><div class="title">Next departure</div><div class="value">—</div><div class="subv">No upcoming trips in the next 3 hours</div></div>';
+    panel.innerHTML = isToday
+      ? '<div class="box"><div class="title">Next departure</div><div class="value">—</div><div class="subv">No upcoming trips in the next 3 hours</div></div>'
+      : '<div class="box"><div class="title">Departures</div><div class="value">—</div><div class="subv">No trips found for the selected date</div></div>';
     return;
   }
 
@@ -347,7 +354,7 @@ function renderNextPanel(){
     box.innerHTML = `
       <div class="title">Bus ${x.bus}</div>
       <div class="value"><span class="pill ${cls}">${x.t}</span></div>
-      <div class="subv">In ${mins} min</div>
+      ${isToday ? `<div class="subv">In ${mins} min</div>` : `<div class="subv">Scheduled</div>`}
     `;
     panel.appendChild(box);
   });
