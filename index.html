@@ -34,6 +34,9 @@
       cursor:pointer;
       user-select:none;
     }
+
+    .ico{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:8px;}
+    .ico svg{width:18px;height:18px;fill:currentColor;display:block;}
     .btn.active{background:rgba(31,78,121,.08);border-color:rgba(31,78,121,.45)}
     .meta{font-size:12px;color:var(--muted)}
     .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -87,8 +90,8 @@
         <label class="meta">Search time</label>
         <input id="timeSearch" placeholder="e.g. 07:30" style="width:120px"/>
 
-        <button class="btn" id="soundBtn" type="button">[MUTE] Sound Alerts: OFF</button>
-        <button class="btn" id="voiceBtn" type="button">[VOICE] Voice: OFF</button>
+        <button class="btn" id="soundBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></span><span id="soundText">Sound Alerts: OFF</span></button>
+        <button class="btn" id="voiceBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg></span><span id="voiceText">Voice: OFF</span></button>
       </div>
       <div class="meta" style="margin-top:10px">Times are 24-hour format (HH:MM). Alerts require one tap to enable sound.</div>
     </div>
@@ -97,13 +100,13 @@
   <div class="card" style="margin-top:12px">
     <h2 style="margin:0 0 10px 0">Next Departures</h2>
     <div class="kpi" id="nextPanel"></div>
-    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771183794</div>
+    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771184693</div>
   </div>
 
   <div class="card" style="margin-top:12px">
     <div class="row" style="align-items:center;justify-content:space-between">
       <h2 id="tableTitle" style="margin:0">Timetable</h2>
-      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771183794" style="text-decoration:none">Download PDF (optional)</a>
+      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771184693" style="text-decoration:none">Download PDF (optional)</a>
     </div>
 
     <div class="tablewrap" style="margin-top:10px">
@@ -127,8 +130,20 @@ let DATA=null;
 let currentRoute=null;
 
 function toMinutes(t){
-  const [h,m]=t.split(":").map(Number);
-  return h*60+m;
+  // Accept "H:MM", "HH:MM", or "HH:MM:SS". Trim spaces.
+  const s = String(t||"").trim();
+  const parts = s.split(":").map(x=>x.trim());
+  const h = Number(parts[0]);
+  const m = Number(parts[1] ?? "0");
+  if(!Number.isFinite(h) || !Number.isFinite(m)) return 999999;
+  return h*60 + m;
+}
+function normHHMM(t){
+  const s = String(t||"").trim();
+  const parts = s.split(":").map(x=>x.trim());
+  const h = String(Number(parts[0]||0)).padStart(2,"0");
+  const m = String(Number(parts[1]||0)).padStart(2,"0");
+  return `${h}:${m}`;
 }
 function nowMinutes(){
   const d=new Date();
@@ -144,7 +159,8 @@ function sortTimes(times){
   return [...times].sort((a,b)=>toMinutes(a)-toMinutes(b));
 }
 function uniqueSorted(times){
-  return sortTimes(Array.from(new Set(times)));
+  const cleaned = (times||[]).map(t=>normHHMM(t));
+  return sortTimes(Array.from(new Set(cleaned)));
 }
 
 /* Sound + Voice Alerts */
@@ -196,8 +212,8 @@ function speak(text){
 
 function toggleSound(){
   soundEnabled = !soundEnabled;
-  const btn = document.getElementById("soundBtn");
-  btn.textContent = soundEnabled ? "[SOUND] Sound Alerts: ON" : "[MUTE] Sound Alerts: OFF";
+  const txt = document.getElementById("soundText");
+  if(txt) txt.textContent = soundEnabled ? "Sound Alerts: ON" : "Sound Alerts: OFF";
   alreadyAlerted.clear();
   if(soundEnabled){
     try{ beepOnce(90, 700, 0.10); }catch(e){}
@@ -206,11 +222,10 @@ function toggleSound(){
 
 function toggleVoice(){
   voiceEnabled = !voiceEnabled;
-  const btn = document.getElementById("voiceBtn");
-  btn.textContent = voiceEnabled ? "[VOICE] Voice: ON" : "[VOICE] Voice: OFF";
+  const txt = document.getElementById("voiceText");
+  if(txt) txt.textContent = voiceEnabled ? "Voice: ON" : "Voice: OFF";
   alreadyAlerted.clear();
   if(voiceEnabled){
-    // Speak a quick sample to confirm
     speak("Voice alerts enabled.");
   }
 }
