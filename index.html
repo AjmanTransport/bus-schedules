@@ -88,6 +88,7 @@
         <input id="timeSearch" placeholder="e.g. 07:30" style="width:120px"/>
 
         <button class="btn" id="soundBtn" type="button">🔇 Sound Alerts: OFF</button>
+        <button class="btn" id="voiceBtn" type="button">🗣️ Voice: OFF</button>
       </div>
       <div class="meta" style="margin-top:10px">Times are 24-hour format (HH:MM). Alerts require one tap to enable sound.</div>
     </div>
@@ -96,13 +97,13 @@
   <div class="card" style="margin-top:12px">
     <h2 style="margin:0 0 10px 0">Next Departures</h2>
     <div class="kpi" id="nextPanel"></div>
-    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: {1771151210}</div>
+    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771179725</div>
   </div>
 
   <div class="card" style="margin-top:12px">
     <div class="row" style="align-items:center;justify-content:space-between">
       <h2 id="tableTitle" style="margin:0">Timetable</h2>
-      <a class="btn" id="pdfLink" href="{schedule.pdf}?v={1771151210}" style="text-decoration:none">Download PDF (optional)</a>
+      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771179725" style="text-decoration:none">Download PDF (optional)</a>
     </div>
 
     <div class="tablewrap" style="margin-top:10px">
@@ -146,13 +147,20 @@ function uniqueSorted(times){
   return sortTimes(Array.from(new Set(times)));
 }
 
-/* Sound Alerts */
+/* Sound + Voice Alerts */
 let soundEnabled = false;
+let voiceEnabled = false;
 let alreadyAlerted = new Set();
 let audioCtx = null;
 
-function beep(durationMs = 180, frequency = 880, volume = 0.15) {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function ensureAudio(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // iOS / Chrome requires user gesture; this is called after user toggles sound.
+  if(audioCtx.state === "suspended"){ try{ audioCtx.resume(); }catch(e){} }
+}
+
+function beepOnce(durationMs = 160, frequency = 880, volume = 0.18) {
+  ensureAudio();
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.type = "sine";
@@ -164,18 +172,51 @@ function beep(durationMs = 180, frequency = 880, volume = 0.15) {
   setTimeout(()=>{ try{osc.stop();}catch(e){} }, durationMs);
 }
 
+function beepPattern(count = 5){
+  // Short, noticeable pattern but not too annoying: 5 beeps with slight pitch variation.
+  const freqs = [880, 880, 988, 880, 1046];
+  const gap = 160;
+  const dur = 140;
+  for(let i=0;i<Math.min(count, freqs.length);i++){
+    setTimeout(()=>beepOnce(dur, freqs[i], 0.20), i*(dur+gap));
+  }
+}
+
+function speak(text){
+  try{
+    if(!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 1.0;
+    u.pitch = 1.0;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
 function toggleSound(){
   soundEnabled = !soundEnabled;
   const btn = document.getElementById("soundBtn");
   btn.textContent = soundEnabled ? "🔊 Sound Alerts: ON" : "🔇 Sound Alerts: OFF";
   alreadyAlerted.clear();
   if(soundEnabled){
-    try{ beep(80, 700, 0.08); }catch(e){}
+    try{ beepOnce(90, 700, 0.10); }catch(e){}
+  }
+}
+
+function toggleVoice(){
+  voiceEnabled = !voiceEnabled;
+  const btn = document.getElementById("voiceBtn");
+  btn.textContent = voiceEnabled ? "🗣️ Voice: ON" : "🗣️ Voice: OFF";
+  alreadyAlerted.clear();
+  if(voiceEnabled){
+    // Speak a quick sample to confirm
+    speak("Voice alerts enabled.");
   }
 }
 
 function checkNextTripAlerts(){
-  if(!soundEnabled || !currentRoute) return;
+  if((!soundEnabled && !voiceEnabled) || !currentRoute) return;
 
   const date = document.getElementById("dateSelect").value || currentRoute.days[0].date;
   const busFilter = document.getElementById("busSelect").value || "ALL";
@@ -186,12 +227,18 @@ function checkNextTripAlerts(){
     .forEach(b => {
       uniqueSorted(b.departures || []).forEach(t => {
         const diff = toMinutes(t) - nowMinutes();
+        // Alert window: 2 minutes before departure (including at departure time)
         if(diff>=0 && diff<=2){
           const key = `${currentRoute.route}|${day.date}|${b.bus}|${t}`;
           if(!alreadyAlerted.has(key)){
             alreadyAlerted.add(key);
-            beep(160, 880, 0.18);
-            setTimeout(()=>beep(160, 988, 0.18), 220);
+
+            if(soundEnabled){
+              beepPattern(5);
+            }
+            if(voiceEnabled){
+              speak(`Next trip. Route ${currentRoute.route}. Bus ${b.bus}. Departure ${t}.`);
+            }
           }
         }
       });
@@ -238,7 +285,7 @@ function selectRoute(routeCode){
   document.getElementById("busSelect").onchange = ()=>{ alreadyAlerted.clear(); renderTable(); renderNextPanel(); };
   document.getElementById("timeSearch").oninput = renderTable;
 
-  document.getElementById("pdfLink").href = "{schedule.pdf}?v=" + Date.now();
+  document.getElementById("pdfLink").href = "schedule.pdf?v=" + Date.now();
 
   renderBusDropdown();
   renderTable();
@@ -351,6 +398,8 @@ function tick(){
 document.addEventListener("DOMContentLoaded", ()=>{
   const btn = document.getElementById("soundBtn");
   if(btn) btn.onclick = toggleSound;
+  const vbtn = document.getElementById("voiceBtn");
+  if(vbtn) vbtn.onclick = toggleVoice;
   setInterval(tick, 15000);
 });
 
