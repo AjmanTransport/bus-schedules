@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Ajman Transport — Bus Schedules</title>
+  <title>Ajman Transport  -  Bus Schedules</title>
   <style>
     :root{
       --primary:#1f4e79;
@@ -60,9 +60,9 @@
 </head>
 <body>
 <header>
-  <h1>Ajman Transport — Bus Trip Schedules</h1>
+  <h1>Ajman Transport  -  Bus Trip Schedules</h1>
   <div class="sub">
-    Public Transport Department • Business Planning and Development Section<br/>
+    Public Transport Department * Business Planning and Development Section<br/>
     Software developed by: Abdelhameed Altoum
   </div>
 </header>
@@ -87,8 +87,8 @@
         <label class="meta">Search time</label>
         <input id="timeSearch" placeholder="e.g. 07:30" style="width:120px"/>
 
-        <button class="btn" id="soundBtn" type="button">🔇 Sound Alerts: OFF</button>
-        <button class="btn" id="voiceBtn" type="button">🗣️ Voice: OFF</button>
+        <button class="btn" id="soundBtn" type="button">[MUTE] Sound Alerts: OFF</button>
+        <button class="btn" id="voiceBtn" type="button">[VOICE] Voice: OFF</button>
       </div>
       <div class="meta" style="margin-top:10px">Times are 24-hour format (HH:MM). Alerts require one tap to enable sound.</div>
     </div>
@@ -97,13 +97,13 @@
   <div class="card" style="margin-top:12px">
     <h2 style="margin:0 0 10px 0">Next Departures</h2>
     <div class="kpi" id="nextPanel"></div>
-    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771182440</div>
+    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1771183794</div>
   </div>
 
   <div class="card" style="margin-top:12px">
     <div class="row" style="align-items:center;justify-content:space-between">
       <h2 id="tableTitle" style="margin:0">Timetable</h2>
-      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771182440" style="text-decoration:none">Download PDF (optional)</a>
+      <a class="btn" id="pdfLink" href="schedule.pdf?v=1771183794" style="text-decoration:none">Download PDF (optional)</a>
     </div>
 
     <div class="tablewrap" style="margin-top:10px">
@@ -120,7 +120,7 @@
   </div>
 </div>
 
-<footer>© Ajman Transport — Bus Schedules</footer>
+<footer>(c) Ajman Transport  -  Bus Schedules</footer>
 
 <script>
 let DATA=null;
@@ -197,7 +197,7 @@ function speak(text){
 function toggleSound(){
   soundEnabled = !soundEnabled;
   const btn = document.getElementById("soundBtn");
-  btn.textContent = soundEnabled ? "🔊 Sound Alerts: ON" : "🔇 Sound Alerts: OFF";
+  btn.textContent = soundEnabled ? "[SOUND] Sound Alerts: ON" : "[MUTE] Sound Alerts: OFF";
   alreadyAlerted.clear();
   if(soundEnabled){
     try{ beepOnce(90, 700, 0.10); }catch(e){}
@@ -207,7 +207,7 @@ function toggleSound(){
 function toggleVoice(){
   voiceEnabled = !voiceEnabled;
   const btn = document.getElementById("voiceBtn");
-  btn.textContent = voiceEnabled ? "🗣️ Voice: ON" : "🗣️ Voice: OFF";
+  btn.textContent = voiceEnabled ? "[VOICE] Voice: ON" : "[VOICE] Voice: OFF";
   alreadyAlerted.clear();
   if(voiceEnabled){
     // Speak a quick sample to confirm
@@ -249,7 +249,7 @@ function checkNextTripAlerts(){
 async function load(){
   const res = await fetch("data/schedules.json?v=" + Date.now());
   DATA = await res.json();
-  document.getElementById("lastUpdated").textContent = "Last updated: " + (DATA.generated_at || "—");
+  document.getElementById("lastUpdated").textContent = "Last updated: " + (DATA.generated_at || " - ");
   renderRouteButtons();
 }
 
@@ -341,8 +341,8 @@ function renderNextPanel(){
 
   if(top.length===0){
     panel.innerHTML = isToday
-      ? '<div class="box"><div class="title">Next departure</div><div class="value">—</div><div class="subv">No upcoming trips in the next 3 hours</div></div>'
-      : '<div class="box"><div class="title">Departures</div><div class="value">—</div><div class="subv">No trips found for the selected date</div></div>';
+      ? '<div class="box"><div class="title">Next departure</div><div class="value"> - </div><div class="subv">No upcoming trips in the next 3 hours</div></div>'
+      : '<div class="box"><div class="title">Departures</div><div class="value"> - </div><div class="subv">No trips found for the selected date</div></div>';
     return;
   }
 
@@ -369,7 +369,7 @@ function renderTable(){
 
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
   document.getElementById("tableTitle").textContent =
-    `${currentRoute.display_name || currentRoute.route} — ${day.date} (${day.profile})`;
+    `${currentRoute.display_name || currentRoute.route}  -  ${day.date} (${day.profile})`;
 
   const tbody=document.getElementById("tbody");
   tbody.innerHTML="";
@@ -414,3 +414,4 @@ load();
 </script>
 </body>
 </html>
+        
