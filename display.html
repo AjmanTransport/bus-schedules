@@ -105,7 +105,7 @@
 
 <script>
 (() => {
-  const VERSION = "1771213482";
+  const VERSION = "1771226935";
   const JSON_URL = "data/schedules.json?v=" + VERSION;
 
   const elRows = document.getElementById("rows");
@@ -236,21 +236,32 @@
   }
 
   // ---------- render ----------
-  function flattenTrips(dateStr){
-    if(!schedules) return [];
-    const trips = [];
-    for(const r of (schedules.routes||[])){
-      for(const b of (r.buses||[])){
-        for(const t of (b.times||[])){
-          const dt = parseTime(dateStr, t);
-          trips.push({
-            route: r.name || r.route || " - ",
-            bus: b.bus || b.name || " - ",
-            time: t,
-            dt,
-            tripId: `${dateStr}__${(r.name||r.route||"x")}__${(b.bus||b.name||"y")}__${t}`
-          });
-        }
+    function flattenTrips(dateStr){
+  // schedules.json schema:
+  // { routes: [ { route, display_name, days:[ {date, profile, buses:[{bus, departures:[HH:MM]}]} ] } ] }
+  if(!schedules) return [];
+  const trips = [];
+  const routes = (schedules.routes||[]);
+  for(const r of routes){
+    const days = (r.days||[]);
+    const day = days.find(x => x.date === dateStr) || days[0];
+    if(!day) continue;
+    for(const b of (day.buses||[])){
+      for(const t of (b.departures||[])){
+        const dt = parseTime(dateStr, t);
+        trips.push({
+          route: r.display_name || r.route || " - ",
+          bus: b.bus || " - ",
+          time: t,
+          dt,
+          tripId: `${dateStr}__${(r.route||"x")}__${(b.bus||"y")}__${t}`
+        });
+      }
+    }
+  }
+  trips.sort((a,b)=>a.dt-b.dt);
+  return trips;
+}
       }
     }
     trips.sort((a,b)=>a.dt-b.dt);
