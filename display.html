@@ -3,55 +3,80 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta http-equiv="refresh" content="300"> <!-- safety reload every 5 minutes -->
-  <title>Musalla Station  -  Live Departures</title>
+  <meta http-equiv="refresh" content="300"> <!-- kiosk safety reload -->
+  <title>Musalla Bus Station - Live Departures</title>
   <style>
     :root{
       --bg:#071525;
-      --card:#0d2136;
-      --card2:#0b1b2d;
       --text:#e8f2ff;
       --muted:#9fb4cc;
       --accent:#39a7ff;
       --good:#1ee6a8;
       --warn:#ffcc66;
       --danger:#ff6b6b;
-      --border:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,0.10);
     }
     html,body{height:100%;}
-    body{margin:0;background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%); color:var(--text); font-family:system-ui,Segoe UI,Arial;}
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--border);}
-    header .t{font-size:28px;font-weight:900;letter-spacing:.2px;}
-    header .s{font-size:14px;color:var(--muted);margin-top:6px;}
-    .right{display:flex;gap:10px;align-items:center;}
-    .pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-weight:700;}
-    .btn{cursor:pointer;user-select:none;padding:10px 14px;border-radius:12px;background:rgba(57,167,255,.16);border:1px solid rgba(57,167,255,.32);color:var(--text);font-weight:800;}
-    .btn.off{background:rgba(255,255,255,.06);border-color:var(--border);color:var(--muted);}
+    body{
+      margin:0;
+      background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%);
+      color:var(--text);
+      font-family:system-ui, "Segoe UI", Arial;
+    }
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 28px;border-bottom:1px solid var(--border);
+    }
+    .t{font-size:28px;font-weight:900;letter-spacing:.2px;}
+    .s{font-size:14px;color:var(--muted);margin-top:6px;}
+    .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+    .pill{
+      padding:10px 14px;border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--border);
+      font-weight:700;
+    }
+    .btn{
+      cursor:pointer;user-select:none;
+      padding:10px 14px;border-radius:12px;
+      background:rgba(57,167,255,0.16);
+      border:1px solid rgba(57,167,255,0.32);
+      color:var(--text);font-weight:800;
+    }
+    .btn.off{
+      background:rgba(255,255,255,0.06);
+      border-color:var(--border);color:var(--muted);
+    }
     .grid{display:grid;grid-template-columns: 1.2fr .8fr; gap:16px; padding:18px 18px 24px;}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.25);overflow:hidden;}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border:1px solid var(--border);
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      overflow:hidden;
+    }
     .card h2{margin:0;padding:14px 18px;border-bottom:1px solid var(--border);font-size:18px;letter-spacing:.2px;}
+    .pad{padding:16px 18px;}
+    .label{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800;}
     .big{font-size:66px;font-weight:950;letter-spacing:1px;}
-    .label{color:var(--muted);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
-    .pad{padding:18px;}
-    .row{display:flex;gap:18px;align-items:flex-end;justify-content:space-between;}
-    .kpi{display:flex;flex-direction:column;gap:6px;}
     .muted{color:var(--muted);}
     table{width:100%;border-collapse:collapse;}
-    th,td{padding:14px 16px;border-bottom:1px solid var(--border);font-size:18px;}
-    th{color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:1px;text-align:left;}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:900;border:1px solid var(--border);}
-    .tag.good{color:var(--good);border-color:rgba(30,230,168,.35);background:rgba(30,230,168,.08);}
-    .tag.warn{color:var(--warn);border-color:rgba(255,204,102,.35);background:rgba(255,204,102,.08);}
-    .tag.danger{color:var(--danger);border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.08);}
+    th,td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
+    th{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
+    td.time{font-size:20px;font-weight:950;}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.08em;}
+    .tag.good{background:rgba(30,230,168,0.16);border:1px solid rgba(30,230,168,0.35);color:var(--good);}
+    .tag.warn{background:rgba(255,204,102,0.16);border:1px solid rgba(255,204,102,0.35);color:var(--warn);}
+    .tag.danger{background:rgba(255,107,107,0.16);border:1px solid rgba(255,107,107,0.35);color:var(--danger);}
     .dest{font-weight:900;}
-    .time{font-weight:950;font-size:22px;letter-spacing:.5px;}
-    .ticker{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--muted);font-size:14px;}
+    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
+    #err{display:none;margin:10px 18px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:700;}
   </style>
 </head>
 <body>
 <header>
   <div>
-    <div class="t">Musalla Bus Station  -  Live Departures</div>
+    <div class="t">Musalla Bus Station - Live Departures</div>
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
   <div class="right">
@@ -61,6 +86,8 @@
   </div>
 </header>
 
+<div id="err"></div>
+
 <div class="grid">
   <div class="card">
     <h2>Next Departures (All Routes)</h2>
@@ -68,10 +95,10 @@
       <table>
         <thead>
           <tr>
-            <th style="width:140px">Time</th>
-            <th style="width:140px">Countdown</th>
-            <th style="width:140px">Status</th>
-            <th style="width:170px">Bus</th>
+            <th style="width:14%">Time</th>
+            <th style="width:16%">Countdown</th>
+            <th style="width:18%">Status</th>
+            <th style="width:16%">Bus</th>
             <th>Route</th>
           </tr>
         </thead>
@@ -81,8 +108,8 @@
       </table>
     </div>
     <div class="ticker">
-      <div id="lastUpdate">Last update:  - </div>
-      <div id="net">Online:  - </div>
+      <div id="lastUpdate">Last update: -</div>
+      <div id="net">Online: -</div>
     </div>
   </div>
 
@@ -93,27 +120,21 @@
       <div class="big" id="nextCountdown">--:--</div>
       <div style="height:12px"></div>
       <div class="label">Details</div>
-      <div style="font-size:22px;font-weight:900" id="nextDetails"> - </div>
-      <div class="muted" style="margin-top:10px" id="nextExtra"> - </div>
+      <div style="font-size:22px;font-weight:900" id="nextDetails">-</div>
+      <div class="muted" style="margin-top:10px" id="nextExtra">-</div>
     </div>
     <div class="ticker">
-      <div>Auto refresh every 5 minutes</div>
-      <div id="dateTag">Date:  - </div>
+      <div>Auto refresh every 1 minute</div>
+      <div id="dateTag">Date: -</div>
     </div>
   </div>
 </div>
 
 <script>
-(() => {
-  window.onerror = function(msg, src, line, col, err){
-    try{
-      const sub = document.getElementById('subtitle');
-      if(sub) sub.textContent = 'JS error: ' + msg + ' (line ' + line + ')';
-    }catch(_){ }
-    return false;
-  };
+(function(){
+  "use strict";
 
-  const VERSION = "1771229413";
+  const VERSION = "1771246102";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -130,60 +151,84 @@
   const elLast = document.getElementById("lastUpdate");
   const elNet = document.getElementById("net");
   const elDateTag = document.getElementById("dateTag");
+  const elErr = document.getElementById("err");
 
   let schedules = null;
   let soundOn = true;
   let voiceOn = false;
 
-  // ---------- helpers ----------
   const pad2 = n => String(n).padStart(2,"0");
   const now = () => new Date();
   const hhmm = d => pad2(d.getHours()) + ":" + pad2(d.getMinutes());
   const ymd = d => d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());
-  const parseTime = (ymdStr, t) => {
-    const [H,M] = (t||"").split(":").map(x=>parseInt(x,10));
-    const [Y,Mo,Da] = ymdStr.split("-").map(x=>parseInt(x,10));
-    return new Date(Y, Mo-1, Da, H||0, M||0, 0, 0);
-  };
-  const fmtCountdown = (ms) => {
+
+  function showErr(msg){
+    if(!elErr) return;
+    elErr.style.display = "block";
+    elErr.textContent = msg;
+  }
+  function clearErr(){
+    if(!elErr) return;
+    elErr.style.display = "none";
+    elErr.textContent = "";
+  }
+
+  function parseTime(dateStr, t){
+    const parts = String(t||"").split(":");
+    const H = parseInt(parts[0]||"0",10);
+    const M = parseInt(parts[1]||"0",10);
+    const d = new Date(dateStr + "T00:00:00");
+    d.setHours(H, M, 0, 0);
+    return d;
+  }
+
+  function fmtCountdown(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
     const m = Math.floor(s/60);
-    const r = s%60;
+    const r = s % 60;
     const h = Math.floor(m/60);
-    const mm = m%60;
-    if(h>0) return `${h}:${pad2(mm)}:${pad2(r)}`;
-    return `${mm}:${pad2(r)}`;
-  };
-  const statusFor = (ms) => {
+    const mm = m % 60;
+    if(h > 0) return h + ":" + pad2(mm) + ":" + pad2(r);
+    return mm + ":" + pad2(r);
+  }
+
+  function statusFor(ms){
     const min = ms/60000;
     if(min <= 0.1) return ["DEPARTING", "danger"];
     if(min <= 2) return ["NOW BOARDING", "danger"];
-    if(min <= 5) return ["BOARDING SOON", "warn"];
+    if(min <= 10) return ["SOON", "warn"];
     return ["SCHEDULED", "good"];
-  };
+  }
 
-  // ---------- sound ----------
-  function beepPattern(count, gapMs, freq=880, dur=120){
+  // ---------- sound + voice ----------
+  let audioCtx = null;
+  function beep(freq, durMs){
     if(!soundOn) return;
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if(!AudioContext) return;
-    const ctx = new AudioContext();
-    let t = ctx.currentTime;
-    for(let i=0;i<count;i++){
-      const o = ctx.createOscillator();
-      const g = ctx.createGain();
+    try{
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
       o.type = "sine";
       o.frequency.value = freq;
       g.gain.value = 0.08;
-      o.connect(g); g.connect(ctx.destination);
-      o.start(t);
-      o.stop(t + dur/1000);
-      t += (dur + gapMs)/1000;
-    }
-    setTimeout(()=>{ try{ctx.close();}catch(e){} }, (count*(dur+gapMs))+400);
+      o.connect(g);
+      g.connect(audioCtx.destination);
+      o.start();
+      setTimeout(()=>{ try{o.stop();}catch(e){} }, durMs);
+    }catch(e){}
   }
-
+  function beepPattern(count, durMs, freq, gapMs){
+    if(!soundOn) return;
+    let i=0;
+    const step = () => {
+      if(i>=count) return;
+      beep(freq, durMs);
+      i++;
+      setTimeout(step, durMs + gapMs);
+    };
+    step();
+  }
   function speak(text){
     if(!voiceOn) return;
     if(!("speechSynthesis" in window)) return;
@@ -196,13 +241,9 @@
     }catch(e){}
   }
 
-  // ---------- alert logic ----------
-  // stages:
-  //  -5min : every 60s until -2min
-  //  -2min : every 30s until departure
-  //  0     : once
+  // prevent repeated spam: per trip per stage
   function shouldAlert(tripId, stageKey, minIntervalMs){
-    const key = `alert_${tripId}_${stageKey}`;
+    const key = "alert_" + tripId + "_" + stageKey;
     const last = parseInt(localStorage.getItem(key)||"0",10);
     const t = Date.now();
     if(t - last >= minIntervalMs){
@@ -215,17 +256,15 @@
   function runAlerts(nextTrips){
     if(!nextTrips || !nextTrips.length) return;
     const tNow = now().getTime();
-
-    // consider top 3 only (avoid noise if many routes depart close together)
     nextTrips.slice(0,3).forEach(tr => {
       const ms = tr.dt.getTime() - tNow;
       const mins = ms/60000;
       const tripId = tr.tripId;
 
       if(mins <= 0.05){
-        if(shouldAlert(tripId, "at", 10*60*1000)){ // once-ish
+        if(shouldAlert(tripId, "at", 10*60*1000)){
           beepPattern(5, 160, 980, 130);
-          speak(`Departure now. Route ${tr.route}. Bus ${tr.bus}.`);
+          speak("Departure now. Route " + tr.route + ". Bus " + tr.bus + ".");
         }
         return;
       }
@@ -233,7 +272,7 @@
       if(mins <= 2){
         if(shouldAlert(tripId, "m2", 30*1000)){
           beepPattern(3, 140, 900, 110);
-          speak(`Now boarding. Route ${tr.route}. Bus ${tr.bus}. Departs at ${tr.time}.`);
+          speak("Now boarding. Route " + tr.route + ". Bus " + tr.bus + ". Departs at " + tr.time + ".");
         }
         return;
       }
@@ -241,101 +280,112 @@
       if(mins <= 5){
         if(shouldAlert(tripId, "m5", 60*1000)){
           beepPattern(2, 140, 820, 100);
-          // voice only on first of the minute window
-          if(mins > 4.0) speak(`Attention please. Route ${tr.route}. Bus ${tr.bus}. Departure in five minutes.`);
+          if(mins > 4.0) speak("Attention please. Route " + tr.route + ". Bus " + tr.bus + ". Departure in five minutes.");
         }
       }
     });
   }
 
-  // ---------- render ----------
-    function flattenTrips(dateStr){
-  // schedules.json schema:
+  // ---------- schedules reader (supports BOTH schemas) ----------
+  // New schema (recommended):
   // { routes: [ { route, display_name, days:[ {date, profile, buses:[{bus, departures:[HH:MM]}]} ] } ] }
-  if(!schedules) return [];
-  const trips = [];
-  const routes = (schedules.routes||[]);
-  for(const r of routes){
-    const days = (r.days||[]);
-    const day = days.find(x => x.date === dateStr) || days[0];
-    if(!day) continue;
-    for(const b of (day.buses||[])){
-      for(const t of (b.departures||[])){
-        const dt = parseTime(dateStr, t);
-        trips.push({
-          route: r.display_name || r.route || " - ",
-          bus: b.bus || " - ",
-          time: t,
-          dt,
-          tripId: `${dateStr}__${(r.route||"x")}__${(b.bus||"y")}__${t}`
-        });
+  // Old schema:
+  // { routes: [ { route, name, buses:[{bus, times:[HH:MM]}]} ] }
+  function flattenTrips(dateStr){
+    if(!schedules) return [];
+    const trips = [];
+    const routes = schedules.routes || [];
+
+    for(const r of routes){
+      const displayRoute = r.display_name || r.name || r.route || "-";
+
+      if(Array.isArray(r.days) && r.days.length){
+        const day = r.days.find(x => x.date === dateStr) || r.days[0];
+        if(!day) continue;
+        const buses = day.buses || [];
+        for(const b of buses){
+          const busName = b.bus || b.name || "-";
+          const depList = b.departures || b.times || [];
+          for(const t of depList){
+            const dt = parseTime(dateStr, t);
+            trips.push({
+              route: displayRoute,
+              bus: busName,
+              time: t,
+              dt: dt,
+              tripId: dateStr + "__" + (r.route||displayRoute) + "__" + busName + "__" + t
+            });
+          }
+        }
+      }else{
+        // old schema fallback
+        const buses = r.buses || [];
+        for(const b of buses){
+          const busName = b.bus || b.name || "-";
+          const depList = b.times || b.departures || [];
+          for(const t of depList){
+            const dt = parseTime(dateStr, t);
+            trips.push({
+              route: displayRoute,
+              bus: busName,
+              time: t,
+              dt: dt,
+              tripId: dateStr + "__" + (r.route||displayRoute) + "__" + busName + "__" + t
+            });
+          }
+        }
       }
     }
-  }
-  trips.sort((a,b)=>a.dt-b.dt);
-  return trips;
-}
-      }
-    }
+
     trips.sort((a,b)=>a.dt-b.dt);
     return trips;
   }
 
-  function pickDate(){
-    // always show today (station screen)
-    const d = now();
-    return ymd(d);
-  }
+  function pickDate(){ return ymd(now()); }
 
   function render(){
     const dStr = pickDate();
     elDateTag.textContent = "Date: " + dStr;
 
     const tNow = now().getTime();
-    const all = flattenTrips(dStr).filter(x => x.dt.getTime() >= tNow - 30*1000); // allow just passed
+    const all = flattenTrips(dStr).filter(x => x.dt.getTime() >= tNow - 30*1000);
     const next = all.slice(0,10);
 
     if(!next.length){
-      elRows.innerHTML = `<tr><td colspan="5" class="muted">No upcoming trips today.</td></tr>`;
+      elRows.innerHTML = '<tr><td colspan="5" class="muted">No upcoming trips for today.</td></tr>';
       elNextCountdown.textContent = "--:--";
-      elNextDetails.textContent = " - ";
-      elNextExtra.textContent = " - ";
+      elNextDetails.textContent = "-";
+      elNextExtra.textContent = "-";
+      elSub.textContent = "No upcoming trips right now.";
       return;
     }
 
-    // Next trip card
     const top = next[0];
     const msTop = top.dt.getTime() - tNow;
     elNextCountdown.textContent = fmtCountdown(msTop);
-    elNextDetails.textContent = `${top.route}  *  Bus ${top.bus}  *  ${top.time}`;
-    elNextExtra.textContent = `Updated automatically * Sound alerts start 5 minutes before departure`;
+    elNextDetails.textContent = top.route + "  |  Bus " + top.bus + "  |  " + top.time;
+    elNextExtra.textContent = "Sound alerts start 5 minutes before departure.";
 
-    // Table
     const rowsHtml = next.map(tr => {
       const ms = tr.dt.getTime() - tNow;
       const cd = fmtCountdown(ms);
-      const [txt, cls] = statusFor(ms);
-      return `
-        <tr>
-          <td class="time">${tr.time}</td>
-          <td>${cd}</td>
-          <td><span class="tag ${cls}">${txt}</span></td>
-          <td style="font-weight:900">${tr.bus}</td>
-          <td><span class="dest">${tr.route}</span></td>
-        </tr>`;
+      const st = statusFor(ms);
+      return '<tr>' +
+        '<td class="time">' + tr.time + '</td>' +
+        '<td>' + cd + '</td>' +
+        '<td><span class="tag ' + st[1] + '">' + st[0] + '</span></td>' +
+        '<td style="font-weight:900">' + tr.bus + '</td>' +
+        '<td><span class="dest">' + tr.route + '</span></td>' +
+      '</tr>';
     }).join("");
     elRows.innerHTML = rowsHtml;
 
-    // subtitle
-    elSub.textContent = `Showing next ${next.length} departures across all routes`;
-
-    // alerts
+    elSub.textContent = "Showing next " + next.length + " departures across all routes";
     runAlerts(next);
   }
 
-  // ---------- load with offline fallback ----------
   async function load(){
-    // Visible debug if something goes wrong
+    clearErr();
     elNet.textContent = "Online: checking...";
     elLast.textContent = "Last update: loading...";
     let lastErr = null;
@@ -349,7 +399,6 @@
         localStorage.setItem("schedules_cache", JSON.stringify(data));
         elNet.textContent = "Online: YES";
         elLast.textContent = "Last update: " + new Date().toLocaleString();
-        elSub.textContent = "Live schedules loaded.";
         render();
         return;
       }catch(e){
@@ -357,14 +406,14 @@
       }
     }
 
-    // fallback to cache
+    // cache fallback
     const cached = localStorage.getItem("schedules_cache");
     if(cached){
       try{
         schedules = JSON.parse(cached);
         elNet.textContent = "Online: NO (cached)";
         elLast.textContent = "Last update: cached";
-        elSub.textContent = "Offline mode - showing last cached schedules.";
+        showErr("Offline mode: using last cached schedules.");
         render();
         return;
       }catch(e){
@@ -372,42 +421,40 @@
       }
     }
 
-    // Nothing worked: show error text on screen
     elNet.textContent = "Online: NO";
     elLast.textContent = "Last update: -";
-    elSub.textContent = "Failed to load schedules.json. Please check GitHub upload path.";
-    if(lastErr) console.error(lastErr);
+    showErr("Failed to load schedules.json. Check that schedules.json exists at /bus-schedules/data/ or /bus-schedules/.");
+    if(lastErr && console) console.error(lastErr);
+    elRows.innerHTML = '<tr><td colspan="5" class="muted">No data loaded.</td></tr>';
+    elSub.textContent = "Failed to load schedules.";
   }
 
-  // clock + periodic + periodic
   function tick(){
     elClock.textContent = hhmm(now());
     render();
   }
 
-  // toggles
   function setBtn(btn, on, labelOn, labelOff){
     btn.textContent = (on ? labelOn : labelOff);
     btn.classList.toggle("off", !on);
   }
-  const _soundBtn = document.getElementById("soundBtn");
-  if(_soundBtn) _soundBtn.onclick = () => {
+
+  document.getElementById("soundBtn").onclick = () => {
     soundOn = !soundOn;
-    if(_soundBtn) setBtn(_soundBtn, soundOn, "Sound: ON", "Sound: OFF");
+    setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
     if(soundOn) beepPattern(2, 140, 880, 100);
   };
-  const _voiceBtn = document.getElementById("voiceBtn");
-  if(_voiceBtn) _voiceBtn.onclick = () => {
+  document.getElementById("voiceBtn").onclick = () => {
     voiceOn = !voiceOn;
-    if(_voiceBtn) setBtn(_voiceBtn, voiceOn, "Voice: ON", "Voice: OFF");
+    setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
     if(voiceOn) speak("Voice alerts enabled.");
   };
 
-  // start
+  // kick off
   elClock.textContent = hhmm(now());
   load();
-  setInterval(tick, 1000);        // smooth countdown
-  setInterval(load, 60*1000);     // reload JSON every minute (keeps in sync)
+  setInterval(tick, 1000);
+  setInterval(load, 60*1000);
 })();
 </script>
 </body>
