@@ -134,7 +134,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771246102";
+  const VERSION = "1771249543";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -156,6 +156,24 @@
   let schedules = null;
   let soundOn = true;
   let voiceOn = false;
+  // Persist Sound/Voice toggles across kiosk auto-refresh
+  const LS_SOUND = "musalla_soundOn";
+  const LS_VOICE = "musalla_voiceOn";
+  function loadTogglePrefs(){
+    try{
+      const s = localStorage.getItem(LS_SOUND);
+      const v = localStorage.getItem(LS_VOICE);
+      // Default both ON for Musalla kiosk
+      soundOn = (s === null) ? true : (s === "1");
+      voiceOn = (v === null) ? true : (v === "1");
+    }catch(e){ /* ignore */ }
+  }
+  function saveTogglePrefs(){
+    try{
+      localStorage.setItem(LS_SOUND, soundOn ? "1" : "0");
+      localStorage.setItem(LS_VOICE, voiceOn ? "1" : "0");
+    }catch(e){ /* ignore */ }
+  }
 
   const pad2 = n => String(n).padStart(2,"0");
   const now = () => new Date();
@@ -442,15 +460,21 @@
   document.getElementById("soundBtn").onclick = () => {
     soundOn = !soundOn;
     setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
+    saveTogglePrefs();
     if(soundOn) beepPattern(2, 140, 880, 100);
   };
   document.getElementById("voiceBtn").onclick = () => {
     voiceOn = !voiceOn;
     setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
+    saveTogglePrefs();
     if(voiceOn) speak("Voice alerts enabled.");
   };
 
   // kick off
+  loadTogglePrefs();
+  setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
+  setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
+  saveTogglePrefs();
   elClock.textContent = hhmm(now());
   load();
   setInterval(tick, 1000);
