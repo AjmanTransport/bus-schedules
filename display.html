@@ -105,8 +105,21 @@
 
 <script>
 (() => {
-  const VERSION = "1771226935";
-  const JSON_URL = "data/schedules.json?v=" + VERSION;
+  window.onerror = function(msg, src, line, col, err){
+    try{
+      const sub = document.getElementById('subtitle');
+      if(sub) sub.textContent = 'JS error: ' + msg + ' (line ' + line + ')';
+    }catch(_){ }
+    return false;
+  };
+
+  const VERSION = "1771229413";
+  const CANDIDATE_URLS = [
+    "data/schedules.json?v=" + VERSION,
+    "./data/schedules.json?v=" + VERSION,
+    "schedules.json?v=" + VERSION,
+    "./schedules.json?v=" + VERSION
+  ];
 
   const elRows = document.getElementById("rows");
   const elClock = document.getElementById("clock");
@@ -322,32 +335,51 @@
 
   // ---------- load with offline fallback ----------
   async function load(){
+    // Visible debug if something goes wrong
     elNet.textContent = "Online: checking...";
-    try{
-      const r = await fetch(JSON_URL, {cache:"no-store"});
-      if(!r.ok) throw new Error("HTTP "+r.status);
-      const data = await r.json();
-      schedules = data;
-      localStorage.setItem("schedules_cache", JSON.stringify(data));
-      elNet.textContent = "Online: YES";
-      elLast.textContent = "Last update: " + new Date().toLocaleString();
-    }catch(e){
-      const cached = localStorage.getItem("schedules_cache");
-      if(cached){
-        try{
-          schedules = JSON.parse(cached);
-          elNet.textContent = "Online: NO (using last cached schedules)";
-          elLast.textContent = "Last update: cached";
-        }catch(_){}
-      }else{
-        elNet.textContent = "Online: NO";
-        elLast.textContent = "Last update:  - ";
+    elLast.textContent = "Last update: loading...";
+    let lastErr = null;
+
+    for(const url of CANDIDATE_URLS){
+      try{
+        const r = await fetch(url, {cache:"no-store"});
+        if(!r.ok) throw new Error("HTTP " + r.status + " for " + url);
+        const data = await r.json();
+        schedules = data;
+        localStorage.setItem("schedules_cache", JSON.stringify(data));
+        elNet.textContent = "Online: YES";
+        elLast.textContent = "Last update: " + new Date().toLocaleString();
+        elSub.textContent = "Live schedules loaded.";
+        render();
+        return;
+      }catch(e){
+        lastErr = e;
       }
     }
-    render();
+
+    // fallback to cache
+    const cached = localStorage.getItem("schedules_cache");
+    if(cached){
+      try{
+        schedules = JSON.parse(cached);
+        elNet.textContent = "Online: NO (cached)";
+        elLast.textContent = "Last update: cached";
+        elSub.textContent = "Offline mode - showing last cached schedules.";
+        render();
+        return;
+      }catch(e){
+        lastErr = e;
+      }
+    }
+
+    // Nothing worked: show error text on screen
+    elNet.textContent = "Online: NO";
+    elLast.textContent = "Last update: -";
+    elSub.textContent = "Failed to load schedules.json. Please check GitHub upload path.";
+    if(lastErr) console.error(lastErr);
   }
 
-  // clock + periodic
+  // clock + periodic + periodic
   function tick(){
     elClock.textContent = hhmm(now());
     render();
@@ -358,14 +390,16 @@
     btn.textContent = (on ? labelOn : labelOff);
     btn.classList.toggle("off", !on);
   }
-  document.getElementById("soundBtn").onclick = () => {
+  const _soundBtn = document.getElementById("soundBtn");
+  if(_soundBtn) _soundBtn.onclick = () => {
     soundOn = !soundOn;
-    setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
+    if(_soundBtn) setBtn(_soundBtn, soundOn, "Sound: ON", "Sound: OFF");
     if(soundOn) beepPattern(2, 140, 880, 100);
   };
-  document.getElementById("voiceBtn").onclick = () => {
+  const _voiceBtn = document.getElementById("voiceBtn");
+  if(_voiceBtn) _voiceBtn.onclick = () => {
     voiceOn = !voiceOn;
-    setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
+    if(_voiceBtn) setBtn(_voiceBtn, voiceOn, "Voice: ON", "Voice: OFF");
     if(voiceOn) speak("Voice alerts enabled.");
   };
 
