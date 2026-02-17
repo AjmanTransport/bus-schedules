@@ -72,7 +72,7 @@
     .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
     #err{display:none;margin:10px 18px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:700;}
       .routecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-    .rcard{border:1px solid var(--line);border-radius:14px;padding:10px;background:linear-gradient(180deg,#0b1220 0%, #0f172a 100%);box-shadow:0 2px 14px rgba(0,0,0,.22)}
+    .rcard{border:1px solid var(--border);border-radius:14px;padding:10px;background:linear-gradient(180deg,#0b1220 0%, #0f172a 100%);box-shadow:0 2px 14px rgba(0,0,0,.22)}
     .rcard .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
     .pill{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:800;font-size:12px;letter-spacing:.2px}
     .rcard .time{font-size:22px;font-weight:900;margin-top:6px}
@@ -88,6 +88,11 @@
   </div>
   <div class="right">
     <div class="pill" id="clock">--:--</div>
+    <div class="pill" id="nextTop">
+      <span style="color:var(--muted);font-weight:800;margin-right:10px">Next</span>
+      <span id="nextCountdownTop" style="font-weight:950">--:--</span>
+      <span id="nextTopDetails" style="margin-left:10px;color:var(--muted);font-weight:800"></span>
+    </div>
     <div class="btn" id="soundBtn">Sound: ON</div>
     <div class="btn off" id="voiceBtn">Voice: OFF</div>
   </div>
@@ -151,7 +156,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771323930";
+  const VERSION = "1771326589";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -163,6 +168,9 @@
   const elRouteCards = document.getElementById("routeCards");
   let pageIndex = 0;
   const elClock = document.getElementById("clock");
+  const elNextTop = document.getElementById("nextTop");
+  const elNextCountdownTop = document.getElementById("nextCountdownTop");
+  const elNextTopDetails = document.getElementById("nextTopDetails");
   const elSub = document.getElementById("subtitle");
   const elNextCountdown = document.getElementById("nextCountdown");
   const elNextDetails = document.getElementById("nextDetails");
@@ -491,6 +499,7 @@
 
     if(!next.length){
       elRows.innerHTML = '<tr><td colspan="5" class="muted">No upcoming trips for today.</td></tr>';
+      if(elRouteCards) elRouteCards.innerHTML = '<div class="muted">No upcoming trips</div>';
       elNextCountdown.textContent = "--:--";
       elNextDetails.textContent = "-";
       elNextExtra.textContent = "-";
@@ -517,6 +526,7 @@
       '</tr>';
     }).join("");
     elRows.innerHTML = rowsHtml;
+    renderRouteCards(next);
 
     elSub.textContent = "Showing next " + next.length + " departures across all routes";
     runAlerts(next);
