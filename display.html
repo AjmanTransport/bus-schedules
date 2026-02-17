@@ -3,18 +3,31 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta http-equiv="refresh" content="300"> <!-- kiosk safety reload -->
+  <meta http-equiv="refresh" content="300"><!-- kiosk safety reload -->
   <title>Musalla Bus Station - Live Departures</title>
   <style>
     :root{
       --bg:#071525;
       --text:#e8f2ff;
       --muted:#9fb4cc;
+
+      /* Ajman route branding (fixed) */
+      --aj1:#2f80ed; /* blue */
+      --aj2:#27ae60; /* green */
+      --aj3:#f2994a; /* orange */
+      --aj4:#9b51e0; /* purple */
+      --aj5:#eb5757; /* red */
+      --aj6:#56ccf2; /* light blue */
+      --aj7:#f2c94c; /* yellow */
+      --aj8:#6fcf97; /* mint */
       --accent:#39a7ff;
+
       --good:#1ee6a8;
       --warn:#ffcc66;
       --danger:#ff6b6b;
       --border:rgba(255,255,255,0.10);
+      --card:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      --shadow:0 10px 30px rgba(0,0,0,0.25);
     }
     html,body{height:100%;}
     body{
@@ -25,76 +38,127 @@
     }
     header{
       display:flex;align-items:center;justify-content:space-between;
-      padding:18px 28px;border-bottom:1px solid var(--border);
+      padding:16px 22px;border-bottom:1px solid var(--border);
+      gap:14px; flex-wrap:wrap;
     }
-    .t{font-size:28px;font-weight:900;letter-spacing:.2px;}
-    .s{font-size:14px;color:var(--muted);margin-top:6px;}
+    .titleWrap{min-width:360px}
+    .t{font-size:26px;font-weight:950;letter-spacing:.2px;}
+    .s{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.35}
     .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     .pill{
       padding:10px 14px;border-radius:999px;
       background:rgba(255,255,255,0.06);
       border:1px solid var(--border);
-      font-weight:700;
+      font-weight:800;
     }
     .btn{
       cursor:pointer;user-select:none;
       padding:10px 14px;border-radius:12px;
       background:rgba(57,167,255,0.16);
       border:1px solid rgba(57,167,255,0.32);
-      color:var(--text);font-weight:800;
+      color:var(--text);font-weight:900;
+      display:inline-flex;align-items:center;gap:10px;
     }
     .btn.off{
       background:rgba(255,255,255,0.06);
       border-color:var(--border);color:var(--muted);
     }
-    .grid{display:grid;grid-template-columns: 1.2fr .8fr; gap:16px; padding:18px 18px 24px;}
+    .ico{width:18px;height:18px;display:inline-block}
+    .ico svg{width:18px;height:18px;fill:currentColor;display:block}
+
+    #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
+
+    .grid{display:grid;grid-template-columns: 1.35fr .65fr; gap:14px; padding:14px 14px 18px;}
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      background:var(--card);
       border:1px solid var(--border);
       border-radius:18px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      box-shadow:var(--shadow);
       overflow:hidden;
     }
-    .card h2{margin:0;padding:14px 18px;border-bottom:1px solid var(--border);font-size:18px;letter-spacing:.2px;}
-    .pad{padding:16px 18px;}
-    .label{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:800;}
-    .big{font-size:66px;font-weight:950;letter-spacing:1px;}
+    .card h2{margin:0;padding:12px 16px;border-bottom:1px solid var(--border);font-size:16px;letter-spacing:.2px;}
+    .pad{padding:14px 16px;}
+    .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
+    .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
     .muted{color:var(--muted);}
+
+    /* Top countdown bar */
+    .topBar{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;flex-wrap:wrap;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+    }
+    .topBar .left{display:flex;flex-direction:column;gap:4px}
+    .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .topSmall{font-size:12px;color:var(--muted);font-weight:800}
+    .topBig{font-size:26px;font-weight:950}
+    .topRoute{font-size:16px;font-weight:900}
+
     table{width:100%;border-collapse:collapse;}
-    th,td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
-    th{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;}
-    td.time{font-size:20px;font-weight:950;}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.08em;}
-    .tag.good{background:rgba(30,230,168,0.16);border:1px solid rgba(30,230,168,0.35);color:var(--good);}
-    .tag.warn{background:rgba(255,204,102,0.16);border:1px solid rgba(255,204,102,0.35);color:var(--warn);}
-    .tag.danger{background:rgba(255,107,107,0.16);border:1px solid rgba(255,107,107,0.35);color:var(--danger);}
-    .dest{font-weight:900;}
-    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
-    #err{display:none;margin:10px 18px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:700;}
-      .routecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-    .rcard{border:1px solid var(--border);border-radius:14px;padding:10px;background:linear-gradient(180deg,#0b1220 0%, #0f172a 100%);box-shadow:0 2px 14px rgba(0,0,0,.22)}
-    .rcard .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:800;font-size:12px;letter-spacing:.2px}
-    .rcard .time{font-size:22px;font-weight:900;margin-top:6px}
-    .rcard .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-    .rcard .meta span{font-size:12px;color:var(--muted)}
-</style>
+    th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
+    th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
+    td.time{font-size:18px;font-weight:950;}
+    td.route{font-weight:950;}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:950;font-size:12px;letter-spacing:.08em;border:1px solid transparent;}
+    .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);}
+    .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
+    .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
+    .tag.route{background:rgba(57,167,255,0.12);border-color:rgba(57,167,255,0.24);}
+
+    /* Next-per-route cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:10px;
+    }
+    @media (max-width:1200px){
+      .cards{grid-template-columns: repeat(2, minmax(0,1fr));}
+    }
+    .rcard{
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.04);
+      padding:12px 12px;
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
+      overflow:hidden;
+      position:relative;
+    }
+    .rcard:before{
+      content:"";
+      position:absolute;left:0;top:0;bottom:0;width:8px;
+      background:var(--accent);
+      opacity:.95;
+    }
+    .rL{padding-left:8px}
+    .rName{font-size:16px;font-weight:950;letter-spacing:.2px}
+    .rSub{font-size:12px;color:var(--muted);font-weight:800;margin-top:3px}
+    .rT{font-size:22px;font-weight:1000}
+    .rB{font-size:12px;color:var(--muted);font-weight:900;margin-top:4px;text-align:right}
+    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
+  </style>
 </head>
 <body>
 <header>
-  <div>
+  <div class="titleWrap">
     <div class="t">Musalla Bus Station - Live Departures</div>
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
   <div class="right">
     <div class="pill" id="clock">--:--</div>
-    <div class="pill" id="nextTop">
-      <span style="color:var(--muted);font-weight:800;margin-right:10px">Next</span>
-      <span id="nextCountdownTop" style="font-weight:950">--:--</span>
-      <span id="nextTopDetails" style="margin-left:10px;color:var(--muted);font-weight:800"></span>
-    </div>
-    <div class="btn" id="soundBtn">Sound: ON</div>
-    <div class="btn off" id="voiceBtn">Voice: OFF</div>
+    <button class="btn" id="soundBtn" type="button">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      </span>
+      <span id="soundTxt">Sound: ON</span>
+    </button>
+    <button class="btn" id="voiceBtn" type="button">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg>
+      </span>
+      <span id="voiceTxt">Voice: ON</span>
+    </button>
   </div>
 </header>
 
@@ -102,32 +166,38 @@
 
 <div class="grid">
   <div class="card">
-    <h2>Next per Route</h2>
-    <div class="pad">
-      <div id="routeCards" class="routecards">
-        <div class="muted">Loading...</div>
+    <h2>Next Departures (All Routes)</h2>
+
+    <div class="topBar">
+      <div class="left">
+        <div class="topSmall">Next trip countdown</div>
+        <div class="topBig" id="topCountdown">--:--</div>
+        <div class="topRoute" id="topDetails">-</div>
+      </div>
+      <div class="right">
+        <div class="pill" id="dateTag">Date: -</div>
+        <div class="pill" id="rotationTag">Showing 1–10</div>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>Next Departures (All Routes)</h2>
-    <div class="pad">
+    <div class="pad" style="padding-top:10px">
       <table>
         <thead>
           <tr>
-            <th style="width:14%">Time</th>
-            <th style="width:16%">Countdown</th>
-            <th style="width:18%">Status</th>
+            <th style="width:13%">Time</th>
+            <th style="width:15%">Countdown</th>
+            <th style="width:16%">Status</th>
             <th style="width:16%">Bus</th>
-            <th>Route</th>
+            <th style="width:16%">Route</th>
+            <th>Destination</th>
           </tr>
         </thead>
         <tbody id="rows">
-          <tr><td colspan="5" class="muted">Loading...</td></tr>
+          <tr><td colspan="6" class="muted">Loading...</td></tr>
         </tbody>
       </table>
     </div>
+
     <div class="ticker">
       <div id="lastUpdate">Last update: -</div>
       <div id="net">Online: -</div>
@@ -135,28 +205,24 @@
   </div>
 
   <div class="card">
-    <h2>Next Trip</h2>
+    <h2>Next per Route</h2>
     <div class="pad">
-      <div class="label">Countdown</div>
-      <div class="big" id="nextCountdown">--:--</div>
-      <div style="height:12px"></div>
-      <div class="label">Details</div>
-      <div style="font-size:22px;font-weight:900" id="nextDetails">-</div>
-      <div class="muted" style="margin-top:10px" id="nextExtra">-</div>
+      <div class="cards" id="routeCards">
+        <div class="muted">Loading...</div>
+      </div>
     </div>
     <div class="ticker">
+      <div id="serviceState">-</div>
       <div>Auto refresh every 1 minute</div>
-      <div id="dateTag">Date: -</div>
     </div>
   </div>
 </div>
 
 <script>
-
 (function(){
   "use strict";
 
-  const VERSION = "1771327324";
+  const VERSION = "1771328955";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -164,43 +230,55 @@
     "./schedules.json?v=" + VERSION
   ];
 
+  /* Route priority order (AJ1, AJ2, AJ3...) */
+  const ROUTE_PRIORITY = [
+    "AJ1","AJ2","AJ3","AJ4","AJ5","AJ6","AJ7","AJ8","AJ9","AJ10",
+    "UAQ","SHJ","DXB"
+  ];
+
+  /* Fixed colors per route */
+  const ROUTE_COLORS = {
+    "AJ1":"var(--aj1)",
+    "AJ2":"var(--aj2)",
+    "AJ3":"var(--aj3)",
+    "AJ4":"var(--aj4)",
+    "AJ5":"var(--aj5)",
+    "AJ6":"var(--aj6)",
+    "AJ7":"var(--aj7)",
+    "AJ8":"var(--aj8)"
+  };
+
   const elRows = document.getElementById("rows");
-  const elRouteCards = document.getElementById("routeCards");
-  let pageIndex = 0;
   const elClock = document.getElementById("clock");
-  const elNextTop = document.getElementById("nextTop");
-  const elNextCountdownTop = document.getElementById("nextCountdownTop");
-  const elNextTopDetails = document.getElementById("nextTopDetails");
   const elSub = document.getElementById("subtitle");
-  const elNextCountdown = document.getElementById("nextCountdown");
-  const elNextDetails = document.getElementById("nextDetails");
-  const elNextExtra = document.getElementById("nextExtra");
   const elLast = document.getElementById("lastUpdate");
   const elNet = document.getElementById("net");
   const elDateTag = document.getElementById("dateTag");
+  const elRot = document.getElementById("rotationTag");
   const elErr = document.getElementById("err");
+  const elTopC = document.getElementById("topCountdown");
+  const elTopD = document.getElementById("topDetails");
+  const elCards = document.getElementById("routeCards");
+  const elState = document.getElementById("serviceState");
 
   let schedules = null;
-  let soundOn = true;
-  let voiceOn = false;
-  // Persist Sound/Voice toggles across kiosk auto-refresh
+
+  /* Persist Sound/Voice toggles across kiosk auto-refresh */
   const LS_SOUND = "musalla_soundOn";
   const LS_VOICE = "musalla_voiceOn";
-  function loadTogglePrefs(){
-    try{
-      const s = localStorage.getItem(LS_SOUND);
-      const v = localStorage.getItem(LS_VOICE);
-      // Default both ON for Musalla kiosk
-      soundOn = (s === null) ? true : (s === "1");
-      voiceOn = (v === null) ? true : (v === "1");
-    }catch(e){ /* ignore */ }
-  }
-  function saveTogglePrefs(){
-    try{
-      localStorage.setItem(LS_SOUND, soundOn ? "1" : "0");
-      localStorage.setItem(LS_VOICE, voiceOn ? "1" : "0");
-    }catch(e){ /* ignore */ }
-  }
+  let soundOn = true;
+  let voiceOn = true; // default ON for station screen
+
+  /* Rotation for next departures list */
+  const PAGE_SIZE = 10;
+  const TOTAL_SHOW = 20;
+  const ROTATE_MS = 8000;
+  let pageIndex = 0; // 0 => 1-10, 1 => 11-20
+  let lastRotate = 0;
+
+  /* Alert dedupe */
+  const alerted = new Set();
+  let audioCtx = null;
 
   const pad2 = n => String(n).padStart(2,"0");
   const now = () => new Date();
@@ -218,6 +296,80 @@
     elErr.textContent = "";
   }
 
+  function loadTogglePrefs(){
+    try{
+      const s = localStorage.getItem(LS_SOUND);
+      const v = localStorage.getItem(LS_VOICE);
+      soundOn = (s === null) ? true : (s === "1");
+      voiceOn = (v === null) ? true : (v === "1");
+    }catch(e){}
+    syncButtons();
+  }
+  function saveTogglePrefs(){
+    try{
+      localStorage.setItem(LS_SOUND, soundOn ? "1" : "0");
+      localStorage.setItem(LS_VOICE, voiceOn ? "1" : "0");
+    }catch(e){}
+  }
+
+  function syncButtons(){
+    const sb = document.getElementById("soundBtn");
+    const vb = document.getElementById("voiceBtn");
+    const st = document.getElementById("soundTxt");
+    const vt = document.getElementById("voiceTxt");
+
+    if(sb){
+      sb.classList.toggle("off", !soundOn);
+      if(st) st.textContent = soundOn ? "Sound: ON" : "Sound: OFF";
+    }
+    if(vb){
+      vb.classList.toggle("off", !voiceOn);
+      if(vt) vt.textContent = voiceOn ? "Voice: ON" : "Voice: OFF";
+    }
+  }
+
+  function ensureAudio(){
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === "suspended"){ try{ audioCtx.resume(); }catch(e){} }
+  }
+  function beepOnce(durationMs = 140, frequency = 880, volume = 0.20){
+    ensureAudio();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = frequency;
+    gain.gain.value = volume;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    setTimeout(()=>{ try{osc.stop();}catch(e){} }, durationMs);
+  }
+  function beepPattern(){
+    // 5 short beeps (noticeable but not too annoying)
+    const freqs = [880, 880, 988, 880, 1046];
+    const gap = 140, dur = 120;
+    freqs.forEach((f,i)=> setTimeout(()=>beepOnce(dur, f, 0.20), i*(dur+gap)));
+  }
+
+  function speakBilingual(enText, arText){
+    try{
+      if(!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+
+      const u1 = new SpeechSynthesisUtterance(enText);
+      u1.lang = "en-US";
+      u1.rate = 1.0;
+
+      const u2 = new SpeechSynthesisUtterance(arText);
+      u2.lang = "ar-AE";
+      u2.rate = 0.95;
+
+      // chain
+      u1.onend = ()=> { try{ window.speechSynthesis.speak(u2); }catch(e){} };
+      window.speechSynthesis.speak(u1);
+    }catch(e){}
+  }
+
   function parseTime(dateStr, t){
     const parts = String(t||"").split(":");
     const H = parseInt(parts[0]||"0",10);
@@ -227,390 +379,392 @@
     return d;
   }
 
-  // -------- Route colors (fixed for AJ routes) --------
-  const ROUTE_COLORS = {
-    "AJ1":"#1f4e79",
-    "AJ2":"#1f9d55",
-    "AJ3":"#f59e0b",
-    "AJ4":"#ef4444",
-    "AJ5":"#7c3aed",
-    "AJ6":"#06b6d4",
-    "AJ7":"#ec4899",
-    "AJ8":"#8b5cf6",
-    "AJ9":"#10b981",
-    "AJ10":"#3b82f6",
-    "AJ11":"#22c55e",
-    "AJ12":"#eab308",
-    "AJ13":"#f97316",
-    "AJ14":"#a855f7",
-    "AJ15":"#0ea5e9"
-  };
-  const ROUTE_PALETTE = ["#1f4e79","#1f9d55","#f59e0b","#ef4444","#7c3aed","#06b6d4","#ec4899","#8b5cf6","#10b981","#3b82f6"];
-
-  function normalizeRouteKey(key){
-    const s = String(key||"").toUpperCase().replace(/\s+/g,"");
-    const m = s.match(/AJ0*([0-9]{1,2})/);
-    if(m) return "AJ" + String(parseInt(m[1],10));
-    return s;
-  }
-  function routeColor(key){
-    const k = normalizeRouteKey(key);
-    if(ROUTE_COLORS[k]) return ROUTE_COLORS[k];
-    let h = 0;
-    for(let i=0;i<k.length;i++){ h = ((h<<5)-h) + k.charCodeAt(i); h |= 0; }
-    const idx = Math.abs(h) % ROUTE_PALETTE.length;
-    return ROUTE_PALETTE[idx];
-  }
-  function routePriority(key){
-    const k = normalizeRouteKey(key);
-    const m = k.match(/^AJ([0-9]{1,2})$/);
-    if(m) return parseInt(m[1],10);
-    return 999;
-  }
-
   function fmtCountdown(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
     const m = Math.floor(s/60);
-    const r = s % 60;
-    const h = Math.floor(m/60);
-    const mm = m % 60;
-    if(h > 0) return h + ":" + pad2(mm) + ":" + pad2(r);
-    return mm + ":" + pad2(r);
+    const r = s%60;
+    return pad2(m) + ":" + pad2(r);
   }
 
-  function statusFor(ms){
+  function statusTag(ms){
     const min = ms/60000;
-    if(min <= 0.1) return ["DEPARTING", "danger"];
-    if(min <= 2) return ["NOW BOARDING", "danger"];
-    if(min <= 10) return ["SOON", "warn"];
-    return ["SCHEDULED", "good"];
+    if(min <= 2) return {cls:"danger", txt:"Now"};
+    if(min <= 10) return {cls:"warn", txt:"Soon"};
+    return {cls:"good", txt:"Upcoming"};
   }
 
-  // ---------- sound + voice ----------
-  let audioCtx = null;
-  function beep(freq, durMs){
-    if(!soundOn) return;
-    try{
-      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const o = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      o.type = "sine";
-      o.frequency.value = freq;
-      g.gain.value = 0.08;
-      o.connect(g);
-      g.connect(audioCtx.destination);
-      o.start();
-      setTimeout(()=>{ try{o.stop();}catch(e){} }, durMs);
-    }catch(e){}
+  function routeKey(route){
+    const s = String(route||"").toUpperCase().replace(/\s+/g,"").trim();
+    return s;
   }
-  function beepPattern(count, durMs, freq, gapMs){
-    if(!soundOn) return;
-    let i=0;
-    const step = () => {
-      if(i>=count) return;
-      beep(freq, durMs);
-      i++;
-      setTimeout(step, durMs + gapMs);
-    };
-    step();
+  function routePriority(route){
+    const k = routeKey(route);
+    const idx = ROUTE_PRIORITY.indexOf(k);
+    return (idx >= 0) ? idx : 999;
   }
-  function speak(text, lang){
-    if(!voiceOn) return;
-    if(!("speechSynthesis" in window)) return;
-    try{
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = lang || "en-US";
-      u.rate = 0.95;
-      u.pitch = 1.0;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(u);
-    }catch(e){}
-  }
-  function speakBilingual(enText, arText){
-    if(!voiceOn) return;
-    if(!("speechSynthesis" in window)) return;
-    try{
-      window.speechSynthesis.cancel();
-      const en = new SpeechSynthesisUtterance(enText);
-      en.lang = "en-US"; en.rate = 1.0; en.pitch = 1.0;
-      const ar = new SpeechSynthesisUtterance(arText);
-      ar.lang = "ar-AE"; ar.rate = 0.95; ar.pitch = 1.0;
-      window.speechSynthesis.speak(en);
-      window.speechSynthesis.speak(ar);
-    }catch(e){}
+  function routeColor(route){
+    const k = routeKey(route);
+    return ROUTE_COLORS[k] || "var(--accent)";
   }
 
-
-  // prevent repeated spam: per trip per stage
-  function shouldAlert(tripId, stageKey, minIntervalMs){
-    const key = "alert_" + tripId + "_" + stageKey;
-    const last = parseInt(localStorage.getItem(key)||"0",10);
-    const t = Date.now();
-    if(t - last >= minIntervalMs){
-      localStorage.setItem(key, String(t));
-      return true;
+  async function fetchFirst(){
+    for(const u of CANDIDATE_URLS){
+      try{
+        const r = await fetch(u, {cache:"no-store"});
+        if(r.ok) return {url:u, json: await r.json()};
+      }catch(e){}
     }
-    return false;
+    throw new Error("Failed to load schedules.json. Check that schedules.json exists at /bus-schedules/data/ or /bus-schedules/.");
   }
 
-  function runAlerts(nextTrips){
-    if(!nextTrips || !nextTrips.length) return;
-    const tNow = now().getTime();
-    nextTrips.slice(0,3).forEach(tr => {
-      const ms = tr.dt.getTime() - tNow;
-      const mins = ms/60000;
-      const tripId = tr.tripId;
+  function findDayForToday(routeObj, todayISO){
+    if(!routeObj || !routeObj.days) return null;
+    return routeObj.days.find(d => d.date === todayISO) || null;
+  }
 
-      if(mins <= 0.05){
-        if(shouldAlert(tripId, "at", 10*60*1000)){
-          beepPattern(5, 160, 980, 130);
-          speakBilingual("Departure now. Route " + tr.route + ". Bus " + tr.bus + ".", "تنبيه. الانطلاق الآن. خط " + tr.route + ". حافلة " + tr.bus + ".");
-        }
-        return;
-      }
+  function getTomorrowFirstTrip(todayISO){
+    if(!schedules || !schedules.routes) return null;
+    const d = new Date(todayISO + "T00:00:00");
+    d.setDate(d.getDate() + 1);
+    const tISO = ymd(d);
 
-      if(mins <= 2){
-        if(shouldAlert(tripId, "m2", 30*1000)){
-          beepPattern(3, 140, 900, 110);
-          speakBilingual("Now boarding. Route " + tr.route + ". Bus " + tr.bus + ". Departs at " + tr.time + ".", "تنبيه. يتم الآن الصعود. خط " + tr.route + ". حافلة " + tr.bus + ". موعد الانطلاق " + tr.time + ".");
-        }
-        return;
-      }
+    let best = null; // {time, route, bus}
+    schedules.routes.forEach(r=>{
+      const day = r.days ? r.days.find(x=>x.date===tISO) : null;
+      if(!day) return;
+      (day.buses||[]).forEach(b=>{
+        (b.departures||[]).forEach(t=>{
+          const dt = parseTime(tISO, t);
+          if(!best || dt < best.dt){
+            best = {dt, time: t, route: r.route, bus: b.bus, date: tISO};
+          }
+        });
+      });
+    });
+    return best;
+  }
 
-      if(mins <= 5){
-        if(shouldAlert(tripId, "m5", 60*1000)){
-          beepPattern(2, 140, 820, 100);
-          if(mins > 4.0) speakBilingual("Attention please. Route " + tr.route + ". Bus " + tr.bus + ". Departure in five minutes.", "تنبيه. خط " + tr.route + ". حافلة " + tr.bus + ". الانطلاق بعد خمس دقائق.");
-        }
-      }
+  function buildUpcoming(todayISO){
+    const nowD = now();
+    const nowMs = nowD.getTime();
+    let list = [];
+    schedules.routes.forEach(r=>{
+      const day = findDayForToday(r, todayISO);
+      if(!day) return;
+      (day.buses||[]).forEach(b=>{
+        (b.departures||[]).forEach(t=>{
+          const dt = parseTime(todayISO, t);
+          const ms = dt.getTime() - nowMs;
+          if(ms >= 0){
+            list.push({
+              dt, ms, time: t, route: r.route, bus: b.bus,
+              destination: (r.display_name || r.route)
+            });
+          }
+        });
+      });
+    });
+    list.sort((a,b)=>a.ms - b.ms);
+    return list;
+  }
+
+  function renderTop(nextItem, todayISO){
+    elDateTag.textContent = "Date: " + todayISO;
+
+    if(!nextItem){
+      elTopC.textContent = "--:--";
+      elTopD.textContent = "No upcoming trips";
+      return;
+    }
+    elTopC.textContent = fmtCountdown(nextItem.ms);
+    elTopD.textContent = "Route " + nextItem.route + "  •  Bus " + nextItem.bus + "  •  " + nextItem.time;
+  }
+
+  function renderDeparturesTable(upcoming, todayISO){
+    // rotation 1–10 then 11–20
+    const sliced = upcoming.slice(0, TOTAL_SHOW);
+    const start = pageIndex * PAGE_SIZE;
+    const view = sliced.slice(start, start + PAGE_SIZE);
+
+    if(elRot){
+      const a = start + 1;
+      const b = Math.min(start + PAGE_SIZE, sliced.length || (start+PAGE_SIZE));
+      elRot.textContent = "Showing " + a + "–" + b;
+    }
+
+    if(!view.length){
+      elRows.innerHTML = '<tr><td colspan="6" class="muted">No upcoming trips</td></tr>';
+      return;
+    }
+
+    elRows.innerHTML = "";
+    view.forEach(item=>{
+      const tag = statusTag(item.ms);
+      const tr = document.createElement("tr");
+
+      const tdT = document.createElement("td");
+      tdT.className = "time";
+      tdT.textContent = item.time;
+
+      const tdC = document.createElement("td");
+      tdC.textContent = fmtCountdown(item.ms);
+
+      const tdS = document.createElement("td");
+      tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
+
+      const tdB = document.createElement("td");
+      tdB.textContent = item.bus;
+
+      const tdR = document.createElement("td");
+      tdR.className = "route";
+      const rc = routeColor(item.route);
+      tdR.innerHTML = `<span class="tag route" style="border-color:${rc};color:${rc}">${item.route}</span>`;
+
+      const tdD = document.createElement("td");
+      tdD.textContent = item.destination || "-";
+
+      tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdB); tr.appendChild(tdR); tr.appendChild(tdD);
+      elRows.appendChild(tr);
     });
   }
 
-  // ---------- schedules reader (supports BOTH schemas) ----------
-  // New schema (recommended):
-  // { routes: [ { route, display_name, days:[ {date, profile, buses:[{bus, departures:[HH:MM]}]} ] } ] }
-  // Old schema:
-  // { routes: [ { route, name, buses:[{bus, times:[HH:MM]}]} ] }
-  function flattenTrips(dateStr){
-    if(!schedules) return [];
-    const trips = [];
-    const routes = schedules.routes || [];
+  function renderRouteCards(upcoming, todayISO){
+    // Next per route mini-cards (super clear for passengers)
+    const nextByRoute = {};
+    upcoming.forEach(it=>{
+      if(!nextByRoute[it.route]) nextByRoute[it.route] = it;
+    });
 
-    for(const r of routes){
-      const displayRoute = r.display_name || r.name || r.route || "-";
+    const routesToday = schedules.routes
+      .filter(r => !!findDayForToday(r, todayISO))
+      .slice()
+      .sort((a,b)=>{
+        const pa = routePriority(a.route);
+        const pb = routePriority(b.route);
+        if(pa !== pb) return pa - pb;
+        return String(a.route).localeCompare(String(b.route));
+      });
 
-      if(Array.isArray(r.days) && r.days.length){
-        const day = r.days.find(x => x.date === dateStr) || r.days[0];
-        if(!day) continue;
-        const buses = day.buses || [];
-        for(const b of buses){
-          const busName = b.bus || b.name || "-";
-          const depList = b.departures || b.times || [];
-          for(const t of depList){
-            const dt = parseTime(dateStr, t);
-            trips.push({
-              route: displayRoute,
-              bus: busName,
-              time: t,
-              dt: dt,
-              tripId: dateStr + "__" + (r.route||displayRoute) + "__" + busName + "__" + t
-            });
-          }
-        }
-      }else{
-        // old schema fallback
-        const buses = r.buses || [];
-        for(const b of buses){
-          const busName = b.bus || b.name || "-";
-          const depList = b.times || b.departures || [];
-          for(const t of depList){
-            const dt = parseTime(dateStr, t);
-            trips.push({
-              route: displayRoute,
-              bus: busName,
-              time: t,
-              dt: dt,
-              tripId: dateStr + "__" + (r.route||displayRoute) + "__" + busName + "__" + t
-            });
-          }
-        }
-      }
-    }
-
-    trips.sort((a,b)=>a.dt-b.dt);
-    return trips;
-  }
-
-  function pickDate(){ return ymd(now()); }
-
-  function nextPerRoute(trips){
-    const map = {};
-    for(const t of trips){
-      const k = String(t.route||"");
-      if(!map[k] || map[k].dep > t.dep) map[k] = t;
-    }
-    return Object.values(map).sort((a,b)=> (routePriority(a.route)-routePriority(b.route)) || (a.route||"").localeCompare(b.route||""));
-  }
-
-  function renderRouteCards(allNext){
-    if(!elRouteCards) return;
-    const per = nextPerRoute(allNext);
-    if(!per.length){
-      elRouteCards.innerHTML = `<div class="muted">No upcoming trips</div>`;
+    if(!routesToday.length){
+      elCards.innerHTML = '<div class="muted">No schedules for today</div>';
       return;
     }
-    const html = per.map(t=>{
-      const col = routeColor(t.route);
-      return `
-        <div class="rcard">
-          <div class="top">
-            <div>${pillHTML(t.route, col)}</div>
-            <div class="muted">${escapeHTML(t.bus||"")}</div>
-          </div>
-          <div class="time" style="color:${col}">${escapeHTML(t.time)}</div>
-          <div class="meta">
-            <span>${escapeHTML(t.countdown)}</span>
-            <span>${escapeHTML(t.statusText)}</span>
-          </div>
-        </div>
+
+    elCards.innerHTML = "";
+    routesToday.forEach(r=>{
+      const it = nextByRoute[r.route] || null;
+
+      const card = document.createElement("div");
+      card.className = "rcard";
+      card.style.setProperty("--accent", routeColor(r.route));
+      card.style.setProperty("border-color","rgba(255,255,255,0.10)");
+
+      const left = document.createElement("div");
+      left.className = "rL";
+      left.innerHTML = `
+        <div class="rName">${r.route}</div>
+        <div class="rSub">${r.display_name || r.route}</div>
       `;
-    }).join("");
-    elRouteCards.innerHTML = html;
+
+      const right = document.createElement("div");
+      right.style.textAlign = "right";
+
+      if(it){
+        right.innerHTML = `
+          <div class="rT">${it.time}</div>
+          <div class="rB">Bus ${it.bus} • in ${Math.max(0, Math.round(it.ms/60000))} min</div>
+        `;
+      }else{
+        right.innerHTML = `
+          <div class="rT">—</div>
+          <div class="rB">No more trips today</div>
+        `;
+      }
+
+      card.style.setProperty("box-shadow","none");
+      card.style.borderColor = "rgba(255,255,255,0.10)";
+      card.style.background = "rgba(255,255,255,0.04)";
+      card.style.position = "relative";
+      card.style.overflow = "hidden";
+      card.style.paddingLeft = "14px";
+      card.style.setProperty("padding","12px 12px 12px 12px");
+      card.style.setProperty("border-radius","16px");
+      card.style.setProperty("display","flex");
+      card.style.setProperty("justify-content","space-between");
+      card.style.setProperty("align-items","center");
+
+      // left color bar
+      const bar = document.createElement("div");
+      bar.style.position="absolute";
+      bar.style.left="0";
+      bar.style.top="0";
+      bar.style.bottom="0";
+      bar.style.width="8px";
+      bar.style.background = routeColor(r.route);
+      bar.style.opacity="0.95";
+      card.appendChild(bar);
+
+      card.appendChild(left);
+      card.appendChild(right);
+      elCards.appendChild(card);
+    });
   }
 
-  let rotTimer = null;
-  function scheduleAutoRotate(pages){
-    if(rotTimer) return;
-    if(pages <= 1) return;
-    rotTimer = setInterval(()=>{
-      pageIndex = (pageIndex + 1) % pages;
-      render();
-    }, 8000);
+  function serviceEndedMessage(todayISO, upcoming){
+    // After last trip, show “Service ended — next service starts tomorrow at XX:XX”.
+    if(upcoming.length) return null;
+
+    const tmr = getTomorrowFirstTrip(todayISO);
+    if(!tmr) return "Service ended — no schedules found for tomorrow";
+    return "Service ended — next service starts tomorrow at " + tmr.time + " (Route " + tmr.route + ", Bus " + tmr.bus + ")";
   }
 
-  function render(){
-    const dStr = pickDate();
-    elDateTag.textContent = "Date: " + dStr;
+  function checkAlerts(nextItem, todayISO){
+    if(!nextItem) return;
+    if(!soundOn && !voiceOn) return;
 
-    const tNow = now().getTime();
-    const all = flattenTrips(dStr).filter(x => x.dt.getTime() >= tNow - 30*1000);
-    const next = all.slice(0,10);
+    // Alert window: 2 minutes before departure (including at departure)
+    const min = nextItem.ms / 60000;
+    if(min < 0 || min > 2) return;
 
-    if(!next.length){
-      elRows.innerHTML = '<tr><td colspan="5" class="muted">No upcoming trips for today.</td></tr>';
-      if(elRouteCards) elRouteCards.innerHTML = '<div class="muted">No upcoming trips</div>';
-      elNextCountdown.textContent = "--:--";
-      elNextDetails.textContent = "-";
-      elNextExtra.textContent = "-";
-      elSub.textContent = "No upcoming trips right now.";
-      return;
+    const key = todayISO + "|" + nextItem.route + "|" + nextItem.bus + "|" + nextItem.time;
+    if(alerted.has(key)) return;
+    alerted.add(key);
+
+    if(soundOn){
+      beepPattern();
     }
-
-    const top = next[0];
-    const msTop = top.dt.getTime() - tNow;
-    elNextCountdown.textContent = fmtCountdown(msTop);
-    elNextDetails.textContent = top.route + "  |  Bus " + top.bus + "  |  " + top.time;
-    elNextExtra.textContent = "Sound alerts start 5 minutes before departure.";
-
-    const rowsHtml = next.map(tr => {
-      const ms = tr.dt.getTime() - tNow;
-      const cd = fmtCountdown(ms);
-      const st = statusFor(ms);
-      return '<tr>' +
-        '<td class="time">' + tr.time + '</td>' +
-        '<td>' + cd + '</td>' +
-        '<td><span class="tag ' + st[1] + '">' + st[0] + '</span></td>' +
-        '<td style="font-weight:900">' + tr.bus + '</td>' +
-        '<td><span class="dest">' + tr.route + '</span></td>' +
-      '</tr>';
-    }).join("");
-    elRows.innerHTML = rowsHtml;
-    renderRouteCards(next);
-
-    elSub.textContent = "Showing next " + next.length + " departures across all routes";
-    runAlerts(next);
+    if(voiceOn){
+      const en = `Next trip. Route ${nextItem.route}. Bus ${nextItem.bus}. Departure ${nextItem.time}.`;
+      const ar = `الرحلة التالية. خط ${nextItem.route}. حافلة رقم ${nextItem.bus}. وقت المغادرة ${nextItem.time}.`;
+      speakBilingual(en, ar);
+    }
   }
 
   async function load(){
-    clearErr();
-    elNet.textContent = "Online: checking...";
-    elLast.textContent = "Last update: loading...";
-    let lastErr = null;
+    try{
+      clearErr();
+      const out = await fetchFirst();
+      schedules = out.json;
 
-    for(const url of CANDIDATE_URLS){
-      try{
-        const r = await fetch(url, {cache:"no-store"});
-        if(!r.ok) throw new Error("HTTP " + r.status + " for " + url);
-        const data = await r.json();
-        schedules = data;
-        localStorage.setItem("schedules_cache", JSON.stringify(data));
-        elNet.textContent = "Online: YES";
-        elLast.textContent = "Last update: " + new Date().toLocaleString();
-        render();
+      const todayISO = ymd(now());
+      elSub.textContent = "Today: " + todayISO + " • Live countdown based on device time";
+      elLast.textContent = "Last update: " + (schedules.generated_at || "-");
+      elNet.textContent = "Online: " + (navigator.onLine ? "Yes" : "No");
+
+      // If today not found in ANY route => show "No schedules for today" (no fallback)
+      const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
+      if(!anyToday){
+        elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
+        elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+        elTopC.textContent = "--:--";
+        elTopD.textContent = "No schedules for today";
+        if(elState) elState.textContent = "No schedules for today";
         return;
-      }catch(e){
-        lastErr = e;
       }
-    }
 
-    // cache fallback
-    const cached = localStorage.getItem("schedules_cache");
-    if(cached){
-      try{
-        schedules = JSON.parse(cached);
-        elNet.textContent = "Online: NO (cached)";
-        elLast.textContent = "Last update: cached";
-        showErr("Offline mode: using last cached schedules.");
-        render();
-        return;
-      }catch(e){
-        lastErr = e;
+      const upcoming = buildUpcoming(todayISO);
+      const nextItem = upcoming[0] || null;
+
+      renderTop(nextItem, todayISO);
+      renderDeparturesTable(upcoming, todayISO);
+      renderRouteCards(upcoming, todayISO);
+
+      const ended = serviceEndedMessage(todayISO, upcoming);
+      if(elState){
+        elState.textContent = ended ? ended : "Service running";
       }
-    }
 
-    elNet.textContent = "Online: NO";
-    elLast.textContent = "Last update: -";
-    showErr("Failed to load schedules.json. Check that schedules.json exists at /bus-schedules/data/ or /bus-schedules/.");
-    if(lastErr && console) console.error(lastErr);
-    elRows.innerHTML = '<tr><td colspan="5" class="muted">No data loaded.</td></tr>';
-    elSub.textContent = "Failed to load schedules.";
+      // Also show ended state in top if applicable
+      if(ended){
+        elTopD.textContent = ended;
+      }
+
+      checkAlerts(nextItem, todayISO);
+    }catch(e){
+      showErr(String(e && e.message ? e.message : e));
+    }
+  }
+
+  function rotateIfNeeded(){
+    const t = Date.now();
+    if(t - lastRotate >= ROTATE_MS){
+      lastRotate = t;
+      pageIndex = (pageIndex + 1) % 2; // 0<->1
+    }
   }
 
   function tick(){
     elClock.textContent = hhmm(now());
-    render();
+    rotateIfNeeded();
+    // Re-render from already-loaded schedules (fast), but if not yet, do nothing.
+    if(!schedules || !schedules.routes) return;
+
+    const todayISO = ymd(now());
+    const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
+    if(!anyToday){
+      elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
+      elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+      elTopC.textContent = "--:--";
+      elTopD.textContent = "No schedules for today";
+      if(elState) elState.textContent = "No schedules for today";
+      return;
+    }
+
+    const upcoming = buildUpcoming(todayISO);
+    const nextItem = upcoming[0] || null;
+
+    renderTop(nextItem, todayISO);
+    renderDeparturesTable(upcoming, todayISO);
+    renderRouteCards(upcoming, todayISO);
+
+    const ended = serviceEndedMessage(todayISO, upcoming);
+    if(elState){
+      elState.textContent = ended ? ended : "Service running";
+    }
+    if(ended){
+      elTopD.textContent = ended;
+    }
+
+    checkAlerts(nextItem, todayISO);
   }
 
-  function setBtn(btn, on, labelOn, labelOff){
-    btn.textContent = (on ? labelOn : labelOff);
-    btn.classList.toggle("off", !on);
-  }
-
-  document.getElementById("soundBtn").onclick = () => {
+  function onSoundToggle(){
     soundOn = !soundOn;
-    setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
     saveTogglePrefs();
-    if(soundOn) beepPattern(2, 140, 880, 100);
-  };
-  document.getElementById("voiceBtn").onclick = () => {
+    syncButtons();
+    // Important: audio needs user gesture at least once in many browsers; we re-init here.
+    if(soundOn){
+      try{ ensureAudio(); beepOnce(90, 700, 0.12); }catch(e){}
+    }
+  }
+  function onVoiceToggle(){
     voiceOn = !voiceOn;
-    setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
     saveTogglePrefs();
-    if(voiceOn) speakBilingual("Voice alerts enabled.", "تم تفعيل التنبيهات الصوتية.");
-  };
+    syncButtons();
+    if(voiceOn){
+      speakBilingual("Voice alerts enabled.", "تم تفعيل التنبيه الصوتي.");
+    }else{
+      try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){}
+    }
+  }
 
-  // kick off
-  loadTogglePrefs();
-  setBtn(document.getElementById("soundBtn"), soundOn, "Sound: ON", "Sound: OFF");
-  setBtn(document.getElementById("voiceBtn"), voiceOn, "Voice: ON", "Voice: OFF");
-  saveTogglePrefs();
-  elClock.textContent = hhmm(now());
-  load();
-  setInterval(tick, 1000);
-  setInterval(load, 60*1000);
+  document.addEventListener("DOMContentLoaded", ()=>{
+    loadTogglePrefs();
+
+    const sb = document.getElementById("soundBtn");
+    const vb = document.getElementById("voiceBtn");
+    if(sb) sb.addEventListener("click", onSoundToggle);
+    if(vb) vb.addEventListener("click", onVoiceToggle);
+
+    elClock.textContent = hhmm(now());
+    load();
+    setInterval(tick, 1000);
+    setInterval(load, 60*1000);
+  });
+
 })();
-
 </script>
 </body>
 </html>
