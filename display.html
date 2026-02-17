@@ -71,6 +71,16 @@
     .dest{font-weight:900;}
     .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
     #err{display:none;margin:10px 18px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:700;}
+  
+    .spacer{height:8px}
+    .h3{margin:14px 0 10px 0;font-size:14px;color:var(--muted);letter-spacing:.3px}
+    .routecards{display:grid;grid-template-columns:repeat(5, 1fr);gap:10px;margin-top:6px}
+    .rcard{border:1px solid var(--border);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,0.03)}
+    .rcard .rname{display:flex;align-items:center;gap:8px;font-weight:900;font-size:14px;line-height:1.1}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.2px;white-space:nowrap}
+    .meta2{margin-top:6px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:10px}
+    .meta2 b{color:var(--text)}
+
   </style>
 </head>
 <body>
@@ -106,6 +116,10 @@
           <tr><td colspan="5" class="muted">Loading...</td></tr>
         </tbody>
       </table>
+      <div class="spacer"></div>
+      <h3 class="h3">Next per Route</h3>
+      <div id="routeCards" class="routecards"></div>
+
     </div>
     <div class="ticker">
       <div id="lastUpdate">Last update: -</div>
@@ -134,7 +148,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771299485";
+  const VERSION = "1771315749";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -143,6 +157,9 @@
   ];
 
   const elRows = document.getElementById("rows");
+  const elRouteCards = document.getElementById("routeCards");
+  let pageIndex = 0;
+
   const elClock = document.getElementById("clock");
   const elSub = document.getElementById("subtitle");
   const elNextCountdown = document.getElementById("nextCountdown");
@@ -200,6 +217,81 @@
     return d;
   }
 
+  // -------- Route colors (fixed for AJ routes) --------
+  const ROUTE_COLORS = {
+    "AJ1":"#1f4e79",  // blue (ATA primary)
+    "AJ2":"#1f9d55",  // green
+    "AJ3":"#f59e0b",  // amber
+    "AJ4":"#ef4444",  // red
+    "AJ5":"#7c3aed",  // purple
+    "AJ6":"#06b6d4",  // cyan
+    "AJ7":"#ec4899",  // pink
+    "AJ8":"#8b5cf6",  // violet
+    "AJ9":"#10b981",  // emerald
+    "AJ10":"#3b82f6", // blue
+    "AJ11":"#22c55e", // green
+    "AJ12":"#eab308", // yellow
+    "AJ13":"#f97316", // orange
+    "AJ14":"#a855f7", // purple
+    "AJ15":"#0ea5e9"  // sky
+  };
+
+  const ROUTE_PALETTE = ["#1f4e79","#1f9d55","#f59e0b","#ef4444","#7c3aed","#06b6d4","#ec4899","#8b5cf6","#10b981","#3b82f6"];
+
+  function normalizeRouteKey(key){
+    const s = String(key||"").toUpperCase().replace(/\s+/g,"");
+    // Keep AJ + number if present (AJ01 -> AJ1)
+    const m = s.match(/AJ0*([0-9]{1,2})/);
+    if(m) return "AJ" + String(parseInt(m[1],10));
+    return s;
+  }
+
+  function routeColor(key){
+    const k = normalizeRouteKey(key);
+    if(ROUTE_COLORS[k]) return ROUTE_COLORS[k];
+
+    // Stable fallback hash -> palette
+    let h = 0;
+    for(let i=0;i<k.length;i++){ h = ((h<<5)-h) + k.charCodeAt(i); h |= 0; }
+    const idx = Math.abs(h) % ROUTE_PALETTE.length;
+    return ROUTE_PALETTE[idx];
+  }
+
+  function routePriority(key){
+    const k = normalizeRouteKey(key);
+    const m = k.match(/^AJ([0-9]{1,2})$/);
+    if(m) return parseInt(m[1],10);
+    return 999;
+  }
+const idx = Math.abs(h) % ROUTE_PALETTE.length;
+    return ROUTE_PALETTE[idx];
+  }
+  function escapeHTML(x){
+    return String(x||"").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function pillHTML(text, color){
+    return `<span class="pill" style="background:${color}22;color:${color};border:1px solid ${color}55">${escapeHTML(text)}</span>`;
+  }
+
+  // Find first trip for a date (across all routes)
+  function firstTripForDate(dateStr){
+    const all = flattenTrips(dateStr);
+    return all.length ? all[0] : null;
+  }
+
+  // Find next service day after dateStr (up to N days)
+  function nextServiceAfter(dateStr, daysAhead=21){
+    const base = new Date(dateStr+"T00:00:00");
+    for(let i=1;i<=daysAhead;i++){
+      const d = new Date(base.getTime() + i*24*3600*1000);
+      const ds = ymd(d);
+      const ft = firstTripForDate(ds);
+      if(ft) return {date: ds, first: ft};
+    }
+    return null;
+  }
+
+
   function fmtCountdown(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
@@ -247,16 +339,26 @@
     };
     step();
   }
-  function speak(text){
-    if(!voiceOn) return;
+  function speak(nextTrip){
+    if(!voiceEnabled || !nextTrip) return;
     if(!("speechSynthesis" in window)) return;
+
+    const route = String(nextTrip.route||"");
+    const bus = String(nextTrip.bus||"");
+    const t = String(nextTrip.time||"");
+
+    const en = new SpeechSynthesisUtterance(`Attention please. Next trip. Route ${route}. Bus ${bus}. Departure ${t}.`);
+    en.lang = "en-US"; en.rate = 1.0; en.pitch = 1.0;
+
+    const ar = new SpeechSynthesisUtterance(`تنبيه. الرحلة القادمة. خط ${route}. حافلة ${bus}. موعد الانطلاق ${t}.`);
+    ar.lang = "ar-AE"; ar.rate = 0.95; ar.pitch = 1.0;
+
     try{
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = 0.95;
-      u.pitch = 1.0;
       window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(u);
+      window.speechSynthesis.speak(en);
+      window.speechSynthesis.speak(ar);
     }catch(e){}
+  }catch(e){}
   }
 
   // prevent repeated spam: per trip per stage
@@ -366,14 +468,42 @@
     elDateTag.textContent = "Date: " + dStr;
 
     const tNow = now().getTime();
-    const all = flattenTrips(dStr).filter(x => x.dt.getTime() >= tNow - 30*1000);
-    const next = all.slice(0,10);
+    const allToday = flattenTrips(dStr);
+    const upcoming = allToday.filter(x => x.dt.getTime() >= tNow - 30*1000);
 
-    if(!next.length){
-      elRows.innerHTML = '<tr><td colspan="5" class="muted">No upcoming trips for today.</td></tr>';
+    const PAGE_SIZE = 10;
+    const SHOW_MAX = 20;
+
+    // If today's date not found in schedules.json
+    if(!allToday.length){
+      const nxt = nextServiceAfter(dStr, 21);
+      const msg = nxt ? `No schedules for today. Next service starts ${nxt.date} at ${nxt.first.time} (Route ${nxt.first.route}, Bus ${nxt.first.bus}).`
+                      : `No schedules for today.`;
+      elRows.innerHTML = `<tr><td colspan="5" class="muted">${escapeHTML(msg)}</td></tr>`;
       elNextCountdown.textContent = "--:--";
-      elNextDetails.textContent = "-";
+      elNextDetails.textContent = msg;
       elNextExtra.textContent = "-";
+      if(elRouteCards) elRouteCards.innerHTML = `<div class="muted">${escapeHTML(msg)}</div>`;
+      return;
+    }
+
+    // Service ended for today
+    if(!upcoming.length){
+      const nxt = nextServiceAfter(dStr, 21);
+      const msg = nxt ? `Service ended for today. Next service starts ${nxt.date} at ${nxt.first.time} (Route ${nxt.first.route}, Bus ${nxt.first.bus}).`
+                      : `Service ended for today.`;
+      elRows.innerHTML = `<tr><td colspan="5" class="muted">${escapeHTML(msg)}</td></tr>`;
+      elNextCountdown.textContent = "--:--";
+      elNextDetails.textContent = msg;
+      elNextExtra.textContent = "-";
+      if(elRouteCards) elRouteCards.innerHTML = `<div class="muted">${escapeHTML(msg)}</div>`;
+      return;
+    }
+
+    const top = upcoming.slice(0, SHOW_MAX);
+    const totalPages = Math.max(1, Math.ceil(top.length / PAGE_SIZE));
+    if(pageIndex >= totalPages) pageIndex = 0;
+    const pageTrips = top.slice(pageIndex*PAGE_SIZE, pageIndex*PAGE_SIZE + PAGE_SIZE);
       elSub.textContent = "No upcoming trips right now.";
       return;
     }
