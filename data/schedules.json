@@ -3,7 +3,7 @@
   "routes": [
     {
       "route": "AJ1",
-      "display_name": "Aljurf",
+      "display_name": "Aljurf - China Mall",
       "days": [
         {
           "date": "2026-02-17",
@@ -192,7 +192,7 @@
           ]
         }
       ],
-      "destination": "Aljurf"
+      "destination": "Aljurf - China Mall"
     },
     {
       "route": "AJ2",
