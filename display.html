@@ -20,6 +20,16 @@
       --aj6:#56ccf2; /* light blue */
       --aj7:#f2c94c; /* yellow */
       --aj8:#6fcf97; /* mint */
+      --aj9:#10b981;  /* teal */
+      --aj10:#3b82f6; /* royal blue */
+      --aj11:#22c55e; /* green */
+      --aj12:#eab308; /* amber */
+      --aj13:#f97316; /* orange */
+      --aj14:#a855f7; /* violet */
+      --aj15:#0ea5e9; /* sky */
+      --uaq:#f43f5e;  /* UAQ */
+      --shj:#14b8a6;  /* SHJ */
+      --dxb:#fb7185;  /* DXB */
       --accent:#39a7ff;
 
       --good:#1ee6a8;
@@ -222,7 +232,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771404357";
+  const VERSION = "1771440022";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -245,7 +255,17 @@
     "AJ5":"var(--aj5)",
     "AJ6":"var(--aj6)",
     "AJ7":"var(--aj7)",
-    "AJ8":"var(--aj8)"
+    "AJ8":"var(--aj8)",
+    "AJ9":"var(--aj9)",
+    "AJ10":"var(--aj10)",
+    "AJ11":"var(--aj11)",
+    "AJ12":"var(--aj12)",
+    "AJ13":"var(--aj13)",
+    "AJ14":"var(--aj14)",
+    "AJ15":"var(--aj15)",
+    "UAQ":"var(--uaq)",
+    "SHJ":"var(--shj)",
+    "DXB":"var(--dxb)"
   };
 
   const elRows = document.getElementById("rows");
@@ -396,6 +416,8 @@
 
   function routeKey(route){
     const s = String(route||"").toUpperCase().replace(/\s+/g,"").trim();
+    const m = s.match(/AJ0*([0-9]{1,2})/);
+    if(m) return "AJ" + String(parseInt(m[1],10));
     return s;
   }
   function routePriority(route){
@@ -647,6 +669,17 @@
       clearErr();
       const out = await fetchFirst();
       schedules = out.json;
+
+      // Override route colors from schedules.json (if provided)
+      try{
+        if(schedules && schedules.route_colors){
+          for(const [k,v] of Object.entries(schedules.route_colors)){
+            const kk = String(k||"").toUpperCase().replace(/\s+/g,"");
+            if(kk){ ROUTE_COLORS[kk] = v; }
+          }
+        }
+      }catch(e){}
+
 
       const todayISO = ymd(now());
       elSub.textContent = "Today: " + todayISO + " • Live countdown based on device time";
