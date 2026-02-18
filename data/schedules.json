@@ -1,9 +1,10 @@
 {
-  "generated_at": "2026-02-18T10:26:14+04:00",
+  "generated_at": "2026-02-18T12:45:12+04:00",
   "routes": [
     {
-      "route": "AJ1",
-      "display_name": "Aljurf - China Mall",
+      "route": "AJ1-AlJURF",
+      "destination": "",
+      "display_name": "AJ1-AlJURF",
       "days": [
         {
           "date": "2026-02-17",
@@ -191,12 +192,12 @@
             }
           ]
         }
-      ],
-      "destination": "Aljurf - China Mall"
+      ]
     },
     {
-      "route": "AJ2",
-      "display_name": "Ajman Industerial",
+      "route": "AJ2 - Ajman Industerial",
+      "destination": "",
+      "display_name": "AJ2 - Ajman Industerial",
       "days": [
         {
           "date": "2026-02-17",
@@ -378,12 +379,12 @@
             }
           ]
         }
-      ],
-      "destination": "Ajman Industerial"
+      ]
     },
     {
-      "route": "AJ3",
-      "display_name": "AlHumdiya",
+      "route": "AJ3 -AlHumidiya",
+      "destination": "",
+      "display_name": "AJ3 -AlHumidiya",
       "days": [
         {
           "date": "2026-02-17",
@@ -565,8 +566,7 @@
             }
           ]
         }
-      ],
-      "destination": "AlHumdiya"
+      ]
     }
   ]
 }
