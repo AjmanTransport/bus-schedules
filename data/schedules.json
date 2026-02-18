@@ -2,8 +2,8 @@
   "generated_at": "2026-02-18T12:45:57+04:00",
   "routes": [
     {
-      "route": "AJ1-AlJURF",
-      "destination": "",
+      "route": "AJ1",
+      "destination": "AJ1-AlJURF",
       "display_name": "AJ1-AlJURF",
       "days": [
         {
@@ -195,8 +195,8 @@
       ]
     },
     {
-      "route": "AJ2 - Ajman Industerial",
-      "destination": "",
+      "route": "AJ2",
+      "destination": "AJ2 - Ajman Industerial",
       "display_name": "AJ2 - Ajman Industerial",
       "days": [
         {
@@ -382,8 +382,8 @@
       ]
     },
     {
-      "route": "AJ3 -AlHumidiya",
-      "destination": "",
+      "route": "AJ3",
+      "destination": "AJ3 -AlHumidiya",
       "display_name": "AJ3 -AlHumidiya",
       "days": [
         {
