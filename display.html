@@ -147,6 +147,77 @@
     .rT{font-size:22px;font-weight:1000}
     .rB{font-size:12px;color:var(--muted);font-weight:900;margin-top:4px;text-align:right}
     .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
+      /* Full-screen passenger notification overlay */
+    .notifOverlay{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 3vw;
+    }
+    .notifCard{
+      width:min(1100px, 92vw);
+      max-height: 88vh;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 22px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .notifHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 18px 22px;
+      background: rgba(255, 61, 61, .18);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .notifTitle{
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      line-height: 1.1;
+    }
+    .notifClose{
+      border: 0;
+      background: rgba(255,255,255,.14);
+      color: var(--text);
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .notifBody{
+      padding: 22px 22px 10px 22px;
+      font-size: 28px;
+      line-height: 1.35;
+      color: var(--text);
+      white-space: pre-wrap;
+      overflow:auto;
+      max-height: 60vh;
+    }
+    .notifFooter{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 22px 18px 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .notifMeta{ opacity:.95; }
+    @media (max-width: 680px){
+      .notifTitle{ font-size: 26px; }
+      .notifBody{ font-size: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -173,6 +244,24 @@
 </header>
 
 <div id="err"></div>
+
+<div id="notifOverlay" class="notifOverlay" style="display:none" aria-live="assertive">
+  <div class="notifCard" role="dialog" aria-modal="true">
+    <div class="notifHeader">
+      <div class="notifTitle" id="notifTitle">Notification</div>
+      <button class="notifClose" id="notifClose" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="notifBody" id="notifContent"></div>
+    <div class="notifFooter">
+      <div class="notifMeta">
+        <span id="notifCreated"></span>
+      </div>
+      <div class="notifCountdown">
+        <span class="pill" id="notifTimer">00:00</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="grid">
   <div class="card">
@@ -232,12 +321,20 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771493742";
+  const VERSION = "{VERSION}";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
     "schedules.json?v=" + VERSION,
     "./schedules.json?v=" + VERSION
+  ];
+
+  // Station popup notification (written by the scheduler app to data/notification.json)
+  const NOTIF_URLS = [
+    "data/notification.json?t=",
+    "./data/notification.json?t=",
+    "notification.json?t=",
+    "./notification.json?t="
   ];
 
   /* Route priority order (AJ1, AJ2, AJ3...) */
@@ -389,6 +486,103 @@
       window.speechSynthesis.speak(u1);
     }catch(e){}
   }
+
+  // ---------- Notification overlay ----------
+  const notifOverlay = document.getElementById("notifOverlay");
+  const notifTitle = document.getElementById("notifTitle");
+  const notifContent = document.getElementById("notifContent");
+  const notifTimer = document.getElementById("notifTimer");
+  const notifCreated = document.getElementById("notifCreated");
+  const notifClose = document.getElementById("notifClose");
+  let lastNotifId = "";
+  let notifHideTimer = null;
+  let notifTickTimer = null;
+  let notifEndsAt = 0;
+
+  function fmtMMSS(ms){
+    if(ms < 0) ms = 0;
+    const s = Math.floor(ms/1000);
+    const m = Math.floor(s/60);
+    const r = s%60;
+    return pad2(m) + ":" + pad2(r);
+  }
+
+  function hideNotification(){
+    if(notifHideTimer){ clearTimeout(notifHideTimer); notifHideTimer = null; }
+    if(notifTickTimer){ clearInterval(notifTickTimer); notifTickTimer = null; }
+    if(notifOverlay) notifOverlay.style.display = "none";
+  }
+
+  function showNotification(payload){
+    if(!payload || !payload.active) return;
+
+    lastNotifId = String(payload.id || payload.created_at || Date.now());
+    const title = String(payload.title || "Notice").trim();
+    const content = String(payload.content || "").trim();
+    const durSec = Math.max(5, Math.min(parseInt(payload.duration || 20, 10) || 20, 600));
+
+    if(notifTitle) notifTitle.textContent = title;
+    if(notifContent) notifContent.textContent = content;
+    if(notifCreated){
+      const ts = payload.created_at ? String(payload.created_at) : "";
+      notifCreated.textContent = ts ? ("Sent: " + ts) : "";
+    }
+
+    if(notifOverlay) notifOverlay.style.display = "flex";
+
+    // Sound + voice (browser may require a user gesture once; we attempt anyway)
+    try{ if(soundOn) beepPattern(); }catch(e){}
+    try{
+      if(voiceOn){
+        const en = "Attention please. " + title + ". " + content;
+        const ar = "تنبيه. " + title + ". " + content;
+        speakBilingual(en, ar);
+      }
+    }catch(e){}
+
+    // Auto hide
+    notifEndsAt = Date.now() + durSec*1000;
+    if(notifTimer) notifTimer.textContent = fmtMMSS(notifEndsAt - Date.now());
+    if(notifTickTimer) clearInterval(notifTickTimer);
+    notifTickTimer = setInterval(checkNotification, 4000);
+  checkNotification();
+
+  setInterval(()=>{
+      if(!notifTimer) return;
+      const left = notifEndsAt - Date.now();
+      notifTimer.textContent = fmtMMSS(left);
+      if(left <= 0) hideNotification();
+    }, 250);
+
+    if(notifHideTimer) clearTimeout(notifHideTimer);
+    notifHideTimer = setTimeout(hideNotification, durSec*1000);
+  }
+
+  async function fetchJsonSmart(baseUrls){
+    const stamp = String(Date.now());
+    for(const u of baseUrls){
+      const url = u + stamp;
+      try{
+        const res = await fetch(url, { cache: "no-store" });
+        if(!res.ok) continue;
+        return await res.json();
+      }catch(e){}
+    }
+    return null;
+  }
+
+  async function checkNotification(){
+    const payload = await fetchJsonSmart(NOTIF_URLS);
+    if(!payload || !payload.active) return;
+    const pid = String(payload.id || payload.created_at || "");
+    if(!pid) return;
+    if(pid === lastNotifId) return;
+    showNotification(payload);
+  }
+
+  if(notifClose) notifClose.addEventListener("click", hideNotification);
+  // help unlock audio on the first user gesture (touch/click)
+  document.addEventListener("click", ()=>{ try{ ensureAudio(); }catch(e){} }, { once:true });
 
   function parseTime(dateStr, t){
     const parts = String(t||"").split(":");
