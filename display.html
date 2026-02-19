@@ -544,9 +544,6 @@
     notifEndsAt = Date.now() + durSec*1000;
     if(notifTimer) notifTimer.textContent = fmtMMSS(notifEndsAt - Date.now());
     if(notifTickTimer) clearInterval(notifTickTimer);
-    notifTickTimer = setInterval(checkNotification, 4000);
-  checkNotification();
-
   setInterval(()=>{
       if(!notifTimer) return;
       const left = notifEndsAt - Date.now();
@@ -579,6 +576,10 @@
     if(pid === lastNotifId) return;
     showNotification(payload);
   }
+
+  // Start notification polling
+  setInterval(checkNotification, 4000);
+  checkNotification();
 
   if(notifClose) notifClose.addEventListener("click", hideNotification);
   // help unlock audio on the first user gesture (touch/click)
