@@ -1,8 +1,8 @@
 {
-  "active": true,
-  "id": "20260220151610",
-  "title": "Attention Please",
-  "content": "The bus going to sharjah will deley for 5 MINS .",
-  "duration": 30,
-  "created_at": "2026-02-20T15:16:10"
+  "active": false,
+  "id": "20260221131951",
+  "title": "",
+  "content": "",
+  "duration": 0,
+  "created_at": "2026-02-21T13:19:51"
 }
