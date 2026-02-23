@@ -1,8 +1,8 @@
 {
-  "active": false,
-  "id": "20260223131616",
-  "title": "",
-  "content": "",
-  "duration": 0,
-  "created_at": "2026-02-23T13:16:16"
+  "active": true,
+  "id": "20260223131711",
+  "title": "Attension Please",
+  "content": "The bus going to global village will delay for 10 mins , sorry for this delay .",
+  "duration": 20,
+  "created_at": "2026-02-23T13:17:11"
 }
