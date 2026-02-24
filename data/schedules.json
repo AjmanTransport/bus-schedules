@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-24T21:37:03+04:00",
+  "generated_at": "2026-02-24T21:50:51+04:00",
   "route_colors": {},
   "routes": [
     {
@@ -198,7 +198,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -646,7 +646,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -1094,7 +1094,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -1542,7 +1542,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -1990,7 +1990,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -2438,7 +2438,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -2886,7 +2886,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -3334,7 +3334,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -3782,7 +3782,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -4230,7 +4230,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
@@ -4678,7 +4678,7 @@
         },
         {
           "date": "2026-02-27",
-          "profile": "weekday",
+          "profile": "weekend",
           "buses": [
             {
               "bus": "Bus_01",
