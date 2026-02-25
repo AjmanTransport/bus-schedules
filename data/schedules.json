@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-25T23:35:55+04:00",
+  "generated_at": "2026-02-26T00:03:58+04:00",
   "route_colors": {
     "AJ1": "#2f80ed",
     "AJ2": "#27ae60",
@@ -15,8 +15,7 @@
     "AJ12": "#f25c54",
     "AJ13": "#8d6e63",
     "AJ14": "#607d8b",
-    "AJ15": "#00bcd4",
-    "UAQ": "#8000ff"
+    "AJ15": "#00bcd4"
   },
   "routes": [
     {
@@ -25,7 +24,7 @@
       "display_name": "AJ1",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -95,7 +94,7 @@
       "display_name": "AJ2",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -165,7 +164,7 @@
       "display_name": "AJ3",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -235,7 +234,7 @@
       "display_name": "AJ6",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -305,7 +304,7 @@
       "display_name": "AJ7",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -375,7 +374,7 @@
       "display_name": "AJF-Humediya Feeder",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -445,7 +444,7 @@
       "display_name": "AJF-Jurf Feeder",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -515,7 +514,7 @@
       "display_name": "DXB",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -585,7 +584,7 @@
       "display_name": "Global Village",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -655,7 +654,7 @@
       "display_name": "Sharjah",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
@@ -725,7 +724,7 @@
       "display_name": "UAQ",
       "days": [
         {
-          "date": "2026-02-25",
+          "date": "2026-02-26",
           "profile": "weekday",
           "buses": [
             {
