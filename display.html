@@ -7,152 +7,326 @@
   <title>Musalla Bus Station - Live Departures</title>
   <style>
     :root{
-      --bg:#071525;
-      --text:#e8f2ff;
-      --muted:#9fb4cc;
-
-      /* Ajman route branding (fixed) */
-      --aj1:#2f80ed; /* blue */
-      --aj2:#27ae60; /* green */
-      --aj3:#f2994a; /* orange */
-      --aj4:#9b51e0; /* purple */
-      --aj5:#eb5757; /* red */
-      --aj6:#56ccf2; /* light blue */
-      --aj7:#f2c94c; /* yellow */
-      --aj8:#6fcf97; /* mint */
-      --aj9:#10b981;  /* teal */
-      --aj10:#3b82f6; /* royal blue */
-      --aj11:#22c55e; /* green */
-      --aj12:#eab308; /* amber */
-      --aj13:#f97316; /* orange */
-      --aj14:#a855f7; /* violet */
-      --aj15:#0ea5e9; /* sky */
-      --uaq:#f43f5e;  /* UAQ */
-      --shj:#14b8a6;  /* SHJ */
-      --dxb:#fb7185;  /* DXB */
+      --bg0:#050e18;
+      --bg1:#071a2d;
+      --card0:rgba(255,255,255,.08);
+      --card1:rgba(255,255,255,.04);
+      --text:#ecf4ff;
+      --muted:#a7bdd6;
+      --border:rgba(255,255,255,.12);
+      --shadow:0 20px 60px rgba(0,0,0,.45);
       --accent:#39a7ff;
+
+      /* Route colors */
+      --aj1:#2f80ed; --aj2:#27ae60; --aj3:#f2994a; --aj4:#9b51e0; --aj5:#eb5757;
+      --aj6:#56ccf2; --aj7:#f2c94c; --aj8:#6fcf97; --aj9:#10b981; --aj10:#3b82f6;
+      --aj11:#22c55e; --aj12:#eab308; --aj13:#f97316; --aj14:#a855f7; --aj15:#0ea5e9;
+      --uaq:#f43f5e; --shj:#14b8a6; --dxb:#fb7185;
 
       --good:#1ee6a8;
       --warn:#ffcc66;
       --danger:#ff6b6b;
-      --border:rgba(255,255,255,0.10);
-      --card:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      --shadow:0 10px 30px rgba(0,0,0,0.25);
+
+      /* Font scaling for 1080p / 4K kiosks */
+      --fs-xxs: clamp(11px, .9vw, 14px);
+      --fs-xs:  clamp(12px, 1.0vw, 16px);
+      --fs-sm:  clamp(14px, 1.1vw, 18px);
+      --fs-md:  clamp(16px, 1.3vw, 22px);
+      --fs-lg:  clamp(20px, 1.8vw, 30px);
+      --fs-xl:  clamp(28px, 2.6vw, 44px);
+      --fs-2xl: clamp(44px, 4.0vw, 68px);
+      --fs-3xl: clamp(58px, 5.0vw, 86px);
     }
-    html,body{height:100%;}
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%);
       color:var(--text);
-      font-family:system-ui, "Segoe UI", Arial;
+      font-family:system-ui, "Segoe UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, #0d3a66 0%, rgba(13,58,102,0) 60%),
+        radial-gradient(900px 600px at 80% 15%, rgba(57,167,255,.22) 0%, rgba(57,167,255,0) 65%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      overflow:hidden;
     }
+
+    /* Top header */
     header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 22px;border-bottom:1px solid var(--border);
-      gap:14px; flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:18px 22px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .titleWrap{min-width:360px}
-    .t{font-size:26px;font-weight:950;letter-spacing:.2px;}
-    .s{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.35}
-    .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-width: min(860px, 100%);
+    }
+    .brand .title{
+      font-size: var(--fs-lg);
+      font-weight: 950;
+      letter-spacing: .2px;
+      line-height:1.12;
+    }
+    .brand .subtitle{
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
     .pill{
-      padding:10px 14px;border-radius:999px;
-      background:rgba(255,255,255,0.06);
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
       border:1px solid var(--border);
-      font-weight:800;
+      font-weight: 900;
+      font-size: var(--fs-sm);
+      letter-spacing: .3px;
+      white-space:nowrap;
     }
     .btn{
-      cursor:pointer;user-select:none;
-      padding:10px 14px;border-radius:12px;
+      cursor:pointer;
+      user-select:none;
+      padding:10px 14px;
+      border-radius:14px;
       background:rgba(57,167,255,0.16);
-      border:1px solid rgba(57,167,255,0.32);
-      color:var(--text);font-weight:900;
-      display:inline-flex;align-items:center;gap:10px;
+      border:1px solid rgba(57,167,255,0.35);
+      color:var(--text);
+      font-weight: 950;
+      font-size: var(--fs-sm);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
     }
     .btn.off{
-      background:rgba(255,255,255,0.06);
-      border-color:var(--border);color:var(--muted);
+      background:rgba(255,255,255,.06);
+      border-color:var(--border);
+      color:var(--muted);
     }
     .ico{width:18px;height:18px;display:inline-block}
     .ico svg{width:18px;height:18px;fill:currentColor;display:block}
 
-    #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
-
-    .grid{display:grid;grid-template-columns: 1.35fr .65fr; gap:14px; padding:14px 14px 18px;}
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      overflow:hidden;
+    /* Error bar */
+    #err{
+      display:none;
+      margin:12px 18px 0;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,107,107,0.35);
+      background:rgba(255,107,107,0.12);
+      color:#ffd6d6;
+      font-weight: 900;
+      font-size: var(--fs-sm);
     }
-    .card h2{margin:0;padding:12px 16px;border-bottom:1px solid var(--border);font-size:16px;letter-spacing:.2px;}
-    .pad{padding:14px 16px;}
-    .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
-    .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
-    .muted{color:var(--muted);}
 
-    /* Top countdown bar */
-    .topBar{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:14px;flex-wrap:wrap;
-      padding:12px 14px;
-      border-bottom:1px solid var(--border);
-      background:rgba(255,255,255,0.03);
+    /* Main layout */
+    .wrap{
+      height: calc(100% - 86px);
+      padding: 14px;
     }
-    .topBar .left{display:flex;flex-direction:column;gap:4px}
-    .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .topSmall{font-size:12px;color:var(--muted);font-weight:800}
-    .topBig{font-size:26px;font-weight:950}
-    .topRoute{font-size:16px;font-weight:900}
-
-    table{width:100%;border-collapse:collapse;}
-    th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
-    th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
-    td.time{font-size:18px;font-weight:950;}
-    td.route{font-weight:950;}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:950;font-size:12px;letter-spacing:.08em;border:1px solid transparent;}
-    .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);}
-    .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
-    .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
-    .tag.route{background:rgba(57,167,255,0.12);border-color:rgba(57,167,255,0.24);}
-
-    /* Next-per-route cards */
-    .cards{
+    .grid{
+      height:100%;
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: 1.55fr .65fr;
+      gap:14px;
+    }
+    @media (max-width: 1200px){
+      .grid{grid-template-columns:1fr;}
+      body{overflow:auto}
+      .wrap{height:auto}
+    }
+
+    .card{
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--card0), var(--card1));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height:0;
+    }
+    .cardHeader{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .cardTitle{
+      font-size: var(--fs-md);
+      font-weight: 950;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .cardTitle small{
+      display:block;
+      margin-top:4px;
+      font-size: var(--fs-xxs);
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+    }
+
+    /* Hero next departure */
+    .hero{
+      padding: 14px 16px 10px 16px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+    }
+    .heroLeft{display:flex;flex-direction:column;gap:8px}
+    .heroLabel{font-size: var(--fs-xs); color: var(--muted); font-weight: 900; letter-spacing:.10em; text-transform: uppercase;}
+    .heroCountdown{font-size: var(--fs-3xl); font-weight: 1000; letter-spacing: 1px; line-height: 1;}
+    .heroDetails{font-size: var(--fs-lg); font-weight: 950;}
+    .heroRight{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      align-content:start;
+    }
+    .kpi{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 10px 12px;
+      min-height:78px;
+    }
+    .kpi .k{font-size: var(--fs-xxs); color: var(--muted); font-weight: 900; letter-spacing:.10em; text-transform: uppercase;}
+    .kpi .v{margin-top:6px; font-size: var(--fs-lg); font-weight: 1000; line-height:1.05;}
+    .kpi .v.small{font-size: var(--fs-md); font-weight: 950; color: var(--text); opacity:.95}
+
+    /* Departures table */
+    .tableWrap{
+      height: calc(100% - 260px);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .tableScroll{overflow:auto; height:100%}
+    table{width:100%; border-collapse:collapse;}
+    thead th{
+      position:sticky;
+      top:0;
+      z-index:5;
+      background: rgba(5,14,24,.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--muted);
+      font-size: var(--fs-xxs);
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      padding: 12px 10px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    tbody td{
+      padding: 14px 10px;
+      border-bottom:1px solid rgba(255,255,255,.06);
+      font-size: var(--fs-md);
+      vertical-align: middle;
+    }
+    tbody tr:nth-child(odd){background: rgba(255,255,255,.02);}
+    td.time{font-weight: 1000; font-size: var(--fs-xl); letter-spacing:.4px;}
+    td.route{font-weight: 1000;}
+    td.bus{font-weight: 950; color:rgba(236,244,255,.92)}
+    td.dest{font-weight: 900; color:rgba(236,244,255,.92)}
+    .routeChip{
+      display:inline-flex;
+      align-items:center;
       gap:10px;
     }
-    @media (max-width:1200px){
-      .cards{grid-template-columns: repeat(2, minmax(0,1fr));}
+    .dot{
+      width:14px;height:14px;border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(57,167,255,.14);
+      flex:0 0 auto;
+    }
+
+    .tag{
+      display:inline-block;
+      padding: 7px 12px;
+      border-radius:999px;
+      font-weight: 1000;
+      font-size: var(--fs-xs);
+      letter-spacing:.10em;
+      border:1px solid transparent;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+    .tag.good{background:rgba(30,230,168,0.16); border-color:rgba(30,230,168,0.35); color:var(--good);}
+    .tag.warn{background:rgba(255,204,102,0.16); border-color:rgba(255,204,102,0.35); color:var(--warn);}
+    .tag.danger{background:rgba(255,107,107,0.16); border-color:rgba(255,107,107,0.35); color:var(--danger);}
+    .tag.route{background:rgba(57,167,255,0.12); border-color:rgba(57,167,255,0.24); color:var(--text);}
+
+    .footBar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 16px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: var(--fs-xs);
+    }
+
+    /* Next per route cards */
+    .cards{
+      padding: 14px 14px 6px 14px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      overflow:auto;
+      height: calc(100% - 66px);
+    }
+    @media (min-width: 1500px){
+      .cards{grid-template-columns: repeat(3, minmax(0,1fr));}
     }
     .rcard{
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,0.04);
-      padding:12px 12px;
-      display:flex;justify-content:space-between;align-items:center;gap:10px;
-      overflow:hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      padding: 12px 12px 12px 14px;
       position:relative;
+      overflow:hidden;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      min-height: 92px;
     }
     .rcard:before{
       content:"";
       position:absolute;left:0;top:0;bottom:0;width:8px;
-      background:var(--accent);
+      background: var(--accent);
       opacity:.95;
     }
-    .rL{padding-left:8px}
-    .rName{font-size:16px;font-weight:950;letter-spacing:.2px}
-    .rSub{font-size:12px;color:var(--muted);font-weight:800;margin-top:3px}
-    .rT{font-size:22px;font-weight:1000}
-    .rB{font-size:12px;color:var(--muted);font-weight:900;margin-top:4px;text-align:right}
-    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
-      /* Full-screen passenger notification overlay */
+    .rL{padding-left:10px}
+    .rName{font-size: var(--fs-md); font-weight: 1000; letter-spacing:.2px}
+    .rSub{margin-top:4px; font-size: var(--fs-xxs); color: var(--muted); font-weight: 900; letter-spacing:.08em; text-transform: uppercase}
+    .rT{font-size: var(--fs-xl); font-weight: 1000; text-align:right}
+    .rB{margin-top:6px; font-size: var(--fs-xxs); color: var(--muted); font-weight: 900; text-align:right; letter-spacing:.08em; text-transform: uppercase}
+
+    /* Full-screen passenger notification overlay (kept compatible with existing JS) */
     .notifOverlay{
       position:fixed; inset:0;
       background:rgba(0,0,0,.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       z-index: 9999;
       display:flex;
       align-items:center;
@@ -160,12 +334,12 @@
       padding: 3vw;
     }
     .notifCard{
-      width:min(1100px, 92vw);
+      width:min(1200px, 92vw);
       max-height: 88vh;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 22px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 24px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.58);
       overflow:hidden;
     }
     .notifHeader{
@@ -177,8 +351,8 @@
       border-bottom: 1px solid rgba(255,255,255,.14);
     }
     .notifTitle{
-      font-size: 34px;
-      font-weight: 900;
+      font-size: var(--fs-xl);
+      font-weight: 1000;
       letter-spacing: .2px;
       line-height: 1.1;
     }
@@ -186,16 +360,16 @@
       border: 0;
       background: rgba(255,255,255,.14);
       color: var(--text);
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      font-size: 30px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      font-size: 34px;
       line-height: 1;
       cursor: pointer;
     }
     .notifBody{
       padding: 22px 22px 10px 22px;
-      font-size: 28px;
+      font-size: var(--fs-lg);
       line-height: 1.35;
       color: var(--text);
       white-space: pre-wrap;
@@ -211,29 +385,28 @@
       border-top: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
       color: var(--muted);
-      font-size: 16px;
-    }
-    .notifMeta{ opacity:.95; }
-    @media (max-width: 680px){
-      .notifTitle{ font-size: 26px; }
-      .notifBody{ font-size: 20px; }
+      font-size: var(--fs-sm);
     }
   </style>
 </head>
 <body>
+
 <header>
-  <div class="titleWrap">
-    <div class="t">Musalla Bus Station - Live Departures هيئة النقل عجمان - نظام جدولة مواعيد رحلات النقل العام - محطة المصلي الرئيسية</div>
-    <div class="s" id="subtitle">Loading schedules...</div>
+  <div class="brand">
+    <div class="title">Musalla Bus Station – Live Departures | محطة المصلي الرئيسية</div>
+    <div class="subtitle" id="subtitle">Loading schedules...</div>
   </div>
-  <div class="right">
+
+  <div class="controls">
     <div class="pill" id="clock">--:--</div>
+
     <button class="btn" id="soundBtn" type="button">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
       </span>
       <span id="soundTxt">Sound: ON</span>
     </button>
+
     <button class="btn" id="voiceBtn" type="button">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg>
@@ -245,6 +418,7 @@
 
 <div id="err"></div>
 
+<!-- Notification overlay (IDs must match existing JS) -->
 <div id="notifOverlay" class="notifOverlay" style="display:none" aria-live="assertive">
   <div class="notifCard" role="dialog" aria-modal="true">
     <div class="notifHeader">
@@ -253,67 +427,101 @@
     </div>
     <div class="notifBody" id="notifContent"></div>
     <div class="notifFooter">
-      <div class="notifMeta">
-        <span id="notifCreated"></span>
-      </div>
-      <div class="notifCountdown">
-        <span class="pill" id="notifTimer">00:00</span>
-      </div>
+      <div><span id="notifCreated"></span></div>
+      <div class="pill" id="notifTimer">00:00</div>
     </div>
   </div>
 </div>
 
-<div class="grid">
-  <div class="card">
-    <h2>Next Departures (All Routes) الرحلات النالية لكل الخطوط مرتبة حسب اقرب رحلة</h2>
-
-    <div class="topBar">
-      <div class="left">
-        <div class="topSmall">Next trip countdown الزمن المتبقي لافرب رحلة</div>
-        <div class="topBig" id="topCountdown">--:--</div>
-        <div class="topRoute" id="topDetails">-</div>
+<div class="wrap">
+  <div class="grid">
+    <!-- Left: departures -->
+    <section class="card">
+      <div class="cardHeader">
+        <div class="cardTitle">
+          Next Departures (All Routes)
+          <small>الرحلات القادمة لجميع الخطوط مرتبة حسب أقرب رحلة</small>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
+          <div class="pill" id="dateTag">Date: -</div>
+          <div class="pill" id="rotationTag">Showing 1–10</div>
+        </div>
       </div>
-      <div class="right">
-        <div class="pill" id="dateTag">Date: -</div>
-        <div class="pill" id="rotationTag">Showing 1–10</div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="heroLeft">
+          <div class="heroLabel">Next trip countdown | الزمن المتبقي لأقرب رحلة</div>
+          <div class="heroCountdown" id="topCountdown">--:--</div>
+          <div class="heroDetails" id="topDetails">-</div>
+        </div>
+
+        <div class="heroRight" aria-hidden="true">
+          <div class="kpi">
+            <div class="k">Status</div>
+            <div class="v small"><span class="tag good">On time</span></div>
+          </div>
+          <div class="kpi">
+            <div class="k">Status</div>
+            <div class="v small"><span class="tag warn">Soon</span></div>
+          </div>
+          <div class="kpi">
+            <div class="k">Status</div>
+            <div class="v small"><span class="tag danger">Now</span></div>
+          </div>
+          <div class="kpi">
+            <div class="k">Tip</div>
+            <div class="v small">Follow the <b>Route</b> color</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="pad" style="padding-top:10px">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:13%">Time</th>
-            <th style="width:15%">Countdown</th>
-            <th style="width:16%">Status</th>
-            <th style="width:16%">Bus</th>
-            <th style="width:16%">Route</th>
-            <th>Destination</th>
-          </tr>
-        </thead>
-        <tbody id="rows">
-          <tr><td colspan="6" class="muted">Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <!-- Table -->
+      <div class="tableWrap">
+        <div class="tableScroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:14%">Time</th>
+                <th style="width:16%">Countdown</th>
+                <th style="width:16%">Status</th>
+                <th style="width:16%">Bus</th>
+                <th style="width:16%">Route</th>
+                <th>Destination</th>
+              </tr>
+            </thead>
+            <tbody id="rows">
+              <tr><td colspan="6" style="color:var(--muted);font-weight:900">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-    <div class="ticker">
-      <div id="lastUpdate">Last update: -</div>
-      <div id="net">Online: -</div>
-    </div>
-  </div>
+        <div class="footBar">
+          <div id="lastUpdate">Last update: -</div>
+          <div id="net">Online: -</div>
+        </div>
+      </div>
+    </section>
 
-  <div class="card">
-    <h2>Next per Route اقرب رحلة لكل خط</h2>
-    <div class="pad">
+    <!-- Right: per-route -->
+    <aside class="card">
+      <div class="cardHeader">
+        <div class="cardTitle">
+          Next per Route
+          <small>أقرب رحلة لكل خط</small>
+        </div>
+        <div class="pill" id="serviceState">-</div>
+      </div>
+
       <div class="cards" id="routeCards">
-        <div class="muted">Loading...</div>
+        <div style="color:var(--muted);font-weight:900">Loading...</div>
       </div>
-    </div>
-    <div class="ticker">
-      <div id="serviceState">-</div>
-      <div>Auto refresh every 1 minute</div>
-    </div>
+
+      <div class="footBar">
+        <div>Auto refresh every 1 minute</div>
+        <div>—</div>
+      </div>
+    </aside>
   </div>
 </div>
 
@@ -994,5 +1202,6 @@
 
 })();
 </script>
+
 </body>
 </html>
