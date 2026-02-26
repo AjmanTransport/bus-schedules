@@ -92,19 +92,66 @@
     .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
     .muted{color:var(--muted);}
 
-    /* Top countdown bar */
-    .topBar{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:14px;flex-wrap:wrap;
-      padding:12px 14px;
-      border-bottom:1px solid var(--border);
-      background:rgba(255,255,255,0.03);
+    /* Hero countdown board (Dubai Metro style) */
+    .heroBoard{
+      margin:14px 14px 0;
+      padding:22px 24px;
+      border-radius:22px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      background:
+        radial-gradient(900px 260px at 50% 0%, rgba(57,167,255,0.22), rgba(57,167,255,0.06) 55%, rgba(255,255,255,0.03) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
     }
-    .topBar .left{display:flex;flex-direction:column;gap:4px}
-    .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .topSmall{font-size:12px;color:var(--muted);font-weight:800}
-    .topBig{font-size:26px;font-weight:950}
-    .topRoute{font-size:16px;font-weight:900}
+    .heroLeft{
+      flex:1 1 520px;
+      text-align:center;
+      padding:8px 10px;
+    }
+    .heroRight{
+      flex:0 0 auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      padding:6px 6px;
+    }
+    .topSmall{
+      font-size:18px;
+      color:var(--muted);
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .topBig{
+      font-size:120px;
+      font-weight:1000;
+      letter-spacing:5px;
+      line-height:1;
+      margin-top:6px;
+      text-shadow:
+        0 0 18px rgba(57,167,255,.40),
+        0 0 44px rgba(57,167,255,.18);
+    }
+    .topRoute{
+      font-size:28px;
+      font-weight:950;
+      margin-top:10px;
+      letter-spacing:.2px;
+    }
+    @media (max-width: 900px){
+      .topBig{font-size:92px;}
+      .topRoute{font-size:22px;}
+    }
+    @media (max-width: 520px){
+      .topBig{font-size:74px;letter-spacing:3px;}
+    }
+
 
     table{width:100%;border-collapse:collapse;}
     th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
@@ -235,7 +282,20 @@
       <span id="soundTxt">Sound: ON</span>
     </button>
     <button class="btn" id="voiceBtn" type="button">
-      <span class="ico" aria-hidden="true">
+      <span class="ico" aria-hidden="true"
+<div class="heroBoard">
+  <div class="heroLeft">
+    <div class="topSmall">Next trip countdown الزمن المتبقي لافرب رحلة</div>
+    <div class="topBig" id="topCountdown">--:--</div>
+    <div class="topRoute" id="topDetails">-</div>
+  </div>
+  <div class="heroRight">
+    <div class="pill" id="dateTag">Date: -</div>
+    <div class="pill" id="rotationTag">Showing 1–10</div>
+  </div>
+</div>
+
+>
         <svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg>
       </span>
       <span id="voiceTxt">Voice: ON</span>
@@ -267,19 +327,7 @@
   <div class="card">
     <h2>Next Departures (All Routes) الرحلات النالية لكل الخطوط مرتبة حسب اقرب رحلة</h2>
 
-    <div class="topBar">
-      <div class="left">
-        <div class="topSmall">Next trip countdown الزمن المتبقي لافرب رحلة</div>
-        <div class="topBig" id="topCountdown">--:--</div>
-        <div class="topRoute" id="topDetails">-</div>
-      </div>
-      <div class="right">
-        <div class="pill" id="dateTag">Date: -</div>
-        <div class="pill" id="rotationTag">Showing 1–10</div>
-      </div>
-    </div>
-
-    <div class="pad" style="padding-top:10px">
+        <div class="pad" style="padding-top:10px">
       <table>
         <thead>
           <tr>
