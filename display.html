@@ -218,6 +218,16 @@
       .notifTitle{ font-size: 26px; }
       .notifBody{ font-size: 20px; }
     }
+  
+    @keyframes blinkUrgent {
+      0%   { opacity: 1; }
+      50%  { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+    .topBig.urgentBlink{
+      color: var(--danger);
+      animation: blinkUrgent 1s infinite;
+    }
   </style>
 </head>
 <body>
@@ -692,10 +702,19 @@
     if(!nextItem){
       elTopC.textContent = "--:--";
       elTopD.textContent = "No upcoming trips";
+      elTopC.classList.remove("urgentBlink");
       return;
     }
+
     elTopC.textContent = fmtCountdown(nextItem.ms);
     elTopD.textContent = "Route " + nextItem.route + "  •  Bus " + nextItem.bus + "  •  " + nextItem.time;
+
+    // Blink when 1 minute or less
+    if(nextItem.ms <= 60000){
+      elTopC.classList.add("urgentBlink");
+    }else{
+      elTopC.classList.remove("urgentBlink");
+    }
   }
 
   function renderDeparturesTable(upcoming, todayISO){
