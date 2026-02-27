@@ -1,7 +1,6 @@
 {
   "allowed": [
-    "E1E2EE80-47A4-47F5-91EE-6E9EE1109374",
-    "PUT-ANOTHER-MACHINEGUID-HERE"
+    "E1E2EE80-47A4-47F5-91EE-6E9EE1109374"
   ],
   "updated": "2026-02-27",
   "notes": "TripScheduler authorized PCs"
