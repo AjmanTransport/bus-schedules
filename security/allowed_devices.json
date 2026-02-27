@@ -1,1 +1,8 @@
-
+{
+  "allowed": [
+    "PUT-MACHINEGUID-HERE",
+    "PUT-ANOTHER-MACHINEGUID-HERE"
+  ],
+  "updated": "2026-02-27",
+  "notes": "TripScheduler authorized PCs"
+}
