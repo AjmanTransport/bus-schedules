@@ -479,24 +479,82 @@
     freqs.forEach((f,i)=> setTimeout(()=>beepOnce(dur, f, 0.20), i*(dur+gap)));
   }
 
-  function speakBilingual(enText, arText){
-    try{
-      if(!("speechSynthesis" in window)) return;
-      window.speechSynthesis.cancel();
+  // ---- Better bilingual TTS selection (EN + AR) ----
+let VOICES = [];
 
-      const u1 = new SpeechSynthesisUtterance(enText);
-      u1.lang = "en-US";
-      u1.rate = 1.0;
-
-      const u2 = new SpeechSynthesisUtterance(arText);
-      u2.lang = "ar-AE";
-      u2.rate = 0.95;
-
-      // chain
-      u1.onend = ()=> { try{ window.speechSynthesis.speak(u2); }catch(e){} };
-      window.speechSynthesis.speak(u1);
-    }catch(e){}
+function loadVoices(){
+  try{
+    VOICES = window.speechSynthesis.getVoices() || [];
+  }catch(e){
+    VOICES = [];
   }
+}
+
+if("speechSynthesis" in window){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = () => loadVoices();
+}
+
+function pickVoice(preferredLangs, nameHints=[]){
+  const v = VOICES || [];
+  const langs = preferredLangs.map(x=>String(x).toLowerCase());
+  const hints = nameHints.map(x=>String(x).toLowerCase());
+
+  for(const L of langs){
+    const cands = v.filter(x=>String(x.lang||"").toLowerCase().startsWith(L));
+    for(const h of hints){
+      const found = cands.find(x=>String(x.name||"").toLowerCase().includes(h));
+      if(found) return found;
+    }
+  }
+
+  for(const L of langs){
+    const found = v.find(x=>String(x.lang||"").toLowerCase().startsWith(L));
+    if(found) return found;
+  }
+
+  for(const h of hints){
+    const found = v.find(x=>String(x.name||"").toLowerCase().includes(h));
+    if(found) return found;
+  }
+
+  return null;
+}
+
+function speakBilingual(enText, arText){
+  try{
+    if(!("speechSynthesis" in window)) return;
+
+    loadVoices();
+
+    const arVoice = pickVoice(
+      ["ar-AE","ar-SA","ar-EG","ar"],
+      ["fatima","hamdan","hala","zayd","zeina","microsoft","google"]
+    );
+
+    const enVoice = pickVoice(
+      ["en-GB","en-US","en"],
+      ["natural","neural","microsoft","google","zira","aria","jenny","guy","david"]
+    );
+
+    window.speechSynthesis.cancel();
+
+    const u1 = new SpeechSynthesisUtterance(String(enText||""));
+    u1.lang = enVoice ? enVoice.lang : "en-US";
+    u1.rate = 1.0;
+    if(enVoice) u1.voice = enVoice;
+
+    const u2 = new SpeechSynthesisUtterance(String(arText||""));
+    u2.lang = arVoice ? arVoice.lang : "ar-AE";
+    u2.rate = 0.95;
+    if(arVoice) u2.voice = arVoice;
+
+    u1.onend = ()=>{ try{ window.speechSynthesis.speak(u2); }catch(e){} };
+
+    window.speechSynthesis.speak(u1);
+
+  }catch(e){}
+}
 
   // ---------- Notification overlay ----------
   const notifOverlay = document.getElementById("notifOverlay");
