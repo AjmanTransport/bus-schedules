@@ -582,7 +582,7 @@ function speakBilingual(enText, arText){
     if(notifOverlay) notifOverlay.style.display = "none";
   }
 
-  function showNotification(payload){
+  async function showNotification(payload){
     if(!payload || !payload.active) return;
 
     lastNotifId = String(payload.id || payload.created_at || Date.now());
@@ -605,7 +605,13 @@ function speakBilingual(enText, arText){
       if(voiceOn){
         const en = "Attention please. " + title + ". " + content;
         const ar = "تنبيه. " + title + ". " + content;
+        if(ar && ar.trim().length>0){
         speakBilingual(en, ar);
+      }else{
+        const translated = await translateToArabic(title + ". " + content);
+        const autoAr = "تنبيه. " + translated;
+        speakBilingual(en, autoAr);
+      }
       }
     }catch(e){}
 
@@ -1071,6 +1077,18 @@ function speakBilingual(enText, arText){
   });
 
 })();
+
+async function translateToArabic(text){
+  try{
+    const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURIComponent(text);
+    const res = await fetch(url);
+    const data = await res.json();
+    return data[0].map(x=>x[0]).join("");
+  }catch(e){
+    return "";
+  }
+}
+
 </script>
 </body>
 </html>
