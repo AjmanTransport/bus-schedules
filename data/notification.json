@@ -1,8 +1,8 @@
 {
-  "active": true,
-  "id": "20260304115749",
-  "title": "Attension please",
-  "content": "bus will delay for 5 mins",
-  "duration": 30,
-  "created_at": "2026-03-04T11:57:49"
+  "active": false,
+  "id": "20260304130600",
+  "title": "",
+  "content": "",
+  "duration": 0,
+  "created_at": "2026-03-04T13:06:00"
 }
