@@ -556,7 +556,11 @@ function speakBilingual(enText, arText){
   }catch(e){}
 }
 
-  // ---------- Notification overlay ----------
+    function hasArabicText(s){
+    return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(String(s||""));
+  }
+
+// ---------- Notification overlay ----------
   const notifOverlay = document.getElementById("notifOverlay");
   const notifTitle = document.getElementById("notifTitle");
   const notifContent = document.getElementById("notifContent");
@@ -604,14 +608,28 @@ function speakBilingual(enText, arText){
     try{
       if(voiceOn){
         const en = "Attention please. " + title + ". " + content;
-        const ar = "تنبيه. " + title + ". " + content;
-        if(ar && ar.trim().length>0){
+
+        // If Python sends Arabic fields, prefer them:
+        const titleAr = String(payload.title_ar || payload.title_arabic || "").trim();
+        const contentAr = String(payload.content_ar || payload.content_arabic || "").trim();
+
+        let arText = "";
+        if(titleAr || contentAr){
+          arText = (titleAr ? titleAr : title) + ". " + (contentAr ? contentAr : content);
+        }else{
+          // If the notification already contains Arabic letters, speak it as Arabic.
+          const mixed = (title + " " + content);
+          if(hasArabicText(mixed)){
+            arText = title + ". " + content;
+          }else{
+            // English-only -> auto translate to Arabic
+            const translated = await translateToArabic(title + ". " + content);
+            arText = translated;
+          }
+        }
+
+        const ar = arText ? ("تنبيه. " + arText) : "";
         speakBilingual(en, ar);
-      }else{
-        const translated = await translateToArabic(title + ". " + content);
-        const autoAr = "تنبيه. " + translated;
-        speakBilingual(en, autoAr);
-      }
       }
     }catch(e){}
 
@@ -619,7 +637,7 @@ function speakBilingual(enText, arText){
     notifEndsAt = Date.now() + durSec*1000;
     if(notifTimer) notifTimer.textContent = fmtMMSS(notifEndsAt - Date.now());
     if(notifTickTimer) clearInterval(notifTickTimer);
-  setInterval(()=>{
+    notifTickTimer = setInterval(()=>{
       if(!notifTimer) return;
       const left = notifEndsAt - Date.now();
       notifTimer.textContent = fmtMMSS(left);
