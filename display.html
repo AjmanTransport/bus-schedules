@@ -604,7 +604,7 @@ function speakBilingual(enText, arText){
     try{
       if(voiceOn){
         const en = "Attention please. " + title + ". " + content;
-        const ar = "تنبيه. " + title + ". " + content;
+        let ar = "";
         if(ar && ar.trim().length>0){
         speakBilingual(en, ar);
       }else{
