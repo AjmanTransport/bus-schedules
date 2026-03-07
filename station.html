@@ -1,33 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Ajman Transport - Station ETA</title>
-<style>
-:root{--bg:#07111d;--card:#0d1b2a;--accent:#2f80ed;--text:#f5f9ff;--muted:#9eb2c8;--line:#18324d;--good:#1fbf75;}
-*{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#07111d,#0d1b2a);color:var(--text)}
-header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px} .title{font-size:26px;font-weight:800} .sub{font-size:13px;color:var(--muted)}
-.wrap{padding:18px;max-width:1500px;margin:0 auto}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.card{background:rgba(13,27,42,.92);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
-.bigeta{font-size:54px;font-weight:900;color:#fff}.muted{color:var(--muted)} table{width:100%;border-collapse:collapse} th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left} th{font-size:13px;color:#cfe1f6} td{font-size:20px} .route{display:inline-block;min-width:70px;padding:6px 12px;border-radius:999px;background:rgba(47,128,237,.18);border:1px solid rgba(47,128,237,.35);font-weight:800}.mins{font-weight:900;color:var(--good)} .toplist{display:grid;gap:10px} .topitem{padding:12px;border:1px solid var(--line);border-radius:14px;background:#102235} .err{color:#ffb3b3}@media (max-width:960px){.hero{grid-template-columns:1fr}.bigeta{font-size:40px} td{font-size:16px}}
-</style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta http-equiv="refresh" content="300"><!-- kiosk safety reload -->
+  <title>Ajman Transport - Station ETA</title>
+  <style>
+    :root{
+      --bg:#071525;
+      --text:#e8f2ff;
+      --muted:#9fb4cc;
+      --accent:#39a7ff;
+      --good:#1ee6a8;
+      --warn:#ffcc66;
+      --danger:#ff6b6b;
+      --border:rgba(255,255,255,0.10);
+      --card:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      --shadow:0 10px 30px rgba(0,0,0,0.25);
+      --aj1:#2f80ed; --aj2:#27ae60; --aj3:#f2994a; --aj4:#9b51e0; --aj5:#eb5757;
+      --aj6:#56ccf2; --aj7:#f2c94c; --aj8:#6fcf97; --aj9:#10b981; --aj10:#3b82f6;
+      --aj11:#22c55e; --aj12:#eab308; --aj13:#f97316; --aj14:#a855f7; --aj15:#0ea5e9;
+      --uaq:#f43f5e; --shj:#14b8a6; --dxb:#fb7185;
+    }
+    html,body{height:100%;}
+    body{margin:0;background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%);color:var(--text);font-family:system-ui, "Segoe UI", Arial;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);gap:14px;flex-wrap:wrap;}
+    .titleWrap{min-width:360px}.t{font-size:28px;font-weight:950;letter-spacing:.2px;}.s{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.35}
+    .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}.pill{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid var(--border);font-weight:800;}
+    .btn{cursor:pointer;user-select:none;padding:10px 14px;border-radius:12px;background:rgba(57,167,255,0.16);border:1px solid rgba(57,167,255,0.32);color:var(--text);font-weight:900;display:inline-flex;align-items:center;gap:10px;}
+    .btn.off{background:rgba(255,255,255,0.06);border-color:var(--border);color:var(--muted);}.ico{width:18px;height:18px;display:inline-block}.ico svg{width:18px;height:18px;fill:currentColor;display:block}
+    #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
+    .grid{display:grid;grid-template-columns: 1.35fr .65fr; gap:14px; padding:14px 14px 18px;}.card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;}
+    .card h2{margin:0;padding:12px 16px;border-bottom:1px solid var(--border);font-size:16px;letter-spacing:.2px;}.pad{padding:14px 16px;}.muted{color:var(--muted);}
+    .topBar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.03);} .topBar .left{display:flex;flex-direction:column;gap:4px} .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .topSmall{font-size:20px;color:var(--muted);font-weight:900;letter-spacing:.04em}.topBig{font-size:84px;font-weight:1000;letter-spacing:2px;line-height:1}.topRoute{font-size:24px;font-weight:900}.topMeta{font-size:18px;font-weight:800;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;} th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;} th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;} td.time{font-size:18px;font-weight:950;} td.route{font-weight:950;}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:950;font-size:12px;letter-spacing:.08em;border:1px solid transparent;} .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);} .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);} .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
+    .routeBadge{display:inline-block;min-width:74px;padding:7px 12px;border-radius:999px;color:#fff;font-weight:950;text-align:center;box-shadow: inset 0 0 0 1px rgba(255,255,255,.14);}
+    .cards{display:grid;grid-template-columns: repeat(2, minmax(0,1fr));gap:10px;} .rcard{border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,0.04);padding:12px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;overflow:hidden;position:relative;} .rcard:before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--accent);opacity:.95;}
+    .rL{padding-left:8px}.rName{font-size:16px;font-weight:950;letter-spacing:.2px}.rSub{font-size:12px;color:var(--muted);font-weight:800;margin-top:3px}.rT{font-size:18px;font-weight:1000}.rB{font-size:18px;color:#ffffff;font-weight:1000;margin-top:6px;text-align:right;letter-spacing:.5px}.rB .mins{font-size:22px;font-weight:1000;color:var(--warn)}
+    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
+    .notifOverlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter: blur(6px);-webkit-backdrop-filter: blur(6px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:3vw;}
+    .notifCard{width:min(1100px,92vw);max-height:88vh;background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.18);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden;}
+    .notifHeader{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:rgba(255,61,61,.18);border-bottom:1px solid rgba(255,255,255,.14);}.notifTitle{font-size:34px;font-weight:900;letter-spacing:.2px;line-height:1.1;}
+    .notifClose{border:0;background:rgba(255,255,255,.14);color:var(--text);width:46px;height:46px;border-radius:14px;font-size:30px;line-height:1;cursor:pointer;}.notifBody{padding:22px 22px 10px 22px;font-size:28px;line-height:1.35;color:var(--text);white-space:pre-wrap;overflow:auto;max-height:60vh;}
+    .notifFooter{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 22px 18px 22px;border-top:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--muted);font-size:16px;}
+    @keyframes blinkUrgent {0%{opacity:1;}50%{opacity:.2;}100%{opacity:1;}} .urgentBlink{color:var(--danger);animation:blinkUrgent 1s infinite;}
+    @media (max-width:1200px){.cards{grid-template-columns:1fr;}} @media (max-width:980px){.grid{grid-template-columns:1fr;}.topBig{font-size:56px;}.topRoute{font-size:20px;}}
+  </style>
 </head>
 <body>
-<header><div><div class="title" id="stationName">Station ETA</div><div class="sub">Expected arrivals based on published timetable - version 1772926306</div></div><div style="text-align:right"><div id="clock" style="font-size:34px;font-weight:900">--:--</div><div class="sub" id="updated">Loading...</div></div></header>
-<div class="wrap">
-<div class="hero">
-<div class="card"><div class="muted">Next arriving bus</div><div class="bigeta" id="nextEta">--:--</div><div style="font-size:22px;font-weight:700" id="nextRoute">No data</div><div class="muted" id="nextMeta"></div></div>
-<div class="card"><div class="muted" style="margin-bottom:10px">Upcoming by route</div><div class="toplist" id="summary"></div></div>
+<header>
+  <div class="titleWrap"><div class="t" id="stationName">Station ETA</div><div class="s" id="subtitle">Live stop display with countdown and voice alerts - version 1772927603</div></div>
+  <div class="right">
+    <div class="pill" id="clock">--:--</div>
+    <button class="btn" id="soundBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></span><span id="soundTxt">Sound: ON</span></button>
+    <button class="btn" id="voiceBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg></span><span id="voiceTxt">Voice: ON</span></button>
+  </div>
+</header>
+<div id="err"></div>
+<div id="notifOverlay" class="notifOverlay" style="display:none" aria-live="assertive">
+  <div class="notifCard" role="dialog" aria-modal="true">
+    <div class="notifHeader"><div class="notifTitle" id="notifTitle">Notification</div><button class="notifClose" id="notifClose" type="button" aria-label="Close">×</button></div>
+    <div class="notifBody" id="notifContent"></div>
+    <div class="notifFooter"><div class="notifMeta"><span id="notifCreated"></span></div><div class="notifCountdown"><span class="pill" id="notifTimer">00:00</span></div></div>
+  </div>
 </div>
-<div class="card" style="margin-top:16px"><table><thead><tr><th>Route</th><th>Direction</th><th>Bus</th><th>ETA</th><th>Min</th><th>Destination</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="muted">Loading...</td></tr></tbody></table></div>
+<div class="grid">
+  <div class="card">
+    <h2>Next buses at this stop</h2>
+    <div class="topBar">
+      <div class="left"><div class="topSmall">Next bus countdown</div><div class="topBig" id="topCountdown">--:--</div><div class="topRoute" id="topDetails">-</div><div class="topMeta" id="topMeta">-</div></div>
+      <div class="right"><div class="pill" id="dateTag">Date: -</div><div class="pill" id="rotationTag">Showing 1–10</div></div>
+    </div>
+    <div class="pad" style="padding-top:10px"><table><thead><tr><th style="width:13%">ETA</th><th style="width:15%">Countdown</th><th style="width:16%">Status</th><th style="width:16%">Bus</th><th style="width:14%">Route</th><th>Destination</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="muted">Loading...</td></tr></tbody></table></div>
+    <div class="ticker"><div id="lastUpdate">Last update: -</div><div id="net">Online: -</div></div>
+  </div>
+  <div class="card"><h2>Next per Route</h2><div class="pad"><div class="cards" id="routeCards"><div class="muted">Loading...</div></div></div><div class="ticker"><div id="serviceState">-</div><div>Auto refresh every 1 minute</div></div></div>
 </div>
 <script>
-let DATA=null; function now(){return new Date()} function hhmm(d){return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')} function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')} function mins(t){const p=String(t||'').split(':'); return Number(p[0]||0)*60+Number(p[1]||0)}
-function stopIdFromUrl(){const u=new URL(window.location.href); return (u.searchParams.get('stop')||'').toUpperCase()}
-function findTodayStation(){ if(!DATA||!DATA.stations) return null; const sid=stopIdFromUrl(); let st = DATA.stations.find(x=>String(x.stop_id||'').toUpperCase()===sid); if(!st && DATA.stations.length) st = DATA.stations[0]; return st||null; }
-function buildUpcoming(st){ if(!st) return []; const day=(st.days||[]).find(d=>d.date===ymd(now())); if(!day) return []; const cur=mins(hhmm(now())); return (day.arrivals||[]).map(a=>({...a, delta: mins(a.eta)-cur})).filter(a=>a.delta>=-1).sort((a,b)=>a.delta-b.delta || String(a.route).localeCompare(String(b.route))); }
-function render(){ document.getElementById('clock').textContent=hhmm(now()); const st=findTodayStation(); if(!st){ document.getElementById('rows').innerHTML='<tr><td colspan="6" class="err">No station ETA data found.</td></tr>'; return;} document.getElementById('stationName').textContent=st.stop_name+' ('+st.stop_id+')'; document.getElementById('updated').textContent='Updated: '+(DATA.generated_at||'-'); const upcoming=buildUpcoming(st).slice(0,20); const next=upcoming[0]; document.getElementById('nextEta').textContent=next?next.eta:'--:--'; document.getElementById('nextRoute').textContent=next?('Route '+next.route):'No more buses today'; document.getElementById('nextMeta').textContent=next?(next.direction+' • '+next.destination+' • '+Math.max(0,next.delta)+' min'):'No arrivals for today'; const tbody=document.getElementById('rows'); tbody.innerHTML=''; if(!upcoming.length){ tbody.innerHTML='<tr><td colspan="6" class="muted">No more arrivals for today</td></tr>'; } else { upcoming.forEach(a=>{ const tr=document.createElement('tr'); tr.innerHTML='<td><span class="route">'+a.route+'</span></td><td>'+a.direction+'</td><td>'+a.bus+'</td><td>'+a.eta+'</td><td class="mins">'+Math.max(0,a.delta)+'</td><td>'+a.destination+'</td>'; tbody.appendChild(tr); }); } const sum=document.getElementById('summary'); sum.innerHTML=''; const by={}; upcoming.forEach(a=>{ if(!by[a.route]) by[a.route]=a; }); Object.keys(by).sort().forEach(k=>{ const a=by[k]; const div=document.createElement('div'); div.className='topitem'; div.innerHTML='<div style="font-weight:800">'+k+'</div><div class="muted">'+a.destination+'</div><div style="font-size:20px;font-weight:900">'+a.eta+' • '+Math.max(0,a.delta)+' min</div>'; sum.appendChild(div); }); }
-async function load(){ try{ const r=await fetch('data/station_etas.json?v='+Date.now()); DATA=await r.json(); render(); }catch(e){ document.getElementById('rows').innerHTML='<tr><td colspan="6" class="err">'+e.message+'</td></tr>'; } }
-document.addEventListener('DOMContentLoaded',()=>{ load(); setInterval(render,1000); setInterval(load,60000);});
+(function(){
+  "use strict";
+  const VERSION = "1772927603";
+  const DATA_URLS = ["data/station_etas.json?v="+VERSION, "./data/station_etas.json?v="+VERSION, "station_etas.json?v="+VERSION, "./station_etas.json?v="+VERSION];
+  const NOTIF_URLS = ["data/notification.json?t=", "./data/notification.json?t=", "notification.json?t=", "./notification.json?t="];
+  const ROUTE_COLORS = {"AJ1":"var(--aj1)","AJ2":"var(--aj2)","AJ3":"var(--aj3)","AJ4":"var(--aj4)","AJ5":"var(--aj5)","AJ6":"var(--aj6)","AJ7":"var(--aj7)","AJ8":"var(--aj8)","AJ9":"var(--aj9)","AJ10":"var(--aj10)","AJ11":"var(--aj11)","AJ12":"var(--aj12)","AJ13":"var(--aj13)","AJ14":"var(--aj14)","AJ15":"var(--aj15)","UAQ":"var(--uaq)","SHJ":"var(--shj)","DXB":"var(--dxb)"};
+  const PAGE_SIZE = 10, TOTAL_SHOW = 20, ROTATE_MS = 8000;
+  const ALERT_THRESHOLDS = [15,10,5,2,1,0];
+  const LS_SOUND = "station_soundOn", LS_VOICE = "station_voiceOn", LS_STOP = "station_lastStop";
+  let DATA = null, station = null, pageIndex = 0, lastRotate = 0, soundOn = true, voiceOn = true, audioCtx = null, lastNotifId = "", notifHideTimer = null, notifTickTimer = null, notifEndsAt = 0;
+  const alertState = new Set();
+  let VOICES = [];
+  const elRows = document.getElementById("rows"), elClock = document.getElementById("clock"), elLast = document.getElementById("lastUpdate"), elNet = document.getElementById("net"), elDateTag = document.getElementById("dateTag"), elRot = document.getElementById("rotationTag"), elErr = document.getElementById("err"), elTopC = document.getElementById("topCountdown"), elTopD = document.getElementById("topDetails"), elTopM = document.getElementById("topMeta"), elCards = document.getElementById("routeCards"), elState = document.getElementById("serviceState");
+  const notifOverlay = document.getElementById("notifOverlay"), notifTitle = document.getElementById("notifTitle"), notifContent = document.getElementById("notifContent"), notifTimer = document.getElementById("notifTimer"), notifCreated = document.getElementById("notifCreated"), notifClose = document.getElementById("notifClose");
+  const pad2 = n => String(n).padStart(2,"0"), now = () => new Date(), hhmm = d => pad2(d.getHours()) + ":" + pad2(d.getMinutes()), ymd = d => d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());
+  function showErr(msg){ if(!elErr) return; elErr.style.display = "block"; elErr.textContent = msg; }
+  function clearErr(){ if(!elErr) return; elErr.style.display = "none"; elErr.textContent = ""; }
+  function routeColor(route){ return ROUTE_COLORS[String(route||"").toUpperCase()] || "var(--accent)"; }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+  function stopIdFromUrl(){ const u = new URL(window.location.href); const sid = (u.searchParams.get("stop") || "").toUpperCase(); try{ if(sid) localStorage.setItem(LS_STOP, sid); }catch(e){} return sid; }
+  function fallbackStopId(){ try{ return (localStorage.getItem(LS_STOP) || "").toUpperCase(); }catch(e){ return ""; } }
+  function loadTogglePrefs(){ try{ const s = localStorage.getItem(LS_SOUND), v = localStorage.getItem(LS_VOICE); soundOn = (s === null) ? true : (s === "1"); voiceOn = (v === null) ? true : (v === "1"); }catch(e){} syncButtons(); }
+  function saveTogglePrefs(){ try{ localStorage.setItem(LS_SOUND, soundOn ? "1" : "0"); localStorage.setItem(LS_VOICE, voiceOn ? "1" : "0"); }catch(e){} }
+  function syncButtons(){ const sb = document.getElementById("soundBtn"), vb = document.getElementById("voiceBtn"), st = document.getElementById("soundTxt"), vt = document.getElementById("voiceTxt"); if(sb){ sb.classList.toggle("off", !soundOn); if(st) st.textContent = soundOn ? "Sound: ON" : "Sound: OFF"; } if(vb){ vb.classList.toggle("off", !voiceOn); if(vt) vt.textContent = voiceOn ? "Voice: ON" : "Voice: OFF"; } }
+  function ensureAudio(){ if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); if(audioCtx.state === "suspended"){ try{ audioCtx.resume(); }catch(e){} } }
+  function beepOnce(durationMs = 140, frequency = 880, volume = 0.20){ ensureAudio(); const osc = audioCtx.createOscillator(), gain = audioCtx.createGain(); osc.type = "sine"; osc.frequency.value = frequency; gain.gain.value = volume; osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); setTimeout(()=>{ try{ osc.stop(); }catch(e){} }, durationMs); }
+  function beepPattern(){ const freqs = [880,880,988,880,1046], gap = 140, dur = 120; freqs.forEach((f,i)=> setTimeout(()=>beepOnce(dur, f, 0.20), i*(dur+gap))); }
+  function loadVoices(){ try{ VOICES = window.speechSynthesis.getVoices() || []; }catch(e){ VOICES = []; } }
+  if("speechSynthesis" in window){ loadVoices(); window.speechSynthesis.onvoiceschanged = () => loadVoices(); }
+  function pickVoice(preferredLangs, nameHints=[]){ const v = VOICES || [], langs = preferredLangs.map(x=>String(x).toLowerCase()), hints = nameHints.map(x=>String(x).toLowerCase()); for(const L of langs){ const cands = v.filter(x=>String(x.lang||"").toLowerCase().startsWith(L)); for(const h of hints){ const found = cands.find(x=>String(x.name||"").toLowerCase().includes(h)); if(found) return found; } } for(const L of langs){ const found = v.find(x=>String(x.lang||"").toLowerCase().startsWith(L)); if(found) return found; } for(const h of hints){ const found = v.find(x=>String(x.name||"").toLowerCase().includes(h)); if(found) return found; } return null; }
+  function speakBilingual(enText, arText){ try{ if(!voiceOn || !("speechSynthesis" in window)) return; loadVoices(); const arVoice = pickVoice(["ar-AE","ar-SA","ar-EG","ar"],["fatima","hamdan","hala","zayd","zeina","microsoft","google"]), enVoice = pickVoice(["en-GB","en-US","en"],["natural","neural","microsoft","google","zira","aria","jenny","guy","david"]); window.speechSynthesis.cancel(); const u1 = new SpeechSynthesisUtterance(String(enText||"")); u1.lang = enVoice ? enVoice.lang : "en-US"; u1.rate = 1.0; if(enVoice) u1.voice = enVoice; const u2 = new SpeechSynthesisUtterance(String(arText||"")); u2.lang = arVoice ? arVoice.lang : "ar-AE"; u2.rate = 0.95; if(arVoice) u2.voice = arVoice; u1.onend = ()=>{ try{ window.speechSynthesis.speak(u2); }catch(e){} }; window.speechSynthesis.speak(u1); }catch(e){} }
+  function hasArabicText(s){ return /[؀-ۿݐ-ݿࢠ-ࣿ]/.test(String(s||"")); }
+  async function translateToArabic(text){ try{ if(!text || hasArabicText(text)) return String(text||""); const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURIComponent(text); const res = await fetch(url); const data = await res.json(); return data[0].map(x=>x[0]).join(""); }catch(e){ return String(text||""); } }
+  async function fetchJsonSmart(baseUrls){ const stamp = String(Date.now()); for(const u of baseUrls){ const url = u + stamp; try{ const res = await fetch(url, { cache: "no-store" }); if(!res.ok) continue; return await res.json(); }catch(e){} } return null; }
+  function parseEta(dateStr, t){ const parts = String(t||"").split(":"), H = parseInt(parts[0]||"0",10), M = parseInt(parts[1]||"0",10), d = new Date(dateStr + "T00:00:00"); d.setHours(H, M, 0, 0); return d; }
+  function fmtCountdown(ms){ if(ms < 0) ms = 0; const s = Math.floor(ms/1000), m = Math.floor(s/60), r = s%60; return pad2(m) + ":" + pad2(r); }
+  function minsLabel(delta){ if(delta <= 0) return "Arriving"; if(delta === 1) return "1 min"; return String(delta) + " min"; }
+  function statusTag(delta){ if(delta <= 0) return '<span class="tag danger">Arriving</span>'; if(delta <= 2) return '<span class="tag danger">'+minsLabel(delta)+'</span>'; if(delta <= 5) return '<span class="tag warn">'+minsLabel(delta)+'</span>'; return '<span class="tag good">'+minsLabel(delta)+'</span>'; }
+  function findStation(){ if(!DATA || !Array.isArray(DATA.stations) || !DATA.stations.length) return null; const wanted = stopIdFromUrl() || fallbackStopId(); let st = DATA.stations.find(x=> String(x.stop_id||"").toUpperCase() === wanted); if(!st) st = DATA.stations[0]; return st || null; }
+  function buildUpcoming(todayISO){ if(!station) return []; const day = (station.days || []).find(d=> d.date === todayISO); if(!day) return []; const cur = now(); return (day.arrivals || []).map(a=>{ const etaDt = parseEta(todayISO, a.eta); return {...a, etaDt, deltaMs: etaDt - cur, deltaMin: Math.max(0, Math.ceil((etaDt - cur)/60000))}; }).filter(a=> a.deltaMs >= -60000).sort((a,b)=> a.etaDt - b.etaDt || String(a.route||"").localeCompare(String(b.route||"")); }
+  function serviceEndedMessage(todayISO, upcoming){ if(upcoming && upcoming.length) return "Service running"; const day = station ? (station.days || []).find(d=> d.date === todayISO) : null; if(day && (day.arrivals || []).length) return "No more buses today"; return "No schedules for today"; }
+  function renderTop(nextItem, todayISO){ if(!nextItem){ elTopC.textContent = "--:--"; elTopD.textContent = serviceEndedMessage(todayISO, []); elTopM.textContent = station ? (station.stop_id || "") : ""; elTopC.classList.remove("urgentBlink"); return; } elTopC.textContent = fmtCountdown(nextItem.deltaMs); elTopD.textContent = String(nextItem.route||"") + "   " + String(nextItem.destination||""); elTopM.textContent = String(nextItem.bus||"") + " • ETA " + String(nextItem.eta||"") + " • " + String(nextItem.direction||""); elTopC.classList.toggle("urgentBlink", nextItem.deltaMin <= 2); }
+  function renderTable(upcoming){ const rows = upcoming.slice(pageIndex*PAGE_SIZE, pageIndex*PAGE_SIZE + PAGE_SIZE); elRot.textContent = rows.length ? ("Showing " + (pageIndex*PAGE_SIZE + 1) + "–" + (pageIndex*PAGE_SIZE + rows.length)) : "Showing 0"; if(!rows.length){ elRows.innerHTML = '<tr><td colspan="6" class="muted">No more arrivals for today</td></tr>'; return; } elRows.innerHTML = rows.map(a => '<tr><td class="time">'+esc(a.eta)+'</td><td class="time">'+fmtCountdown(a.deltaMs)+'</td><td>'+statusTag(a.deltaMin)+'</td><td>'+esc(a.bus||"")+'</td><td class="route"><span class="routeBadge" style="background:'+routeColor(a.route)+'">'+esc(a.route)+'</span></td><td>'+esc(a.destination||"")+'</td></tr>').join(''); }
+  function renderRouteCards(upcoming){ if(!upcoming.length){ elCards.innerHTML = '<div class="muted">No more arrivals for today</div>'; return; } const by = {}; upcoming.forEach(a=>{ if(!by[a.route]) by[a.route] = a; }); const keys = Object.keys(by).sort((a,b)=> a.localeCompare(b, undefined, {numeric:true})); elCards.innerHTML = keys.map(k=>{ const a = by[k]; return '<div class="rcard" style="--accent:'+routeColor(k)+'"><div class="rL"><div class="rName">'+esc(k)+'</div><div class="rSub">'+esc(a.destination||"")+'</div><div class="rSub">'+esc(a.bus||"")+'</div></div><div style="text-align:right"><div class="rT">'+esc(a.eta)+'</div><div class="rB"><span class="mins">'+esc(minsLabel(a.deltaMin))+'</span></div></div></div>'; }).join(''); }
+  function rotateIfNeeded(upcoming){ const totalPages = Math.max(1, Math.ceil(Math.min(upcoming.length, TOTAL_SHOW) / PAGE_SIZE)); const t = Date.now(); if(t - lastRotate >= ROTATE_MS){ lastRotate = t; pageIndex = (pageIndex + 1) % totalPages; } }
+  async function announceNextIfNeeded(nextItem){ if(!nextItem || !voiceOn) return; for(const threshold of ALERT_THRESHOLDS){ if(nextItem.deltaMin > threshold) continue; const key = [station ? station.stop_id : '', nextItem.route, nextItem.destination, nextItem.eta, threshold].join('|'); if(alertState.has(key)) continue; alertState.add(key); try{ if(soundOn) beepPattern(); }catch(e){} const stationName = station ? String(station.stop_name || station.stop_id || 'this stop') : 'this stop', dest = String(nextItem.destination || nextItem.route || ''), arDest = await translateToArabic(dest), arStation = await translateToArabic(stationName); let en = '', ar = ''; if(threshold <= 0){ en = 'Route ' + nextItem.route + ' to ' + dest + ' is arriving now at ' + stationName + '.'; ar = 'الرحلة ' + nextItem.route + ' إلى ' + arDest + ' تصل الآن إلى محطة ' + arStation + '.'; } else { en = 'Route ' + nextItem.route + ' to ' + dest + ' will arrive at ' + stationName + ' in ' + threshold + ' minute' + (threshold === 1 ? '' : 's') + '.'; ar = 'الرحلة ' + nextItem.route + ' إلى ' + arDest + ' ستصل إلى محطة ' + arStation + ' خلال ' + threshold + ' دقيقة.'; } speakBilingual(en, ar); break; } }
+  function fmtMMSS(ms){ if(ms < 0) ms = 0; const s = Math.floor(ms/1000), m = Math.floor(s/60), r = s % 60; return pad2(m) + ":" + pad2(r); }
+  function hideNotification(){ if(notifHideTimer){ clearTimeout(notifHideTimer); notifHideTimer = null; } if(notifTickTimer){ clearInterval(notifTickTimer); notifTickTimer = null; } if(notifOverlay) notifOverlay.style.display = "none"; }
+  async function showNotification(payload){ if(!payload || !payload.active) return; lastNotifId = String(payload.id || payload.created_at || Date.now()); const title = String(payload.title || "Notice").trim(), content = String(payload.content || "").trim(), durSec = Math.max(5, Math.min(parseInt(payload.duration || 20, 10) || 20, 600)); if(notifTitle) notifTitle.textContent = title; if(notifContent) notifContent.textContent = content; if(notifCreated){ const ts = payload.created_at ? String(payload.created_at) : ""; notifCreated.textContent = ts ? ("Sent: " + ts) : ""; } if(notifOverlay) notifOverlay.style.display = "flex"; try{ if(soundOn) beepPattern(); }catch(e){} try{ if(voiceOn){ const arTitle = await translateToArabic(title), arContent = await translateToArabic(content); speakBilingual("Attention please. " + title + ". " + content, "تنبيه. " + arTitle + ". " + arContent); } }catch(e){} notifEndsAt = Date.now() + durSec*1000; if(notifTimer) notifTimer.textContent = fmtMMSS(notifEndsAt - Date.now()); if(notifTickTimer) clearInterval(notifTickTimer); notifTickTimer = setInterval(()=>{ if(!notifTimer) return; const left = notifEndsAt - Date.now(); notifTimer.textContent = fmtMMSS(left); if(left <= 0) hideNotification(); }, 250); if(notifHideTimer) clearTimeout(notifHideTimer); notifHideTimer = setTimeout(hideNotification, durSec*1000); }
+  async function checkNotification(){ const payload = await fetchJsonSmart(NOTIF_URLS); if(!payload || !payload.active) return; const pid = String(payload.id || payload.created_at || ""); if(!pid || pid === lastNotifId) return; showNotification(payload); }
+  function onSoundToggle(){ soundOn = !soundOn; saveTogglePrefs(); syncButtons(); if(soundOn){ try{ ensureAudio(); beepOnce(90,700,0.12); }catch(e){} } }
+  function onVoiceToggle(){ voiceOn = !voiceOn; saveTogglePrefs(); syncButtons(); if(voiceOn){ speakBilingual("Voice alerts enabled.", "تم تفعيل التنبيه الصوتي."); } else { try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){} } }
+  async function load(){ try{ const payload = await fetchJsonSmart(DATA_URLS); if(!payload || !payload.stations) throw new Error('station_etas.json not found or invalid'); DATA = payload; station = findStation(); clearErr(); const todayISO = ymd(now()); if(station){ document.getElementById('stationName').textContent = String(station.stop_name || station.stop_id || 'Station ETA') + '   ' + String(station.stop_name_ar || ''); document.title = String(station.stop_name || station.stop_id || 'Station ETA') + ' - Station ETA'; } const upcoming = buildUpcoming(todayISO); renderTop(upcoming[0] || null, todayISO); renderTable(upcoming); renderRouteCards(upcoming); elDateTag.textContent = 'Date: ' + todayISO; elLast.textContent = 'Last update: ' + (DATA.generated_at || '-'); elNet.textContent = navigator.onLine ? 'Online: Yes' : 'Online: No'; if(elState) elState.textContent = serviceEndedMessage(todayISO, upcoming); await announceNextIfNeeded(upcoming[0] || null); }catch(e){ showErr(String(e && e.message ? e.message : e)); elRows.innerHTML = '<tr><td colspan="6" class="muted">Unable to load station data</td></tr>'; elCards.innerHTML = '<div class="muted">Unable to load station data</div>'; } }
+  function tick(){ elClock.textContent = hhmm(now()); if(!DATA || !station) return; const todayISO = ymd(now()); const upcoming = buildUpcoming(todayISO).slice(0, TOTAL_SHOW); rotateIfNeeded(upcoming); renderTop(upcoming[0] || null, todayISO); renderTable(upcoming); renderRouteCards(upcoming); if(elState) elState.textContent = serviceEndedMessage(todayISO, upcoming); announceNextIfNeeded(upcoming[0] || null); }
+  document.addEventListener('DOMContentLoaded', ()=>{ loadTogglePrefs(); const sb = document.getElementById('soundBtn'), vb = document.getElementById('voiceBtn'); if(sb) sb.addEventListener('click', onSoundToggle); if(vb) vb.addEventListener('click', onVoiceToggle); if(notifClose) notifClose.addEventListener('click', hideNotification); document.addEventListener('click', ()=>{ try{ ensureAudio(); }catch(e){} }, { once:true }); elClock.textContent = hhmm(now()); load(); setInterval(tick, 1000); setInterval(load, 60*1000); setInterval(checkNotification, 4000); checkNotification(); });
+})();
 </script>
-</body></html>
+</body>
+</html>
