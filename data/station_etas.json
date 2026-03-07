@@ -1,0 +1,886 @@
+{
+  "generated_at": "2026-03-08T03:17:46+04:00",
+  "time_bands": [
+    {
+      "key": "weekday_am_peak",
+      "label": "Weekday AM Peak",
+      "selector": "weekday",
+      "start": "06:00",
+      "end": "09:00"
+    },
+    {
+      "key": "weekday_offpeak",
+      "label": "Weekday Offpeak",
+      "selector": "weekday",
+      "start": "09:00",
+      "end": "16:00"
+    },
+    {
+      "key": "weekday_pm_peak",
+      "label": "Weekday PM Peak",
+      "selector": "weekday",
+      "start": "16:00",
+      "end": "20:00"
+    },
+    {
+      "key": "weekday_night",
+      "label": "Weekday Night",
+      "selector": "weekday",
+      "start": "20:00",
+      "end": "23:59"
+    },
+    {
+      "key": "weekend_all_day",
+      "label": "Weekend All Day",
+      "selector": "weekend",
+      "start": "00:00",
+      "end": "23:59"
+    }
+  ],
+  "stations": [
+    {
+      "stop_id": "AJ_STOP_0002",
+      "stop_name": "Etihad bus stop",
+      "stop_name_ar": "محطة الاتحاد 1",
+      "routes": [
+        "AJ1"
+      ],
+      "days": [
+        {
+          "date": "2026-03-08",
+          "arrivals": [
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:00",
+              "eta": "06:13",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:27",
+              "eta": "06:40",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:55",
+              "eta": "07:08",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "07:22",
+              "eta": "07:35",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "07:50",
+              "eta": "08:03",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "08:17",
+              "eta": "08:30",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "08:45",
+              "eta": "08:58",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "09:12",
+              "eta": "09:25",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "09:40",
+              "eta": "09:53",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "10:07",
+              "eta": "10:20",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "10:35",
+              "eta": "10:48",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:02",
+              "eta": "11:15",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:30",
+              "eta": "11:43",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:57",
+              "eta": "12:10",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "12:25",
+              "eta": "12:38",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "12:52",
+              "eta": "13:05",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "13:20",
+              "eta": "13:33",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "13:47",
+              "eta": "14:00",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "14:15",
+              "eta": "14:28",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "14:42",
+              "eta": "14:55",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "15:10",
+              "eta": "15:23",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "15:37",
+              "eta": "15:50",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "16:05",
+              "eta": "16:18",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "16:32",
+              "eta": "16:45",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:00",
+              "eta": "17:13",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:27",
+              "eta": "17:40",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:55",
+              "eta": "18:08",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "18:22",
+              "eta": "18:35",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "18:50",
+              "eta": "19:03",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "19:17",
+              "eta": "19:30",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "19:45",
+              "eta": "19:58",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "20:12",
+              "eta": "20:25",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "20:40",
+              "eta": "20:53",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "21:07",
+              "eta": "21:20",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "21:35",
+              "eta": "21:48",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "22:02",
+              "eta": "22:15",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "22:30",
+              "eta": "22:43",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stop_id": "AJ_STOP_0003",
+      "stop_name": "Rashidiya Towers",
+      "stop_name_ar": "محطة ابراج الراشدية",
+      "routes": [
+        "AJ1"
+      ],
+      "days": [
+        {
+          "date": "2026-03-08",
+          "arrivals": [
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:00",
+              "eta": "06:16",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:27",
+              "eta": "06:43",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "06:55",
+              "eta": "07:11",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "07:22",
+              "eta": "07:38",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "07:50",
+              "eta": "08:06",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "08:17",
+              "eta": "08:33",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "08:45",
+              "eta": "09:01",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "09:12",
+              "eta": "09:28",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "09:40",
+              "eta": "09:56",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "10:07",
+              "eta": "10:23",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "10:35",
+              "eta": "10:51",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:02",
+              "eta": "11:18",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:30",
+              "eta": "11:46",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "11:57",
+              "eta": "12:13",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "12:25",
+              "eta": "12:41",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "12:52",
+              "eta": "13:08",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "13:20",
+              "eta": "13:36",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "13:47",
+              "eta": "14:03",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "14:15",
+              "eta": "14:31",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "14:42",
+              "eta": "14:58",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "15:10",
+              "eta": "15:26",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "15:37",
+              "eta": "15:53",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "16:05",
+              "eta": "16:21",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "16:32",
+              "eta": "16:48",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:00",
+              "eta": "17:16",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:27",
+              "eta": "17:43",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "17:55",
+              "eta": "18:11",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "18:22",
+              "eta": "18:38",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "18:50",
+              "eta": "19:06",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "19:17",
+              "eta": "19:33",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "19:45",
+              "eta": "20:01",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "20:12",
+              "eta": "20:28",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "20:40",
+              "eta": "20:56",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_02",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "21:07",
+              "eta": "21:23",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_03",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "21:35",
+              "eta": "21:51",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_04",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "22:02",
+              "eta": "22:18",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            },
+            {
+              "route": "AJ1",
+              "direction": "outbound",
+              "bus": "Bus_01",
+              "origin": "Musalla Station",
+              "destination": "AJ1",
+              "scheduled_departure": "22:30",
+              "eta": "22:46",
+              "profile": "weekend",
+              "time_band": "weekend_all_day"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
