@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ajman Transport - Station ETA</title>
+<style>
+:root{--bg:#07111d;--card:#0d1b2a;--accent:#2f80ed;--text:#f5f9ff;--muted:#9eb2c8;--line:#18324d;--good:#1fbf75;}
+*{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#07111d,#0d1b2a);color:var(--text)}
+header{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px} .title{font-size:26px;font-weight:800} .sub{font-size:13px;color:var(--muted)}
+.wrap{padding:18px;max-width:1500px;margin:0 auto}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.card{background:rgba(13,27,42,.92);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.bigeta{font-size:54px;font-weight:900;color:#fff}.muted{color:var(--muted)} table{width:100%;border-collapse:collapse} th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left} th{font-size:13px;color:#cfe1f6} td{font-size:20px} .route{display:inline-block;min-width:70px;padding:6px 12px;border-radius:999px;background:rgba(47,128,237,.18);border:1px solid rgba(47,128,237,.35);font-weight:800}.mins{font-weight:900;color:var(--good)} .toplist{display:grid;gap:10px} .topitem{padding:12px;border:1px solid var(--line);border-radius:14px;background:#102235} .err{color:#ffb3b3}@media (max-width:960px){.hero{grid-template-columns:1fr}.bigeta{font-size:40px} td{font-size:16px}}
+</style>
+</head>
+<body>
+<header><div><div class="title" id="stationName">Station ETA</div><div class="sub">Expected arrivals based on published timetable - version 1772925466</div></div><div style="text-align:right"><div id="clock" style="font-size:34px;font-weight:900">--:--</div><div class="sub" id="updated">Loading...</div></div></header>
+<div class="wrap">
+<div class="hero">
+<div class="card"><div class="muted">Next arriving bus</div><div class="bigeta" id="nextEta">--:--</div><div style="font-size:22px;font-weight:700" id="nextRoute">No data</div><div class="muted" id="nextMeta"></div></div>
+<div class="card"><div class="muted" style="margin-bottom:10px">Upcoming by route</div><div class="toplist" id="summary"></div></div>
+</div>
+<div class="card" style="margin-top:16px"><table><thead><tr><th>Route</th><th>Direction</th><th>Bus</th><th>ETA</th><th>Min</th><th>Destination</th></tr></thead><tbody id="rows"><tr><td colspan="6" class="muted">Loading...</td></tr></tbody></table></div>
+</div>
+<script>
+let DATA=null; function now(){return new Date()} function hhmm(d){return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')} function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')} function mins(t){const p=String(t||'').split(':'); return Number(p[0]||0)*60+Number(p[1]||0)}
+function stopIdFromUrl(){const u=new URL(window.location.href); return (u.searchParams.get('stop')||'').toUpperCase()}
+function findTodayStation(){ if(!DATA||!DATA.stations) return null; const sid=stopIdFromUrl(); let st = DATA.stations.find(x=>String(x.stop_id||'').toUpperCase()===sid); if(!st && DATA.stations.length) st = DATA.stations[0]; return st||null; }
+function buildUpcoming(st){ if(!st) return []; const day=(st.days||[]).find(d=>d.date===ymd(now())); if(!day) return []; const cur=mins(hhmm(now())); return (day.arrivals||[]).map(a=>({...a, delta: mins(a.eta)-cur})).filter(a=>a.delta>=-1).sort((a,b)=>a.delta-b.delta || String(a.route).localeCompare(String(b.route))); }
+function render(){ document.getElementById('clock').textContent=hhmm(now()); const st=findTodayStation(); if(!st){ document.getElementById('rows').innerHTML='<tr><td colspan="6" class="err">No station ETA data found.</td></tr>'; return;} document.getElementById('stationName').textContent=st.stop_name+' ('+st.stop_id+')'; document.getElementById('updated').textContent='Updated: '+(DATA.generated_at||'-'); const upcoming=buildUpcoming(st).slice(0,20); const next=upcoming[0]; document.getElementById('nextEta').textContent=next?next.eta:'--:--'; document.getElementById('nextRoute').textContent=next?('Route '+next.route):'No more buses today'; document.getElementById('nextMeta').textContent=next?(next.direction+' • '+next.destination+' • '+Math.max(0,next.delta)+' min'):'No arrivals for today'; const tbody=document.getElementById('rows'); tbody.innerHTML=''; if(!upcoming.length){ tbody.innerHTML='<tr><td colspan="6" class="muted">No more arrivals for today</td></tr>'; } else { upcoming.forEach(a=>{ const tr=document.createElement('tr'); tr.innerHTML='<td><span class="route">'+a.route+'</span></td><td>'+a.direction+'</td><td>'+a.bus+'</td><td>'+a.eta+'</td><td class="mins">'+Math.max(0,a.delta)+'</td><td>'+a.destination+'</td>'; tbody.appendChild(tr); }); } const sum=document.getElementById('summary'); sum.innerHTML=''; const by={}; upcoming.forEach(a=>{ if(!by[a.route]) by[a.route]=a; }); Object.keys(by).sort().forEach(k=>{ const a=by[k]; const div=document.createElement('div'); div.className='topitem'; div.innerHTML='<div style="font-weight:800">'+k+'</div><div class="muted">'+a.destination+'</div><div style="font-size:20px;font-weight:900">'+a.eta+' • '+Math.max(0,a.delta)+' min</div>'; sum.appendChild(div); }); }
+async function load(){ try{ const r=await fetch('data/station_etas.json?v='+Date.now()); DATA=await r.json(); render(); }catch(e){ document.getElementById('rows').innerHTML='<tr><td colspan="6" class="err">'+e.message+'</td></tr>'; } }
+document.addEventListener('DOMContentLoaded',()=>{ load(); setInterval(render,1000); setInterval(load,60000);});
+</script>
+</body></html>
