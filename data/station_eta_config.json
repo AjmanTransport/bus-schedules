@@ -52,7 +52,7 @@
       "kiosk_enabled": true
     }
   ],
-  "next_station_seq": 4,
+  "next_station_seq": 5,
   "routes": {
     "AJ1": {
       "outbound": {
@@ -96,7 +96,19 @@
         "enabled": true,
         "origin_stop_name": "Musalla Station",
         "destination_label": "",
-        "stops": []
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0002",
+            "sequence": 1,
+            "offsets": {
+              "weekday_am_peak": 7.0,
+              "weekday_offpeak": 8.0,
+              "weekday_pm_peak": 9.0,
+              "weekday_night": 10.0,
+              "weekend_all_day": 11.0
+            }
+          }
+        ]
       },
       "inbound": {
         "enabled": false,
