@@ -1,0 +1,14 @@
+{
+  "stations": [
+    {
+      "stop_id": "AJ_STOP_0002",
+      "stop_name": "Etihad bus stop",
+      "station_id": "AJ_STOP_0002"
+    },
+    {
+      "stop_id": "AJ_STOP_0003",
+      "stop_name": "Rashidiya Towers",
+      "station_id": "AJ_STOP_0003"
+    }
+  ]
+}
