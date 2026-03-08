@@ -34,7 +34,6 @@
       cursor:pointer;
       user-select:none;
     }
-
     .ico{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:8px;}
     .ico svg{width:18px;height:18px;fill:currentColor;display:block;}
     .btn.active{background:rgba(31,78,121,.08);border-color:rgba(31,78,121,.45)}
@@ -69,7 +68,6 @@
     Software developed by: Abdelhameed Altoum
   </div>
 </header>
-
 <div class="wrap">
   <div class="row">
     <div class="card" style="flex:1;min-width:280px">
@@ -77,38 +75,31 @@
       <div class="routes" id="routeButtons"></div>
       <div class="meta" id="lastUpdated" style="margin-top:10px"></div>
     </div>
-
     <div class="card" style="flex:2;min-width:320px">
       <h2>Filters</h2>
       <div class="toolbar">
         <label class="meta">Date</label>
         <select id="dateSelect"></select>
-
         <label class="meta">Bus</label>
         <select id="busSelect"><option value="ALL">All</option></select>
-
         <label class="meta">Search time</label>
         <input id="timeSearch" placeholder="e.g. 07:30" style="width:120px"/>
-
         <button class="btn" id="soundBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></span><span id="soundText">Sound Alerts: OFF</span></button>
         <button class="btn" id="voiceBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"/><path d="M19 11a7 7 0 0 1-14 0H3a9 9 0 0 0 18 0h-2z"/><path d="M11 19v3h2v-3h-2z"/></svg></span><span id="voiceText">Voice: OFF</span></button>
       </div>
       <div class="meta" style="margin-top:10px">Times are 24-hour format (HH:MM). Alerts require one tap to enable sound.</div>
     </div>
   </div>
-
   <div class="card" style="margin-top:12px">
     <h2 style="margin:0 0 10px 0">Next Departures</h2>
     <div class="kpi" id="nextPanel"></div>
-    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1772955288</div>
+    <div class="meta" style="margin-top:10px">Upcoming highlights are based on your phone time. Version: 1772970387</div>
   </div>
-
   <div class="card" style="margin-top:12px">
     <div class="row" style="align-items:center;justify-content:space-between">
       <h2 id="tableTitle" style="margin:0">Timetable</h2>
-      <a class="btn" id="pdfLink" href="schedule.pdf?v=1772955288" style="text-decoration:none">Download PDF (optional)</a>
+      <a class="btn" id="pdfLink" href="schedule.pdf?v=1772970387" style="text-decoration:none">Download PDF (optional)</a>
     </div>
-
     <div class="tablewrap" style="margin-top:10px">
       <table>
         <thead>
@@ -122,13 +113,10 @@
     </div>
   </div>
 </div>
-
 <footer>(c) Ajman Transport  -  Bus Schedules</footer>
-
 <script>
 let DATA=null;
 let currentRoute=null;
-
 function toMinutes(t){
   // Accept "H:MM", "HH:MM", or "HH:MM:SS". Trim spaces.
   const s = String(t||"").trim();
@@ -162,19 +150,16 @@ function uniqueSorted(times){
   const cleaned = (times||[]).map(t=>normHHMM(t));
   return sortTimes(Array.from(new Set(cleaned)));
 }
-
 /* Sound + Voice Alerts */
 let soundEnabled = false;
 let voiceEnabled = false;
 let alreadyAlerted = new Set();
 let audioCtx = null;
-
 function ensureAudio(){
   if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   // iOS / Chrome requires user gesture; this is called after user toggles sound.
   if(audioCtx.state === "suspended"){ try{ audioCtx.resume(); }catch(e){} }
 }
-
 function beepOnce(durationMs = 160, frequency = 880, volume = 0.18) {
   ensureAudio();
   const osc = audioCtx.createOscillator();
@@ -187,7 +172,6 @@ function beepOnce(durationMs = 160, frequency = 880, volume = 0.18) {
   osc.start();
   setTimeout(()=>{ try{osc.stop();}catch(e){} }, durationMs);
 }
-
 function beepPattern(count = 5){
   // Short, noticeable pattern but not too annoying: 5 beeps with slight pitch variation.
   const freqs = [880, 880, 988, 880, 1046];
@@ -197,7 +181,6 @@ function beepPattern(count = 5){
     setTimeout(()=>beepOnce(dur, freqs[i], 0.20), i*(dur+gap));
   }
 }
-
 function speak(text){
   try{
     if(!("speechSynthesis" in window)) return;
@@ -209,7 +192,6 @@ function speak(text){
     window.speechSynthesis.speak(u);
   }catch(e){}
 }
-
 function toggleSound(){
   soundEnabled = !soundEnabled;
   const txt = document.getElementById("soundText");
@@ -219,7 +201,6 @@ function toggleSound(){
     try{ beepOnce(90, 700, 0.10); }catch(e){}
   }
 }
-
 function toggleVoice(){
   voiceEnabled = !voiceEnabled;
   const txt = document.getElementById("voiceText");
@@ -229,14 +210,11 @@ function toggleVoice(){
     speak("Voice alerts enabled.");
   }
 }
-
 function checkNextTripAlerts(){
   if((!soundEnabled && !voiceEnabled) || !currentRoute) return;
-
   const date = document.getElementById("dateSelect").value || currentRoute.days[0].date;
   const busFilter = document.getElementById("busSelect").value || "ALL";
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
-
   day.buses
     .filter(b => busFilter==="ALL" ? true : b.bus===busFilter)
     .forEach(b => {
@@ -247,7 +225,6 @@ function checkNextTripAlerts(){
           const key = `${currentRoute.route}|${day.date}|${b.bus}|${t}`;
           if(!alreadyAlerted.has(key)){
             alreadyAlerted.add(key);
-
             if(soundEnabled){
               beepPattern(5);
             }
@@ -259,7 +236,6 @@ function checkNextTripAlerts(){
       });
     });
 }
-
 /* UI Rendering */
 async function load(){
   const res = await fetch("data/schedules.json?v=" + Date.now());
@@ -267,7 +243,6 @@ async function load(){
   document.getElementById("lastUpdated").textContent = "Last updated: " + (DATA.generated_at || " - ");
   renderRouteButtons();
 }
-
 function renderRouteButtons(){
   const box = document.getElementById("routeButtons");
   box.innerHTML="";
@@ -280,13 +255,11 @@ function renderRouteButtons(){
   });
   selectRoute(DATA.routes[0].route);
 }
-
 function selectRoute(routeCode){
   currentRoute = DATA.routes.find(r=>r.route===routeCode);
   document.querySelectorAll("#routeButtons .btn").forEach(btn=>{
     btn.classList.toggle("active", btn.textContent.includes(routeCode));
   });
-
   const ds=document.getElementById("dateSelect");
   ds.innerHTML="";
   currentRoute.days.forEach(d=>{
@@ -295,44 +268,34 @@ function selectRoute(routeCode){
     opt.textContent = d.date + " (" + d.profile + ")";
     ds.appendChild(opt);
   });
-
   ds.onchange = ()=>{ alreadyAlerted.clear(); renderTable(); renderNextPanel(); };
   document.getElementById("busSelect").onchange = ()=>{ alreadyAlerted.clear(); renderTable(); renderNextPanel(); };
   document.getElementById("timeSearch").oninput = renderTable;
-
   document.getElementById("pdfLink").href = "schedule.pdf?v=" + Date.now();
-
   renderBusDropdown();
   renderTable();
   renderNextPanel();
 }
-
 function renderBusDropdown(){
   const bs=document.getElementById("busSelect");
   const keep = bs.value || "ALL";
   bs.innerHTML = '<option value="ALL">All</option>';
-
   const date = document.getElementById("dateSelect").value || currentRoute.days[0].date;
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
-
   day.buses.forEach(b=>{
     const opt=document.createElement("option");
     opt.value=b.bus;
     opt.textContent=b.bus;
     bs.appendChild(opt);
   });
-
   if([...bs.options].some(o=>o.value===keep)) bs.value=keep;
 }
-
 function renderNextPanel(){
   const panel = document.getElementById("nextPanel");
   panel.innerHTML = "";
-
   const date = document.getElementById("dateSelect").value || currentRoute.days[0].date;
   const busFilter = document.getElementById("busSelect").value || "ALL";
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
-
   // If you are viewing a date other than today, show the earliest departures for that date.
   const todayISO = (new Date()).toISOString().slice(0,10);
   const isToday = (date === todayISO);
@@ -350,17 +313,14 @@ function renderNextPanel(){
         }
       });
     });
-
   all.sort((a,b)=>a.diff-b.diff);
   const top = all.slice(0, 6);
-
   if(top.length===0){
     panel.innerHTML = isToday
       ? '<div class="box"><div class="title">Next departure</div><div class="value"> - </div><div class="subv">No upcoming trips in the next 3 hours</div></div>'
       : '<div class="box"><div class="title">Departures</div><div class="value"> - </div><div class="subv">No trips found for the selected date</div></div>';
     return;
   }
-
   top.forEach(x=>{
     const cls = classifyTime(x.t);
     const mins = Math.max(0, Math.round(x.diff));
@@ -374,49 +334,39 @@ function renderNextPanel(){
     panel.appendChild(box);
   });
 }
-
 function renderTable(){
   renderBusDropdown();
-
   const date = document.getElementById("dateSelect").value || currentRoute.days[0].date;
   const busFilter = document.getElementById("busSelect").value || "ALL";
   const timeSearch = (document.getElementById("timeSearch").value || "").trim();
-
   const day = currentRoute.days.find(x=>x.date===date) || currentRoute.days[0];
   document.getElementById("tableTitle").textContent =
     `${currentRoute.display_name || currentRoute.route}  -  ${day.date} (${day.profile})`;
-
   const tbody=document.getElementById("tbody");
   tbody.innerHTML="";
-
   day.buses
     .filter(b => busFilter==="ALL" ? true : b.bus===busFilter)
     .forEach(b=>{
       let times = uniqueSorted(b.departures || []);
       if(timeSearch) times = times.filter(t=>t.includes(timeSearch));
-
       const tr=document.createElement("tr");
       const td1=document.createElement("td");
       td1.innerHTML = `<span class="chip">${b.bus}</span>`;
-
       const td2=document.createElement("td");
       td2.innerHTML = times.map(t=>{
         const cls = classifyTime(t);
         return `<span class="pill ${cls}">${t}</span>`;
       }).join("");
-
       tr.appendChild(td1);
       tr.appendChild(td2);
       tbody.appendChild(tr);
     });
 }
-
 function tick(){
   renderNextPanel();
   renderTable();
   checkNextTripAlerts();
 }
-
 document.addEventListener("DOMContentLoaded", ()=>{
   const btn = document.getElementById("soundBtn");
   if(btn) btn.onclick = toggleSound;
@@ -424,7 +374,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
   if(vbtn) vbtn.onclick = toggleVoice;
   setInterval(tick, 15000);
 });
-
 load();
 </script>
 </body>
