@@ -1,3 +1,29 @@
 {
-  "stations": []
+  "stations": [
+    {
+      "stop_id": "AJ_STOP_0001",
+      "stop_name": "Musalla Station",
+      "station_id": "AJ_STOP_0001"
+    },
+    {
+      "stop_id": "AJ_STOP_0002",
+      "stop_name": "Etihad station 1",
+      "station_id": "AJ_STOP_0002"
+    },
+    {
+      "stop_id": "AJ_STOP_0003",
+      "stop_name": "Falcon towers 1",
+      "station_id": "AJ_STOP_0003"
+    },
+    {
+      "stop_id": "AJ_STOP_0004",
+      "stop_name": "Rashidyia Towers 1",
+      "station_id": "AJ_STOP_0004"
+    },
+    {
+      "stop_id": "AJ_STOP_0005",
+      "stop_name": "jurf station",
+      "station_id": "AJ_STOP_0005"
+    }
+  ]
 }
