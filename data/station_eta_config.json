@@ -1,44 +1,431 @@
 {
   "time_bands": [
     {
-      "key": "weekday_am_peak",
-      "label": "Weekday AM Peak",
+      "key": "weekday_0600_1100",
+      "label": "Weekday 06:00-11:00",
       "selector": "weekday",
       "start": "06:00",
-      "end": "09:00"
+      "end": "11:00"
     },
     {
-      "key": "weekday_offpeak",
-      "label": "Weekday Offpeak",
+      "key": "weekday_1100_1800",
+      "label": "Weekday 11:00-18:00",
       "selector": "weekday",
-      "start": "09:00",
-      "end": "16:00"
+      "start": "11:00",
+      "end": "18:00"
     },
     {
-      "key": "weekday_pm_peak",
-      "label": "Weekday PM Peak",
+      "key": "weekday_1800_2345",
+      "label": "Weekday 18:00-23:45",
       "selector": "weekday",
-      "start": "16:00",
-      "end": "20:00"
+      "start": "18:00",
+      "end": "23:45"
     },
     {
-      "key": "weekday_night",
-      "label": "Weekday Night",
-      "selector": "weekday",
-      "start": "20:00",
-      "end": "23:59"
-    },
-    {
-      "key": "weekend_all_day",
-      "label": "Weekend All Day",
+      "key": "weekend_0600_1100",
+      "label": "Weekend 06:00-11:00",
       "selector": "weekend",
-      "start": "00:00",
-      "end": "23:59"
+      "start": "06:00",
+      "end": "11:00"
+    },
+    {
+      "key": "weekend_1100_1800",
+      "label": "Weekend 11:00-18:00",
+      "selector": "weekend",
+      "start": "11:00",
+      "end": "18:00"
+    },
+    {
+      "key": "weekend_1800_2345",
+      "label": "Weekend 18:00-23:45",
+      "selector": "weekend",
+      "start": "18:00",
+      "end": "23:45"
     }
   ],
-  "stations": [],
-  "next_station_seq": 1,
-  "routes": {},
+  "stations": [
+    {
+      "station_id": "AJ_STOP_0001",
+      "name_en": "Musalla Station",
+      "name_ar": "محطة المصلي",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0002",
+      "name_en": "Etihad station 1",
+      "name_ar": "محطة الاتحاد 1",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0003",
+      "name_en": "Falcon towers 1",
+      "name_ar": "ابراج فالكون 1",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0004",
+      "name_en": "Rashidyia Towers 1",
+      "name_ar": "ابراج الراشدية 1",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0005",
+      "name_en": "jurf station",
+      "name_ar": "محطة الجرف",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0006",
+      "name_en": "Rahidiya towers 2",
+      "name_ar": "ابراج الراشدية 2",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0007",
+      "name_en": "Falcon towers 2",
+      "name_ar": "ابراج فالكون 2",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0008",
+      "name_en": "Etihad station 2",
+      "name_ar": "محطة الاتحاد 2",
+      "active": true,
+      "kiosk_enabled": true
+    }
+  ],
+  "next_station_seq": 9,
+  "routes": {
+    "AJ1": {
+      "auto_return": {
+        "enabled": true,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": true,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "jurf station",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0002",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0003",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0004",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0005",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          }
+        ]
+      },
+      "inbound": {
+        "enabled": true,
+        "origin_stop_name": "jurf",
+        "destination_label": "musalla",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0005",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0006",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0007",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0008",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          }
+        ]
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "",
+      "origin_layover_min": 4.0
+    },
+    "AJ2": {
+      "auto_return": {
+        "enabled": true,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": true,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "jurf",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0002",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0003",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0004",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0005",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          }
+        ]
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "jurf",
+        "destination_label": "musalla",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0005",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0006",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0007",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0008",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          }
+        ]
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "",
+      "origin_layover_min": 4.0
+    }
+  },
   "kiosk": {
     "lookahead_minutes": 120,
     "auto_generate_wrapper_pages": true
