@@ -1,42 +1,911 @@
 {
-  "generated_at": "2026-03-10T00:06:06+04:00",
+  "generated_at": "2026-03-10T00:07:24+04:00",
   "time_bands": [
     {
-      "key": "weekday_am_peak",
-      "label": "Weekday AM Peak",
+      "key": "weekday_0600_1100",
+      "label": "Weekday 06:00-11:00",
       "selector": "weekday",
       "start": "06:00",
-      "end": "09:00"
+      "end": "11:00"
     },
     {
-      "key": "weekday_offpeak",
-      "label": "Weekday Offpeak",
+      "key": "weekday_1100_1800",
+      "label": "Weekday 11:00-18:00",
       "selector": "weekday",
-      "start": "09:00",
-      "end": "16:00"
+      "start": "11:00",
+      "end": "18:00"
     },
     {
-      "key": "weekday_pm_peak",
-      "label": "Weekday PM Peak",
+      "key": "weekday_1800_2345",
+      "label": "Weekday 18:00-23:45",
       "selector": "weekday",
-      "start": "16:00",
-      "end": "20:00"
+      "start": "18:00",
+      "end": "23:45"
     },
     {
-      "key": "weekday_night",
-      "label": "Weekday Night",
-      "selector": "weekday",
-      "start": "20:00",
-      "end": "23:59"
-    },
-    {
-      "key": "weekend_all_day",
-      "label": "Weekend All Day",
+      "key": "weekend_0600_1100",
+      "label": "Weekend 06:00-11:00",
       "selector": "weekend",
-      "start": "00:00",
-      "end": "23:59"
+      "start": "06:00",
+      "end": "11:00"
+    },
+    {
+      "key": "weekend_1100_1800",
+      "label": "Weekend 11:00-18:00",
+      "selector": "weekend",
+      "start": "11:00",
+      "end": "18:00"
+    },
+    {
+      "key": "weekend_1800_2345",
+      "label": "Weekend 18:00-23:45",
+      "selector": "weekend",
+      "start": "18:00",
+      "end": "23:45"
     }
   ],
   "stations": [],
-  "skipped_rows": []
+  "skipped_rows": [
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:00",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:25",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:50",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "07:15",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "07:40",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "08:05",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "08:30",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "08:55",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "09:20",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "09:45",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "10:10",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "10:35",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:00",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:25",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:50",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "12:15",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "12:40",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "13:05",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "13:30",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "13:55",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "14:20",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "14:45",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "15:10",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "15:35",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "16:00",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "16:25",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "16:50",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "17:15",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "17:40",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "18:05",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "18:30",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "18:55",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "19:20",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "19:45",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "20:10",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "20:35",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "21:00",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "21:25",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "21:50",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "22:15",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "22:40",
+      "destination": "jurf industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "06:00",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "06:25",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "06:50",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "07:15",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "07:40",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "08:05",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "08:30",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "08:55",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "09:20",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "09:45",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "10:10",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "10:35",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "11:00",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "11:25",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "11:50",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "12:15",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "12:40",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "13:05",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "13:30",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "13:55",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "14:20",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "14:45",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "15:10",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "15:35",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "16:00",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "16:25",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "16:50",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "17:15",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "17:40",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "18:05",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "18:30",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "18:55",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "19:20",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "19:45",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "20:10",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "20:35",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "21:00",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "21:25",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "21:50",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "22:15",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-10",
+      "departure": "22:40",
+      "destination": "ajman industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "06:00",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "06:25",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "06:50",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "07:15",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "07:40",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "08:05",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "08:30",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "08:55",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "09:20",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "09:45",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "10:10",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "10:35",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "11:00",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "11:25",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "11:50",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "12:15",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "12:40",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "13:05",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "13:30",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "13:55",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "14:20",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "14:45",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "15:10",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "15:35",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "16:00",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "16:25",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "16:50",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "17:15",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "17:40",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "18:05",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "18:30",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "18:55",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "19:20",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "19:45",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "20:10",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "20:35",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "21:00",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "21:25",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "21:50",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "22:15",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ3",
+      "date": "2026-03-10",
+      "departure": "22:40",
+      "destination": "hundiya",
+      "reason": "no_enabled_direction"
+    }
+  ]
 }
