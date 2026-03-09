@@ -1,39 +1,46 @@
 {
   "time_bands": [
     {
-      "key": "weekday_am_peak",
-      "label": "Weekday AM Peak",
+      "key": "weekday_0600_1100",
+      "label": "Weekday 06:00-11:00",
       "selector": "weekday",
       "start": "06:00",
-      "end": "09:00"
+      "end": "11:00"
     },
     {
-      "key": "weekday_offpeak",
-      "label": "Weekday Offpeak",
+      "key": "weekday_1100_1800",
+      "label": "Weekday 11:00-18:00",
       "selector": "weekday",
-      "start": "09:00",
-      "end": "16:00"
+      "start": "11:00",
+      "end": "18:00"
     },
     {
-      "key": "weekday_pm_peak",
-      "label": "Weekday PM Peak",
+      "key": "weekday_1800_2345",
+      "label": "Weekday 18:00-23:45",
       "selector": "weekday",
-      "start": "16:00",
-      "end": "20:00"
+      "start": "18:00",
+      "end": "23:45"
     },
     {
-      "key": "weekday_night",
-      "label": "Weekday Night",
-      "selector": "weekday",
-      "start": "20:00",
-      "end": "23:59"
-    },
-    {
-      "key": "weekend_all_day",
-      "label": "Weekend All Day",
+      "key": "weekend_0600_1100",
+      "label": "Weekend 06:00-11:00",
       "selector": "weekend",
-      "start": "00:00",
-      "end": "23:59"
+      "start": "06:00",
+      "end": "11:00"
+    },
+    {
+      "key": "weekend_1100_1800",
+      "label": "Weekend 11:00-18:00",
+      "selector": "weekend",
+      "start": "11:00",
+      "end": "18:00"
+    },
+    {
+      "key": "weekend_1800_2345",
+      "label": "Weekend 18:00-23:45",
+      "selector": "weekend",
+      "start": "18:00",
+      "end": "23:45"
     }
   ],
   "stations": [],
