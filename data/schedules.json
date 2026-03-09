@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-09T01:56:24+04:00",
+  "generated_at": "2026-03-10T00:06:05+04:00",
   "route_colors": {},
   "routes": [
     {
@@ -8,7 +8,7 @@
       "display_name": "jurf industerial",
       "days": [
         {
-          "date": "2026-03-09",
+          "date": "2026-03-10",
           "profile": "weekday",
           "buses": [
             {
@@ -78,7 +78,7 @@
       "display_name": "ajman industerial",
       "days": [
         {
-          "date": "2026-03-09",
+          "date": "2026-03-10",
           "profile": "weekday",
           "buses": [
             {
@@ -144,11 +144,11 @@
     },
     {
       "route": "AJ3",
-      "destination": "al humidya",
-      "display_name": "al humidya",
+      "destination": "hundiya",
+      "display_name": "hundiya",
       "days": [
         {
-          "date": "2026-03-09",
+          "date": "2026-03-10",
           "profile": "weekday",
           "buses": [
             {
