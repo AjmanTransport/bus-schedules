@@ -46,7 +46,7 @@
   "stations": [
     {
       "station_id": "AJ_STOP_0001",
-      "name_en": "Musalla Station",
+      "name_en": "Musalla Station111",
       "name_ar": "محطة المصلي",
       "active": true,
       "kiosk_enabled": true
@@ -157,7 +157,7 @@
       "outbound": {
         "enabled": true,
         "origin_stop_name": "Musalla Station",
-        "destination_label": "Jurf Industerial",
+        "destination_label": "Jurf Industerial11",
         "stops": [
           {
             "station_id": "AJ_STOP_0001",
@@ -297,7 +297,7 @@
       },
       "inbound": {
         "enabled": true,
-        "origin_stop_name": "Jurf Industerial",
+        "origin_stop_name": "Jurf Industerial11",
         "destination_label": "Musalla",
         "stops": [
           {
@@ -437,7 +437,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "jurf industerial",
+      "destination_terminal": "jurf induserial",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -746,7 +746,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "ajman industerail",
+      "destination_terminal": "ajman industerial",
       "origin_layover_min": 4.0
     },
     "AJ3": {
