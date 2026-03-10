@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-10T10:53:00+04:00",
+  "generated_at": "2026-03-10T14:22:48+04:00",
   "route_colors": {},
   "routes": [
     {
       "route": "AJ1",
-      "destination": "Aljurf Industerial",
-      "display_name": "Aljurf Industerial",
+      "destination": "Jurf Industerial",
+      "display_name": "Jurf Industerial",
       "days": [
         {
           "date": "2026-03-10",
