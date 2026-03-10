@@ -46,8 +46,8 @@
   "stations": [
     {
       "station_id": "AJ_STOP_0001",
-      "name_en": "Musalla Station111",
-      "name_ar": "محطة المصلي",
+      "name_en": "Mussala Main Station",
+      "name_ar": "محطة المصلي الرئيسية",
       "active": true,
       "kiosk_enabled": true
     },
@@ -60,76 +60,111 @@
     },
     {
       "station_id": "AJ_STOP_0003",
-      "name_en": "Rashidia Towers 1",
-      "name_ar": "ابراج الراشدية 1",
+      "name_en": "Rashidiya Towers station 1",
+      "name_ar": "محطة ابراج الراشدية 1",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0004",
       "name_en": "Alkhoor Towers 1",
-      "name_ar": "ابراج الخور 1",
+      "name_ar": "محطة ابراج الخور 1",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0005",
-      "name_en": "Ministry of labour 1",
+      "name_en": "Ministry Of Labour 1",
       "name_ar": "محطة وزارة العمل 1",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0006",
-      "name_en": "Jurf industerial",
-      "name_ar": "الجرف الصناعية",
+      "name_en": "Shiekh Zaed Mosque",
+      "name_ar": "محطة مسجد الشيخ زايد",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0007",
-      "name_en": "ministyr of labour 2",
-      "name_ar": "محطة وزارة العمل 2",
+      "name_en": "Numyia Towers station 1",
+      "name_ar": "محطة ابراج النعيمية 1",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0008",
-      "name_en": "Alkhoor towers 2",
-      "name_ar": "ابراج الخور 2",
+      "name_en": "Numyia Towers station 2",
+      "name_ar": "محطة ابراج النعيمية 2",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0009",
-      "name_en": "Alrashidya towers 2",
-      "name_ar": "ابراج الراشدية 2",
+      "name_en": "Ministry of labour 2",
+      "name_ar": "محطة وزارة العمل 2",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0010",
-      "name_en": "Union station 2",
-      "name_ar": "محطة الاتحاد 2",
+      "name_en": "Alkhoor Towers station 2",
+      "name_ar": "محطة ابراج الخور 2",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0011",
-      "name_en": "Ajman Industerial",
-      "name_ar": "عجمان الصناعية",
+      "name_en": "Rashidiya Towers station 2",
+      "name_ar": "محطة ابراج الراشدية 2",
       "active": true,
       "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0012",
-      "name_en": "Alhumdiya",
-      "name_ar": "الحميدية",
+      "name_en": "Union Station 2",
+      "name_ar": "محطة الاتحاد 2",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0013",
+      "name_en": "Aljurf Industerial",
+      "name_ar": "محطة الجرف الصناعية",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0014",
+      "name_en": "Ajman Industerial",
+      "name_ar": "محطة عجمان الصناعية",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0015",
+      "name_en": "Alhumdiya station",
+      "name_ar": "محطة الحميدية",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0016",
+      "name_en": "Sudai German Hospital",
+      "name_ar": "المستشفي السعودي الالماني",
+      "active": true,
+      "kiosk_enabled": true
+    },
+    {
+      "station_id": "AJ_STOP_0017",
+      "name_en": "Dubai Center Point",
+      "name_ar": "محطة دبي سنتر بوينت",
       "active": true,
       "kiosk_enabled": true
     }
   ],
-  "next_station_seq": 13,
+  "next_station_seq": 18,
   "routes": {
     "AJ1": {
       "auto_return": {
@@ -157,7 +192,7 @@
       "outbound": {
         "enabled": true,
         "origin_stop_name": "Musalla Station",
-        "destination_label": "Jurf Industerial11",
+        "destination_label": "Aljurf industerial",
         "stops": [
           {
             "station_id": "AJ_STOP_0001",
@@ -175,53 +210,65 @@
             "station_id": "AJ_STOP_0002",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
-            }
-          },
-          {
-            "station_id": "AJ_STOP_0003",
-            "sequence": 3,
-            "offsets": {
-              "weekday_0600_1100": 20.0,
-              "weekday_1100_1800": 20.0,
-              "weekday_1800_2345": 20.0,
-              "weekend_0600_1100": 20.0,
-              "weekend_1100_1800": 20.0,
-              "weekend_1800_2345": 20.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "station_id": "AJ_STOP_0004",
-            "sequence": 4,
+            "sequence": 3,
             "offsets": {
-              "weekday_0600_1100": 30.0,
-              "weekday_1100_1800": 30.0,
-              "weekday_1800_2345": 30.0,
-              "weekend_0600_1100": 30.0,
-              "weekend_1100_1800": 30.0,
-              "weekend_1800_2345": 30.0
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
             }
           },
           {
             "station_id": "AJ_STOP_0005",
-            "sequence": 5,
+            "sequence": 4,
             "offsets": {
-              "weekday_0600_1100": 40.0,
-              "weekday_1100_1800": 40.0,
-              "weekday_1800_2345": 40.0,
-              "weekend_0600_1100": 40.0,
-              "weekend_1100_1800": 40.0,
-              "weekend_1800_2345": 40.0
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
             }
           },
           {
             "station_id": "AJ_STOP_0006",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0007",
             "sequence": 6,
+            "offsets": {
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0013",
+            "sequence": 7,
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
@@ -237,71 +284,83 @@
             "from_station_id": "AJ_STOP_0001",
             "to_station_id": "AJ_STOP_0002",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0002",
-            "to_station_id": "AJ_STOP_0003",
-            "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
-            }
-          },
-          {
-            "from_station_id": "AJ_STOP_0003",
             "to_station_id": "AJ_STOP_0004",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0004",
             "to_station_id": "AJ_STOP_0005",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0005",
             "to_station_id": "AJ_STOP_0006",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0006",
+            "to_station_id": "AJ_STOP_0007",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0007",
+            "to_station_id": "AJ_STOP_0013",
+            "times": {
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
             }
           }
         ]
       },
       "inbound": {
         "enabled": true,
-        "origin_stop_name": "Jurf Industerial11",
-        "destination_label": "Musalla",
+        "origin_stop_name": "Aljurf induserial",
+        "destination_label": "Musalla station",
         "stops": [
           {
-            "station_id": "AJ_STOP_0006",
+            "station_id": "AJ_STOP_0013",
             "sequence": 1,
             "offsets": {
               "weekday_0600_1100": 0.0,
@@ -313,56 +372,68 @@
             }
           },
           {
-            "station_id": "AJ_STOP_0007",
+            "station_id": "AJ_STOP_0012",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
-            "station_id": "AJ_STOP_0008",
+            "station_id": "AJ_STOP_0011",
             "sequence": 3,
             "offsets": {
-              "weekday_0600_1100": 20.0,
-              "weekday_1100_1800": 20.0,
-              "weekday_1800_2345": 20.0,
-              "weekend_0600_1100": 20.0,
-              "weekend_1100_1800": 20.0,
-              "weekend_1800_2345": 20.0
-            }
-          },
-          {
-            "station_id": "AJ_STOP_0009",
-            "sequence": 4,
-            "offsets": {
-              "weekday_0600_1100": 30.0,
-              "weekday_1100_1800": 30.0,
-              "weekday_1800_2345": 30.0,
-              "weekend_0600_1100": 30.0,
-              "weekend_1100_1800": 30.0,
-              "weekend_1800_2345": 30.0
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
             }
           },
           {
             "station_id": "AJ_STOP_0010",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0009",
             "sequence": 5,
             "offsets": {
-              "weekday_0600_1100": 40.0,
-              "weekday_1100_1800": 40.0,
-              "weekday_1800_2345": 40.0,
-              "weekend_0600_1100": 40.0,
-              "weekend_1100_1800": 40.0,
-              "weekend_1800_2345": 40.0
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0008",
+            "sequence": 6,
+            "offsets": {
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
             }
           },
           {
             "station_id": "AJ_STOP_0001",
-            "sequence": 6,
+            "sequence": 7,
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
@@ -375,69 +446,81 @@
         ],
         "segments": [
           {
-            "from_station_id": "AJ_STOP_0006",
-            "to_station_id": "AJ_STOP_0007",
+            "from_station_id": "AJ_STOP_0013",
+            "to_station_id": "AJ_STOP_0012",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
-            "from_station_id": "AJ_STOP_0007",
-            "to_station_id": "AJ_STOP_0008",
+            "from_station_id": "AJ_STOP_0012",
+            "to_station_id": "AJ_STOP_0011",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
-            "from_station_id": "AJ_STOP_0008",
-            "to_station_id": "AJ_STOP_0009",
-            "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
-            }
-          },
-          {
-            "from_station_id": "AJ_STOP_0009",
+            "from_station_id": "AJ_STOP_0011",
             "to_station_id": "AJ_STOP_0010",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0010",
+            "to_station_id": "AJ_STOP_0009",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0009",
+            "to_station_id": "AJ_STOP_0008",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0008",
             "to_station_id": "AJ_STOP_0001",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "jurf induserial",
+      "destination_terminal": "Jurf Industerial",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -466,7 +549,7 @@
       "outbound": {
         "enabled": true,
         "origin_stop_name": "Musalla Station",
-        "destination_label": "Ajman Industerial",
+        "destination_label": "Ajman Induserial",
         "stops": [
           {
             "station_id": "AJ_STOP_0001",
@@ -484,53 +567,65 @@
             "station_id": "AJ_STOP_0002",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "station_id": "AJ_STOP_0003",
             "sequence": 3,
             "offsets": {
-              "weekday_0600_1100": 20.0,
-              "weekday_1100_1800": 20.0,
-              "weekday_1800_2345": 20.0,
-              "weekend_0600_1100": 20.0,
-              "weekend_1100_1800": 20.0,
-              "weekend_1800_2345": 20.0
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
             }
           },
           {
             "station_id": "AJ_STOP_0004",
             "sequence": 4,
             "offsets": {
-              "weekday_0600_1100": 30.0,
-              "weekday_1100_1800": 30.0,
-              "weekday_1800_2345": 30.0,
-              "weekend_0600_1100": 30.0,
-              "weekend_1100_1800": 30.0,
-              "weekend_1800_2345": 30.0
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
             }
           },
           {
             "station_id": "AJ_STOP_0005",
             "sequence": 5,
             "offsets": {
-              "weekday_0600_1100": 40.0,
-              "weekday_1100_1800": 40.0,
-              "weekday_1800_2345": 40.0,
-              "weekend_0600_1100": 40.0,
-              "weekend_1100_1800": 40.0,
-              "weekend_1800_2345": 40.0
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
             }
           },
           {
-            "station_id": "AJ_STOP_0011",
+            "station_id": "AJ_STOP_0006",
             "sequence": 6,
+            "offsets": {
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0014",
+            "sequence": 7,
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
@@ -546,60 +641,72 @@
             "from_station_id": "AJ_STOP_0001",
             "to_station_id": "AJ_STOP_0002",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0002",
             "to_station_id": "AJ_STOP_0003",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0003",
             "to_station_id": "AJ_STOP_0004",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0004",
             "to_station_id": "AJ_STOP_0005",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0005",
-            "to_station_id": "AJ_STOP_0011",
+            "to_station_id": "AJ_STOP_0006",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0006",
+            "to_station_id": "AJ_STOP_0014",
+            "times": {
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
             }
           }
         ]
@@ -607,10 +714,10 @@
       "inbound": {
         "enabled": true,
         "origin_stop_name": "Ajman Industerial",
-        "destination_label": "Musalla",
+        "destination_label": "musalla",
         "stops": [
           {
-            "station_id": "AJ_STOP_0011",
+            "station_id": "AJ_STOP_0014",
             "sequence": 1,
             "offsets": {
               "weekday_0600_1100": 0.0,
@@ -622,56 +729,68 @@
             }
           },
           {
-            "station_id": "AJ_STOP_0010",
+            "station_id": "AJ_STOP_0012",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0011",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0010",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
             }
           },
           {
             "station_id": "AJ_STOP_0009",
-            "sequence": 3,
+            "sequence": 5,
             "offsets": {
-              "weekday_0600_1100": 20.0,
-              "weekday_1100_1800": 20.0,
-              "weekday_1800_2345": 20.0,
-              "weekend_0600_1100": 20.0,
-              "weekend_1100_1800": 20.0,
-              "weekend_1800_2345": 20.0
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
             }
           },
           {
             "station_id": "AJ_STOP_0008",
-            "sequence": 4,
+            "sequence": 6,
             "offsets": {
-              "weekday_0600_1100": 30.0,
-              "weekday_1100_1800": 30.0,
-              "weekday_1800_2345": 30.0,
-              "weekend_0600_1100": 30.0,
-              "weekend_1100_1800": 30.0,
-              "weekend_1800_2345": 30.0
-            }
-          },
-          {
-            "station_id": "AJ_STOP_0007",
-            "sequence": 5,
-            "offsets": {
-              "weekday_0600_1100": 40.0,
-              "weekday_1100_1800": 40.0,
-              "weekday_1800_2345": 40.0,
-              "weekend_0600_1100": 40.0,
-              "weekend_1100_1800": 40.0,
-              "weekend_1800_2345": 40.0
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
             }
           },
           {
             "station_id": "AJ_STOP_0001",
-            "sequence": 6,
+            "sequence": 7,
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
@@ -684,69 +803,81 @@
         ],
         "segments": [
           {
+            "from_station_id": "AJ_STOP_0014",
+            "to_station_id": "AJ_STOP_0012",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0012",
+            "to_station_id": "AJ_STOP_0011",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
             "from_station_id": "AJ_STOP_0011",
             "to_station_id": "AJ_STOP_0010",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0010",
             "to_station_id": "AJ_STOP_0009",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0009",
             "to_station_id": "AJ_STOP_0008",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0008",
-            "to_station_id": "AJ_STOP_0007",
-            "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
-            }
-          },
-          {
-            "from_station_id": "AJ_STOP_0007",
             "to_station_id": "AJ_STOP_0001",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "ajman industerial",
+      "destination_terminal": "Ajman Industerial",
       "origin_layover_min": 4.0
     },
     "AJ3": {
@@ -838,7 +969,7 @@
             }
           },
           {
-            "station_id": "AJ_STOP_0012",
+            "station_id": "AJ_STOP_0015",
             "sequence": 6,
             "offsets": {
               "weekday_0600_1100": 50.0,
@@ -901,7 +1032,7 @@
           },
           {
             "from_station_id": "AJ_STOP_0005",
-            "to_station_id": "AJ_STOP_0012",
+            "to_station_id": "AJ_STOP_0015",
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
@@ -916,10 +1047,10 @@
       "inbound": {
         "enabled": true,
         "origin_stop_name": "Alhumdiya",
-        "destination_label": "musalla",
+        "destination_label": "Musalla",
         "stops": [
           {
-            "station_id": "AJ_STOP_0012",
+            "station_id": "AJ_STOP_0015",
             "sequence": 1,
             "offsets": {
               "weekday_0600_1100": 0.0,
@@ -931,56 +1062,68 @@
             }
           },
           {
-            "station_id": "AJ_STOP_0010",
+            "station_id": "AJ_STOP_0012",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0011",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0010",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
             }
           },
           {
             "station_id": "AJ_STOP_0009",
-            "sequence": 3,
+            "sequence": 5,
             "offsets": {
-              "weekday_0600_1100": 20.0,
-              "weekday_1100_1800": 20.0,
-              "weekday_1800_2345": 20.0,
-              "weekend_0600_1100": 20.0,
-              "weekend_1100_1800": 20.0,
-              "weekend_1800_2345": 20.0
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
             }
           },
           {
             "station_id": "AJ_STOP_0008",
-            "sequence": 4,
+            "sequence": 6,
             "offsets": {
-              "weekday_0600_1100": 30.0,
-              "weekday_1100_1800": 30.0,
-              "weekday_1800_2345": 30.0,
-              "weekend_0600_1100": 30.0,
-              "weekend_1100_1800": 30.0,
-              "weekend_1800_2345": 30.0
-            }
-          },
-          {
-            "station_id": "AJ_STOP_0007",
-            "sequence": 5,
-            "offsets": {
-              "weekday_0600_1100": 40.0,
-              "weekday_1100_1800": 40.0,
-              "weekday_1800_2345": 40.0,
-              "weekend_0600_1100": 40.0,
-              "weekend_1100_1800": 40.0,
-              "weekend_1800_2345": 40.0
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
             }
           },
           {
             "station_id": "AJ_STOP_0001",
-            "sequence": 6,
+            "sequence": 7,
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
@@ -993,69 +1136,725 @@
         ],
         "segments": [
           {
+            "from_station_id": "AJ_STOP_0015",
+            "to_station_id": "AJ_STOP_0012",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
             "from_station_id": "AJ_STOP_0012",
+            "to_station_id": "AJ_STOP_0011",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0011",
             "to_station_id": "AJ_STOP_0010",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0010",
             "to_station_id": "AJ_STOP_0009",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0009",
             "to_station_id": "AJ_STOP_0008",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
             }
           },
           {
             "from_station_id": "AJ_STOP_0008",
-            "to_station_id": "AJ_STOP_0007",
-            "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
-            }
-          },
-          {
-            "from_station_id": "AJ_STOP_0007",
             "to_station_id": "AJ_STOP_0001",
             "times": {
-              "weekday_0600_1100": 10.0,
-              "weekday_1100_1800": 10.0,
-              "weekday_1800_2345": 10.0,
-              "weekend_0600_1100": 10.0,
-              "weekend_1100_1800": 10.0,
-              "weekend_1800_2345": 10.0
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
       "destination_terminal": "Alhumdiya",
+      "origin_layover_min": 4.0
+    },
+    "DXB": {
+      "auto_return": {
+        "enabled": true,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": true,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "Dubai center point",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0003",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0004",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0005",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0006",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0007",
+            "sequence": 6,
+            "offsets": {
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0017",
+            "sequence": 7,
+            "offsets": {
+              "weekday_0600_1100": 50.0,
+              "weekday_1100_1800": 50.0,
+              "weekday_1800_2345": 50.0,
+              "weekend_0600_1100": 50.0,
+              "weekend_1100_1800": 50.0,
+              "weekend_1800_2345": 50.0
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from_station_id": "AJ_STOP_0001",
+            "to_station_id": "AJ_STOP_0003",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0003",
+            "to_station_id": "AJ_STOP_0004",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0004",
+            "to_station_id": "AJ_STOP_0005",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0005",
+            "to_station_id": "AJ_STOP_0006",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0006",
+            "to_station_id": "AJ_STOP_0007",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0007",
+            "to_station_id": "AJ_STOP_0017",
+            "times": {
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
+            }
+          }
+        ]
+      },
+      "inbound": {
+        "enabled": true,
+        "origin_stop_name": "Dubai center point",
+        "destination_label": "Musalla",
+        "stops": [
+          {
+            "station_id": "AJ_STOP_0017",
+            "sequence": 1,
+            "offsets": {
+              "weekday_0600_1100": 0.0,
+              "weekday_1100_1800": 0.0,
+              "weekday_1800_2345": 0.0,
+              "weekend_0600_1100": 0.0,
+              "weekend_1100_1800": 0.0,
+              "weekend_1800_2345": 0.0
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0016",
+            "sequence": 2,
+            "offsets": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0012",
+            "sequence": 3,
+            "offsets": {
+              "weekday_0600_1100": 16.66,
+              "weekday_1100_1800": 16.66,
+              "weekday_1800_2345": 16.66,
+              "weekend_0600_1100": 16.66,
+              "weekend_1100_1800": 16.66,
+              "weekend_1800_2345": 16.66
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0011",
+            "sequence": 4,
+            "offsets": {
+              "weekday_0600_1100": 24.99,
+              "weekday_1100_1800": 24.99,
+              "weekday_1800_2345": 24.99,
+              "weekend_0600_1100": 24.99,
+              "weekend_1100_1800": 24.99,
+              "weekend_1800_2345": 24.99
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0010",
+            "sequence": 5,
+            "offsets": {
+              "weekday_0600_1100": 33.32,
+              "weekday_1100_1800": 33.32,
+              "weekday_1800_2345": 33.32,
+              "weekend_0600_1100": 33.32,
+              "weekend_1100_1800": 33.32,
+              "weekend_1800_2345": 33.32
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0008",
+            "sequence": 6,
+            "offsets": {
+              "weekday_0600_1100": 41.65,
+              "weekday_1100_1800": 41.65,
+              "weekday_1800_2345": 41.65,
+              "weekend_0600_1100": 41.65,
+              "weekend_1100_1800": 41.65,
+              "weekend_1800_2345": 41.65
+            }
+          },
+          {
+            "station_id": "AJ_STOP_0001",
+            "sequence": 7,
+            "offsets": {
+              "weekday_0600_1100": 50.0,
+              "weekday_1100_1800": 50.0,
+              "weekday_1800_2345": 50.0,
+              "weekend_0600_1100": 50.0,
+              "weekend_1100_1800": 50.0,
+              "weekend_1800_2345": 50.0
+            }
+          }
+        ],
+        "segments": [
+          {
+            "from_station_id": "AJ_STOP_0017",
+            "to_station_id": "AJ_STOP_0016",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0016",
+            "to_station_id": "AJ_STOP_0012",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0012",
+            "to_station_id": "AJ_STOP_0011",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0011",
+            "to_station_id": "AJ_STOP_0010",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0010",
+            "to_station_id": "AJ_STOP_0008",
+            "times": {
+              "weekday_0600_1100": 8.33,
+              "weekday_1100_1800": 8.33,
+              "weekday_1800_2345": 8.33,
+              "weekend_0600_1100": 8.33,
+              "weekend_1100_1800": 8.33,
+              "weekend_1800_2345": 8.33
+            }
+          },
+          {
+            "from_station_id": "AJ_STOP_0008",
+            "to_station_id": "AJ_STOP_0001",
+            "times": {
+              "weekday_0600_1100": 8.35,
+              "weekday_1100_1800": 8.35,
+              "weekday_1800_2345": 8.35,
+              "weekend_0600_1100": 8.35,
+              "weekend_1100_1800": 8.35,
+              "weekend_1800_2345": 8.35
+            }
+          }
+        ]
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Dubai",
+      "origin_layover_min": 4.0
+    },
+    "AJ6": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Sheikh Ammar Street",
+      "origin_layover_min": 4.0
+    },
+    "AJ7": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Mushirf",
+      "origin_layover_min": 4.0
+    },
+    "AJF-Hum": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Humdiya Feeder",
+      "origin_layover_min": 4.0
+    },
+    "AJF-Jurf": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Jurf Feeder",
+      "origin_layover_min": 4.0
+    },
+    "GVR": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Global Village",
+      "origin_layover_min": 4.0
+    },
+    "Sharjah": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Sharjah",
+      "origin_layover_min": 4.0
+    },
+    "UAQ": {
+      "auto_return": {
+        "enabled": false,
+        "layover_min": 6.0
+      },
+      "directional_travel_times": {
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
+      },
+      "outbound": {
+        "enabled": false,
+        "origin_stop_name": "Musalla Station",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "inbound": {
+        "enabled": false,
+        "origin_stop_name": "",
+        "destination_label": "",
+        "stops": [],
+        "segments": []
+      },
+      "origin_terminal": "Musalla",
+      "destination_terminal": "Um-Alqeen",
       "origin_layover_min": 4.0
     }
   },
