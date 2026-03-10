@@ -51,7 +51,7 @@
 </head>
 <body>
 <header>
-  <div class="titleWrap"><div class="t" id="stationName">Station ETA</div><div class="s" id="subtitle">Live stop display with countdown and voice alerts - version 1773139200</div></div>
+  <div class="titleWrap"><div class="t" id="stationName">Station ETA</div><div class="s" id="subtitle">Live stop display with countdown and voice alerts - version 1773141513</div></div>
   <div class="right">
     <div class="pill" id="clock">--:--</div>
     <button class="btn" id="soundBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></span><span id="soundTxt">Sound: ON</span></button>
@@ -81,7 +81,7 @@
 <script>
 (function(){
   "use strict";
-  const VERSION = "1773139200";
+  const VERSION = "1773141513";
   const DATA_URLS = ["data/station_etas.json?v="+VERSION, "./data/station_etas.json?v="+VERSION, "station_etas.json?v="+VERSION, "./station_etas.json?v="+VERSION];
   const NOTIF_URLS = ["data/notification.json?t=", "./data/notification.json?t=", "notification.json?t=", "./notification.json?t="];
   const ROUTE_COLORS = {"AJ1":"var(--aj1)","AJ2":"var(--aj2)","AJ3":"var(--aj3)","AJ4":"var(--aj4)","AJ5":"var(--aj5)","AJ6":"var(--aj6)","AJ7":"var(--aj7)","AJ8":"var(--aj8)","AJ9":"var(--aj9)","AJ10":"var(--aj10)","AJ11":"var(--aj11)","AJ12":"var(--aj12)","AJ13":"var(--aj13)","AJ14":"var(--aj14)","AJ15":"var(--aj15)","UAQ":"var(--uaq)","SHJ":"var(--shj)","DXB":"var(--dxb)"};
