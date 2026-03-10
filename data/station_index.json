@@ -26,11 +26,6 @@
       "station_id": "AJ_STOP_0005"
     },
     {
-      "stop_id": "AJ_STOP_0006",
-      "stop_name": "Jurf industerial",
-      "station_id": "AJ_STOP_0006"
-    },
-    {
       "stop_id": "AJ_STOP_0007",
       "stop_name": "ministyr of labour 2",
       "station_id": "AJ_STOP_0007"
@@ -49,6 +44,11 @@
       "stop_id": "AJ_STOP_0010",
       "stop_name": "Union station 2",
       "station_id": "AJ_STOP_0010"
+    },
+    {
+      "stop_id": "AJ_STOP_0011",
+      "stop_name": "Ajman Industerial",
+      "station_id": "AJ_STOP_0011"
     },
     {
       "stop_id": "AJ_STOP_0012",
