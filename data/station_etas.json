@@ -1,0 +1,3543 @@
+{
+  "generated_at": "2026-03-11T00:51:08+04:00",
+  "time_bands": [
+    {
+      "key": "weekday_am_peak",
+      "label": "Weekday AM Peak",
+      "selector": "weekday",
+      "start": "06:00",
+      "end": "09:00"
+    },
+    {
+      "key": "weekday_offpeak",
+      "label": "Weekday Offpeak",
+      "selector": "weekday",
+      "start": "09:00",
+      "end": "16:00"
+    },
+    {
+      "key": "weekday_pm_peak",
+      "label": "Weekday PM Peak",
+      "selector": "weekday",
+      "start": "16:00",
+      "end": "20:00"
+    },
+    {
+      "key": "weekday_night",
+      "label": "Weekday Night",
+      "selector": "weekday",
+      "start": "20:00",
+      "end": "23:59"
+    },
+    {
+      "key": "weekend_all_day",
+      "label": "Weekend All Day",
+      "selector": "weekend",
+      "start": "00:00",
+      "end": "23:59"
+    }
+  ],
+  "stations": [],
+  "skipped_rows": [
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-10",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-11",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-12",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-13",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-14",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-15",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-16",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-17",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-18",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-19",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-20",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-21",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "14:42",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "15:10",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "15:37",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "16:05",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "16:32",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "17:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "17:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "17:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "18:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "18:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "19:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "19:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "20:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "20:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "21:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "21:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "22:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-22",
+      "departure": "22:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "06:00",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "06:27",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "06:55",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "07:22",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "07:50",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "08:17",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "08:45",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "09:12",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "09:40",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "10:07",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "10:35",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "11:02",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "11:30",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "11:57",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "12:25",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "12:52",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "13:20",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "13:47",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    },
+    {
+      "route": "AJ1",
+      "date": "2026-03-23",
+      "departure": "14:15",
+      "destination": "Jurf Industerial",
+      "reason": "no_enabled_direction"
+    }
+  ]
+}
