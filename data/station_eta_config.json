@@ -70,7 +70,7 @@
       "name_en": "Alkhoor Towers 1",
       "name_ar": "محطة ابراج الخور 1",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": false
     },
     {
       "station_id": "AJ_STOP_0005",
@@ -1862,4 +1862,5 @@
     "lookahead_minutes": 120,
     "auto_generate_wrapper_pages": true
   }
+
 }
