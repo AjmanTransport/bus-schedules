@@ -69,8 +69,8 @@
       "station_id": "AJ_STOP_0004",
       "name_en": "Alkhoor Towers 1",
       "name_ar": "محطة ابراج الخور 1",
-      "active": false,
-      "kiosk_enabled": false
+      "active": true,
+      "kiosk_enabled": true
     },
     {
       "station_id": "AJ_STOP_0005",
@@ -1864,4 +1864,5 @@
   }
 
 }
+
 
