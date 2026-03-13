@@ -1,1 +1,9 @@
-
+{
+  "app_enabled": true,
+  "disable_all_protected_actions": false,
+  "disable_live_publish": false,
+  "disable_send_notification": false,
+  "disable_station_eta_manager": false,
+  "disable_trip_modifications": false,
+  "disable_route_color_manager": false
+}
