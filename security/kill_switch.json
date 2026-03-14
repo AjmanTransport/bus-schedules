@@ -1,5 +1,5 @@
 {
-  "app_enabled": true,
+  "app_enabled": false,
   "disable_all_protected_actions": false,
   "disable_live_publish": false,
   "disable_send_notification": false,
