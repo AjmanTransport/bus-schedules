@@ -26,6 +26,16 @@
       "station_id": "AJ_STOP_0005"
     },
     {
+      "stop_id": "AJ_STOP_0006",
+      "stop_name": "Shiekh Zaed Mosque",
+      "station_id": "AJ_STOP_0006"
+    },
+    {
+      "stop_id": "AJ_STOP_0007",
+      "stop_name": "Numyia Towers station 1",
+      "station_id": "AJ_STOP_0007"
+    },
+    {
       "stop_id": "AJ_STOP_0008",
       "stop_name": "Numyia Towers station 2",
       "station_id": "AJ_STOP_0008"
@@ -49,6 +59,16 @@
       "stop_id": "AJ_STOP_0012",
       "stop_name": "Union Station 2",
       "station_id": "AJ_STOP_0012"
+    },
+    {
+      "stop_id": "AJ_STOP_0013",
+      "stop_name": "Aljurf Industerial",
+      "station_id": "AJ_STOP_0013"
+    },
+    {
+      "stop_id": "AJ_STOP_0014",
+      "stop_name": "Ajman Industerial",
+      "station_id": "AJ_STOP_0014"
     },
     {
       "stop_id": "AJ_STOP_0015",
