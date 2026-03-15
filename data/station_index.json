@@ -66,6 +66,11 @@
       "station_id": "AJ_STOP_0013"
     },
     {
+      "stop_id": "AJ_STOP_0014",
+      "stop_name": "Ajman Industerial",
+      "station_id": "AJ_STOP_0014"
+    },
+    {
       "stop_id": "AJ_STOP_0015",
       "stop_name": "Alhumdiya station",
       "station_id": "AJ_STOP_0015"
