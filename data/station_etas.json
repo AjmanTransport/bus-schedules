@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T16:52:06+04:00",
+  "generated_at": "2026-03-15T16:49:33+04:00",
   "generated_by_user_name": "abdelhameed.mohamed",
   "time_bands": [
     {
@@ -8636,7 +8636,7 @@
     {
       "stop_id": "AJ_STOP_0008",
       "stop_name": "Numyia Towers station 2",
-      "stop_name_ar": "محطة ابراج النعيمية 333",
+      "stop_name_ar": "محطة ابراج النعيمية 222",
       "routes": [
         "AJ1",
         "AJ3"
@@ -19342,126 +19342,7 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
-      "departure": "07:50",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "09:40",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "11:30",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "13:20",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "15:10",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "17:00",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "18:50",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "20:40",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "22:30",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
       "departure": "06:27",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "08:17",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "10:07",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "11:57",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "13:47",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "15:37",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "17:27",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "19:17",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "21:07",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     },
@@ -19475,63 +19356,28 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
-      "departure": "08:45",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "10:35",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "12:25",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "14:15",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "16:05",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "17:55",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "19:45",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
-      "departure": "21:35",
-      "destination": "ajman idus",
-      "reason": "ambiguous_direction"
-    },
-    {
-      "route": "AJ2",
-      "date": "2026-03-15",
       "departure": "07:22",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "07:50",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "08:17",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "08:45",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     },
@@ -19545,7 +19391,49 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
+      "departure": "09:40",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "10:07",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "10:35",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
       "departure": "11:02",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "11:30",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "11:57",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "12:25",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     },
@@ -19559,7 +19447,49 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
+      "departure": "13:20",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "13:47",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "14:15",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
       "departure": "14:42",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "15:10",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "15:37",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "16:05",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     },
@@ -19573,7 +19503,49 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
+      "departure": "17:00",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "17:27",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "17:55",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
       "departure": "18:22",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "18:50",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "19:17",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "19:45",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     },
@@ -19587,7 +19559,35 @@
     {
       "route": "AJ2",
       "date": "2026-03-15",
+      "departure": "20:40",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "21:07",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "21:35",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
       "departure": "22:02",
+      "destination": "ajman idus",
+      "reason": "ambiguous_direction"
+    },
+    {
+      "route": "AJ2",
+      "date": "2026-03-15",
+      "departure": "22:30",
       "destination": "ajman idus",
       "reason": "ambiguous_direction"
     }
