@@ -96,7 +96,7 @@
     {
       "station_id": "AJ_STOP_0008",
       "name_en": "Numyia Towers station 2",
-      "name_ar": "محطة ابراج النعيمية 2",
+      "name_ar": "محطة ابراج النعيمية 222",
       "active": true,
       "kiosk_enabled": true
     },
@@ -520,7 +520,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "jurf industerial",
+      "destination_terminal": "jurf",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -877,7 +877,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Ajman Industerial",
+      "destination_terminal": "ajman idus",
       "origin_layover_min": 4.0
     },
     "AJ3": {
@@ -1210,7 +1210,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Alhumdiya",
+      "destination_terminal": "hum",
       "origin_layover_min": 4.0
     },
     "DXB": {
@@ -1219,22 +1219,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": true,
@@ -1576,22 +1562,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1617,22 +1589,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1658,22 +1616,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1699,22 +1643,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1740,22 +1670,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1781,22 +1697,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1822,22 +1724,8 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        },
-        "inbound": {
-          "weekday_0600_1100": 50.0,
-          "weekday_1100_1800": 50.0,
-          "weekday_1800_2345": 50.0,
-          "weekend_0600_1100": 50.0,
-          "weekend_1100_1800": 50.0,
-          "weekend_1800_2345": 50.0
-        }
+        "outbound": {},
+        "inbound": {}
       },
       "outbound": {
         "enabled": false,
@@ -1862,7 +1750,4 @@
     "lookahead_minutes": 120,
     "auto_generate_wrapper_pages": true
   }
-
 }
-
-
