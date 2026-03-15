@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T17:07:59+04:00",
+  "generated_at": "2026-03-16T01:48:48+04:00",
   "route_colors": {},
   "routes": [
     {
@@ -8,8 +8,8 @@
       "display_name": "jurf",
       "days": [
         {
-          "date": "2026-03-15",
-          "profile": "weekend",
+          "date": "2026-03-16",
+          "profile": "weekday",
           "buses": [
             {
               "bus": "Bus_01",
@@ -78,8 +78,8 @@
       "display_name": "ajman",
       "days": [
         {
-          "date": "2026-03-15",
-          "profile": "weekend",
+          "date": "2026-03-16",
+          "profile": "weekday",
           "buses": [
             {
               "bus": "Bus_01",
@@ -148,8 +148,8 @@
       "display_name": "hum",
       "days": [
         {
-          "date": "2026-03-15",
-          "profile": "weekend",
+          "date": "2026-03-16",
+          "profile": "weekday",
           "buses": [
             {
               "bus": "Bus_01",
