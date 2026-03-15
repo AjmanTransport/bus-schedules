@@ -96,7 +96,7 @@
     {
       "station_id": "AJ_STOP_0008",
       "name_en": "Numyia Towers station 2",
-      "name_ar": "محطة ابراج النعيمية 222",
+      "name_ar": "محطة ابراج النعيمية 444",
       "active": true,
       "kiosk_enabled": true
     },
@@ -877,7 +877,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "ajman idus",
+      "destination_terminal": "ajman",
       "origin_layover_min": 4.0
     },
     "AJ3": {
