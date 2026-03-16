@@ -42,7 +42,7 @@
     },
     {
       "stop_id": "AJ_STOP_0009",
-      "stop_name": "Ministry of labour 55",
+      "stop_name": "Ministry of labour 2",
       "station_id": "AJ_STOP_0009"
     },
     {
@@ -64,11 +64,6 @@
       "stop_id": "AJ_STOP_0013",
       "stop_name": "Aljurf Industerial",
       "station_id": "AJ_STOP_0013"
-    },
-    {
-      "stop_id": "AJ_STOP_0014",
-      "stop_name": "Ajman Industerial",
-      "station_id": "AJ_STOP_0014"
     },
     {
       "stop_id": "AJ_STOP_0015",
