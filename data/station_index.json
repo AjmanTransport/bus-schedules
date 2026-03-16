@@ -69,6 +69,16 @@
       "stop_id": "AJ_STOP_0015",
       "stop_name": "Alhumdiya station",
       "station_id": "AJ_STOP_0015"
+    },
+    {
+      "stop_id": "AJ_STOP_0016",
+      "stop_name": "Sudai German Hospital",
+      "station_id": "AJ_STOP_0016"
+    },
+    {
+      "stop_id": "AJ_STOP_0017",
+      "stop_name": "Dubai Center Point",
+      "station_id": "AJ_STOP_0017"
     }
   ]
 }
