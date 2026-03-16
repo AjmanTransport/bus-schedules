@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-17T01:27:26+04:00",
+  "generated_at": "2026-03-17T01:31:49+04:00",
   "route_colors": {},
   "routes": [
     {
       "route": "AJ1",
-      "destination": "Aljurf",
-      "display_name": "Aljurf",
+      "destination": "Jurf",
+      "display_name": "Jurf",
       "days": [
         {
           "date": "2026-03-17",
