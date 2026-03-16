@@ -68,7 +68,7 @@
     {
       "station_id": "AJ_STOP_0004",
       "name_en": "Alkhoor Towers 1",
-      "name_ar": "محطة ابراج الخور 1",
+      "name_ar": "محطة ابراج الخور 1111",
       "active": true,
       "kiosk_enabled": true
     },
@@ -102,8 +102,8 @@
     },
     {
       "station_id": "AJ_STOP_0009",
-      "name_en": "Ministry of labour 55",
-      "name_ar": "محطة وزارة العمل 55",
+      "name_en": "Ministry of labour 2",
+      "name_ar": "محطة وزارة العمل 2",
       "active": true,
       "kiosk_enabled": true
     },
@@ -520,7 +520,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "jurf",
+      "destination_terminal": "Aljurf",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -877,7 +877,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "ajman induserial",
+      "destination_terminal": "Ajman idusterial",
       "origin_layover_min": 4.0
     },
     "AJ3": {
@@ -1210,7 +1210,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "humdiya",
+      "destination_terminal": "Alhumdiya",
       "origin_layover_min": 4.0
     },
     "DXB": {
