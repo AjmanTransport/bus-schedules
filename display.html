@@ -10,7 +10,6 @@
       --bg:#071525;
       --text:#e8f2ff;
       --muted:#9fb4cc;
-
       /* Ajman route branding (fixed) */
       --aj1:#2f80ed; /* blue */
       --aj2:#27ae60; /* green */
@@ -31,7 +30,6 @@
       --shj:#14b8a6;  /* SHJ */
       --dxb:#fb7185;  /* DXB */
       --accent:#39a7ff;
-
       --good:#1ee6a8;
       --warn:#ffcc66;
       --danger:#ff6b6b;
@@ -75,9 +73,7 @@
     }
     .ico{width:18px;height:18px;display:inline-block}
     .ico svg{width:18px;height:18px;fill:currentColor;display:block}
-
     #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
-
     .grid{display:grid;grid-template-columns: 1.35fr .65fr; gap:14px; padding:14px 14px 18px;}
     .card{
       background:var(--card);
@@ -91,7 +87,6 @@
     .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
     .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
     .muted{color:var(--muted);}
-
     /* Top countdown bar */
     .topBar{
       display:flex;align-items:center;justify-content:space-between;
@@ -102,10 +97,9 @@
     }
     .topBar .left{display:flex;flex-direction:column;gap:4px}
     .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .topSmall{font-size:20px;color:var(--muted);font-weight:900;letter-spacing:.04em}
-    .topBig{font-size:84px;font-weight:1000;letter-spacing:2px;line-height:1}
-    .topRoute{font-size:20px;font-weight:900}
-
+    .topSmall{font-size:12px;color:var(--muted);font-weight:800}
+    .topBig{font-size:26px;font-weight:950}
+    .topRoute{font-size:16px;font-weight:900}
     table{width:100%;border-collapse:collapse;}
     th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
     th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
@@ -116,7 +110,6 @@
     .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
     .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
     .tag.route{background:rgba(57,167,255,0.12);border-color:rgba(57,167,255,0.24);}
-
     /* Next-per-route cards */
     .cards{
       display:grid;
@@ -145,8 +138,7 @@
     .rName{font-size:16px;font-weight:950;letter-spacing:.2px}
     .rSub{font-size:12px;color:var(--muted);font-weight:800;margin-top:3px}
     .rT{font-size:22px;font-weight:1000}
-    .rB{font-size:18px;color:#ffffff;font-weight:1000;margin-top:6px;text-align:right;letter-spacing:.5px}
-    .rB .mins{font-size:22px;font-weight:1000;color:var(--warn)}
+    .rB{font-size:12px;color:var(--muted);font-weight:900;margin-top:4px;text-align:right}
     .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
       /* Full-screen passenger notification overlay */
     .notifOverlay{
@@ -219,22 +211,12 @@
       .notifTitle{ font-size: 26px; }
       .notifBody{ font-size: 20px; }
     }
-  
-    @keyframes blinkUrgent {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.2; }
-      100% { opacity: 1; }
-    }
-    .topBig.urgentBlink{
-      color: var(--danger);
-      animation: blinkUrgent 1s infinite;
-    }
   </style>
 </head>
 <body>
 <header>
   <div class="titleWrap">
-    <div class="t">Musalla Bus Station - Live Departures هيئة النقل عجمان - نظام جدولة مواعيد رحلات النقل العام - محطة المصلي الرئيسية</div>
+    <div class="t">Musalla Bus Station - Live Departures هيئة النقل عجمان - نظام مواعيد رحلات النقل العام.. - محطة المصلي الرئيسية</div>
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
   <div class="right">
@@ -253,9 +235,7 @@
     </button>
   </div>
 </header>
-
 <div id="err"></div>
-
 <div id="notifOverlay" class="notifOverlay" style="display:none" aria-live="assertive">
   <div class="notifCard" role="dialog" aria-modal="true">
     <div class="notifHeader">
@@ -273,14 +253,12 @@
     </div>
   </div>
 </div>
-
 <div class="grid">
   <div class="card">
-    <h2>Next Departures (All Routes) الرحلات النالية لكل الخطوط مرتبة حسب اقرب رحلة</h2>
-
+    <h2>Next Departures (All Routes)</h2>
     <div class="topBar">
       <div class="left">
-        <div class="topSmall">Next trip countdown الزمن المتبقي لافرب رحلة</div>
+        <div class="topSmall">Next trip countdown</div>
         <div class="topBig" id="topCountdown">--:--</div>
         <div class="topRoute" id="topDetails">-</div>
       </div>
@@ -289,7 +267,6 @@
         <div class="pill" id="rotationTag">Showing 1–10</div>
       </div>
     </div>
-
     <div class="pad" style="padding-top:10px">
       <table>
         <thead>
@@ -307,15 +284,13 @@
         </tbody>
       </table>
     </div>
-
     <div class="ticker">
       <div id="lastUpdate">Last update: -</div>
       <div id="net">Online: -</div>
     </div>
   </div>
-
   <div class="card">
-    <h2>Next per Route اقرب رحلة لكل خط</h2>
+    <h2>Next per Route</h2>
     <div class="pad">
       <div class="cards" id="routeCards">
         <div class="muted">Loading...</div>
@@ -327,19 +302,16 @@
     </div>
   </div>
 </div>
-
 <script>
 (function(){
   "use strict";
-
-  const VERSION = "1771702707";
+  const VERSION = "1773658767";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
     "schedules.json?v=" + VERSION,
     "./schedules.json?v=" + VERSION
   ];
-
   // Station popup notification (written by the scheduler app to data/notification.json)
   const NOTIF_URLS = [
     "data/notification.json?t=",
@@ -347,13 +319,11 @@
     "notification.json?t=",
     "./notification.json?t="
   ];
-
   /* Route priority order (AJ1, AJ2, AJ3...) */
   const ROUTE_PRIORITY = [
     "AJ1","AJ2","AJ3","AJ4","AJ5","AJ6","AJ7","AJ8","AJ9","AJ10",
     "UAQ","SHJ","DXB"
   ];
-
   /* Fixed colors per route */
   const ROUTE_COLORS = {
     "AJ1":"var(--aj1)",
@@ -375,7 +345,6 @@
     "SHJ":"var(--shj)",
     "DXB":"var(--dxb)"
   };
-
   const elRows = document.getElementById("rows");
   const elClock = document.getElementById("clock");
   const elSub = document.getElementById("subtitle");
@@ -388,31 +357,25 @@
   const elTopD = document.getElementById("topDetails");
   const elCards = document.getElementById("routeCards");
   const elState = document.getElementById("serviceState");
-
   let schedules = null;
-
   /* Persist Sound/Voice toggles across kiosk auto-refresh */
   const LS_SOUND = "musalla_soundOn";
   const LS_VOICE = "musalla_voiceOn";
   let soundOn = true;
   let voiceOn = true; // default ON for station screen
-
   /* Rotation for next departures list */
   const PAGE_SIZE = 10;
   const TOTAL_SHOW = 20;
   const ROTATE_MS = 8000;
   let pageIndex = 0; // 0 => 1-10, 1 => 11-20
   let lastRotate = 0;
-
   /* Alert dedupe */
   const alerted = new Set();
   let audioCtx = null;
-
   const pad2 = n => String(n).padStart(2,"0");
   const now = () => new Date();
   const hhmm = d => pad2(d.getHours()) + ":" + pad2(d.getMinutes());
   const ymd = d => d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());
-
   function showErr(msg){
     if(!elErr) return;
     elErr.style.display = "block";
@@ -423,7 +386,6 @@
     elErr.style.display = "none";
     elErr.textContent = "";
   }
-
   function loadTogglePrefs(){
     try{
       const s = localStorage.getItem(LS_SOUND);
@@ -439,13 +401,11 @@
       localStorage.setItem(LS_VOICE, voiceOn ? "1" : "0");
     }catch(e){}
   }
-
   function syncButtons(){
     const sb = document.getElementById("soundBtn");
     const vb = document.getElementById("voiceBtn");
     const st = document.getElementById("soundTxt");
     const vt = document.getElementById("voiceTxt");
-
     if(sb){
       sb.classList.toggle("off", !soundOn);
       if(st) st.textContent = soundOn ? "Sound: ON" : "Sound: OFF";
@@ -455,7 +415,6 @@
       if(vt) vt.textContent = voiceOn ? "Voice: ON" : "Voice: OFF";
     }
   }
-
   function ensureAudio(){
     if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if(audioCtx.state === "suspended"){ try{ audioCtx.resume(); }catch(e){} }
@@ -478,89 +437,22 @@
     const gap = 140, dur = 120;
     freqs.forEach((f,i)=> setTimeout(()=>beepOnce(dur, f, 0.20), i*(dur+gap)));
   }
-
-  // ---- Better bilingual TTS selection (EN + AR) ----
-let VOICES = [];
-
-function loadVoices(){
-  try{
-    VOICES = window.speechSynthesis.getVoices() || [];
-  }catch(e){
-    VOICES = [];
+  function speakBilingual(enText, arText){
+    try{
+      if(!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const u1 = new SpeechSynthesisUtterance(enText);
+      u1.lang = "en-US";
+      u1.rate = 1.0;
+      const u2 = new SpeechSynthesisUtterance(arText);
+      u2.lang = "ar-AE";
+      u2.rate = 0.95;
+      // chain
+      u1.onend = ()=> { try{ window.speechSynthesis.speak(u2); }catch(e){} };
+      window.speechSynthesis.speak(u1);
+    }catch(e){}
   }
-}
-
-if("speechSynthesis" in window){
-  loadVoices();
-  window.speechSynthesis.onvoiceschanged = () => loadVoices();
-}
-
-function pickVoice(preferredLangs, nameHints=[]){
-  const v = VOICES || [];
-  const langs = preferredLangs.map(x=>String(x).toLowerCase());
-  const hints = nameHints.map(x=>String(x).toLowerCase());
-
-  for(const L of langs){
-    const cands = v.filter(x=>String(x.lang||"").toLowerCase().startsWith(L));
-    for(const h of hints){
-      const found = cands.find(x=>String(x.name||"").toLowerCase().includes(h));
-      if(found) return found;
-    }
-  }
-
-  for(const L of langs){
-    const found = v.find(x=>String(x.lang||"").toLowerCase().startsWith(L));
-    if(found) return found;
-  }
-
-  for(const h of hints){
-    const found = v.find(x=>String(x.name||"").toLowerCase().includes(h));
-    if(found) return found;
-  }
-
-  return null;
-}
-
-function speakBilingual(enText, arText){
-  try{
-    if(!("speechSynthesis" in window)) return;
-
-    loadVoices();
-
-    const arVoice = pickVoice(
-      ["ar-AE","ar-SA","ar-EG","ar"],
-      ["fatima","hamdan","hala","zayd","zeina","microsoft","google"]
-    );
-
-    const enVoice = pickVoice(
-      ["en-GB","en-US","en"],
-      ["natural","neural","microsoft","google","zira","aria","jenny","guy","david"]
-    );
-
-    window.speechSynthesis.cancel();
-
-    const u1 = new SpeechSynthesisUtterance(String(enText||""));
-    u1.lang = enVoice ? enVoice.lang : "en-US";
-    u1.rate = 1.0;
-    if(enVoice) u1.voice = enVoice;
-
-    const u2 = new SpeechSynthesisUtterance(String(arText||""));
-    u2.lang = arVoice ? arVoice.lang : "ar-AE";
-    u2.rate = 0.95;
-    if(arVoice) u2.voice = arVoice;
-
-    u1.onend = ()=>{ try{ window.speechSynthesis.speak(u2); }catch(e){} };
-
-    window.speechSynthesis.speak(u1);
-
-  }catch(e){}
-}
-
-    function hasArabicText(s){
-    return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(String(s||""));
-  }
-
-// ---------- Notification overlay ----------
+  // ---------- Notification overlay ----------
   const notifOverlay = document.getElementById("notifOverlay");
   const notifTitle = document.getElementById("notifTitle");
   const notifContent = document.getElementById("notifContent");
@@ -571,7 +463,6 @@ function speakBilingual(enText, arText){
   let notifHideTimer = null;
   let notifTickTimer = null;
   let notifEndsAt = 0;
-
   function fmtMMSS(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
@@ -579,75 +470,46 @@ function speakBilingual(enText, arText){
     const r = s%60;
     return pad2(m) + ":" + pad2(r);
   }
-
   function hideNotification(){
     if(notifHideTimer){ clearTimeout(notifHideTimer); notifHideTimer = null; }
     if(notifTickTimer){ clearInterval(notifTickTimer); notifTickTimer = null; }
     if(notifOverlay) notifOverlay.style.display = "none";
   }
-
-  async function showNotification(payload){
+  function showNotification(payload){
     if(!payload || !payload.active) return;
-
     lastNotifId = String(payload.id || payload.created_at || Date.now());
     const title = String(payload.title || "Notice").trim();
     const content = String(payload.content || "").trim();
     const durSec = Math.max(5, Math.min(parseInt(payload.duration || 20, 10) || 20, 600));
-
     if(notifTitle) notifTitle.textContent = title;
     if(notifContent) notifContent.textContent = content;
     if(notifCreated){
       const ts = payload.created_at ? String(payload.created_at) : "";
       notifCreated.textContent = ts ? ("Sent: " + ts) : "";
     }
-
     if(notifOverlay) notifOverlay.style.display = "flex";
-
     // Sound + voice (browser may require a user gesture once; we attempt anyway)
     try{ if(soundOn) beepPattern(); }catch(e){}
     try{
       if(voiceOn){
         const en = "Attention please. " + title + ". " + content;
-
-        // If Python sends Arabic fields, prefer them:
-        const titleAr = String(payload.title_ar || payload.title_arabic || "").trim();
-        const contentAr = String(payload.content_ar || payload.content_arabic || "").trim();
-
-        let arText = "";
-        if(titleAr || contentAr){
-          arText = (titleAr ? titleAr : title) + ". " + (contentAr ? contentAr : content);
-        }else{
-          // If the notification already contains Arabic letters, speak it as Arabic.
-          const mixed = (title + " " + content);
-          if(hasArabicText(mixed)){
-            arText = title + ". " + content;
-          }else{
-            // English-only -> auto translate to Arabic
-            const translated = await translateToArabic(title + ". " + content);
-            arText = translated;
-          }
-        }
-
-        const ar = arText ? ("تنبيه. " + arText) : "";
+        const ar = "تنبيه. " + title + ". " + content;
         speakBilingual(en, ar);
       }
     }catch(e){}
-
     // Auto hide
     notifEndsAt = Date.now() + durSec*1000;
     if(notifTimer) notifTimer.textContent = fmtMMSS(notifEndsAt - Date.now());
     if(notifTickTimer) clearInterval(notifTickTimer);
-    notifTickTimer = setInterval(()=>{
+  setInterval(()=>{
       if(!notifTimer) return;
       const left = notifEndsAt - Date.now();
       notifTimer.textContent = fmtMMSS(left);
       if(left <= 0) hideNotification();
     }, 250);
-
     if(notifHideTimer) clearTimeout(notifHideTimer);
     notifHideTimer = setTimeout(hideNotification, durSec*1000);
   }
-
   async function fetchJsonSmart(baseUrls){
     const stamp = String(Date.now());
     for(const u of baseUrls){
@@ -660,7 +522,6 @@ function speakBilingual(enText, arText){
     }
     return null;
   }
-
   async function checkNotification(){
     const payload = await fetchJsonSmart(NOTIF_URLS);
     if(!payload || !payload.active) return;
@@ -669,15 +530,12 @@ function speakBilingual(enText, arText){
     if(pid === lastNotifId) return;
     showNotification(payload);
   }
-
   // Start notification polling
   setInterval(checkNotification, 4000);
   checkNotification();
-
   if(notifClose) notifClose.addEventListener("click", hideNotification);
   // help unlock audio on the first user gesture (touch/click)
   document.addEventListener("click", ()=>{ try{ ensureAudio(); }catch(e){} }, { once:true });
-
   function parseTime(dateStr, t){
     const parts = String(t||"").split(":");
     const H = parseInt(parts[0]||"0",10);
@@ -686,7 +544,6 @@ function speakBilingual(enText, arText){
     d.setHours(H, M, 0, 0);
     return d;
   }
-
   function fmtCountdown(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
@@ -694,14 +551,12 @@ function speakBilingual(enText, arText){
     const r = s%60;
     return pad2(m) + ":" + pad2(r);
   }
-
   function statusTag(ms){
     const min = ms/60000;
     if(min <= 2) return {cls:"danger", txt:"Now"};
     if(min <= 10) return {cls:"warn", txt:"Soon"};
     return {cls:"good", txt:"Upcoming"};
   }
-
   function routeKey(route){
     const s = String(route||"").toUpperCase().replace(/\s+/g,"").trim();
     const m = s.match(/AJ0*([0-9]{1,2})/);
@@ -717,7 +572,6 @@ function speakBilingual(enText, arText){
     const k = routeKey(route);
     return ROUTE_COLORS[k] || "var(--accent)";
   }
-
   async function fetchFirst(){
     for(const u of CANDIDATE_URLS){
       try{
@@ -727,18 +581,15 @@ function speakBilingual(enText, arText){
     }
     throw new Error("Failed to load schedules.json. Check that schedules.json exists at /bus-schedules/data/ or /bus-schedules/.");
   }
-
   function findDayForToday(routeObj, todayISO){
     if(!routeObj || !routeObj.days) return null;
     return routeObj.days.find(d => d.date === todayISO) || null;
   }
-
   function getTomorrowFirstTrip(todayISO){
     if(!schedules || !schedules.routes) return null;
     const d = new Date(todayISO + "T00:00:00");
     d.setDate(d.getDate() + 1);
     const tISO = ymd(d);
-
     let best = null; // {time, route, bus}
     schedules.routes.forEach(r=>{
       const day = r.days ? r.days.find(x=>x.date===tISO) : null;
@@ -754,7 +605,6 @@ function speakBilingual(enText, arText){
     });
     return best;
   }
-
   function buildUpcoming(todayISO){
     const nowD = now();
     const nowMs = nowD.getTime();
@@ -778,83 +628,59 @@ function speakBilingual(enText, arText){
     list.sort((a,b)=>a.ms - b.ms);
     return list;
   }
-
   function renderTop(nextItem, todayISO){
     elDateTag.textContent = "Date: " + todayISO;
-
     if(!nextItem){
       elTopC.textContent = "--:--";
       elTopD.textContent = "No upcoming trips";
-      elTopC.classList.remove("urgentBlink");
       return;
     }
-
     elTopC.textContent = fmtCountdown(nextItem.ms);
     elTopD.textContent = "Route " + nextItem.route + "  •  Bus " + nextItem.bus + "  •  " + nextItem.time;
-
-    // Blink when 1 minute or less
-    if(nextItem.ms <= 60000){
-      elTopC.classList.add("urgentBlink");
-    }else{
-      elTopC.classList.remove("urgentBlink");
-    }
   }
-
   function renderDeparturesTable(upcoming, todayISO){
     // rotation 1–10 then 11–20
     const sliced = upcoming.slice(0, TOTAL_SHOW);
     const start = pageIndex * PAGE_SIZE;
     const view = sliced.slice(start, start + PAGE_SIZE);
-
     if(elRot){
       const a = start + 1;
       const b = Math.min(start + PAGE_SIZE, sliced.length || (start+PAGE_SIZE));
       elRot.textContent = "Showing " + a + "–" + b;
     }
-
     if(!view.length){
       elRows.innerHTML = '<tr><td colspan="6" class="muted">No upcoming trips</td></tr>';
       return;
     }
-
     elRows.innerHTML = "";
     view.forEach(item=>{
       const tag = statusTag(item.ms);
       const tr = document.createElement("tr");
-
       const tdT = document.createElement("td");
       tdT.className = "time";
       tdT.textContent = item.time;
-
       const tdC = document.createElement("td");
       tdC.textContent = fmtCountdown(item.ms);
-
       const tdS = document.createElement("td");
       tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
-
       const tdB = document.createElement("td");
       tdB.textContent = item.bus;
-
       const tdR = document.createElement("td");
       tdR.className = "route";
       const rc = routeColor(item.route);
       tdR.innerHTML = `<span class="tag route" style="border-color:${rc};color:${rc}">${item.route}</span>`;
-
       const tdD = document.createElement("td");
       tdD.textContent = item.destination || "-";
-
       tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdB); tr.appendChild(tdR); tr.appendChild(tdD);
       elRows.appendChild(tr);
     });
   }
-
   function renderRouteCards(upcoming, todayISO){
     // Next per route mini-cards (super clear for passengers)
     const nextByRoute = {};
     upcoming.forEach(it=>{
       if(!nextByRoute[it.route]) nextByRoute[it.route] = it;
     });
-
     const routesToday = schedules.routes
       .filter(r => !!findDayForToday(r, todayISO))
       .slice()
@@ -864,35 +690,29 @@ function speakBilingual(enText, arText){
         if(pa !== pb) return pa - pb;
         return String(a.route).localeCompare(String(b.route));
       });
-
     if(!routesToday.length){
       elCards.innerHTML = '<div class="muted">No schedules for today</div>';
       return;
     }
-
     elCards.innerHTML = "";
     routesToday.forEach(r=>{
       const it = nextByRoute[r.route] || null;
-
       const card = document.createElement("div");
       card.className = "rcard";
       card.style.setProperty("--accent", routeColor(r.route));
       card.style.setProperty("border-color","rgba(255,255,255,0.10)");
-
       const left = document.createElement("div");
       left.className = "rL";
       left.innerHTML = `
         <div class="rName">${r.route}</div>
         <div class="rSub">${r.display_name || r.route}</div>
       `;
-
       const right = document.createElement("div");
       right.style.textAlign = "right";
-
       if(it){
         right.innerHTML = `
           <div class="rT">${it.time}</div>
-          <div class="rB">Bus ${it.bus} • in <span class="mins">${Math.max(0, Math.round(it.ms/60000))}</span> min</div>
+          <div class="rB">Bus ${it.bus} • in ${Math.max(0, Math.round(it.ms/60000))} min</div>
         `;
       }else{
         right.innerHTML = `
@@ -900,7 +720,6 @@ function speakBilingual(enText, arText){
           <div class="rB">No more trips today</div>
         `;
       }
-
       card.style.setProperty("box-shadow","none");
       card.style.borderColor = "rgba(255,255,255,0.10)";
       card.style.background = "rgba(255,255,255,0.04)";
@@ -912,7 +731,6 @@ function speakBilingual(enText, arText){
       card.style.setProperty("display","flex");
       card.style.setProperty("justify-content","space-between");
       card.style.setProperty("align-items","center");
-
       // left color bar
       const bar = document.createElement("div");
       bar.style.position="absolute";
@@ -923,34 +741,27 @@ function speakBilingual(enText, arText){
       bar.style.background = routeColor(r.route);
       bar.style.opacity="0.95";
       card.appendChild(bar);
-
       card.appendChild(left);
       card.appendChild(right);
       elCards.appendChild(card);
     });
   }
-
   function serviceEndedMessage(todayISO, upcoming){
     // After last trip, show “Service ended — next service starts tomorrow at XX:XX”.
     if(upcoming.length) return null;
-
     const tmr = getTomorrowFirstTrip(todayISO);
     if(!tmr) return "Service ended — no schedules found for tomorrow";
     return "Service ended — next service starts tomorrow at " + tmr.time + " (Route " + tmr.route + ", Bus " + tmr.bus + ")";
   }
-
   function checkAlerts(nextItem, todayISO){
     if(!nextItem) return;
     if(!soundOn && !voiceOn) return;
-
     // Alert window: 2 minutes before departure (including at departure)
     const min = nextItem.ms / 60000;
     if(min < 0 || min > 2) return;
-
     const key = todayISO + "|" + nextItem.route + "|" + nextItem.bus + "|" + nextItem.time;
     if(alerted.has(key)) return;
     alerted.add(key);
-
     if(soundOn){
       beepPattern();
     }
@@ -960,13 +771,11 @@ function speakBilingual(enText, arText){
       speakBilingual(en, ar);
     }
   }
-
   async function load(){
     try{
       clearErr();
       const out = await fetchFirst();
       schedules = out.json;
-
       // Override route colors from schedules.json (if provided)
       try{
         if(schedules && schedules.route_colors){
@@ -976,13 +785,10 @@ function speakBilingual(enText, arText){
           }
         }
       }catch(e){}
-
-
       const todayISO = ymd(now());
       elSub.textContent = "Today: " + todayISO + " • Live countdown based on device time";
       elLast.textContent = "Last update: " + (schedules.generated_at || "-");
       elNet.textContent = "Online: " + (navigator.onLine ? "Yes" : "No");
-
       // If today not found in ANY route => show "No schedules for today" (no fallback)
       const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
       if(!anyToday){
@@ -993,30 +799,24 @@ function speakBilingual(enText, arText){
         if(elState) elState.textContent = "No schedules for today";
         return;
       }
-
       const upcoming = buildUpcoming(todayISO);
       const nextItem = upcoming[0] || null;
-
       renderTop(nextItem, todayISO);
       renderDeparturesTable(upcoming, todayISO);
       renderRouteCards(upcoming, todayISO);
-
       const ended = serviceEndedMessage(todayISO, upcoming);
       if(elState){
         elState.textContent = ended ? ended : "Service running";
       }
-
       // Also show ended state in top if applicable
       if(ended){
         elTopD.textContent = ended;
       }
-
       checkAlerts(nextItem, todayISO);
     }catch(e){
       showErr(String(e && e.message ? e.message : e));
     }
   }
-
   function rotateIfNeeded(){
     const t = Date.now();
     if(t - lastRotate >= ROTATE_MS){
@@ -1024,13 +824,11 @@ function speakBilingual(enText, arText){
       pageIndex = (pageIndex + 1) % 2; // 0<->1
     }
   }
-
   function tick(){
     elClock.textContent = hhmm(now());
     rotateIfNeeded();
     // Re-render from already-loaded schedules (fast), but if not yet, do nothing.
     if(!schedules || !schedules.routes) return;
-
     const todayISO = ymd(now());
     const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
     if(!anyToday){
@@ -1041,14 +839,11 @@ function speakBilingual(enText, arText){
       if(elState) elState.textContent = "No schedules for today";
       return;
     }
-
     const upcoming = buildUpcoming(todayISO);
     const nextItem = upcoming[0] || null;
-
     renderTop(nextItem, todayISO);
     renderDeparturesTable(upcoming, todayISO);
     renderRouteCards(upcoming, todayISO);
-
     const ended = serviceEndedMessage(todayISO, upcoming);
     if(elState){
       elState.textContent = ended ? ended : "Service running";
@@ -1056,10 +851,8 @@ function speakBilingual(enText, arText){
     if(ended){
       elTopD.textContent = ended;
     }
-
     checkAlerts(nextItem, todayISO);
   }
-
   function onSoundToggle(){
     soundOn = !soundOn;
     saveTogglePrefs();
@@ -1079,34 +872,18 @@ function speakBilingual(enText, arText){
       try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){}
     }
   }
-
   document.addEventListener("DOMContentLoaded", ()=>{
     loadTogglePrefs();
-
     const sb = document.getElementById("soundBtn");
     const vb = document.getElementById("voiceBtn");
     if(sb) sb.addEventListener("click", onSoundToggle);
     if(vb) vb.addEventListener("click", onVoiceToggle);
-
     elClock.textContent = hhmm(now());
     load();
     setInterval(tick, 1000);
     setInterval(load, 60*1000);
   });
-
 })();
-
-async function translateToArabic(text){
-  try{
-    const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q=" + encodeURIComponent(text);
-    const res = await fetch(url);
-    const data = await res.json();
-    return data[0].map(x=>x[0]).join("");
-  }catch(e){
-    return "";
-  }
-}
-
 </script>
 </body>
 </html>
