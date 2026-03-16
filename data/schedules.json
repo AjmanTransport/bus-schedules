@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T15:12:57+04:00",
+  "generated_at": "2026-03-16T15:16:33+04:00",
   "route_colors": {},
   "routes": [
     {
@@ -2909,8 +2909,8 @@
     },
     {
       "route": "AJ2",
-      "destination": "ajman indus",
-      "display_name": "ajman indus",
+      "destination": "ajman",
+      "display_name": "ajman",
       "days": [
         {
           "date": "2026-03-16",
