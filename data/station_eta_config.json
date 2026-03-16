@@ -1210,7 +1210,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Alhumdiya",
+      "destination_terminal": "Alhumdyia",
       "origin_layover_min": 4.0
     },
     "DXB": {
@@ -1608,8 +1608,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "sheikh ammar street",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "AJ7": {
       "auto_return": {
@@ -1649,8 +1649,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Mushirf",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "AJF-Hum": {
       "auto_return": {
@@ -1690,8 +1690,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Humdiya Feeder",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "AJF-Jurf": {
       "auto_return": {
@@ -1731,8 +1731,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Jurf Feeder",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "GVR": {
       "auto_return": {
@@ -1772,8 +1772,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Global Village",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "Sharjah": {
       "auto_return": {
@@ -1813,8 +1813,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Sharjah",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     },
     "UAQ": {
       "auto_return": {
@@ -1854,8 +1854,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "UM Alqueen",
-      "origin_layover_min": 4.0
+      "destination_terminal": "",
+      "origin_layover_min": 0.0
     }
   },
   "kiosk": {
