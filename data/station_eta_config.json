@@ -1219,8 +1219,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": true,
@@ -1553,8 +1567,8 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Dubai",
+      "origin_layover_min": 4.0
     },
     "AJ6": {
       "auto_return": {
@@ -1562,8 +1576,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1580,8 +1608,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "sheikh ammar street",
+      "origin_layover_min": 4.0
     },
     "AJ7": {
       "auto_return": {
@@ -1589,8 +1617,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1607,8 +1649,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Mushirf",
+      "origin_layover_min": 4.0
     },
     "AJF-Hum": {
       "auto_return": {
@@ -1616,8 +1658,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1634,8 +1690,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Humdiya Feeder",
+      "origin_layover_min": 4.0
     },
     "AJF-Jurf": {
       "auto_return": {
@@ -1643,8 +1699,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1661,8 +1731,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Jurf Feeder",
+      "origin_layover_min": 4.0
     },
     "GVR": {
       "auto_return": {
@@ -1670,8 +1740,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1688,8 +1772,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Global Village",
+      "origin_layover_min": 4.0
     },
     "Sharjah": {
       "auto_return": {
@@ -1697,8 +1781,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1715,8 +1813,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "Sharjah",
+      "origin_layover_min": 4.0
     },
     "UAQ": {
       "auto_return": {
@@ -1724,8 +1822,22 @@
         "layover_min": 6.0
       },
       "directional_travel_times": {
-        "outbound": {},
-        "inbound": {}
+        "outbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        },
+        "inbound": {
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
+        }
       },
       "outbound": {
         "enabled": false,
@@ -1742,8 +1854,8 @@
         "segments": []
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "",
-      "origin_layover_min": 0.0
+      "destination_terminal": "UM Alqueen",
+      "origin_layover_min": 4.0
     }
   },
   "kiosk": {
