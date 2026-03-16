@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-17T01:39:41+04:00",
+  "generated_at": "2026-03-17T02:07:27+04:00",
   "route_colors": {},
   "routes": [
     {
       "route": "AJ1",
-      "destination": "Jurf",
-      "display_name": "Jurf",
+      "destination": "jurf",
+      "display_name": "jurf",
       "days": [
         {
           "date": "2026-03-17",
@@ -956,8 +956,8 @@
     },
     {
       "route": "AJ2",
-      "destination": "Ajman Industerial",
-      "display_name": "Ajman Industerial",
+      "destination": "Ajman ind",
+      "display_name": "Ajman ind",
       "days": [
         {
           "date": "2026-03-17",
@@ -1908,8 +1908,8 @@
     },
     {
       "route": "AJ3",
-      "destination": "Alhumdia",
-      "display_name": "Alhumdia",
+      "destination": "Ahumdiya",
+      "display_name": "Ahumdiya",
       "days": [
         {
           "date": "2026-03-17",
