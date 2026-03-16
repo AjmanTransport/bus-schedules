@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-17T01:34:32+04:00",
+  "generated_at": "2026-03-17T01:39:41+04:00",
   "route_colors": {},
   "routes": [
     {
@@ -1908,8 +1908,8 @@
     },
     {
       "route": "AJ3",
-      "destination": "Alhumdyia",
-      "display_name": "Alhumdyia",
+      "destination": "Alhumdia",
+      "display_name": "Alhumdia",
       "days": [
         {
           "date": "2026-03-17",
