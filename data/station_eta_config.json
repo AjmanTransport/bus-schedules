@@ -437,7 +437,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Aljurf",
+      "destination_terminal": "jurf industerial",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -746,7 +746,7 @@
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Ajman Industerial",
+      "destination_terminal": "Ajman industerail",
       "origin_layover_min": 4.0
     },
     "AJ3": {
