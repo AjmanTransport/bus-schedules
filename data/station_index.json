@@ -2,17 +2,17 @@
   "stations": [
     {
       "stop_id": "AJ_STOP_0001",
-      "stop_name": "Musalla Station",
+      "stop_name": "Musalla Main Station",
       "station_id": "AJ_STOP_0001"
     },
     {
       "stop_id": "AJ_STOP_0002",
-      "stop_name": "Etihad Station 1",
+      "stop_name": "Union Station 1",
       "station_id": "AJ_STOP_0002"
     },
     {
       "stop_id": "AJ_STOP_0003",
-      "stop_name": "Rashidiya Towers 1",
+      "stop_name": "Rashidya Towers 1",
       "station_id": "AJ_STOP_0003"
     },
     {
@@ -22,32 +22,37 @@
     },
     {
       "stop_id": "AJ_STOP_0005",
-      "stop_name": "Ministry Of labour 1",
+      "stop_name": "Minstry of labour 1",
       "station_id": "AJ_STOP_0005"
     },
     {
+      "stop_id": "AJ_STOP_0006",
+      "stop_name": "Union Station 2",
+      "station_id": "AJ_STOP_0006"
+    },
+    {
+      "stop_id": "AJ_STOP_0007",
+      "stop_name": "Rashidya Towers 2",
+      "station_id": "AJ_STOP_0007"
+    },
+    {
       "stop_id": "AJ_STOP_0008",
-      "stop_name": "Alhumdiya",
+      "stop_name": "Alkhoor Towers 2",
       "station_id": "AJ_STOP_0008"
     },
     {
       "stop_id": "AJ_STOP_0009",
-      "stop_name": "Etihad station 2",
+      "stop_name": "Minstry of labour 2",
       "station_id": "AJ_STOP_0009"
     },
     {
-      "stop_id": "AJ_STOP_0010",
-      "stop_name": "Al rashidiya Towers 2",
-      "station_id": "AJ_STOP_0010"
-    },
-    {
       "stop_id": "AJ_STOP_0011",
-      "stop_name": "Alkhoor Towers 2",
+      "stop_name": "Ajman Industerial",
       "station_id": "AJ_STOP_0011"
     },
     {
       "stop_id": "AJ_STOP_0012",
-      "stop_name": "Minstry of labour 2",
+      "stop_name": "Alhumdiya",
       "station_id": "AJ_STOP_0012"
     }
   ]
