@@ -156,8 +156,8 @@
       },
       "outbound": {
         "enabled": true,
-        "origin_stop_name": "Musalla Station",
-        "destination_label": "jurf industerial",
+        "origin_stop_name": "Musalla",
+        "destination_label": "Jurf Industerial",
         "stops": [
           {
             "station_id": "AJ_STOP_0001",
