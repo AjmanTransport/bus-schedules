@@ -51,7 +51,7 @@
 </head>
 <body>
 <header>
-  <div class="titleWrap"><div class="t" id="stationName">Station ETA</div><div class="s" id="subtitle">Live stop display with countdown and voice alerts - version 1773660832</div></div>
+  <div class="titleWrap"><div class="t" id="stationName">Station ETA</div><div class="s" id="subtitle">Live stop display with countdown and voice alerts - version 1773208977</div></div>
   <div class="right">
     <div class="pill" id="clock">--:--</div>
     <button class="btn" id="soundBtn" type="button"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg></span><span id="soundTxt">Sound: ON</span></button>
@@ -81,7 +81,7 @@
 <script>
 (function(){
   "use strict";
-  const VERSION = "1773660832";
+  const VERSION = "1773208977";
   const DATA_URLS = ["data/station_etas.json?v="+VERSION, "./data/station_etas.json?v="+VERSION, "station_etas.json?v="+VERSION, "./station_etas.json?v="+VERSION];
   const NOTIF_URLS = ["data/notification.json?t=", "./data/notification.json?t=", "notification.json?t=", "./notification.json?t="];
   const ROUTE_COLORS = {"AJ1":"var(--aj1)","AJ2":"var(--aj2)","AJ3":"var(--aj3)","AJ4":"var(--aj4)","AJ5":"var(--aj5)","AJ6":"var(--aj6)","AJ7":"var(--aj7)","AJ8":"var(--aj8)","AJ9":"var(--aj9)","AJ10":"var(--aj10)","AJ11":"var(--aj11)","AJ12":"var(--aj12)","AJ13":"var(--aj13)","AJ14":"var(--aj14)","AJ15":"var(--aj15)","UAQ":"var(--uaq)","SHJ":"var(--shj)","DXB":"var(--dxb)"};
@@ -118,11 +118,60 @@
   function minsLabel(delta){ if(delta <= 0) return "Arriving"; if(delta === 1) return "1 min"; return String(delta) + " min"; }
   function statusTag(delta){ if(delta <= 0) return '<span class="tag danger">Arriving</span>'; if(delta <= 2) return '<span class="tag danger">'+minsLabel(delta)+'</span>'; if(delta <= 5) return '<span class="tag warn">'+minsLabel(delta)+'</span>'; return '<span class="tag good">'+minsLabel(delta)+'</span>'; }
   function findStation(){ if(!DATA || !Array.isArray(DATA.stations) || !DATA.stations.length) return null; const wanted = stopIdFromUrl() || fallbackStopId(); let st = DATA.stations.find(x=> String(x.stop_id||"").toUpperCase() === wanted); if(!st) st = DATA.stations[0]; return st || null; }
-  function buildUpcoming(todayISO){ if(!station) return []; const day = (station.days || []).find(d=> d.date === todayISO); if(!day) return []; const cur = now(); return (day.arrivals || []).map(a=>{ const etaDt = parseEta(todayISO, a.eta); return {...a, etaDt, deltaMs: etaDt - cur, deltaMin: Math.max(0, Math.ceil((etaDt - cur)/60000))}; }).filter(a=> a.deltaMs >= -60000).sort((a,b)=> a.etaDt - b.etaDt || String(a.route||"").localeCompare(String(b.route||""))); }
-  function serviceEndedMessage(todayISO, upcoming){ if(upcoming && upcoming.length) return "Service running"; const day = station ? (station.days || []).find(d=> d.date === todayISO) : null; if(day && (day.arrivals || []).length) return "No more buses today"; return "No schedules for today"; }
+  function addDays(dateStr, days){ const d = new Date(dateStr + "T00:00:00"); d.setDate(d.getDate() + days); return ymd(d); }
+  function buildUpcoming(todayISO){
+    if(!station) return [];
+    const cur = now();
+    const tomorrowISO = addDays(todayISO, 1);
+    const todayDay = (station.days || []).find(d=> d.date === todayISO);
+    const tomorrowDay = (station.days || []).find(d=> d.date === tomorrowISO);
+    const combined = [
+      ...((todayDay && todayDay.arrivals) ? todayDay.arrivals : []),
+      ...((tomorrowDay && tomorrowDay.arrivals) ? tomorrowDay.arrivals : [])
+    ];
+    return combined.map(a=>{
+      const etaDate = String(a.eta_date || a.date || todayISO);
+      const etaDt = parseEta(etaDate, a.eta);
+      return {
+        ...a,
+        etaDt,
+        etaDate,
+        isNextDay: etaDate !== todayISO,
+        deltaMs: etaDt - cur,
+        deltaMin: Math.max(0, Math.ceil((etaDt - cur)/60000))
+      };
+    }).filter(a=> a.deltaMs >= -60000).sort((a,b)=> a.etaDt - b.etaDt || String(a.route||"").localeCompare(String(b.route||""))).slice(0, TOTAL_SHOW);
+  }
+  function serviceEndedMessage(todayISO, upcoming){
+    if(upcoming && upcoming.length) return upcoming.some(x => x.isNextDay) ? "Service running across midnight" : "Service running";
+    const todayDay = station ? (station.days || []).find(d=> d.date === todayISO) : null;
+    const tomorrowISO = addDays(todayISO, 1);
+    const tomorrowDay = station ? (station.days || []).find(d=> d.date === tomorrowISO) : null;
+    if(todayDay && (todayDay.arrivals || []).length) return "No more buses today";
+    if(tomorrowDay && (tomorrowDay.arrivals || []).length) return "Next buses start after midnight";
+    return "No schedules available";
+  }
   function renderTop(nextItem, todayISO){ if(!nextItem){ elTopC.textContent = "--:--"; elTopD.textContent = serviceEndedMessage(todayISO, []); elTopM.textContent = station ? (station.stop_id || "") : ""; elTopC.classList.remove("urgentBlink"); return; } elTopC.textContent = fmtCountdown(nextItem.deltaMs); elTopD.textContent = String(nextItem.route||"") + "   " + String(nextItem.destination||""); elTopM.textContent = String(nextItem.bus||"") + " • ETA " + String(nextItem.eta||"") + " • " + String(nextItem.direction||""); elTopC.classList.toggle("urgentBlink", nextItem.deltaMin <= 2); }
-  function renderTable(upcoming){ const rows = upcoming.slice(pageIndex*PAGE_SIZE, pageIndex*PAGE_SIZE + PAGE_SIZE); elRot.textContent = rows.length ? ("Showing " + (pageIndex*PAGE_SIZE + 1) + "–" + (pageIndex*PAGE_SIZE + rows.length)) : "Showing 0"; if(!rows.length){ elRows.innerHTML = '<tr><td colspan="6" class="muted">No more arrivals for today</td></tr>'; return; } elRows.innerHTML = rows.map(a => '<tr><td class="time">'+esc(a.eta)+'</td><td class="time">'+fmtCountdown(a.deltaMs)+'</td><td>'+statusTag(a.deltaMin)+'</td><td>'+esc(a.bus||"")+'</td><td class="route"><span class="routeBadge" style="background:'+routeColor(a.route)+'">'+esc(a.route)+'</span></td><td>'+esc(a.destination||"")+'</td></tr>').join(''); }
-  function renderRouteCards(upcoming){ if(!upcoming.length){ elCards.innerHTML = '<div class="muted">No more arrivals for today</div>'; return; } const by = {}; upcoming.forEach(a=>{ if(!by[a.route]) by[a.route] = a; }); const keys = Object.keys(by).sort((a,b)=> a.localeCompare(b, undefined, {numeric:true})); elCards.innerHTML = keys.map(k=>{ const a = by[k]; return '<div class="rcard" style="--accent:'+routeColor(k)+'"><div class="rL"><div class="rName">'+esc(k)+'</div><div class="rSub">'+esc(a.destination||"")+'</div><div class="rSub">'+esc(a.bus||"")+'</div></div><div style="text-align:right"><div class="rT">'+esc(a.eta)+'</div><div class="rB"><span class="mins">'+esc(minsLabel(a.deltaMin))+'</span></div></div></div>'; }).join(''); }
+  function renderTable(upcoming){
+    const rows = upcoming.slice(pageIndex*PAGE_SIZE, pageIndex*PAGE_SIZE + PAGE_SIZE);
+    elRot.textContent = rows.length ? ("Showing " + (pageIndex*PAGE_SIZE + 1) + "–" + (pageIndex*PAGE_SIZE + rows.length)) : "Showing 0";
+    if(!rows.length){ elRows.innerHTML = '<tr><td colspan="6" class="muted">No more upcoming arrivals</td></tr>'; return; }
+    elRows.innerHTML = rows.map(a => {
+      const etaLabel = esc(a.eta) + (a.isNextDay ? ' <span class="muted" style="font-size:12px;font-weight:800;">(+1 day)</span>' : '');
+      return '<tr><td class="time">'+etaLabel+'</td><td class="time">'+fmtCountdown(a.deltaMs)+'</td><td>'+statusTag(a.deltaMin)+'</td><td>'+esc(a.bus||"")+'</td><td class="route"><span class="routeBadge" style="background:'+routeColor(a.route)+'">'+esc(a.route)+'</span></td><td>'+esc(a.destination||"")+'</td></tr>';
+    }).join('');
+  }
+  function renderRouteCards(upcoming){
+    if(!upcoming.length){ elCards.innerHTML = '<div class="muted">No more upcoming arrivals</div>'; return; }
+    const by = {};
+    upcoming.forEach(a=>{ if(!by[a.route]) by[a.route] = a; });
+    const keys = Object.keys(by).sort((a,b)=> a.localeCompare(b, undefined, {numeric:true}));
+    elCards.innerHTML = keys.map(k=>{
+      const a = by[k];
+      const etaLabel = esc(a.eta) + (a.isNextDay ? ' <span class="muted" style="font-size:11px;">(+1 day)</span>' : '');
+      return '<div class="rcard" style="--accent:'+routeColor(k)+'"><div class="rL"><div class="rName">'+esc(k)+'</div><div class="rSub">'+esc(a.destination||"")+'</div><div class="rSub">'+esc(a.bus||"")+'</div></div><div style="text-align:right"><div class="rT">'+etaLabel+'</div><div class="rB"><span class="mins">'+esc(minsLabel(a.deltaMin))+'</span></div></div></div>';
+    }).join('');
+  }
   function rotateIfNeeded(upcoming){ const totalPages = Math.max(1, Math.ceil(Math.min(upcoming.length, TOTAL_SHOW) / PAGE_SIZE)); const t = Date.now(); if(t - lastRotate >= ROTATE_MS){ lastRotate = t; pageIndex = (pageIndex + 1) % totalPages; } }
   async function announceNextIfNeeded(nextItem){ if(!nextItem || !voiceOn) return; for(const threshold of ALERT_THRESHOLDS){ if(nextItem.deltaMin > threshold) continue; const key = [station ? station.stop_id : '', nextItem.route, nextItem.destination, nextItem.eta, threshold].join('|'); if(alertState.has(key)) continue; alertState.add(key); try{ if(soundOn) beepPattern(); }catch(e){} const stationName = station ? String(station.stop_name || station.stop_id || 'this stop') : 'this stop', dest = String(nextItem.destination || nextItem.route || ''), arDest = await translateToArabic(dest), arStation = await translateToArabic(stationName); let en = '', ar = ''; if(threshold <= 0){ en = 'Route ' + nextItem.route + ' to ' + dest + ' is arriving now at ' + stationName + '.'; ar = 'الرحلة ' + nextItem.route + ' إلى ' + arDest + ' تصل الآن إلى محطة ' + arStation + '.'; } else { en = 'Route ' + nextItem.route + ' to ' + dest + ' will arrive at ' + stationName + ' in ' + threshold + ' minute' + (threshold === 1 ? '' : 's') + '.'; ar = 'الرحلة ' + nextItem.route + ' إلى ' + arDest + ' ستصل إلى محطة ' + arStation + ' خلال ' + threshold + ' دقيقة.'; } speakBilingual(en, ar); break; } }
   function fmtMMSS(ms){ if(ms < 0) ms = 0; const s = Math.floor(ms/1000), m = Math.floor(s/60), r = s % 60; return pad2(m) + ":" + pad2(r); }
