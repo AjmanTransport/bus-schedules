@@ -15,11 +15,11 @@
       "end": "18:00"
     },
     {
-      "key": "weekday_1800_0000",
-      "label": "Weekday 18:00-00:00",
+      "key": "weekday_1800_2345",
+      "label": "Weekday 18:00-23:45",
       "selector": "weekday",
       "start": "18:00",
-      "end": "00:00"
+      "end": "23:45"
     },
     {
       "key": "weekend_0600_1100",
@@ -36,11 +36,11 @@
       "end": "18:00"
     },
     {
-      "key": "weekend_1800_0000",
-      "label": "Weekend 18:00-00:00",
+      "key": "weekend_1800_2345",
+      "label": "Weekend 18:00-23:45",
       "selector": "weekend",
       "start": "18:00",
-      "end": "00:00"
+      "end": "23:45"
     }
   ],
   "stations": [
@@ -49,84 +49,108 @@
       "name_en": "Musalla Main Station",
       "name_ar": "محطة المصلي الرئيسية",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.411876,
+      "lon": 55.446119
     },
     {
       "station_id": "AJ_STOP_0002",
       "name_en": "Union Station 1",
       "name_ar": "محطة الاتحاد 1",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.40568,
+      "lon": 55.444257
     },
     {
       "station_id": "AJ_STOP_0003",
       "name_en": "Rashidya Towers 1",
       "name_ar": "ابراج الراشدية 1",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.399876,
+      "lon": 55.443008
     },
     {
       "station_id": "AJ_STOP_0004",
       "name_en": "Alkhoor Towers 1",
       "name_ar": "ابراج الخور 1",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.394941,
+      "lon": 55.459275
     },
     {
       "station_id": "AJ_STOP_0005",
       "name_en": "Minstry of labour 1",
       "name_ar": "وزارة العمل 1",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.399608,
+      "lon": 55.473952
     },
     {
       "station_id": "AJ_STOP_0006",
       "name_en": "Union Station 2",
       "name_ar": "محطة الاتحاد 2",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.405257,
+      "lon": 55.444885
     },
     {
       "station_id": "AJ_STOP_0007",
       "name_en": "Rashidya Towers 2",
       "name_ar": "ابراج الراشدية 2",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.400651,
+      "lon": 55.443555
     },
     {
       "station_id": "AJ_STOP_0008",
-      "name_en": "Alkhoor Towers 2",
-      "name_ar": "ابراج الخور 2",
+      "name_en": "Horizon Towers",
+      "name_ar": "موقف أبراج هورايزون‎",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.394399,
+      "lon": 55.456015
     },
     {
       "station_id": "AJ_STOP_0009",
-      "name_en": "Minstry of labour 2",
-      "name_ar": "وزارة العمل 2",
+      "name_en": "Ajman Bank",
+      "name_ar": "موقف مصرف عجمان",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.399337,
+      "lon": 55.476286
     },
     {
       "station_id": "AJ_STOP_0010",
       "name_en": "Jurf Industerial",
       "name_ar": "الجرف الصناعية",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.434754,
+      "lon": 55.525054
     },
     {
       "station_id": "AJ_STOP_0011",
       "name_en": "Ajman Industerial",
       "name_ar": "عجمان الصناعية",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.376359,
+      "lon": 55.477267
     },
     {
       "station_id": "AJ_STOP_0012",
       "name_en": "Alhumdiya",
       "name_ar": "الحميدية",
       "active": true,
-      "kiosk_enabled": true
+      "kiosk_enabled": true,
+      "lat": 25.387386,
+      "lon": 55.553178
     }
   ],
   "next_station_seq": 13,
@@ -140,18 +164,18 @@
         "outbound": {
           "weekday_0600_1100": 50.0,
           "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
           "weekend_0600_1100": 50.0,
           "weekend_1100_1800": 50.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekend_1800_2345": 50.0
         },
         "inbound": {
-          "weekday_0600_1100": 51.0,
-          "weekday_1100_1800": 51.0,
-          "weekend_0600_1100": 51.0,
-          "weekend_1100_1800": 51.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekday_0600_1100": 50.0,
+          "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
+          "weekend_0600_1100": 50.0,
+          "weekend_1100_1800": 50.0,
+          "weekend_1800_2345": 50.0
         }
       },
       "outbound": {
@@ -165,10 +189,10 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
@@ -177,10 +201,10 @@
             "offsets": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -189,10 +213,10 @@
             "offsets": {
               "weekday_0600_1100": 20.0,
               "weekday_1100_1800": 20.0,
-              "weekday_1800_0000": 20.0,
+              "weekday_1800_2345": 20.0,
               "weekend_0600_1100": 20.0,
               "weekend_1100_1800": 20.0,
-              "weekend_1800_0000": 20.0
+              "weekend_1800_2345": 20.0
             }
           },
           {
@@ -201,10 +225,10 @@
             "offsets": {
               "weekday_0600_1100": 30.0,
               "weekday_1100_1800": 30.0,
-              "weekday_1800_0000": 30.0,
+              "weekday_1800_2345": 30.0,
               "weekend_0600_1100": 30.0,
               "weekend_1100_1800": 30.0,
-              "weekend_1800_0000": 30.0
+              "weekend_1800_2345": 30.0
             }
           },
           {
@@ -213,10 +237,10 @@
             "offsets": {
               "weekday_0600_1100": 40.0,
               "weekday_1100_1800": 40.0,
-              "weekday_1800_0000": 40.0,
+              "weekday_1800_2345": 40.0,
               "weekend_0600_1100": 40.0,
               "weekend_1100_1800": 40.0,
-              "weekend_1800_0000": 40.0
+              "weekend_1800_2345": 40.0
             }
           },
           {
@@ -225,10 +249,10 @@
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
-              "weekday_1800_0000": 50.0,
+              "weekday_1800_2345": 50.0,
               "weekend_0600_1100": 50.0,
               "weekend_1100_1800": 50.0,
-              "weekend_1800_0000": 50.0
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -239,10 +263,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -251,10 +275,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -263,10 +287,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -275,10 +299,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -287,10 +311,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           }
         ]
@@ -306,70 +330,70 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
             "station_id": "AJ_STOP_0009",
             "sequence": 2,
             "offsets": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           },
           {
             "station_id": "AJ_STOP_0008",
             "sequence": 3,
             "offsets": {
-              "weekday_0600_1100": 20.4,
-              "weekday_1100_1800": 20.4,
-              "weekday_1800_0000": 20.0,
-              "weekend_0600_1100": 20.4,
-              "weekend_1100_1800": 20.4,
-              "weekend_1800_0000": 20.0
+              "weekday_0600_1100": 20.0,
+              "weekday_1100_1800": 20.0,
+              "weekday_1800_2345": 20.0,
+              "weekend_0600_1100": 20.0,
+              "weekend_1100_1800": 20.0,
+              "weekend_1800_2345": 20.0
             }
           },
           {
             "station_id": "AJ_STOP_0007",
             "sequence": 4,
             "offsets": {
-              "weekday_0600_1100": 30.6,
-              "weekday_1100_1800": 30.6,
-              "weekday_1800_0000": 30.0,
-              "weekend_0600_1100": 30.6,
-              "weekend_1100_1800": 30.6,
-              "weekend_1800_0000": 30.0
+              "weekday_0600_1100": 30.0,
+              "weekday_1100_1800": 30.0,
+              "weekday_1800_2345": 30.0,
+              "weekend_0600_1100": 30.0,
+              "weekend_1100_1800": 30.0,
+              "weekend_1800_2345": 30.0
             }
           },
           {
             "station_id": "AJ_STOP_0006",
             "sequence": 5,
             "offsets": {
-              "weekday_0600_1100": 40.8,
-              "weekday_1100_1800": 40.8,
-              "weekday_1800_0000": 40.0,
-              "weekend_0600_1100": 40.8,
-              "weekend_1100_1800": 40.8,
-              "weekend_1800_0000": 40.0
+              "weekday_0600_1100": 40.0,
+              "weekday_1100_1800": 40.0,
+              "weekday_1800_2345": 40.0,
+              "weekend_0600_1100": 40.0,
+              "weekend_1100_1800": 40.0,
+              "weekend_1800_2345": 40.0
             }
           },
           {
             "station_id": "AJ_STOP_0001",
             "sequence": 6,
             "offsets": {
-              "weekday_0600_1100": 51.0,
-              "weekday_1100_1800": 51.0,
-              "weekday_1800_0000": 50.0,
-              "weekend_0600_1100": 51.0,
-              "weekend_1100_1800": 51.0,
-              "weekend_1800_0000": 50.0
+              "weekday_0600_1100": 50.0,
+              "weekday_1100_1800": 50.0,
+              "weekday_1800_2345": 50.0,
+              "weekend_0600_1100": 50.0,
+              "weekend_1100_1800": 50.0,
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -378,66 +402,66 @@
             "from_station_id": "AJ_STOP_0010",
             "to_station_id": "AJ_STOP_0009",
             "times": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           },
           {
             "from_station_id": "AJ_STOP_0009",
             "to_station_id": "AJ_STOP_0008",
             "times": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           },
           {
             "from_station_id": "AJ_STOP_0008",
             "to_station_id": "AJ_STOP_0007",
             "times": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           },
           {
             "from_station_id": "AJ_STOP_0007",
             "to_station_id": "AJ_STOP_0006",
             "times": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           },
           {
             "from_station_id": "AJ_STOP_0006",
             "to_station_id": "AJ_STOP_0001",
             "times": {
-              "weekday_0600_1100": 10.2,
-              "weekday_1100_1800": 10.2,
-              "weekday_1800_0000": 10.0,
-              "weekend_0600_1100": 10.2,
-              "weekend_1100_1800": 10.2,
-              "weekend_1800_0000": 10.0
+              "weekday_0600_1100": 10.0,
+              "weekday_1100_1800": 10.0,
+              "weekday_1800_2345": 10.0,
+              "weekend_0600_1100": 10.0,
+              "weekend_1100_1800": 10.0,
+              "weekend_1800_2345": 10.0
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Jurf Industerial",
+      "destination_terminal": "jurf industerial",
       "origin_layover_min": 4.0
     },
     "AJ2": {
@@ -449,18 +473,18 @@
         "outbound": {
           "weekday_0600_1100": 50.0,
           "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
           "weekend_0600_1100": 50.0,
           "weekend_1100_1800": 50.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekend_1800_2345": 50.0
         },
         "inbound": {
           "weekday_0600_1100": 50.0,
           "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
           "weekend_0600_1100": 50.0,
           "weekend_1100_1800": 50.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekend_1800_2345": 50.0
         }
       },
       "outbound": {
@@ -474,10 +498,10 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
@@ -486,10 +510,10 @@
             "offsets": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -498,10 +522,10 @@
             "offsets": {
               "weekday_0600_1100": 20.0,
               "weekday_1100_1800": 20.0,
-              "weekday_1800_0000": 20.0,
+              "weekday_1800_2345": 20.0,
               "weekend_0600_1100": 20.0,
               "weekend_1100_1800": 20.0,
-              "weekend_1800_0000": 20.0
+              "weekend_1800_2345": 20.0
             }
           },
           {
@@ -510,10 +534,10 @@
             "offsets": {
               "weekday_0600_1100": 30.0,
               "weekday_1100_1800": 30.0,
-              "weekday_1800_0000": 30.0,
+              "weekday_1800_2345": 30.0,
               "weekend_0600_1100": 30.0,
               "weekend_1100_1800": 30.0,
-              "weekend_1800_0000": 30.0
+              "weekend_1800_2345": 30.0
             }
           },
           {
@@ -522,10 +546,10 @@
             "offsets": {
               "weekday_0600_1100": 40.0,
               "weekday_1100_1800": 40.0,
-              "weekday_1800_0000": 40.0,
+              "weekday_1800_2345": 40.0,
               "weekend_0600_1100": 40.0,
               "weekend_1100_1800": 40.0,
-              "weekend_1800_0000": 40.0
+              "weekend_1800_2345": 40.0
             }
           },
           {
@@ -534,10 +558,10 @@
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
-              "weekday_1800_0000": 50.0,
+              "weekday_1800_2345": 50.0,
               "weekend_0600_1100": 50.0,
               "weekend_1100_1800": 50.0,
-              "weekend_1800_0000": 50.0
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -548,10 +572,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -560,10 +584,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -572,10 +596,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -584,10 +608,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -596,10 +620,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           }
         ]
@@ -615,10 +639,10 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
@@ -627,10 +651,10 @@
             "offsets": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -639,10 +663,10 @@
             "offsets": {
               "weekday_0600_1100": 20.0,
               "weekday_1100_1800": 20.0,
-              "weekday_1800_0000": 20.0,
+              "weekday_1800_2345": 20.0,
               "weekend_0600_1100": 20.0,
               "weekend_1100_1800": 20.0,
-              "weekend_1800_0000": 20.0
+              "weekend_1800_2345": 20.0
             }
           },
           {
@@ -651,10 +675,10 @@
             "offsets": {
               "weekday_0600_1100": 30.0,
               "weekday_1100_1800": 30.0,
-              "weekday_1800_0000": 30.0,
+              "weekday_1800_2345": 30.0,
               "weekend_0600_1100": 30.0,
               "weekend_1100_1800": 30.0,
-              "weekend_1800_0000": 30.0
+              "weekend_1800_2345": 30.0
             }
           },
           {
@@ -663,10 +687,10 @@
             "offsets": {
               "weekday_0600_1100": 40.0,
               "weekday_1100_1800": 40.0,
-              "weekday_1800_0000": 40.0,
+              "weekday_1800_2345": 40.0,
               "weekend_0600_1100": 40.0,
               "weekend_1100_1800": 40.0,
-              "weekend_1800_0000": 40.0
+              "weekend_1800_2345": 40.0
             }
           },
           {
@@ -675,10 +699,10 @@
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
-              "weekday_1800_0000": 50.0,
+              "weekday_1800_2345": 50.0,
               "weekend_0600_1100": 50.0,
               "weekend_1100_1800": 50.0,
-              "weekend_1800_0000": 50.0
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -689,10 +713,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -701,10 +725,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -713,10 +737,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -725,10 +749,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -737,16 +761,16 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Ajman Industerial",
+      "destination_terminal": "",
       "origin_layover_min": 4.0
     },
     "AJ3": {
@@ -758,18 +782,18 @@
         "outbound": {
           "weekday_0600_1100": 50.0,
           "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
           "weekend_0600_1100": 50.0,
           "weekend_1100_1800": 50.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekend_1800_2345": 50.0
         },
         "inbound": {
           "weekday_0600_1100": 50.0,
           "weekday_1100_1800": 50.0,
+          "weekday_1800_2345": 50.0,
           "weekend_0600_1100": 50.0,
           "weekend_1100_1800": 50.0,
-          "weekday_1800_0000": 50.0,
-          "weekend_1800_0000": 50.0
+          "weekend_1800_2345": 50.0
         }
       },
       "outbound": {
@@ -783,10 +807,10 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
@@ -795,10 +819,10 @@
             "offsets": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -807,10 +831,10 @@
             "offsets": {
               "weekday_0600_1100": 20.0,
               "weekday_1100_1800": 20.0,
-              "weekday_1800_0000": 20.0,
+              "weekday_1800_2345": 20.0,
               "weekend_0600_1100": 20.0,
               "weekend_1100_1800": 20.0,
-              "weekend_1800_0000": 20.0
+              "weekend_1800_2345": 20.0
             }
           },
           {
@@ -819,10 +843,10 @@
             "offsets": {
               "weekday_0600_1100": 30.0,
               "weekday_1100_1800": 30.0,
-              "weekday_1800_0000": 30.0,
+              "weekday_1800_2345": 30.0,
               "weekend_0600_1100": 30.0,
               "weekend_1100_1800": 30.0,
-              "weekend_1800_0000": 30.0
+              "weekend_1800_2345": 30.0
             }
           },
           {
@@ -831,10 +855,10 @@
             "offsets": {
               "weekday_0600_1100": 40.0,
               "weekday_1100_1800": 40.0,
-              "weekday_1800_0000": 40.0,
+              "weekday_1800_2345": 40.0,
               "weekend_0600_1100": 40.0,
               "weekend_1100_1800": 40.0,
-              "weekend_1800_0000": 40.0
+              "weekend_1800_2345": 40.0
             }
           },
           {
@@ -843,10 +867,10 @@
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
-              "weekday_1800_0000": 50.0,
+              "weekday_1800_2345": 50.0,
               "weekend_0600_1100": 50.0,
               "weekend_1100_1800": 50.0,
-              "weekend_1800_0000": 50.0
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -857,10 +881,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -869,10 +893,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -881,10 +905,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -893,10 +917,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -905,10 +929,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           }
         ]
@@ -924,10 +948,10 @@
             "offsets": {
               "weekday_0600_1100": 0.0,
               "weekday_1100_1800": 0.0,
-              "weekday_1800_0000": 0.0,
+              "weekday_1800_2345": 0.0,
               "weekend_0600_1100": 0.0,
               "weekend_1100_1800": 0.0,
-              "weekend_1800_0000": 0.0
+              "weekend_1800_2345": 0.0
             }
           },
           {
@@ -936,10 +960,10 @@
             "offsets": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -948,10 +972,10 @@
             "offsets": {
               "weekday_0600_1100": 20.0,
               "weekday_1100_1800": 20.0,
-              "weekday_1800_0000": 20.0,
+              "weekday_1800_2345": 20.0,
               "weekend_0600_1100": 20.0,
               "weekend_1100_1800": 20.0,
-              "weekend_1800_0000": 20.0
+              "weekend_1800_2345": 20.0
             }
           },
           {
@@ -960,10 +984,10 @@
             "offsets": {
               "weekday_0600_1100": 30.0,
               "weekday_1100_1800": 30.0,
-              "weekday_1800_0000": 30.0,
+              "weekday_1800_2345": 30.0,
               "weekend_0600_1100": 30.0,
               "weekend_1100_1800": 30.0,
-              "weekend_1800_0000": 30.0
+              "weekend_1800_2345": 30.0
             }
           },
           {
@@ -972,10 +996,10 @@
             "offsets": {
               "weekday_0600_1100": 40.0,
               "weekday_1100_1800": 40.0,
-              "weekday_1800_0000": 40.0,
+              "weekday_1800_2345": 40.0,
               "weekend_0600_1100": 40.0,
               "weekend_1100_1800": 40.0,
-              "weekend_1800_0000": 40.0
+              "weekend_1800_2345": 40.0
             }
           },
           {
@@ -984,10 +1008,10 @@
             "offsets": {
               "weekday_0600_1100": 50.0,
               "weekday_1100_1800": 50.0,
-              "weekday_1800_0000": 50.0,
+              "weekday_1800_2345": 50.0,
               "weekend_0600_1100": 50.0,
               "weekend_1100_1800": 50.0,
-              "weekend_1800_0000": 50.0
+              "weekend_1800_2345": 50.0
             }
           }
         ],
@@ -998,10 +1022,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -1010,10 +1034,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -1022,10 +1046,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -1034,10 +1058,10 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           },
           {
@@ -1046,16 +1070,16 @@
             "times": {
               "weekday_0600_1100": 10.0,
               "weekday_1100_1800": 10.0,
-              "weekday_1800_0000": 10.0,
+              "weekday_1800_2345": 10.0,
               "weekend_0600_1100": 10.0,
               "weekend_1100_1800": 10.0,
-              "weekend_1800_0000": 10.0
+              "weekend_1800_2345": 10.0
             }
           }
         ]
       },
       "origin_terminal": "Musalla",
-      "destination_terminal": "Alhumdiya",
+      "destination_terminal": "",
       "origin_layover_min": 4.0
     }
   },
