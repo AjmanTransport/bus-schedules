@@ -3,62 +3,86 @@
     {
       "stop_id": "AJ_STOP_0001",
       "stop_name": "Musalla Main Station",
-      "station_id": "AJ_STOP_0001"
+      "station_id": "AJ_STOP_0001",
+      "lat": 25.411876,
+      "lon": 55.446119
     },
     {
       "stop_id": "AJ_STOP_0002",
       "stop_name": "Union Station 1",
-      "station_id": "AJ_STOP_0002"
+      "station_id": "AJ_STOP_0002",
+      "lat": 25.40568,
+      "lon": 55.444257
     },
     {
       "stop_id": "AJ_STOP_0003",
       "stop_name": "Rashidya Towers 1",
-      "station_id": "AJ_STOP_0003"
+      "station_id": "AJ_STOP_0003",
+      "lat": 25.399876,
+      "lon": 55.443008
     },
     {
       "stop_id": "AJ_STOP_0004",
       "stop_name": "Alkhoor Towers 1",
-      "station_id": "AJ_STOP_0004"
+      "station_id": "AJ_STOP_0004",
+      "lat": 25.394941,
+      "lon": 55.459275
     },
     {
       "stop_id": "AJ_STOP_0005",
       "stop_name": "Minstry of labour 1",
-      "station_id": "AJ_STOP_0005"
+      "station_id": "AJ_STOP_0005",
+      "lat": 25.399608,
+      "lon": 55.473952
     },
     {
       "stop_id": "AJ_STOP_0006",
       "stop_name": "Union Station 2",
-      "station_id": "AJ_STOP_0006"
+      "station_id": "AJ_STOP_0006",
+      "lat": 25.405257,
+      "lon": 55.444885
     },
     {
       "stop_id": "AJ_STOP_0007",
       "stop_name": "Rashidya Towers 2",
-      "station_id": "AJ_STOP_0007"
+      "station_id": "AJ_STOP_0007",
+      "lat": 25.400651,
+      "lon": 55.443555
     },
     {
       "stop_id": "AJ_STOP_0008",
-      "stop_name": "Alkhoor Towers 2",
-      "station_id": "AJ_STOP_0008"
+      "stop_name": "Horizon Towers",
+      "station_id": "AJ_STOP_0008",
+      "lat": 25.394399,
+      "lon": 55.456015
     },
     {
       "stop_id": "AJ_STOP_0009",
-      "stop_name": "Minstry of labour 2",
-      "station_id": "AJ_STOP_0009"
+      "stop_name": "Ajman Bank",
+      "station_id": "AJ_STOP_0009",
+      "lat": 25.399337,
+      "lon": 55.476286
     },
     {
       "stop_id": "AJ_STOP_0010",
       "stop_name": "Jurf Industerial",
-      "station_id": "AJ_STOP_0010"
+      "station_id": "AJ_STOP_0010",
+      "lat": 25.434754,
+      "lon": 55.525054
     },
     {
       "stop_id": "AJ_STOP_0011",
       "stop_name": "Ajman Industerial",
-      "station_id": "AJ_STOP_0011"
+      "station_id": "AJ_STOP_0011",
+      "lat": 25.376359,
+      "lon": 55.477267
     },
     {
       "stop_id": "AJ_STOP_0012",
       "stop_name": "Alhumdiya",
-      "station_id": "AJ_STOP_0012"
+      "station_id": "AJ_STOP_0012",
+      "lat": 25.387386,
+      "lon": 55.553178
     }
   ]
 }
