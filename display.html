@@ -297,8 +297,8 @@
             <th style="width:13%">Time</th>
             <th style="width:15%">Countdown</th>
             <th style="width:16%">Status</th>
-            <th style="width:16%">Bus</th>
-            <th style="width:16%">Route</th>
+            <th style="width:14%">Platform</th>
+            <th style="width:15%">Route</th>
             <th>Destination</th>
           </tr>
         </thead>
@@ -332,7 +332,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "1771702707";
+  const VERSION = "v116_destination_platform_20260428";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -739,7 +739,7 @@ function speakBilingual(enText, arText){
     d.setDate(d.getDate() + 1);
     const tISO = ymd(d);
 
-    let best = null; // {time, route, bus}
+    let best = null; // {time, route, platform}
     schedules.routes.forEach(r=>{
       const day = r.days ? r.days.find(x=>x.date===tISO) : null;
       if(!day) return;
@@ -747,7 +747,7 @@ function speakBilingual(enText, arText){
         (b.departures||[]).forEach(t=>{
           const dt = parseTime(tISO, t);
           if(!best || dt < best.dt){
-            best = {dt, time: t, route: r.route, bus: b.bus, date: tISO};
+            best = {dt, time: t, route: r.route, bus: b.bus, platform: (b.platform || r.platform || ""), date: tISO};
           }
         });
       });
@@ -769,7 +769,8 @@ function speakBilingual(enText, arText){
           if(ms >= 0){
             list.push({
               dt, ms, time: t, route: r.route, bus: b.bus,
-              destination: (r.display_name || r.route)
+              destination: (r.display_name || r.destination || r.route),
+              platform: (b.platform || r.platform || "")
             });
           }
         });
@@ -790,7 +791,7 @@ function speakBilingual(enText, arText){
     }
 
     elTopC.textContent = fmtCountdown(nextItem.ms);
-    elTopD.textContent = "Route " + nextItem.route + "  •  Bus " + nextItem.bus + "  •  " + nextItem.time;
+    elTopD.textContent = "Route " + nextItem.route + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
 
     // Blink when 1 minute or less
     if(nextItem.ms <= 60000){
@@ -831,9 +832,8 @@ function speakBilingual(enText, arText){
 
       const tdS = document.createElement("td");
       tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
-
-      const tdB = document.createElement("td");
-      tdB.textContent = item.bus;
+      const tdP = document.createElement("td");
+      tdP.innerHTML = `<span class="tag warn">${item.platform || "-"}</span>`;
 
       const tdR = document.createElement("td");
       tdR.className = "route";
@@ -843,7 +843,7 @@ function speakBilingual(enText, arText){
       const tdD = document.createElement("td");
       tdD.textContent = item.destination || "-";
 
-      tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdB); tr.appendChild(tdR); tr.appendChild(tdD);
+      tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdP); tr.appendChild(tdR); tr.appendChild(tdD);
       elRows.appendChild(tr);
     });
   }
@@ -883,7 +883,7 @@ function speakBilingual(enText, arText){
       left.className = "rL";
       left.innerHTML = `
         <div class="rName">${r.route}</div>
-        <div class="rSub">${r.display_name || r.route}</div>
+        <div class="rSub">${r.display_name || r.destination || r.route} • Platform ${r.platform || "-"}</div>
       `;
 
       const right = document.createElement("div");
@@ -892,7 +892,7 @@ function speakBilingual(enText, arText){
       if(it){
         right.innerHTML = `
           <div class="rT">${it.time}</div>
-          <div class="rB">Bus ${it.bus} • in <span class="mins">${Math.max(0, Math.round(it.ms/60000))}</span> min</div>
+          <div class="rB">Platform ${it.platform || "-"} • in <span class="mins">${Math.max(0, Math.round(it.ms/60000))}</span> min</div>
         `;
       }else{
         right.innerHTML = `
@@ -936,7 +936,7 @@ function speakBilingual(enText, arText){
 
     const tmr = getTomorrowFirstTrip(todayISO);
     if(!tmr) return "Service ended — no schedules found for tomorrow";
-    return "Service ended — next service starts tomorrow at " + tmr.time + " (Route " + tmr.route + ", Bus " + tmr.bus + ")";
+    return "Service ended — next service starts tomorrow at " + tmr.time + " (Route " + tmr.route + ", Platform " + (tmr.platform || "-") + ")";
   }
 
   function checkAlerts(nextItem, todayISO){
@@ -955,8 +955,8 @@ function speakBilingual(enText, arText){
       beepPattern();
     }
     if(voiceOn){
-      const en = `Next trip. Route ${nextItem.route}. Bus ${nextItem.bus}. Departure ${nextItem.time}.`;
-      const ar = `الرحلة التالية. خط ${nextItem.route}. حافلة رقم ${nextItem.bus}. وقت المغادرة ${nextItem.time}.`;
+      const en = `Next trip. Route ${nextItem.route}. Platform ${nextItem.platform || "-"}. Departure ${nextItem.time}.`;
+      const ar = `الرحلة التالية. خط ${nextItem.route}. المنصة ${nextItem.platform || "-"}. وقت المغادرة ${nextItem.time}.`;
       speakBilingual(en, ar);
     }
   }
