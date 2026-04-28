@@ -1,8 +1,8 @@
 {
   "active": true,
-  "id": "20260409134514",
-  "title": "Attension Please",
-  "content": "Bus heading to Global Village will be delayed by 30 minutes due to weather conditions and rain .",
-  "duration": 20,
-  "created_at": "2026-04-09T13:45:14"
+  "id": "20260428213700",
+  "title": "Test",
+  "content": "Test please",
+  "duration": 30,
+  "created_at": "2026-04-28T21:37:00"
 }
