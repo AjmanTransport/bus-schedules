@@ -332,7 +332,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "v116_destination_platform_20260428";
+  const VERSION = "v117_destination_voice_sequence_20260428";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -556,6 +556,63 @@ function speakBilingual(enText, arText){
   }catch(e){}
 }
 
+
+function platformSpeech(platform){
+  const p = String(platform || "-").trim();
+  const m = p.match(/^P\s*([0-9]+)$/i);
+  if(m) return "P " + m[1];
+  return p;
+}
+
+function speakBilingualQueue(items){
+  try{
+    if(!("speechSynthesis" in window)) return;
+    if(!Array.isArray(items) || !items.length) return;
+
+    loadVoices();
+
+    const arVoice = pickVoice(
+      ["ar-AE","ar-SA","ar-EG","ar"],
+      ["fatima","hamdan","hala","zayd","zeina","microsoft","google"]
+    );
+    const enVoice = pickVoice(
+      ["en-GB","en-US","en"],
+      ["natural","neural","microsoft","google","zira","aria","jenny","guy","david"]
+    );
+
+    window.speechSynthesis.cancel();
+
+    const queue = [];
+    items.forEach(pair=>{
+      const enText = String(pair.en || "").trim();
+      const arText = String(pair.ar || "").trim();
+      if(enText){
+        const u1 = new SpeechSynthesisUtterance(enText);
+        u1.lang = enVoice ? enVoice.lang : "en-US";
+        u1.rate = 1.0;
+        if(enVoice) u1.voice = enVoice;
+        queue.push(u1);
+      }
+      if(arText){
+        const u2 = new SpeechSynthesisUtterance(arText);
+        u2.lang = arVoice ? arVoice.lang : "ar-AE";
+        u2.rate = 0.95;
+        if(arVoice) u2.voice = arVoice;
+        queue.push(u2);
+      }
+    });
+
+    let i = 0;
+    function speakNext(){
+      if(i >= queue.length) return;
+      const u = queue[i++];
+      u.onend = () => setTimeout(speakNext, 350);
+      window.speechSynthesis.speak(u);
+    }
+    speakNext();
+  }catch(e){}
+}
+
     function hasArabicText(s){
     return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(String(s||""));
   }
@@ -747,7 +804,7 @@ function speakBilingual(enText, arText){
         (b.departures||[]).forEach(t=>{
           const dt = parseTime(tISO, t);
           if(!best || dt < best.dt){
-            best = {dt, time: t, route: r.route, bus: b.bus, platform: (b.platform || r.platform || ""), date: tISO};
+            best = {dt, time: t, route: r.route, bus: b.bus, destination: (r.display_name || r.destination || r.route), platform: (b.platform || r.platform || ""), date: tISO};
           }
         });
       });
@@ -791,7 +848,7 @@ function speakBilingual(enText, arText){
     }
 
     elTopC.textContent = fmtCountdown(nextItem.ms);
-    elTopD.textContent = "Route " + nextItem.route + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
+    elTopD.textContent = (nextItem.destination || nextItem.route) + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
 
     // Blink when 1 minute or less
     if(nextItem.ms <= 60000){
@@ -936,28 +993,50 @@ function speakBilingual(enText, arText){
 
     const tmr = getTomorrowFirstTrip(todayISO);
     if(!tmr) return "Service ended — no schedules found for tomorrow";
-    return "Service ended — next service starts tomorrow at " + tmr.time + " (Route " + tmr.route + ", Platform " + (tmr.platform || "-") + ")";
+    return "Service ended — next service starts tomorrow at " + tmr.time + " (" + (tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
   }
 
-  function checkAlerts(nextItem, todayISO){
-    if(!nextItem) return;
+  function checkAlerts(upcoming, todayISO){
+    if(!upcoming || !upcoming.length) return;
     if(!soundOn && !voiceOn) return;
 
     // Alert window: 2 minutes before departure (including at departure)
-    const min = nextItem.ms / 60000;
+    const first = upcoming[0];
+    if(!first) return;
+    const min = first.ms / 60000;
     if(min < 0 || min > 2) return;
 
-    const key = todayISO + "|" + nextItem.route + "|" + nextItem.bus + "|" + nextItem.time;
-    if(alerted.has(key)) return;
-    alerted.add(key);
+    // Announce all trips that depart at the same nearest departure time.
+    const sameTimeTrips = upcoming.filter(it => it && it.dt && first.dt && it.dt.getTime() === first.dt.getTime());
+
+    const newTrips = [];
+    sameTimeTrips.forEach(it=>{
+      const key = todayISO + "|" + it.route + "|" + (it.destination || "") + "|" + (it.platform || "") + "|" + it.time;
+      if(!alerted.has(key)){
+        alerted.add(key);
+        newTrips.push(it);
+      }
+    });
+
+    if(!newTrips.length) return;
 
     if(soundOn){
+      // One clear beep pattern before the voice sequence.
       beepPattern();
     }
+
     if(voiceOn){
-      const en = `Next trip. Route ${nextItem.route}. Platform ${nextItem.platform || "-"}. Departure ${nextItem.time}.`;
-      const ar = `الرحلة التالية. خط ${nextItem.route}. المنصة ${nextItem.platform || "-"}. وقت المغادرة ${nextItem.time}.`;
-      speakBilingual(en, ar);
+      const pairs = newTrips.map((it, idx)=>{
+        const dest = it.destination || it.route;
+        const plat = it.platform || "-";
+        const platVoice = platformSpeech(plat);
+        const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
+        return {
+          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${it.time}.`,
+          ar: `الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"}. الوجهة ${dest}. المغادرة من المنصة ${platVoice}. وقت المغادرة ${it.time}.`
+        };
+      });
+      speakBilingualQueue(pairs);
     }
   }
 
@@ -1011,7 +1090,7 @@ function speakBilingual(enText, arText){
         elTopD.textContent = ended;
       }
 
-      checkAlerts(nextItem, todayISO);
+      checkAlerts(upcoming, todayISO);
     }catch(e){
       showErr(String(e && e.message ? e.message : e));
     }
@@ -1057,7 +1136,7 @@ function speakBilingual(enText, arText){
       elTopD.textContent = ended;
     }
 
-    checkAlerts(nextItem, todayISO);
+    checkAlerts(upcoming, todayISO);
   }
 
   function onSoundToggle(){
