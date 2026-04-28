@@ -332,7 +332,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "v117_destination_voice_sequence_20260428";
+  const VERSION = "v118_fixed_arabic_announcements_20260428";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -375,6 +375,50 @@
     "SHJ":"var(--shj)",
     "DXB":"var(--dxb)"
   };
+
+
+
+  /* Fixed Arabic destination names for accurate voice announcements.
+     Add/edit names here as needed. The key can be English destination text or route code. */
+  const DESTINATION_AR_MAP = {
+    "JURF INDUSTRIAL": "الجرف الصناعية",
+    "JURF INDUSTRIAL AREA": "منطقة الجرف الصناعية",
+    "AL JURF INDUSTRIAL": "الجرف الصناعية",
+    "MUSALLA": "المصلى",
+    "MUSALLA BUS STATION": "محطة المصلى",
+    "AL MUSALLA BUS STATION": "محطة المصلى",
+    "SHARJAH": "الشارقة",
+    "GLOBAL VILLAGE": "القرية العالمية",
+    "DUBAI": "دبي",
+    "UAQ": "أم القيوين",
+    "UMM AL QUWAIN": "أم القيوين",
+    "AJ1": "الجرف الصناعية"
+  };
+
+  function normalizeArabicLookupKey(value){
+    return String(value || "").toUpperCase().replace(/\s+/g, " ").trim();
+  }
+
+  function hasArabicTextLocal(s){
+    return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(String(s||""));
+  }
+
+  function getArabicDestination(destination, route){
+    const dest = String(destination || "").trim();
+    if(hasArabicTextLocal(dest)) return dest;
+    const k1 = normalizeArabicLookupKey(dest);
+    const k2 = normalizeArabicLookupKey(route);
+    if(k1 && DESTINATION_AR_MAP[k1]) return DESTINATION_AR_MAP[k1];
+    if(k2 && DESTINATION_AR_MAP[k2]) return DESTINATION_AR_MAP[k2];
+    return dest || route || "";
+  }
+
+  function platformArabicSpeech(platform){
+    const p = String(platform || "-").trim();
+    const m = p.match(/^P\s*([0-9]+)$/i);
+    if(m) return "رقم " + m[1];
+    return p;
+  }
 
   const elRows = document.getElementById("rows");
   const elClock = document.getElementById("clock");
@@ -1031,9 +1075,11 @@ function speakBilingualQueue(items){
         const plat = it.platform || "-";
         const platVoice = platformSpeech(plat);
         const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
+        const destAr = getArabicDestination(dest, it.route);
+        const platAr = platformArabicSpeech(plat);
         return {
           en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${it.time}.`,
-          ar: `الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"}. الوجهة ${dest}. المغادرة من المنصة ${platVoice}. وقت المغادرة ${it.time}.`
+          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${it.time}.`
         };
       });
       speakBilingualQueue(pairs);
