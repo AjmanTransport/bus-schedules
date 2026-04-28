@@ -332,7 +332,7 @@
 (function(){
   "use strict";
 
-  const VERSION = "v118_fixed_arabic_announcements_20260428";
+  const VERSION = "v119_bilingual_destination_ar_20260428";
   const CANDIDATE_URLS = [
     "data/schedules.json?v=" + VERSION,
     "./data/schedules.json?v=" + VERSION,
@@ -418,6 +418,16 @@
     const m = p.match(/^P\s*([0-9]+)$/i);
     if(m) return "رقم " + m[1];
     return p;
+  }
+
+  function getRouteDestinationEn(routeObj){
+    return String((routeObj || {}).display_name_en || (routeObj || {}).destination_en || (routeObj || {}).display_name || (routeObj || {}).destination || (routeObj || {}).route || "").trim();
+  }
+
+  function getRouteDestinationAr(routeObj){
+    const ar = String((routeObj || {}).display_name_ar || (routeObj || {}).destination_ar || "").trim();
+    if(ar) return ar;
+    return getArabicDestination(getRouteDestinationEn(routeObj), (routeObj || {}).route);
   }
 
   const elRows = document.getElementById("rows");
@@ -848,7 +858,7 @@ function speakBilingualQueue(items){
         (b.departures||[]).forEach(t=>{
           const dt = parseTime(tISO, t);
           if(!best || dt < best.dt){
-            best = {dt, time: t, route: r.route, bus: b.bus, destination: (r.display_name || r.destination || r.route), platform: (b.platform || r.platform || ""), date: tISO};
+            best = {dt, time: t, route: r.route, bus: b.bus, destination: getRouteDestinationEn(r), destination_en: getRouteDestinationEn(r), destination_ar: getRouteDestinationAr(r), platform: (b.platform || r.platform || ""), date: tISO};
           }
         });
       });
@@ -870,7 +880,9 @@ function speakBilingualQueue(items){
           if(ms >= 0){
             list.push({
               dt, ms, time: t, route: r.route, bus: b.bus,
-              destination: (r.display_name || r.destination || r.route),
+              destination: getRouteDestinationEn(r),
+              destination_en: getRouteDestinationEn(r),
+              destination_ar: getRouteDestinationAr(r),
               platform: (b.platform || r.platform || "")
             });
           }
@@ -892,7 +904,7 @@ function speakBilingualQueue(items){
     }
 
     elTopC.textContent = fmtCountdown(nextItem.ms);
-    elTopD.textContent = (nextItem.destination || nextItem.route) + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
+    elTopD.textContent = (nextItem.destination_en || nextItem.destination || nextItem.route) + " / " + (nextItem.destination_ar || "") + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
 
     // Blink when 1 minute or less
     if(nextItem.ms <= 60000){
@@ -942,7 +954,7 @@ function speakBilingualQueue(items){
       tdR.innerHTML = `<span class="tag route" style="border-color:${rc};color:${rc}">${item.route}</span>`;
 
       const tdD = document.createElement("td");
-      tdD.textContent = item.destination || "-";
+      tdD.textContent = (item.destination_en || item.destination || "-") + (item.destination_ar ? " / " + item.destination_ar : "");
 
       tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdP); tr.appendChild(tdR); tr.appendChild(tdD);
       elRows.appendChild(tr);
@@ -984,7 +996,7 @@ function speakBilingualQueue(items){
       left.className = "rL";
       left.innerHTML = `
         <div class="rName">${r.route}</div>
-        <div class="rSub">${r.display_name || r.destination || r.route} • Platform ${r.platform || "-"}</div>
+        <div class="rSub">${getRouteDestinationEn(r)}${getRouteDestinationAr(r) ? " / " + getRouteDestinationAr(r) : ""} • Platform ${r.platform || "-"}</div>
       `;
 
       const right = document.createElement("div");
@@ -1037,7 +1049,7 @@ function speakBilingualQueue(items){
 
     const tmr = getTomorrowFirstTrip(todayISO);
     if(!tmr) return "Service ended — no schedules found for tomorrow";
-    return "Service ended — next service starts tomorrow at " + tmr.time + " (" + (tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
+    return "Service ended — next service starts tomorrow at " + tmr.time + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
   }
 
   function checkAlerts(upcoming, todayISO){
@@ -1055,7 +1067,7 @@ function speakBilingualQueue(items){
 
     const newTrips = [];
     sameTimeTrips.forEach(it=>{
-      const key = todayISO + "|" + it.route + "|" + (it.destination || "") + "|" + (it.platform || "") + "|" + it.time;
+      const key = todayISO + "|" + it.route + "|" + (it.destination_en || it.destination || "") + "|" + (it.destination_ar || "") + "|" + (it.platform || "") + "|" + it.time;
       if(!alerted.has(key)){
         alerted.add(key);
         newTrips.push(it);
@@ -1071,11 +1083,11 @@ function speakBilingualQueue(items){
 
     if(voiceOn){
       const pairs = newTrips.map((it, idx)=>{
-        const dest = it.destination || it.route;
+        const dest = it.destination_en || it.destination || it.route;
+        const destAr = it.destination_ar || getArabicDestination(dest, it.route);
         const plat = it.platform || "-";
         const platVoice = platformSpeech(plat);
         const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
-        const destAr = getArabicDestination(dest, it.route);
         const platAr = platformArabicSpeech(plat);
         return {
           en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${it.time}.`,
