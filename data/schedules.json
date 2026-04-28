@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T22:16:27+04:00",
+  "generated_at": "2026-04-28T22:29:03+04:00",
   "route_colors": {
     "AJ1": "#2f80ed",
     "AJ2": "#27ae60",
@@ -21,7 +21,11 @@
     {
       "route": "AJ1",
       "destination": "Al Jurf",
+      "destination_en": "Al Jurf",
+      "destination_ar": "الجرف",
       "display_name": "Al Jurf",
+      "display_name_en": "Al Jurf",
+      "display_name_ar": "الجرف",
       "days": [
         {
           "date": "2026-04-28",
@@ -91,7 +95,11 @@
     {
       "route": "AJ2",
       "destination": "Ajman Industrial",
+      "destination_en": "Ajman Industrial",
+      "destination_ar": "عجمان الصناعية",
       "display_name": "Ajman Industrial",
+      "display_name_en": "Ajman Industrial",
+      "display_name_ar": "عجمان الصناعية",
       "days": [
         {
           "date": "2026-04-28",
@@ -159,7 +167,11 @@
     {
       "route": "AJ3",
       "destination": "Al Humaidiya",
+      "destination_en": "Al Humaidiya",
+      "destination_ar": "الحميدية",
       "display_name": "Al Humaidiya",
+      "display_name_en": "Al Humaidiya",
+      "display_name_ar": "الحميدية",
       "days": [
         {
           "date": "2026-04-28",
@@ -223,7 +235,11 @@
     {
       "route": "AJ6",
       "destination": "Sheikh Ammar Street",
+      "destination_en": "Sheikh Ammar Street",
+      "destination_ar": "شارع الشيخ عمار",
       "display_name": "Sheikh Ammar Street",
+      "display_name_en": "Sheikh Ammar Street",
+      "display_name_ar": "شارع الشيخ عمار",
       "days": [
         {
           "date": "2026-04-28",
@@ -283,7 +299,11 @@
     {
       "route": "AJ7",
       "destination": "Mushairef",
+      "destination_en": "Mushairef",
+      "destination_ar": "مشيرف",
       "display_name": "Mushairef",
+      "display_name_en": "Mushairef",
+      "display_name_ar": "مشيرف",
       "days": [
         {
           "date": "2026-04-28",
@@ -319,7 +339,11 @@
     {
       "route": "DXB",
       "destination": "Centerpoint Metro Station - Dubai",
+      "destination_en": "Centerpoint Metro Station - Dubai",
+      "destination_ar": "دبي محطة سنتر بوينت",
       "display_name": "Centerpoint Metro Station - Dubai",
+      "display_name_en": "Centerpoint Metro Station - Dubai",
+      "display_name_ar": "دبي محطة سنتر بوينت",
       "days": [
         {
           "date": "2026-04-28",
@@ -374,7 +398,11 @@
     {
       "route": "SHJ1",
       "destination": "Sharjah - Jubail Station",
+      "destination_en": "Sharjah - Jubail Station",
+      "destination_ar": "الشارقة - محطة الجبيل",
       "display_name": "Sharjah - Jubail Station",
+      "display_name_en": "Sharjah - Jubail Station",
+      "display_name_ar": "الشارقة - محطة الجبيل",
       "days": [
         {
           "date": "2026-04-28",
@@ -446,7 +474,11 @@
     {
       "route": "UAQ",
       "destination": "Umm Al Quwain",
+      "destination_en": "Umm Al Quwain",
+      "destination_ar": "ام القوين",
       "display_name": "Umm Al Quwain",
+      "display_name_en": "Umm Al Quwain",
+      "display_name_ar": "ام القوين",
       "days": [
         {
           "date": "2026-04-28",
