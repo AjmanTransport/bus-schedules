@@ -6,87 +6,185 @@
   <meta http-equiv="refresh" content="300"><!-- kiosk safety reload -->
   <title>Musalla Bus Station - Live Departures</title>
   <style>
+
     :root{
-      --bg:#071525;
-      --text:#e8f2ff;
-      --muted:#9fb4cc;
+      --blue1:#08b8d7;
+      --blue2:#0074cf;
+      --blue3:#004aaf;
+      --white:#ffffff;
+      --line:rgba(255,255,255,.72);
+      --soft:rgba(255,255,255,.16);
+      --soft2:rgba(255,255,255,.08);
+      --shadow:0 18px 42px rgba(0,40,120,.28);
+      --good:#ffffff;
+      --warn:#ffffff;
+      --danger:#ffffff;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.88);
 
-      /* Ajman route branding (fixed) */
-      --aj1:#2f80ed; /* blue */
-      --aj2:#27ae60; /* green */
-      --aj3:#f2994a; /* orange */
-      --aj4:#9b51e0; /* purple */
-      --aj5:#eb5757; /* red */
-      --aj6:#56ccf2; /* light blue */
-      --aj7:#f2c94c; /* yellow */
-      --aj8:#6fcf97; /* mint */
-      --aj9:#10b981;  /* teal */
-      --aj10:#3b82f6; /* royal blue */
-      --aj11:#22c55e; /* green */
-      --aj12:#eab308; /* amber */
-      --aj13:#f97316; /* orange */
-      --aj14:#a855f7; /* violet */
-      --aj15:#0ea5e9; /* sky */
-      --uaq:#f43f5e;  /* UAQ */
-      --shj:#14b8a6;  /* SHJ */
-      --dxb:#fb7185;  /* DXB */
-      --accent:#39a7ff;
-
-      --good:#1ee6a8;
-      --warn:#ffcc66;
-      --danger:#ff6b6b;
-      --border:rgba(255,255,255,0.10);
-      --card:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      --shadow:0 10px 30px rgba(0,0,0,0.25);
+      --aj1:#ffffff; --aj2:#ffffff; --aj3:#ffffff; --aj4:#ffffff; --aj5:#ffffff;
+      --aj6:#ffffff; --aj7:#ffffff; --aj8:#ffffff; --aj9:#ffffff; --aj10:#ffffff;
+      --aj11:#ffffff; --aj12:#ffffff; --aj13:#ffffff; --aj14:#ffffff; --aj15:#ffffff;
+      --uaq:#ffffff; --shj:#ffffff; --dxb:#ffffff; --accent:#ffffff;
+      --border:rgba(255,255,255,.58);
+      --card:transparent;
     }
-    html,body{height:100%;}
+    *{box-sizing:border-box}
+    html,body{height:100%;width:100%;}
     body{
       margin:0;
-      background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%);
-      color:var(--text);
-      font-family:system-ui, "Segoe UI", Arial;
+      color:var(--white);
+      font-family:system-ui, "Segoe UI", Arial, sans-serif;
       height:100vh;
       overflow:hidden;
+      background:
+        radial-gradient(900px 620px at 12% 10%, rgba(72,216,235,.55), transparent 58%),
+        linear-gradient(135deg, var(--blue1) 0%, var(--blue2) 47%, var(--blue3) 100%);
     }
+    body:before{
+      content:"";
+      position:fixed;inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.08), transparent 28%, rgba(0,0,0,.05) 100%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 42px);
+      pointer-events:none;
+      opacity:.55;
+    }
+
     header{
-      display:flex;align-items:center;justify-content:center;
-      padding:18px 22px;border-bottom:1px solid var(--border);
-      gap:14px; flex-wrap:wrap;
-      position:relative;
+      height:34vh;
+      min-height:230px;
+      padding:26px 34px 8px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      gap:14px;
       text-align:center;
+      position:relative;
+      border-bottom:none;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:26px;
+      color:#fff;
+      line-height:1;
+      margin-top:2px;
+      text-shadow:0 2px 10px rgba(0,0,0,.18);
+    }
+    .brandSide{min-width:245px;text-align:center;}
+    .brandAr{
+      font-size:42px;
+      font-weight:900;
+      letter-spacing:.2px;
+      font-family:"Segoe UI", Tahoma, Arial, sans-serif;
+      direction:rtl;
+    }
+    .brandEn{
+      margin-top:8px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:18px;
+      font-weight:800;
+    }
+    .brandDivider{
+      width:2px;
+      height:78px;
+      background:rgba(255,255,255,.92);
+      border-radius:2px;
     }
     .titleWrap{width:100%;}
-    .t{font-size:36px;font-weight:1000;letter-spacing:.2px;line-height:1.15;text-align:center;}
-    .s{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.2;text-align:center;}
-    header .right{position:absolute;right:14px;top:10px;}
+    .t{
+      font-size:44px;
+      font-weight:1000;
+      letter-spacing:.2px;
+      line-height:1.15;
+      text-align:center;
+      color:#fff;
+      margin-top:8px;
+      text-shadow:0 4px 16px rgba(0,40,110,.35);
+    }
+    .s{display:none;}
+    .infoBar{
+      width:min(1220px,94vw);
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      align-items:center;
+      gap:18px;
+      margin-top:6px;
+      color:#fff;
+    }
+    .infoItem{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      min-height:58px;
+      font-size:34px;
+      font-weight:950;
+      text-shadow:0 3px 12px rgba(0,40,110,.25);
+    }
+    .infoItem + .infoItem{border-left:2px solid rgba(255,255,255,.65);}
+    .circleIcon{
+      width:54px;height:54px;border-radius:50%;
+      background:#fff;color:#066fc8;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:30px;font-weight:1000;
+      box-shadow:0 6px 16px rgba(0,50,130,.22);
+      flex:0 0 auto;
+    }
+    .dateSmall{
+      display:block;
+      font-size:22px;
+      font-weight:800;
+      margin-top:2px;
+      opacity:.95;
+    }
+    header .right{
+      position:absolute;
+      right:24px;
+      top:22px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
     .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     .pill{
-      padding:10px 14px;border-radius:999px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid var(--border);
-      font-weight:800;
+      padding:8px 13px;border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.45);
+      color:#fff;
+      font-weight:900;
+      backdrop-filter: blur(5px);
     }
     .btn{
       cursor:pointer;user-select:none;
-      padding:10px 14px;border-radius:12px;
-      background:rgba(57,167,255,0.16);
-      border:1px solid rgba(57,167,255,0.32);
-      color:var(--text);font-weight:900;
-      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 11px;border-radius:12px;
+      background:rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.38);
+      color:#fff;font-weight:900;
+      display:inline-flex;align-items:center;gap:7px;
+      backdrop-filter: blur(5px);
     }
-    .btn.off{
-      background:rgba(255,255,255,0.06);
-      border-color:var(--border);color:var(--muted);
-    }
+    .btn.off{opacity:.55;}
     .ico{width:18px;height:18px;display:inline-block}
     .ico svg{width:18px;height:18px;fill:currentColor;display:block}
 
-    #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
+    #err{display:none;margin:0 32px 8px;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.55);background:rgba(255,0,0,.20);color:#fff;font-weight:900;}
 
-    .grid{display:grid;grid-template-columns: 1fr; gap:10px; padding:10px 16px 10px; height:calc(100vh - 92px); box-sizing:border-box;}
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      padding:2px 32px 16px;
+      height:66vh;
+      box-sizing:border-box;
+      position:relative;
+      z-index:1;
+    }
     .card{
-      background:var(--card);
-      border:1px solid var(--border);
+      background:transparent;
+      border:2px solid var(--line);
       border-radius:18px;
       box-shadow:var(--shadow);
       overflow:hidden;
@@ -94,168 +192,207 @@
       flex-direction:column;
       min-height:0;
     }
-    .card h2{margin:0;padding:10px 18px;border-bottom:1px solid var(--border);font-size:25px;letter-spacing:.2px;text-align:center;}
-    .pad{padding:8px 14px; flex:1; min-height:0; overflow:hidden;}
-    .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
-    .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
-    .muted{color:var(--muted);}
+    .card h2{display:none;}
+    .pad{padding:0; flex:1; min-height:0; overflow:hidden;}
+    .muted{color:rgba(255,255,255,.88);font-size:28px;font-weight:900;text-align:center;}
 
-    /* Top countdown bar */
-    .topBar{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:14px;flex-wrap:wrap;
-      padding:12px 14px;
-      border-bottom:1px solid var(--border);
-      background:rgba(255,255,255,0.03);
+    table{
+      width:100%;
+      height:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      table-layout:fixed;
+      direction:rtl;
     }
-    .topBar .left{display:flex;flex-direction:column;gap:4px}
-    .topBar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .topSmall{font-size:20px;color:var(--muted);font-weight:900;letter-spacing:.04em}
-    .topBig{font-size:84px;font-weight:1000;letter-spacing:2px;line-height:1}
-    .topRoute{font-size:20px;font-weight:900}
+    th,td{
+      border-bottom:2px solid rgba(255,255,255,.58);
+      border-left:2px solid rgba(255,255,255,.58);
+      text-align:center;
+      vertical-align:middle;
+      color:#fff;
+    }
+    th:last-child,td:last-child{border-left:none;}
+    tbody tr:last-child td{border-bottom:none;}
+    th{
+      height:72px;
+      padding:8px 16px;
+      font-size:31px;
+      line-height:1.1;
+      font-weight:1000;
+      letter-spacing:0;
+      text-transform:none;
+      text-shadow:0 3px 12px rgba(0,40,110,.25);
+      background:rgba(255,255,255,.05);
+    }
+    td{
+      padding:6px 16px;
+      font-size:40px;
+      font-weight:1000;
+      line-height:1.08;
+      text-shadow:0 3px 12px rgba(0,40,110,.28);
+    }
+    td.time{
+      font-size:50px;
+      letter-spacing:1px;
+      direction:ltr;
+    }
+    .timeSub{
+      display:block;
+      font-size:20px;
+      font-weight:800;
+      margin-top:4px;
+      opacity:.92;
+      letter-spacing:0;
+    }
+    td.platform{
+      font-size:48px;
+      width:13%;
+    }
+    td.route{
+      font-size:36px;
+      direction:ltr;
+    }
+    td.destination{
+      font-size:43px;
+      font-weight:1000;
+      line-height:1.12;
+      text-align:center;
+      direction:rtl;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:92px;
+      padding:8px 16px;
+      border-radius:10px;
+      font-weight:1000;
+      font-size:34px;
+      border:2px solid rgba(255,255,255,.9);
+      color:#fff !important;
+      background:rgba(255,255,255,.08) !important;
+      letter-spacing:.02em;
+    }
+    .tag.good,.tag.warn,.tag.danger,.tag.route{
+      color:#fff !important;
+      border-color:rgba(255,255,255,.9) !important;
+      background:rgba(255,255,255,.08) !important;
+    }
+    .ticker{
+      min-height:42px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:18px;
+      padding:6px 16px;
+      border-top:2px solid rgba(255,255,255,.58);
+      color:#fff;
+      font-size:22px;
+      font-weight:900;
+      text-shadow:0 3px 12px rgba(0,40,110,.25);
+    }
+    #net{display:none;}
+    .footerSocial{
+      position:fixed;
+      left:0;right:0;bottom:7px;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      color:#fff;
+      font-size:26px;
+      font-weight:950;
+      text-shadow:0 3px 12px rgba(0,40,110,.25);
+      pointer-events:none;
+    }
+    .socialCircle{
+      width:36px;height:36px;border-radius:50%;
+      background:#fff;color:#066fc8;
+      display:inline-flex;align-items:center;justify-content:center;
+      font-size:18px;font-weight:1000;
+    }
 
-    table{width:100%;border-collapse:collapse;}
-    th,td{padding:15px 14px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;vertical-align:middle;}
-    th{color:#cfe1f5;font-size:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:1000;}
-    td{font-size:27px;font-weight:900;}
-    td.time{font-size:34px;font-weight:1000;}
-    td.route{font-weight:1000;}
-    td.destination{font-size:34px;font-weight:1000;line-height:1.18;color:#ffffff;}
-    .tag{display:inline-block;padding:8px 13px;border-radius:999px;font-weight:1000;font-size:22px;letter-spacing:.04em;border:1px solid transparent;}
-    .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);}
-    .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
-    .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
-    .tag.route{background:rgba(57,167,255,0.12);border-color:rgba(57,167,255,0.24);}
+    .cards,.rcard,.topBar{display:none;}
 
-    /* Next-per-route cards */
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:10px;
-    }
-    @media (max-width:1200px){
-      .cards{grid-template-columns: repeat(2, minmax(0,1fr));}
-    }
-    .rcard{
-      border-radius:16px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,0.04);
-      padding:12px 12px;
-      display:flex;justify-content:space-between;align-items:center;gap:10px;
-      overflow:hidden;
-      position:relative;
-    }
-    .rcard:before{
-      content:"";
-      position:absolute;left:0;top:0;bottom:0;width:8px;
-      background:var(--accent);
-      opacity:.95;
-    }
-    .rL{padding-left:8px}
-    .rName{font-size:16px;font-weight:950;letter-spacing:.2px}
-    .rSub{font-size:12px;color:var(--muted);font-weight:800;margin-top:3px}
-    .rT{font-size:22px;font-weight:1000}
-    .rB{font-size:18px;color:#ffffff;font-weight:1000;margin-top:6px;text-align:right;letter-spacing:.5px}
-    .rB .mins{font-size:22px;font-weight:1000;color:var(--warn)}
-    .ticker{display:flex;justify-content:space-between;gap:12px;padding:8px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:14px;font-weight:800;}
-      /* Full-screen passenger notification overlay */
     .notifOverlay{
       position:fixed; inset:0;
       background:rgba(0,0,0,.72);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      z-index: 9999;
+      z-index:9999;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 3vw;
+      padding:3vw;
     }
     .notifCard{
-      width:min(1100px, 92vw);
-      max-height: 88vh;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 22px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      width:min(1100px,92vw);
+      max-height:88vh;
+      background:linear-gradient(135deg, rgba(8,184,215,.96), rgba(0,74,175,.96));
+      border:2px solid rgba(255,255,255,.65);
+      border-radius:22px;
+      box-shadow:0 30px 80px rgba(0,0,0,.55);
       overflow:hidden;
     }
     .notifHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding: 18px 22px;
-      background: rgba(255, 61, 61, .18);
-      border-bottom: 1px solid rgba(255,255,255,.14);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 22px;
+      background:rgba(255,255,255,.12);
+      border-bottom:1px solid rgba(255,255,255,.45);
     }
-    .notifTitle{
-      font-size: 34px;
-      font-weight: 900;
-      letter-spacing: .2px;
-      line-height: 1.1;
-    }
+    .notifTitle{font-size:34px;font-weight:1000;color:#fff;}
     .notifClose{
-      border: 0;
-      background: rgba(255,255,255,.14);
-      color: var(--text);
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      font-size: 30px;
-      line-height: 1;
-      cursor: pointer;
+      border:0;background:rgba(255,255,255,.18);color:#fff;
+      width:46px;height:46px;border-radius:14px;font-size:30px;line-height:1;cursor:pointer;
     }
     .notifBody{
-      padding: 22px 22px 10px 22px;
-      font-size: 28px;
-      line-height: 1.35;
-      color: var(--text);
-      white-space: pre-wrap;
-      overflow:auto;
-      max-height: 60vh;
+      padding:22px 22px 10px;
+      font-size:28px;line-height:1.35;color:#fff;white-space:pre-wrap;overflow:auto;max-height:60vh;
     }
     .notifFooter{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 14px 22px 18px 22px;
-      border-top: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      font-size: 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:14px 22px 18px;
+      border-top:1px solid rgba(255,255,255,.45);
+      background:rgba(255,255,255,.08);
+      color:#fff;font-size:16px;
     }
-    .notifMeta{ opacity:.95; }
-    @media (max-width: 900px){
-      header .right{position:static;justify-content:center;width:100%;}
-      .t{font-size:26px;}
-      th,td{padding:12px 8px;}
-      td, .tag{font-size:16px;}
-      td.time, td.destination{font-size:20px;}
+
+    @media (max-width:1100px){
+      .brandAr{font-size:32px}.brandEn{font-size:15px}.brandSide{min-width:190px}
+      .t{font-size:32px}
+      .infoItem{font-size:24px}.circleIcon{width:44px;height:44px;font-size:24px}
+      th{font-size:22px}td{font-size:28px}td.time{font-size:36px}td.destination{font-size:30px}
     }
-    @media (max-width: 680px){
-      .notifTitle{ font-size: 26px; }
-      .notifBody{ font-size: 20px; }
-    }
-  
-    @keyframes blinkUrgent {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.2; }
-      100% { opacity: 1; }
-    }
-    .topBig.urgentBlink{
-      color: var(--danger);
-      animation: blinkUrgent 1s infinite;
-    }
+
   </style>
 </head>
 <body>
 <header>
+  <div class="brand" aria-label="Government of Ajman and Ajman Transport">
+    <div class="brandSide">
+      <div class="brandAr">حكومة عجمان</div>
+      <div class="brandEn">Government of Ajman</div>
+    </div>
+    <div class="brandDivider"></div>
+    <div class="brandSide">
+      <div class="brandAr">هيئة النقل</div>
+      <div class="brandEn">Ajman Transport</div>
+    </div>
+  </div>
+
   <div class="titleWrap">
     <div class="t">هيئة النقل - عجمان - مواعيد مغادرة الرحلات - محطة المصلي الرئيسية</div>
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
-  <div class="right">
-    <div class="pill" id="clock">--:--</div>
+
+  <div class="infoBar">
+    <div class="infoItem"><span class="circleIcon">🌐</span><span>www.ta.gov.ae</span></div>
+    <div class="infoItem"><span class="circleIcon">☎</span><span>6005 9999 7</span></div>
+    <div class="infoItem"><span class="circleIcon">◷</span><span id="clock">--:--</span><span class="dateSmall" id="screenDate"></span></div>
+  </div>
+
+  <div class="right" aria-label="audio controls">
     <button class="btn" id="soundBtn" type="button">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -299,16 +436,14 @@
       <table>
         <thead>
           <tr>
-            <th style="width:13%">Time</th>
-            <th style="width:15%">Countdown</th>
-            <th style="width:16%">Status</th>
-            <th style="width:14%">Platform</th>
-            <th style="width:15%">Route</th>
-            <th>Destination / الوجهة</th>
+            <th style="width:18%">منصة</th>
+            <th style="width:28%">وقت المغادرة</th>
+            <th style="width:23%">رقم الخط</th>
+            <th>الوجهة</th>
           </tr>
         </thead>
         <tbody id="rows">
-          <tr><td colspan="6" class="muted">Loading...</td></tr>
+          <tr><td colspan="4" class="muted">Loading...</td></tr>
         </tbody>
       </table>
     </div>
@@ -319,6 +454,8 @@
     </div>
   </div>
 </div>
+
+<div class="footerSocial"><span class="socialCircle">𝕏</span><span class="socialCircle">f</span><span class="socialCircle">◎</span><span class="socialCircle">▶</span><span class="socialCircle">♪</span><span>Ajmantransport</span></div>
 
 <script>
 (function(){
@@ -424,6 +561,7 @@
 
   const elRows = document.getElementById("rows");
   const elClock = document.getElementById("clock");
+  const elScreenDate = document.getElementById("screenDate");
   const elSub = document.getElementById("subtitle");
   const elLast = document.getElementById("lastUpdate");
   const elNet = document.getElementById("net");
@@ -919,7 +1057,7 @@ function speakBilingualQueue(items){
     }
 
     if(!view.length){
-      elRows.innerHTML = '<tr><td colspan="6" class="muted">No upcoming trips</td></tr>';
+      elRows.innerHTML = '<tr><td colspan="4" class="muted">No upcoming trips</td></tr>';
       return;
     }
 
@@ -928,28 +1066,23 @@ function speakBilingualQueue(items){
       const tag = statusTag(item.ms);
       const tr = document.createElement("tr");
 
+      const tdP = document.createElement("td");
+      tdP.className = "platform";
+      tdP.textContent = String(item.platform || "-").replace(/^P/i, "");
+
       const tdT = document.createElement("td");
       tdT.className = "time";
-      tdT.textContent = item.time;
-
-      const tdC = document.createElement("td");
-      tdC.textContent = fmtCountdown(item.ms);
-
-      const tdS = document.createElement("td");
-      tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
-      const tdP = document.createElement("td");
-      tdP.innerHTML = `<span class="tag warn">${item.platform || "-"}</span>`;
+      tdT.innerHTML = `${item.time}<span class="timeSub">بعد ${fmtCountdown(item.ms)}</span>`;
 
       const tdR = document.createElement("td");
       tdR.className = "route";
-      const rc = routeColor(item.route);
-      tdR.innerHTML = `<span class="tag route" style="border-color:${rc};color:${rc}">${item.route}</span>`;
+      tdR.innerHTML = `<span class="tag route">${item.route}</span>`;
 
       const tdD = document.createElement("td");
       tdD.className = "destination";
-      tdD.textContent = (item.destination_en || item.destination || "-") + (item.destination_ar ? " / " + item.destination_ar : "");
+      tdD.textContent = item.destination_ar || item.destination_en || item.destination || "-";
 
-      tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdP); tr.appendChild(tdR); tr.appendChild(tdD);
+      tr.appendChild(tdP); tr.appendChild(tdT); tr.appendChild(tdR); tr.appendChild(tdD);
       elRows.appendChild(tr);
     });
   }
@@ -1117,7 +1250,7 @@ function speakBilingualQueue(items){
       // If today not found in ANY route => show "No schedules for today" (no fallback)
       const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
       if(!anyToday){
-        elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
+        elRows.innerHTML = '<tr><td colspan="4" class="muted">No schedules for today</td></tr>';
         if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
         if(elTopC) elTopC.textContent = "--:--";
         if(elTopD) elTopD.textContent = "No schedules for today";
@@ -1158,6 +1291,7 @@ function speakBilingualQueue(items){
 
   function tick(){
     elClock.textContent = hhmm(now());
+    if(elScreenDate) elScreenDate.textContent = ymd(now());
     rotateIfNeeded();
     // Re-render from already-loaded schedules (fast), but if not yet, do nothing.
     if(!schedules || !schedules.routes) return;
@@ -1165,7 +1299,7 @@ function speakBilingualQueue(items){
     const todayISO = ymd(now());
     const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
     if(!anyToday){
-      elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
+      elRows.innerHTML = '<tr><td colspan="4" class="muted">No schedules for today</td></tr>';
       if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
       if(elTopC) elTopC.textContent = "--:--";
       if(elTopD) elTopD.textContent = "No schedules for today";
@@ -1220,6 +1354,7 @@ function speakBilingualQueue(items){
     if(vb) vb.addEventListener("click", onVoiceToggle);
 
     elClock.textContent = hhmm(now());
+    if(elScreenDate) elScreenDate.textContent = ymd(now());
     load();
     setInterval(tick, 1000);
     setInterval(load, 60*1000);
