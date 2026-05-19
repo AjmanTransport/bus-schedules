@@ -47,13 +47,16 @@
       font-family:system-ui, "Segoe UI", Arial;
     }
     header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 22px;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      padding:18px 22px;border-bottom:1px solid var(--border);
       gap:14px; flex-wrap:wrap;
+      position:relative;
+      text-align:center;
     }
-    .titleWrap{min-width:360px}
-    .t{font-size:26px;font-weight:950;letter-spacing:.2px;}
-    .s{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.35}
+    .titleWrap{width:100%;}
+    .t{font-size:34px;font-weight:1000;letter-spacing:.2px;line-height:1.25;}
+    .s{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.35}
+    header .right{position:absolute;right:18px;top:16px;}
     .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     .pill{
       padding:10px 14px;border-radius:999px;
@@ -78,7 +81,7 @@
 
     #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
 
-    .grid{display:grid;grid-template-columns: 1.35fr .65fr; gap:14px; padding:14px 14px 18px;}
+    .grid{display:grid;grid-template-columns: 1fr; gap:14px; padding:14px 18px 18px;}
     .card{
       background:var(--card);
       border:1px solid var(--border);
@@ -86,7 +89,7 @@
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-    .card h2{margin:0;padding:12px 16px;border-bottom:1px solid var(--border);font-size:16px;letter-spacing:.2px;}
+    .card h2{margin:0;padding:16px 20px;border-bottom:1px solid var(--border);font-size:24px;letter-spacing:.2px;text-align:center;}
     .pad{padding:14px 16px;}
     .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
     .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
@@ -107,11 +110,13 @@
     .topRoute{font-size:20px;font-weight:900}
 
     table{width:100%;border-collapse:collapse;}
-    th,td{padding:11px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;}
-    th{color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
-    td.time{font-size:18px;font-weight:950;}
-    td.route{font-weight:950;}
-    .tag{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:950;font-size:12px;letter-spacing:.08em;border:1px solid transparent;}
+    th,td{padding:18px 16px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;vertical-align:middle;}
+    th{color:#cfe1f5;font-size:17px;letter-spacing:.10em;text-transform:uppercase;font-weight:1000;}
+    td{font-size:24px;font-weight:850;}
+    td.time{font-size:30px;font-weight:1000;}
+    td.route{font-weight:1000;}
+    td.destination{font-size:30px;font-weight:1000;line-height:1.25;color:#ffffff;}
+    .tag{display:inline-block;padding:9px 14px;border-radius:999px;font-weight:1000;font-size:20px;letter-spacing:.05em;border:1px solid transparent;}
     .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);}
     .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
     .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
@@ -147,7 +152,7 @@
     .rT{font-size:22px;font-weight:1000}
     .rB{font-size:18px;color:#ffffff;font-weight:1000;margin-top:6px;text-align:right;letter-spacing:.5px}
     .rB .mins{font-size:22px;font-weight:1000;color:var(--warn)}
-    .ticker{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;}
+    .ticker{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:15px;font-weight:800;}
       /* Full-screen passenger notification overlay */
     .notifOverlay{
       position:fixed; inset:0;
@@ -215,6 +220,13 @@
       font-size: 16px;
     }
     .notifMeta{ opacity:.95; }
+    @media (max-width: 900px){
+      header .right{position:static;justify-content:center;width:100%;}
+      .t{font-size:26px;}
+      th,td{padding:12px 8px;}
+      td, .tag{font-size:16px;}
+      td.time, td.destination{font-size:20px;}
+    }
     @media (max-width: 680px){
       .notifTitle{ font-size: 26px; }
       .notifBody{ font-size: 20px; }
@@ -234,7 +246,7 @@
 <body>
 <header>
   <div class="titleWrap">
-    <div class="t">Musalla Bus Station - Live Departures هيئة النقل عجمان - نظام جدولة مواعيد رحلات النقل العام - محطة المصلي الرئيسية</div>
+    <div class="t">هيئة النقل - عجمان - مواعيد مغادرة الرحلات - محطة المصلي الرئيسية</div>
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
   <div class="right">
@@ -276,19 +288,7 @@
 
 <div class="grid">
   <div class="card">
-    <h2>Next Departures (All Routes) الرحلات النالية لكل الخطوط مرتبة حسب اقرب رحلة</h2>
-
-    <div class="topBar">
-      <div class="left">
-        <div class="topSmall">Next trip countdown الزمن المتبقي لافرب رحلة</div>
-        <div class="topBig" id="topCountdown">--:--</div>
-        <div class="topRoute" id="topDetails">-</div>
-      </div>
-      <div class="right">
-        <div class="pill" id="dateTag">Date: -</div>
-        <div class="pill" id="rotationTag">Showing 1–10</div>
-      </div>
-    </div>
+    <h2>Next Departures - مواعيد المغادرة القادمة</h2>
 
     <div class="pad" style="padding-top:10px">
       <table>
@@ -299,7 +299,7 @@
             <th style="width:16%">Status</th>
             <th style="width:14%">Platform</th>
             <th style="width:15%">Route</th>
-            <th>Destination</th>
+            <th>Destination / الوجهة</th>
           </tr>
         </thead>
         <tbody id="rows">
@@ -311,19 +311,6 @@
     <div class="ticker">
       <div id="lastUpdate">Last update: -</div>
       <div id="net">Online: -</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>Next per Route اقرب رحلة لكل خط</h2>
-    <div class="pad">
-      <div class="cards" id="routeCards">
-        <div class="muted">Loading...</div>
-      </div>
-    </div>
-    <div class="ticker">
-      <div id="serviceState">-</div>
-      <div>Routes Information</div>
     </div>
   </div>
 </div>
@@ -894,23 +881,23 @@ function speakBilingualQueue(items){
   }
 
   function renderTop(nextItem, todayISO){
-    elDateTag.textContent = "Date: " + todayISO;
+    if(elDateTag) elDateTag.textContent = "Date: " + todayISO;
 
     if(!nextItem){
-      elTopC.textContent = "--:--";
-      elTopD.textContent = "No upcoming trips";
-      elTopC.classList.remove("urgentBlink");
+      if(elTopC) if(elTopC) elTopC.textContent = "--:--";
+      if(elTopD) elTopD.textContent = "No upcoming trips";
+      if(elTopC) elTopC.classList.remove("urgentBlink");
       return;
     }
 
-    elTopC.textContent = fmtCountdown(nextItem.ms);
-    elTopD.textContent = (nextItem.destination_en || nextItem.destination || nextItem.route) + " / " + (nextItem.destination_ar || "") + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
+    if(elTopC) elTopC.textContent = fmtCountdown(nextItem.ms);
+    if(elTopD) elTopD.textContent = (nextItem.destination_en || nextItem.destination || nextItem.route) + " / " + (nextItem.destination_ar || "") + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
 
     // Blink when 1 minute or less
     if(nextItem.ms <= 60000){
-      elTopC.classList.add("urgentBlink");
+      if(elTopC) elTopC.classList.add("urgentBlink");
     }else{
-      elTopC.classList.remove("urgentBlink");
+      if(elTopC) elTopC.classList.remove("urgentBlink");
     }
   }
 
@@ -954,6 +941,7 @@ function speakBilingualQueue(items){
       tdR.innerHTML = `<span class="tag route" style="border-color:${rc};color:${rc}">${item.route}</span>`;
 
       const tdD = document.createElement("td");
+      tdD.className = "destination";
       tdD.textContent = (item.destination_en || item.destination || "-") + (item.destination_ar ? " / " + item.destination_ar : "");
 
       tr.appendChild(tdT); tr.appendChild(tdC); tr.appendChild(tdS); tr.appendChild(tdP); tr.appendChild(tdR); tr.appendChild(tdD);
@@ -962,6 +950,7 @@ function speakBilingualQueue(items){
   }
 
   function renderRouteCards(upcoming, todayISO){
+    if(!elCards) return;
     // Next per route mini-cards (super clear for passengers)
     const nextByRoute = {};
     upcoming.forEach(it=>{
@@ -979,7 +968,7 @@ function speakBilingualQueue(items){
       });
 
     if(!routesToday.length){
-      elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
       return;
     }
 
@@ -1124,9 +1113,9 @@ function speakBilingualQueue(items){
       const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
       if(!anyToday){
         elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
-        elCards.innerHTML = '<div class="muted">No schedules for today</div>';
-        elTopC.textContent = "--:--";
-        elTopD.textContent = "No schedules for today";
+        if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+        if(elTopC) elTopC.textContent = "--:--";
+        if(elTopD) elTopD.textContent = "No schedules for today";
         if(elState) elState.textContent = "No schedules for today";
         return;
       }
@@ -1145,7 +1134,7 @@ function speakBilingualQueue(items){
 
       // Also show ended state in top if applicable
       if(ended){
-        elTopD.textContent = ended;
+        if(elTopD) elTopD.textContent = ended;
       }
 
       checkAlerts(upcoming, todayISO);
@@ -1172,9 +1161,9 @@ function speakBilingualQueue(items){
     const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
     if(!anyToday){
       elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
-      elCards.innerHTML = '<div class="muted">No schedules for today</div>';
-      elTopC.textContent = "--:--";
-      elTopD.textContent = "No schedules for today";
+      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+      if(elTopC) elTopC.textContent = "--:--";
+      if(elTopD) elTopD.textContent = "No schedules for today";
       if(elState) elState.textContent = "No schedules for today";
       return;
     }
@@ -1191,7 +1180,7 @@ function speakBilingualQueue(items){
       elState.textContent = ended ? ended : "Service running";
     }
     if(ended){
-      elTopD.textContent = ended;
+      if(elTopD) elTopD.textContent = ended;
     }
 
     checkAlerts(upcoming, todayISO);
