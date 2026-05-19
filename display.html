@@ -45,6 +45,8 @@
       background:radial-gradient(1200px 700px at 20% 10%, #0b2a4a 0%, var(--bg) 55%);
       color:var(--text);
       font-family:system-ui, "Segoe UI", Arial;
+      height:100vh;
+      overflow:hidden;
     }
     header{
       display:flex;align-items:center;justify-content:center;
@@ -54,9 +56,9 @@
       text-align:center;
     }
     .titleWrap{width:100%;}
-    .t{font-size:34px;font-weight:1000;letter-spacing:.2px;line-height:1.25;}
-    .s{font-size:15px;color:var(--muted);margin-top:8px;line-height:1.35}
-    header .right{position:absolute;right:18px;top:16px;}
+    .t{font-size:36px;font-weight:1000;letter-spacing:.2px;line-height:1.15;text-align:center;}
+    .s{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.2;text-align:center;}
+    header .right{position:absolute;right:14px;top:10px;}
     .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     .pill{
       padding:10px 14px;border-radius:999px;
@@ -81,16 +83,19 @@
 
     #err{display:none;margin:12px 18px 0;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,107,107,0.35);background:rgba(255,107,107,0.12);color:#ffd6d6;font-weight:800;}
 
-    .grid{display:grid;grid-template-columns: 1fr; gap:14px; padding:14px 18px 18px;}
+    .grid{display:grid;grid-template-columns: 1fr; gap:10px; padding:10px 16px 10px; height:calc(100vh - 92px); box-sizing:border-box;}
     .card{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:18px;
       box-shadow:var(--shadow);
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:0;
     }
-    .card h2{margin:0;padding:16px 20px;border-bottom:1px solid var(--border);font-size:24px;letter-spacing:.2px;text-align:center;}
-    .pad{padding:14px 16px;}
+    .card h2{margin:0;padding:10px 18px;border-bottom:1px solid var(--border);font-size:25px;letter-spacing:.2px;text-align:center;}
+    .pad{padding:8px 14px; flex:1; min-height:0; overflow:hidden;}
     .label{color:var(--muted);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:900;}
     .big{font-size:54px;font-weight:1000;letter-spacing:1px;line-height:1;}
     .muted{color:var(--muted);}
@@ -110,13 +115,13 @@
     .topRoute{font-size:20px;font-weight:900}
 
     table{width:100%;border-collapse:collapse;}
-    th,td{padding:18px 16px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;vertical-align:middle;}
-    th{color:#cfe1f5;font-size:17px;letter-spacing:.10em;text-transform:uppercase;font-weight:1000;}
-    td{font-size:24px;font-weight:850;}
-    td.time{font-size:30px;font-weight:1000;}
+    th,td{padding:15px 14px;border-bottom:1px solid rgba(255,255,255,0.08);text-align:left;vertical-align:middle;}
+    th{color:#cfe1f5;font-size:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:1000;}
+    td{font-size:27px;font-weight:900;}
+    td.time{font-size:34px;font-weight:1000;}
     td.route{font-weight:1000;}
-    td.destination{font-size:30px;font-weight:1000;line-height:1.25;color:#ffffff;}
-    .tag{display:inline-block;padding:9px 14px;border-radius:999px;font-weight:1000;font-size:20px;letter-spacing:.05em;border:1px solid transparent;}
+    td.destination{font-size:34px;font-weight:1000;line-height:1.18;color:#ffffff;}
+    .tag{display:inline-block;padding:8px 13px;border-radius:999px;font-weight:1000;font-size:22px;letter-spacing:.04em;border:1px solid transparent;}
     .tag.good{background:rgba(30,230,168,0.16);border-color:rgba(30,230,168,0.35);color:var(--good);}
     .tag.warn{background:rgba(255,204,102,0.16);border-color:rgba(255,204,102,0.35);color:var(--warn);}
     .tag.danger{background:rgba(255,107,107,0.16);border-color:rgba(255,107,107,0.35);color:var(--danger);}
@@ -152,7 +157,7 @@
     .rT{font-size:22px;font-weight:1000}
     .rB{font-size:18px;color:#ffffff;font-weight:1000;margin-top:6px;text-align:right;letter-spacing:.5px}
     .rB .mins{font-size:22px;font-weight:1000;color:var(--warn)}
-    .ticker{display:flex;justify-content:space-between;gap:12px;padding:12px 18px;border-top:1px solid var(--border);color:var(--muted);font-size:15px;font-weight:800;}
+    .ticker{display:flex;justify-content:space-between;gap:12px;padding:8px 16px;border-top:1px solid var(--border);color:var(--muted);font-size:14px;font-weight:800;}
       /* Full-screen passenger notification overlay */
     .notifOverlay{
       position:fixed; inset:0;
@@ -288,7 +293,7 @@
 
 <div class="grid">
   <div class="card">
-    <h2>Next Departures - مواعيد المغادرة القادمة</h2>
+    <h2>مواعيد المغادرة القادمة - Next Departures</h2>
 
     <div class="pad" style="padding-top:10px">
       <table>
@@ -439,8 +444,8 @@
   let voiceOn = true; // default ON for station screen
 
   /* Rotation for next departures list */
-  const PAGE_SIZE = 8;
-  const TOTAL_SHOW = 16;
+  const PAGE_SIZE = 7;
+  const TOTAL_SHOW = 14;
   const ROTATE_MS = 8000;
   let pageIndex = 0; // 0 => 1-10, 1 => 11-20
   let lastRotate = 0;
