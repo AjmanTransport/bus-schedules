@@ -62,7 +62,7 @@
 
     header{
       position:relative;
-      height:170px;
+      height:230px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -71,13 +71,13 @@
       z-index:1;
     }
     .brandLogo{
-    width:min(720px, 58vw);
-    max-height:180px;
-    object-fit:contain;
-    display:block;
-    margin:0 auto 10px;
-}
-    
+      width:min(980px, 72vw);
+      max-height:190px;
+      object-fit:contain;
+      filter:drop-shadow(0 8px 22px rgba(0,0,0,.18));
+      display:block;
+      margin:0 auto 6px;
+    }
     .titleWrap{width:100%;}
     .t{
       font-family:var(--font-ar-bold);
@@ -99,11 +99,11 @@
     }
     header .right{
       position:absolute;
-      right:22px;
-      top:18px;
+      right:26px;
+      top:20px;
       display:flex;
       align-items:center;
-      gap:8px;
+      gap:10px;
     }
     .pill{
       font-family:var(--font-en-bold);
@@ -114,6 +114,31 @@
       background:rgba(1,92,146,.72);
       font-weight:900;
       box-shadow: inset 0 0 18px rgba(255,255,255,.06);
+    }
+    .clockPanel{
+      min-width:210px;
+      padding:12px 18px;
+      border-radius:18px;
+      border:3px solid var(--official-gray);
+      background:rgba(1,92,146,.82);
+      color:#fff;
+      box-shadow:0 10px 26px rgba(0,0,0,.16), inset 0 0 18px rgba(255,255,255,.06);
+      text-align:center;
+      line-height:1.1;
+    }
+    .clockTime{
+      font-family:var(--font-en-bold);
+      font-size:clamp(32px, 3vw, 54px);
+      font-weight:900;
+      letter-spacing:.03em;
+    }
+    .clockDate{
+      font-family:var(--font-en-bold);
+      margin-top:6px;
+      font-size:clamp(14px, 1.1vw, 20px);
+      font-weight:800;
+      color:rgba(255,255,255,.92);
+      white-space:nowrap;
     }
     .btn{
       font-family:var(--font-en-bold);
@@ -147,7 +172,7 @@
     .grid{
       position:relative;
       z-index:1;
-      height:calc(100vh - 170px);
+      height:calc(100vh - 230px);
       padding:10px 28px 24px;
       display:grid;
       grid-template-columns:1fr;
@@ -218,7 +243,7 @@
     }
     td{
       font-family:var(--font-en-bold);
-      height:calc((100vh - 170px - 24px - 24px - 70px - 66px - 42px) / 7);
+      height:calc((100vh - 230px - 24px - 24px - 70px - 66px - 42px) / 7);
       font-size:clamp(22px, 2.15vw, 40px);
       font-weight:900;
       line-height:1.08;
@@ -357,10 +382,11 @@
     .topBig.urgentBlink{color:var(--danger);animation:blinkUrgent 1s infinite;}
 
     @media (max-width:900px){
-      header{height:230px;}
-      .brandLogo{width:min(420px,68vw);}
-      header .right{top:8px;right:8px;transform:scale(.84);transform-origin:top right;}
-      .grid{height:calc(100vh - 230px);padding:8px 12px 14px;}
+      header{height:170px;}
+      .brandLogo{width:min(620px,82vw);max-height:132px;}
+      header .right{top:8px;right:8px;transform:scale(.78);transform-origin:top right;}
+      .clockPanel{min-width:170px;padding:10px 12px;}
+      .grid{height:calc(100vh - 170px);padding:8px 12px 14px;}
       .card h2{font-size:20px;padding:10px;}
       th{font-size:14px;height:54px;}
       td{font-size:16px;padding:8px 6px;}
@@ -379,7 +405,10 @@
     <div class="s" id="subtitle">Loading schedules...</div>
   </div>
   <div class="right">
-    <div class="pill" id="clock">--:--</div>
+    <div class="clockPanel" aria-label="Current date and time">
+      <div class="clockTime" id="clock">--:--</div>
+      <div class="clockDate" id="clockDate">--</div>
+    </div>
     <button class="btn" id="soundBtn" type="button" title="Sound">
       <span class="ico" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M3 10v4h4l5 4V6L7 10H3z"/><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
@@ -549,6 +578,7 @@
 
   const elRows = document.getElementById("rows");
   const elClock = document.getElementById("clock");
+  const elClockDate = document.getElementById("clockDate");
   const elSub = document.getElementById("subtitle");
   const elLast = document.getElementById("lastUpdate");
   const elNet = document.getElementById("net");
@@ -583,6 +613,18 @@
   const now = () => new Date();
   const hhmm = d => pad2(d.getHours()) + ":" + pad2(d.getMinutes());
   const ymd = d => d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());
+  function formatDisplayDate(d){
+    try{
+      return d.toLocaleDateString("en-GB", { weekday:"short", day:"2-digit", month:"short", year:"numeric" });
+    }catch(e){
+      return ymd(d);
+    }
+  }
+  function updateClockBox(){
+    const d = now();
+    if(elClock) elClock.textContent = hhmm(d);
+    if(elClockDate) elClockDate.textContent = formatDisplayDate(d);
+  }
 
   function showErr(msg){
     if(!elErr) return;
@@ -1282,7 +1324,7 @@ function speakBilingualQueue(items){
   }
 
   function tick(){
-    elClock.textContent = hhmm(now());
+    updateClockBox();
     rotateIfNeeded();
     // Re-render from already-loaded schedules (fast), but if not yet, do nothing.
     if(!schedules || !schedules.routes) return;
@@ -1344,7 +1386,7 @@ function speakBilingualQueue(items){
     if(sb) sb.addEventListener("click", onSoundToggle);
     if(vb) vb.addEventListener("click", onVoiceToggle);
 
-    elClock.textContent = hhmm(now());
+    updateClockBox();
     load();
     setInterval(tick, 1000);
     setInterval(load, 60*1000);
