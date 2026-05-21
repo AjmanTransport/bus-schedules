@@ -253,6 +253,14 @@
       font-size:clamp(30px, 3.0vw, 58px);
       letter-spacing:.02em;
     }
+    td.countdown{
+      font-size:clamp(42px, 4.6vw, 88px);
+      font-weight:900;
+      color:#ffffff;
+      letter-spacing:.02em;
+      text-shadow:0 2px 12px rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
     td.route{
       font-size:clamp(24px, 2.35vw, 44px);
     }
@@ -391,6 +399,7 @@
       th{font-size:14px;height:54px;}
       td{font-size:16px;padding:8px 6px;}
       td.time,td.destination{font-size:19px;}
+      td.countdown{font-size:clamp(26px, 7vw, 44px);}
       .tag{font-size:14px;min-width:65px;padding:6px 8px;}
     }
   </style>
@@ -1100,6 +1109,7 @@ function speakBilingualQueue(items){
       tdT.textContent = item.time;
 
       const tdC = document.createElement("td");
+      tdC.className = "countdown";
       tdC.textContent = fmtCountdown(item.ms);
 
       const tdS = document.createElement("td");
