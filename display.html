@@ -36,6 +36,7 @@
       --good:#00a98f;
       --warn:#d89a00;
       --danger:#d54032;
+      --table-data-font:clamp(30px, 4.6vw, 88px);
     }
 
     *{box-sizing:border-box}
@@ -246,41 +247,37 @@
     td{
       font-family:var(--font-en-bold);
       height:calc((100vh - 230px - 24px - 24px - 70px - 66px - 42px) / 7);
-      font-size:clamp(22px, 2.15vw, 40px);
+      font-size:var(--table-data-font);
       font-weight:900;
       line-height:1.08;
       text-shadow:0 2px 12px rgba(0,0,0,.14);
     }
-    td.time{
-     font-size:clamp(30px, 4.6vw, 88px);
+    td.time,
+    td.countdown,
+    td.route,
+    td.platform,
+    td.status{
+      font-family:var(--font-en-bold);
+      font-size:var(--table-data-font);
       font-weight:900;
       color:#ffffff;
       letter-spacing:.02em;
       text-shadow:0 2px 12px rgba(0,0,0,.18);
       white-space:nowrap;
-    }
-    td.countdown{
-      font-size:clamp(30px, 4.6vw, 88px);
-      font-weight:900;
-      color:#ffffff;
-      letter-spacing:.02em;
-      text-shadow:0 2px 12px rgba(0,0,0,.18);
-      white-space:nowrap;
-    }
-    td.route{
-     font-size:clamp(30px, 4.6vw, 88px)
-    font-weight:900;
-    letter-spacing:.02em;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     td.destination{
       font-family:var(--font-ar-bold);
       text-align:left;
-      font-size:clamp(30px, 4.6vw, 88px)
+      font-size:var(--table-data-font);
+      font-weight:900;
       line-height:1.16;
       color:#fff;
       white-space:normal;
       word-break:normal;
       overflow:hidden;
+      text-shadow:0 2px 12px rgba(0,0,0,.18);
     }
 
     .tag{
@@ -288,15 +285,20 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-width:98px;
-      padding:7px 14px;
+      width:100%;
+      max-width:100%;
+      min-width:0;
+      padding:7px 10px;
       border-radius:10px;
       border:2.5px solid var(--official-gray);
       color:#fff !important;
       font-weight:900;
-      font-size:clamp(18px, 1.65vw, 31px);
+      font-size:var(--table-data-font);
       line-height:1;
       letter-spacing:.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
       box-shadow: inset 0 0 18px rgba(255,255,255,.10), 0 8px 18px rgba(0,0,0,.12);
       text-shadow:0 2px 8px rgba(0,0,0,.18);
     }
@@ -307,7 +309,7 @@
       background:rgba(1,92,146,.52);
       border-color:var(--official-gray) !important;
       color:#fff !important;
-      min-width:88px;
+      min-width:0;
     }
 
     .ticker{
@@ -406,9 +408,8 @@
       .card h2{font-size:20px;padding:10px;}
       th{font-size:14px;height:54px;}
       td{font-size:16px;padding:8px 6px;}
-      td.time,td.destination{font-size:19px;}
-      td.countdown{font-size:clamp(26px, 7vw, 44px);}
-      .tag{font-size:14px;min-width:65px;padding:6px 8px;}
+      td.time,td.countdown,td.route,td.platform,td.status,td.destination{font-size:clamp(26px, 7vw, 44px);}
+      .tag{font-size:clamp(26px, 7vw, 44px);min-width:0;padding:6px 8px;}
     }
   </style>
 
@@ -1121,8 +1122,10 @@ function speakBilingualQueue(items){
       tdC.textContent = fmtCountdown(item.ms);
 
       const tdS = document.createElement("td");
+      tdS.className = "status";
       tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
       const tdP = document.createElement("td");
+      tdP.className = "platform";
       tdP.innerHTML = `<span class="tag warn">${item.platform || "-"}</span>`;
 
       const tdR = document.createElement("td");
