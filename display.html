@@ -406,26 +406,33 @@
     .topBig.urgentBlink{color:var(--danger);animation:blinkUrgent 1s infinite;}
 
     @keyframes statusNowBlink {
-      0%{opacity:1; transform:scale(1);}
-      50%{opacity:.28; transform:scale(1.08);}
-      100%{opacity:1; transform:scale(1);}
+      0%{opacity:1;}
+      50%{opacity:.25;}
+      100%{opacity:1;}
     }
 
-    .status-now,
-    .countdown-now{
+    /* Blink text only, not the table cell or border */
+    .status-now{
       display:inline-flex !important;
       align-items:center;
       justify-content:center;
       color:#19ffd8 !important;
       font-weight:900 !important;
       animation:statusNowBlink 0.85s infinite !important;
-      text-shadow:0 0 18px rgba(25,255,216,.9), 0 0 30px rgba(25,255,216,.55) !important;
-      will-change:opacity, transform;
+      text-shadow:0 0 12px rgba(25,255,216,.55) !important;
+      will-change:opacity;
     }
 
-    td.status.now-cell,
-    td.countdown.now-cell{
+    /* Countdown stays white; only the text blinks */
+    .countdown-now{
+      display:inline-flex !important;
+      align-items:center;
+      justify-content:center;
+      color:#ffffff !important;
+      font-weight:900 !important;
       animation:statusNowBlink 0.85s infinite !important;
+      text-shadow:0 2px 12px rgba(0,0,0,.18) !important;
+      will-change:opacity;
     }
 
 
@@ -1222,14 +1229,14 @@ function speakBilingualQueue(items){
 
       const tdC = document.createElement("td");
       const isNow = tag.txt === "Now";
-      tdC.className = isNow ? "countdown now-cell" : "countdown";
+      tdC.className = "countdown";
       const cdValue = fmtCountdown(item.ms);
       tdC.innerHTML = isNow
         ? '<span class="countdown-now">' + cdValue + '</span>'
         : cdValue;
 
       const tdS = document.createElement("td");
-      tdS.className = isNow ? "status now-cell" : "status";
+      tdS.className = "status";
       tdS.innerHTML = isNow
         ? '<span class="tag danger status-now">Now</span>'
         : `<span class="tag ${tag.cls}">${tag.txt}</span>`;
