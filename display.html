@@ -407,22 +407,25 @@
 
     @keyframes statusNowBlink {
       0%{opacity:1; transform:scale(1);}
-      50%{opacity:.35; transform:scale(1.06);}
+      50%{opacity:.28; transform:scale(1.08);}
       100%{opacity:1; transform:scale(1);}
     }
 
-    .status-now{
+    .status-now,
+    .countdown-now{
+      display:inline-flex !important;
+      align-items:center;
+      justify-content:center;
       color:#19ffd8 !important;
-      font-weight:900;
-      animation:statusNowBlink 1s infinite;
-      text-shadow:0 0 18px rgba(25,255,216,.75);
+      font-weight:900 !important;
+      animation:statusNowBlink 0.85s infinite !important;
+      text-shadow:0 0 18px rgba(25,255,216,.9), 0 0 30px rgba(25,255,216,.55) !important;
+      will-change:opacity, transform;
     }
 
-    .countdown-now{
-      color:#19ffd8 !important;
-      font-weight:900;
-      animation:statusNowBlink 1s infinite;
-      text-shadow:0 0 18px rgba(25,255,216,.75);
+    td.status.now-cell,
+    td.countdown.now-cell{
+      animation:statusNowBlink 0.85s infinite !important;
     }
 
 
@@ -1062,7 +1065,10 @@ function speakBilingualQueue(items){
 
   function statusTag(ms){
     const min = ms/60000;
+
+    // From 2 minutes or less, show Now and trigger blinking in Status + Countdown columns.
     if(min <= 2) return {cls:"danger", txt:"Now"};
+
     if(min <= 10) return {cls:"warn", txt:"Soon"};
     return {cls:"good", txt:"Upcoming"};
   }
@@ -1215,15 +1221,18 @@ function speakBilingualQueue(items){
       tdT.textContent = tripDisplayTime(item);
 
       const tdC = document.createElement("td");
-      tdC.className = "countdown";
+      const isNow = tag.txt === "Now";
+      tdC.className = isNow ? "countdown now-cell" : "countdown";
       const cdValue = fmtCountdown(item.ms);
-      tdC.innerHTML = (status.txt === 'NOW')
+      tdC.innerHTML = isNow
         ? '<span class="countdown-now">' + cdValue + '</span>'
         : cdValue;
 
       const tdS = document.createElement("td");
-      tdS.className = "status";
-      tdS.innerHTML = `<span class="tag ${tag.cls}">${tag.txt}</span>`;
+      tdS.className = isNow ? "status now-cell" : "status";
+      tdS.innerHTML = isNow
+        ? '<span class="tag danger status-now">Now</span>'
+        : `<span class="tag ${tag.cls}">${tag.txt}</span>`;
       const tdP = document.createElement("td");
       tdP.className = "platform";
       tdP.innerHTML = `<span class="tag warn">${item.platform || "-"}</span>`;
