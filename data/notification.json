@@ -1,8 +1,8 @@
 {
-  "active": false,
-  "id": "20260505143001",
-  "title": "",
-  "content": "",
-  "duration": 0,
-  "created_at": "2026-05-05T14:30:01"
+  "active": true,
+  "id": "20260522080658",
+  "title": "Attension Please",
+  "content": "Trip scheduled for Al Ain at 3:00 PM will be cancelled",
+  "duration": 30,
+  "created_at": "2026-05-22T08:06:58"
 }
