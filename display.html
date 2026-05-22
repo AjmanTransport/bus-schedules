@@ -626,8 +626,17 @@
   const PAGE_SIZE = 7;
   const TOTAL_SHOW = 14;
   const ROTATE_MS = 8000;
-  let pageIndex = 0; // 0 => 1-10, 1 => 11-20
+  let pageIndex = 0; // 0 => first page, 1 => second page
   let lastRotate = 0;
+
+  /*
+    Professional public-transport service-day logic:
+    Trips between 00:00 and 03:59 are treated as continuation of the previous service day.
+    Example: a trip stored under 2026-05-22 with time 00:15 is shown as 00:15 +1D
+    and its real departure time becomes 2026-05-23 00:15.
+  */
+  const SERVICE_DAY_END_HOUR = 4;
+  const LOOKAHEAD_SERVICE_DAYS = 2;
 
   /* Alert dedupe */
   const alerted = new Set();
@@ -981,6 +990,47 @@ function speakBilingualQueue(items){
     return d;
   }
 
+  function addDaysISO(dateISO, days){
+    const d = new Date(dateISO + "T00:00:00");
+    d.setDate(d.getDate() + days);
+    return ymd(d);
+  }
+
+  function serviceDateForNow(d){
+    const base = new Date(ymd(d) + "T00:00:00");
+    if(d.getHours() < SERVICE_DAY_END_HOUR){
+      base.setDate(base.getDate() - 1);
+    }
+    return ymd(base);
+  }
+
+  function parseServiceTime(serviceDateISO, t){
+    const parts = String(t||"").split(":");
+    const H = parseInt(parts[0]||"0",10);
+    const M = parseInt(parts[1]||"0",10);
+    const d = new Date(serviceDateISO + "T00:00:00");
+    d.setHours(H, M, 0, 0);
+
+    // Early-morning trips belong to the previous operational service date.
+    if(H < SERVICE_DAY_END_HOUR){
+      d.setDate(d.getDate() + 1);
+    }
+    return d;
+  }
+
+  function tripDisplayTime(item){
+    return (item && item.nextDay) ? (item.time + " +1D") : (item ? item.time : "");
+  }
+
+  function hasScheduleForServiceWindow(serviceDateISO){
+    if(!schedules || !schedules.routes) return false;
+    for(let i=0; i<LOOKAHEAD_SERVICE_DAYS; i++){
+      const sISO = addDaysISO(serviceDateISO, i);
+      if((schedules.routes || []).some(r => !!findDayForToday(r, sISO))) return true;
+    }
+    return false;
+  }
+
   function fmtCountdown(ms){
     if(ms < 0) ms = 0;
     const s = Math.floor(ms/1000);
@@ -1052,26 +1102,46 @@ function speakBilingualQueue(items){
   function buildUpcoming(todayISO){
     const nowD = now();
     const nowMs = nowD.getTime();
+    const activeServiceISO = serviceDateForNow(nowD);
     let list = [];
-    schedules.routes.forEach(r=>{
-      const day = findDayForToday(r, todayISO);
-      if(!day) return;
-      (day.buses||[]).forEach(b=>{
-        (b.departures||[]).forEach(t=>{
-          const dt = parseTime(todayISO, t);
-          const ms = dt.getTime() - nowMs;
-          if(ms >= 0){
-            list.push({
-              dt, ms, time: t, route: r.route, bus: b.bus,
-              destination: getRouteDestinationEn(r),
-              destination_en: getRouteDestinationEn(r),
-              destination_ar: getRouteDestinationAr(r),
-              platform: (b.platform || r.platform || "")
-            });
-          }
+
+    // Read the active service day and the next service day.
+    // This keeps late-night trips such as 00:10 / 00:15 visible before and after midnight.
+    for(let dayOffset=0; dayOffset<LOOKAHEAD_SERVICE_DAYS; dayOffset++){
+      const serviceISO = addDaysISO(activeServiceISO, dayOffset);
+
+      schedules.routes.forEach(r=>{
+        const day = findDayForToday(r, serviceISO);
+        if(!day) return;
+
+        (day.buses||[]).forEach(b=>{
+          (b.departures||[]).forEach(t=>{
+            const dt = parseServiceTime(serviceISO, t);
+            const ms = dt.getTime() - nowMs;
+
+            if(ms >= 0){
+              const actualDateISO = ymd(dt);
+              const nextDay = actualDateISO !== serviceISO;
+
+              list.push({
+                dt, ms, time: t,
+                display_time: nextDay ? (t + " +1D") : t,
+                nextDay,
+                service_date: serviceISO,
+                actual_date: actualDateISO,
+                route: r.route,
+                bus: b.bus,
+                destination: getRouteDestinationEn(r),
+                destination_en: getRouteDestinationEn(r),
+                destination_ar: getRouteDestinationAr(r),
+                platform: (b.platform || r.platform || "")
+              });
+            }
+          });
         });
       });
-    });
+    }
+
     list.sort((a,b)=>a.ms - b.ms);
     return list;
   }
@@ -1087,7 +1157,7 @@ function speakBilingualQueue(items){
     }
 
     if(elTopC) elTopC.textContent = fmtCountdown(nextItem.ms);
-    if(elTopD) elTopD.textContent = (nextItem.destination_en || nextItem.destination || nextItem.route) + " / " + (nextItem.destination_ar || "") + "  •  Platform " + (nextItem.platform || "-") + "  •  " + nextItem.time;
+    if(elTopD) elTopD.textContent = (nextItem.destination_en || nextItem.destination || nextItem.route) + " / " + (nextItem.destination_ar || "") + "  •  Platform " + (nextItem.platform || "-") + "  •  " + tripDisplayTime(nextItem);
 
     // Blink when 1 minute or less
     if(nextItem.ms <= 60000){
@@ -1098,7 +1168,7 @@ function speakBilingualQueue(items){
   }
 
   function renderDeparturesTable(upcoming, todayISO){
-    // rotation 1–10 then 11–20
+    // rotation: first 7 trips, then next 7 trips
     const sliced = upcoming.slice(0, TOTAL_SHOW);
     const start = pageIndex * PAGE_SIZE;
     const view = sliced.slice(start, start + PAGE_SIZE);
@@ -1121,7 +1191,7 @@ function speakBilingualQueue(items){
 
       const tdT = document.createElement("td");
       tdT.className = "time";
-      tdT.textContent = item.time;
+      tdT.textContent = tripDisplayTime(item);
 
       const tdC = document.createElement("td");
       tdC.className = "countdown";
@@ -1156,8 +1226,9 @@ function speakBilingualQueue(items){
       if(!nextByRoute[it.route]) nextByRoute[it.route] = it;
     });
 
+    const activeServiceISO = serviceDateForNow(now());
     const routesToday = schedules.routes
-      .filter(r => !!findDayForToday(r, todayISO))
+      .filter(r => !!findDayForToday(r, activeServiceISO))
       .slice()
       .sort((a,b)=>{
         const pa = routePriority(a.route);
@@ -1232,12 +1303,13 @@ function speakBilingualQueue(items){
   }
 
   function serviceEndedMessage(todayISO, upcoming){
-    // After last trip, show “Service ended — next service starts tomorrow at XX:XX”.
+    // After the visible lookup window, show the first trip of the next service day.
     if(upcoming.length) return null;
 
-    const tmr = getTomorrowFirstTrip(todayISO);
-    if(!tmr) return "Service ended — no schedules found for tomorrow";
-    return "Service ended — next service starts tomorrow at " + tmr.time + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
+    const activeServiceISO = serviceDateForNow(now());
+    const tmr = getTomorrowFirstTrip(activeServiceISO);
+    if(!tmr) return "Service ended — no schedules found for the next service day";
+    return "Service ended — next service starts at " + tmr.time + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
   }
 
   function checkAlerts(upcoming, todayISO){
@@ -1255,7 +1327,7 @@ function speakBilingualQueue(items){
 
     const newTrips = [];
     sameTimeTrips.forEach(it=>{
-      const key = todayISO + "|" + it.route + "|" + (it.destination_en || it.destination || "") + "|" + (it.destination_ar || "") + "|" + (it.platform || "") + "|" + it.time;
+      const key = (it.service_date || todayISO) + "|" + (it.actual_date || "") + "|" + it.route + "|" + (it.destination_en || it.destination || "") + "|" + (it.destination_ar || "") + "|" + (it.platform || "") + "|" + it.time;
       if(!alerted.has(key)){
         alerted.add(key);
         newTrips.push(it);
@@ -1278,8 +1350,8 @@ function speakBilingualQueue(items){
         const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
         const platAr = platformArabicSpeech(plat);
         return {
-          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${it.time}.`,
-          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${it.time}.`
+          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${tripDisplayTime(it)}.`,
+          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${tripDisplayTime(it)}.`
         };
       });
       speakBilingualQueue(pairs);
@@ -1304,18 +1376,19 @@ function speakBilingualQueue(items){
 
 
       const todayISO = ymd(now());
-      elSub.textContent = "Today: " + todayISO + " • Public Transport Trip Scheduler System";
+      const activeServiceISO = serviceDateForNow(now());
+      elSub.textContent = "Today: " + todayISO + " • Service date: " + activeServiceISO + " • Public Transport Trip Scheduler System";
       elLast.textContent = "Last update: " + (schedules.generated_at || "-");
       elNet.textContent = "Online: " + (navigator.onLine ? "Yes" : "No");
 
-      // If today not found in ANY route => show "No schedules for today" (no fallback)
-      const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
+      // Check the active service day, not only the calendar day.
+      const anyToday = hasScheduleForServiceWindow(activeServiceISO);
       if(!anyToday){
-        elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
-        if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+        elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for active service day</td></tr>';
+        if(elCards) elCards.innerHTML = '<div class="muted">No schedules for active service day</div>';
         if(elTopC) elTopC.textContent = "--:--";
-        if(elTopD) elTopD.textContent = "No schedules for today";
-        if(elState) elState.textContent = "No schedules for today";
+        if(elTopD) elTopD.textContent = "No schedules for active service day";
+        if(elState) elState.textContent = "No schedules for active service day";
         return;
       }
 
@@ -1357,13 +1430,14 @@ function speakBilingualQueue(items){
     if(!schedules || !schedules.routes) return;
 
     const todayISO = ymd(now());
-    const anyToday = (schedules.routes || []).some(r => !!findDayForToday(r, todayISO));
+    const activeServiceISO = serviceDateForNow(now());
+    const anyToday = hasScheduleForServiceWindow(activeServiceISO);
     if(!anyToday){
-      elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for today</td></tr>';
-      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
+      elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for active service day</td></tr>';
+      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for active service day</div>';
       if(elTopC) elTopC.textContent = "--:--";
-      if(elTopD) elTopD.textContent = "No schedules for today";
-      if(elState) elState.textContent = "No schedules for today";
+      if(elTopD) elTopD.textContent = "No schedules for active service day";
+      if(elState) elState.textContent = "No schedules for active service day";
       return;
     }
 
