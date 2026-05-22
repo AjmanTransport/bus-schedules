@@ -405,6 +405,27 @@
     }
     .topBig.urgentBlink{color:var(--danger);animation:blinkUrgent 1s infinite;}
 
+    @keyframes statusNowBlink {
+      0%{opacity:1; transform:scale(1);}
+      50%{opacity:.35; transform:scale(1.06);}
+      100%{opacity:1; transform:scale(1);}
+    }
+
+    .status-now{
+      color:#19ffd8 !important;
+      font-weight:900;
+      animation:statusNowBlink 1s infinite;
+      text-shadow:0 0 18px rgba(25,255,216,.75);
+    }
+
+    .countdown-now{
+      color:#19ffd8 !important;
+      font-weight:900;
+      animation:statusNowBlink 1s infinite;
+      text-shadow:0 0 18px rgba(25,255,216,.75);
+    }
+
+
     @media (max-width:900px){
       header{height:170px;}
       .brandLogo{width:min(620px,82vw);max-height:132px;}
@@ -1195,7 +1216,10 @@ function speakBilingualQueue(items){
 
       const tdC = document.createElement("td");
       tdC.className = "countdown";
-      tdC.textContent = fmtCountdown(item.ms);
+      const cdValue = fmtCountdown(item.ms);
+      tdC.innerHTML = (status.txt === 'NOW')
+        ? '<span class="countdown-now">' + cdValue + '</span>'
+        : cdValue;
 
       const tdS = document.createElement("td");
       tdS.className = "status";
