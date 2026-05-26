@@ -1049,9 +1049,53 @@ function speakBilingualQueue(items){
     return d;
   }
 
-  function tripDisplayTime(item){
-    return (item && item.nextDay) ? (item.time + " +1D") : (item ? item.time : "");
+  function format12Hour(timeStr){
+    const parts = String(timeStr || "").split(":");
+    const H = parseInt(parts[0] || "0", 10);
+    const M = parseInt(parts[1] || "0", 10);
+    const ampm = H >= 12 ? "PM" : "AM";
+    let hour = H % 12;
+    if(hour === 0) hour = 12;
+    return String(hour) + ":" + pad2(M) + " " + ampm;
   }
+
+  function format12HourVoice(timeStr){
+    const parts = String(timeStr || "").split(":");
+    const H = parseInt(parts[0] || "0", 10);
+    const M = parseInt(parts[1] || "0", 10);
+    const ampm = H >= 12 ? "PM" : "AM";
+    let hour = H % 12;
+    if(hour === 0) hour = 12;
+    if(M === 0) return String(hour) + " " + ampm;
+    return String(hour) + ":" + pad2(M) + " " + ampm;
+  }
+
+  function format12HourVoiceAr(timeStr){
+    const parts = String(timeStr || "").split(":");
+    const H = parseInt(parts[0] || "0", 10);
+    const M = parseInt(parts[1] || "0", 10);
+    const period = H >= 12 ? "مساءً" : "صباحاً";
+    let hour = H % 12;
+    if(hour === 0) hour = 12;
+    if(M === 0) return String(hour) + " " + period;
+    return String(hour) + ":" + pad2(M) + " " + period;
+  }
+
+  function tripDisplayTime(item){
+    if(!item) return "";
+    return format12Hour(item.time) + (item.nextDay ? " +1D" : "");
+  }
+
+  function tripVoiceTimeEn(item){
+    if(!item) return "";
+    return format12HourVoice(item.time) + (item.nextDay ? " tomorrow" : "");
+  }
+
+  function tripVoiceTimeAr(item){
+    if(!item) return "";
+    return format12HourVoiceAr(item.time) + (item.nextDay ? " غداً" : "");
+  }
+
 
   function hasScheduleForServiceWindow(serviceDateISO){
     if(!schedules || !schedules.routes) return false;
@@ -1125,7 +1169,7 @@ function speakBilingualQueue(items){
         (b.departures||[]).forEach(t=>{
           const dt = parseTime(tISO, t);
           if(!best || dt < best.dt){
-            best = {dt, time: t, route: r.route, bus: b.bus, destination: getRouteDestinationEn(r), destination_en: getRouteDestinationEn(r), destination_ar: getRouteDestinationAr(r), platform: (b.platform || r.platform || ""), date: tISO};
+            best = {dt, time: t, nextDay: false, route: r.route, bus: b.bus, destination: getRouteDestinationEn(r), destination_en: getRouteDestinationEn(r), destination_ar: getRouteDestinationAr(r), platform: (b.platform || r.platform || ""), date: tISO};
           }
         });
       });
@@ -1349,7 +1393,7 @@ function speakBilingualQueue(items){
     const activeServiceISO = serviceDateForNow(now());
     const tmr = getTomorrowFirstTrip(activeServiceISO);
     if(!tmr) return "Service ended — no schedules found for the next service day";
-    return "Service ended — next service starts at " + tmr.time + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
+    return "Service ended — next service starts at " + tripDisplayTime(tmr) + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
   }
 
   function checkAlerts(upcoming, todayISO){
@@ -1390,8 +1434,8 @@ function speakBilingualQueue(items){
         const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
         const platAr = platformArabicSpeech(plat);
         return {
-          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${tripDisplayTime(it)}.`,
-          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${tripDisplayTime(it)}.`
+          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${tripVoiceTimeEn(it)}.`,
+          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${tripVoiceTimeAr(it)}.`
         };
       });
       speakBilingualQueue(pairs);
