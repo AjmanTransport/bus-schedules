@@ -1112,8 +1112,12 @@ function processAlertSpeechQueue(){
   let hour = H % 12;
   if(hour === 0) hour = 12;
 
+  // Arabic TTS fix:
+  // Do not use colon time format like "6:45 صباحاً" because some browsers
+  // auto-read it as a time and add صباحاً / مساءً again.
+  // Use "6 و 45 صباحاً" so the period is spoken only once.
   if(M === 0) return String(hour) + " " + period;
-  return String(hour) + ":" + pad2(M) + " " + period;
+  return String(hour) + " و " + String(M) + " " + period;
 }
 
   function tripDisplayTime(item){
