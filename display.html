@@ -1510,8 +1510,9 @@ function speakBilingualQueue(items){
 
       // Alert only for trips that are now / 2 minutes or less.
       const due = upcoming
-        .filter(it => it && typeof it.ms === "number" && it.ms >= 0 && it.ms <= 120000)
-        .slice(0, 3);
+        // Announce ALL trips due within 2 minutes.
+        // Important: do not limit to only 3, because multiple routes can depart at the same time.
+        .filter(it => it && typeof it.ms === "number" && it.ms >= 0 && it.ms <= 120000);
 
       if(!due.length) return;
 
