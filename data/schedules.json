@@ -667,7 +667,7 @@
     and its real departure time becomes 2026-05-23 00:15.
   */
   const SERVICE_DAY_END_HOUR = 4;
-  const LOOKAHEAD_SERVICE_DAYS = 370;
+  const LOOKAHEAD_SERVICE_DAYS = 2;
 
   /* Alert dedupe */
   const alerted = new Set();
@@ -1071,16 +1071,15 @@ function speakBilingualQueue(items){
   }
 
   function format12HourVoiceAr(timeStr){
-  const parts = String(timeStr || "").split(":");
-  const H = parseInt(parts[0] || "0", 10);
-  const M = parseInt(parts[1] || "0", 10);
-
-  let hour = H % 12;
-  if(hour === 0) hour = 12;
-
-  if(M === 0) return String(hour);
-  return String(hour) + ":" + pad2(M);
-}
+    const parts = String(timeStr || "").split(":");
+    const H = parseInt(parts[0] || "0", 10);
+    const M = parseInt(parts[1] || "0", 10);
+    const period = H >= 12 ? "مساءً" : "صباحاً";
+    let hour = H % 12;
+    if(hour === 0) hour = 12;
+    if(M === 0) return String(hour) + " " + period;
+    return String(hour) + ":" + pad2(M) + " " + period;
+  }
 
   function tripDisplayTime(item){
     if(!item) return "";
@@ -1156,50 +1155,11 @@ function speakBilingualQueue(items){
     return routeObj.days.find(d => d.date === todayISO) || null;
   }
 
-  function hasScheduleOnDate(serviceDateISO){
-    if(!schedules || !schedules.routes) return false;
-    return (schedules.routes || []).some(r => !!findDayForToday(r, serviceDateISO));
-  }
-
-  function getAllScheduleDates(){
-    const set = new Set();
-    if(!schedules || !schedules.routes) return [];
-    (schedules.routes || []).forEach(r=>{
-      (r.days || []).forEach(d=>{
-        if(d && d.date) set.add(String(d.date));
-      });
-    });
-    return Array.from(set).sort();
-  }
-
-  function getNextAvailableServiceDate(fromISO){
-    const dates = getAllScheduleDates();
-    for(const d of dates){
-      if(d >= fromISO) return d;
-    }
-    return null;
-  }
-
-  function getNextAvailableServiceDateAfter(fromISO){
-    const dates = getAllScheduleDates();
-    for(const d of dates){
-      if(d > fromISO) return d;
-    }
-    return null;
-  }
-
-  function resolveDisplayServiceDate(activeServiceISO){
-    // If the active service date exists, use it.
-    // Otherwise automatically jump to the nearest future service date available in schedules.json.
-    if(hasScheduleOnDate(activeServiceISO)) return activeServiceISO;
-    return getNextAvailableServiceDate(activeServiceISO);
-  }
-
   function getTomorrowFirstTrip(todayISO){
     if(!schedules || !schedules.routes) return null;
-
-    const tISO = getNextAvailableServiceDateAfter(todayISO);
-    if(!tISO) return null;
+    const d = new Date(todayISO + "T00:00:00");
+    d.setDate(d.getDate() + 1);
+    const tISO = ymd(d);
 
     let best = null; // {time, route, platform}
     schedules.routes.forEach(r=>{
@@ -1207,11 +1167,9 @@ function speakBilingualQueue(items){
       if(!day) return;
       (day.buses||[]).forEach(b=>{
         (b.departures||[]).forEach(t=>{
-          const dt = parseServiceTime(tISO, t);
+          const dt = parseTime(tISO, t);
           if(!best || dt < best.dt){
-            const actualDateISO = ymd(dt);
-            const nextDay = actualDateISO !== tISO;
-            best = {dt, time: t, nextDay, route: r.route, bus: b.bus, destination: getRouteDestinationEn(r), destination_en: getRouteDestinationEn(r), destination_ar: getRouteDestinationAr(r), platform: (b.platform || r.platform || ""), date: tISO, service_date: tISO, actual_date: actualDateISO};
+            best = {dt, time: t, nextDay: false, route: r.route, bus: b.bus, destination: getRouteDestinationEn(r), destination_en: getRouteDestinationEn(r), destination_ar: getRouteDestinationAr(r), platform: (b.platform || r.platform || ""), date: tISO};
           }
         });
       });
@@ -1223,17 +1181,13 @@ function speakBilingualQueue(items){
     const nowD = now();
     const nowMs = nowD.getTime();
     const activeServiceISO = serviceDateForNow(nowD);
-    const baseServiceISO = resolveDisplayServiceDate(activeServiceISO);
     let list = [];
 
-    if(!baseServiceISO) return list;
+    // Read the active service day and the next service day.
+    // This keeps late-night trips such as 00:10 / 00:15 visible before and after midnight.
+    for(let dayOffset=0; dayOffset<LOOKAHEAD_SERVICE_DAYS; dayOffset++){
+      const serviceISO = addDaysISO(activeServiceISO, dayOffset);
 
-    // Scan available service dates forward from the selected base service date.
-    // This allows the display to continue automatically from 26 May to 27 May,
-    // and also supports long schedule files covering many months.
-    const dates = getAllScheduleDates().filter(d => d >= baseServiceISO).slice(0, LOOKAHEAD_SERVICE_DAYS);
-
-    dates.forEach(serviceISO=>{
       schedules.routes.forEach(r=>{
         const day = findDayForToday(r, serviceISO);
         if(!day) return;
@@ -1264,14 +1218,14 @@ function speakBilingualQueue(items){
           });
         });
       });
-    });
+    }
 
     list.sort((a,b)=>a.ms - b.ms);
     return list;
   }
 
   function renderTop(nextItem, todayISO){
-    if(elDateTag) elDateTag.textContent = "Service Date: " + (nextItem && nextItem.service_date ? nextItem.service_date : todayISO);
+    if(elDateTag) elDateTag.textContent = "Date: " + todayISO;
 
     if(!nextItem){
       if(elTopC) if(elTopC) elTopC.textContent = "--:--";
@@ -1357,9 +1311,8 @@ function speakBilingualQueue(items){
     });
 
     const activeServiceISO = serviceDateForNow(now());
-    const displayServiceISO = resolveDisplayServiceDate(activeServiceISO);
     const routesToday = schedules.routes
-      .filter(r => displayServiceISO && !!findDayForToday(r, displayServiceISO))
+      .filter(r => !!findDayForToday(r, activeServiceISO))
       .slice()
       .sort((a,b)=>{
         const pa = routePriority(a.route);
@@ -1369,7 +1322,7 @@ function speakBilingualQueue(items){
       });
 
     if(!routesToday.length){
-      if(elCards) elCards.innerHTML = '<div class="muted">No future schedules found</div>';
+      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for today</div>';
       return;
     }
 
@@ -1394,7 +1347,7 @@ function speakBilingualQueue(items){
 
       if(it){
         right.innerHTML = `
-          <div class="rT">${tripDisplayTime(it)}</div>
+          <div class="rT">${it.time}</div>
           <div class="rB">Platform ${it.platform || "-"} • in <span class="mins">${Math.max(0, Math.round(it.ms/60000))}</span> min</div>
         `;
       }else{
@@ -1434,15 +1387,59 @@ function speakBilingualQueue(items){
   }
 
   function serviceEndedMessage(todayISO, upcoming){
-    // After all visible trips finish, search the next available future service date in schedules.json.
+    // After the visible lookup window, show the first trip of the next service day.
     if(upcoming.length) return null;
 
     const activeServiceISO = serviceDateForNow(now());
-    const baseServiceISO = resolveDisplayServiceDate(activeServiceISO) || activeServiceISO;
-    const tmr = getTomorrowFirstTrip(baseServiceISO);
+    const tmr = getTomorrowFirstTrip(activeServiceISO);
+    if(!tmr) return "Service ended — no schedules found for the next service day";
+    return "Service ended — next service starts at " + tripDisplayTime(tmr) + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
+  }
 
-    if(!tmr) return "Service ended — no future schedules found";
-    return "Service ended — next service starts at " + tripDisplayTime(tmr) + " on " + (tmr.service_date || tmr.date || "") + " (" + (tmr.destination_en || tmr.destination || tmr.route) + ", Platform " + (tmr.platform || "-") + ")";
+  function checkAlerts(upcoming, todayISO){
+    if(!upcoming || !upcoming.length) return;
+    if(!soundOn && !voiceOn) return;
+
+    // Alert window: 2 minutes before departure (including at departure)
+    const first = upcoming[0];
+    if(!first) return;
+    const min = first.ms / 60000;
+    if(min < 0 || min > 2) return;
+
+    // Announce all trips that depart at the same nearest departure time.
+    const sameTimeTrips = upcoming.filter(it => it && it.dt && first.dt && it.dt.getTime() === first.dt.getTime());
+
+    const newTrips = [];
+    sameTimeTrips.forEach(it=>{
+      const key = (it.service_date || todayISO) + "|" + (it.actual_date || "") + "|" + it.route + "|" + (it.destination_en || it.destination || "") + "|" + (it.destination_ar || "") + "|" + (it.platform || "") + "|" + it.time;
+      if(!alerted.has(key)){
+        alerted.add(key);
+        newTrips.push(it);
+      }
+    });
+
+    if(!newTrips.length) return;
+
+    if(soundOn){
+      // One clear beep pattern before the voice sequence.
+      beepPattern();
+    }
+
+    if(voiceOn){
+      const pairs = newTrips.map((it, idx)=>{
+        const dest = it.destination_en || it.destination || it.route;
+        const destAr = it.destination_ar || getArabicDestination(dest, it.route);
+        const plat = it.platform || "-";
+        const platVoice = platformSpeech(plat);
+        const prefix = newTrips.length > 1 ? `Trip ${idx + 1}. ` : "Next trip. ";
+        const platAr = platformArabicSpeech(plat);
+        return {
+          en: `${prefix}${dest}. Departure from Platform ${platVoice}. Departure time ${tripVoiceTimeEn(it)}.`,
+          ar: `تنبيه للركاب. الرحلة ${newTrips.length > 1 ? String(idx + 1) : "التالية"} متجهة إلى ${destAr}. المغادرة من المنصة ${platAr}. وقت المغادرة ${tripVoiceTimeAr(it)}.`
+        };
+      });
+      speakBilingualQueue(pairs);
+    }
   }
 
   async function load(){
@@ -1464,19 +1461,18 @@ function speakBilingualQueue(items){
 
       const todayISO = ymd(now());
       const activeServiceISO = serviceDateForNow(now());
-      const displayServiceISO = resolveDisplayServiceDate(activeServiceISO);
-      elSub.textContent = "Today: " + todayISO + " • Service date: " + (displayServiceISO || activeServiceISO) + " • Public Transport Trip Scheduler System";
+      elSub.textContent = "Today: " + todayISO + " • Service date: " + activeServiceISO + " • Public Transport Trip Scheduler System";
       elLast.textContent = "Last update: " + (schedules.generated_at || "-");
       elNet.textContent = "Online: " + (navigator.onLine ? "Yes" : "No");
 
-      // Check the resolved service day. If today is missing, jump to nearest future schedule date.
-      const anyToday = !!displayServiceISO;
+      // Check the active service day, not only the calendar day.
+      const anyToday = hasScheduleForServiceWindow(activeServiceISO);
       if(!anyToday){
-        elRows.innerHTML = '<tr><td colspan="6" class="muted">No future schedules found</td></tr>';
-        if(elCards) elCards.innerHTML = '<div class="muted">No future schedules found</div>';
+        elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for active service day</td></tr>';
+        if(elCards) elCards.innerHTML = '<div class="muted">No schedules for active service day</div>';
         if(elTopC) elTopC.textContent = "--:--";
-        if(elTopD) elTopD.textContent = "No future schedules found";
-        if(elState) elState.textContent = "No future schedules found";
+        if(elTopD) elTopD.textContent = "No schedules for active service day";
+        if(elState) elState.textContent = "No schedules for active service day";
         return;
       }
 
@@ -1519,14 +1515,13 @@ function speakBilingualQueue(items){
 
     const todayISO = ymd(now());
     const activeServiceISO = serviceDateForNow(now());
-    const displayServiceISO = resolveDisplayServiceDate(activeServiceISO);
-    const anyToday = !!displayServiceISO;
+    const anyToday = hasScheduleForServiceWindow(activeServiceISO);
     if(!anyToday){
-      elRows.innerHTML = '<tr><td colspan="6" class="muted">No future schedules found</td></tr>';
-      if(elCards) elCards.innerHTML = '<div class="muted">No future schedules found</div>';
+      elRows.innerHTML = '<tr><td colspan="6" class="muted">No schedules for active service day</td></tr>';
+      if(elCards) elCards.innerHTML = '<div class="muted">No schedules for active service day</div>';
       if(elTopC) elTopC.textContent = "--:--";
-      if(elTopD) elTopD.textContent = "No future schedules found";
-      if(elState) elState.textContent = "No future schedules found";
+      if(elTopD) elTopD.textContent = "No schedules for active service day";
+      if(elState) elState.textContent = "No schedules for active service day";
       return;
     }
 
