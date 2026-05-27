@@ -1107,12 +1107,13 @@ function processAlertSpeechQueue(){
   const parts = String(timeStr || "").split(":");
   const H = parseInt(parts[0] || "0", 10);
   const M = parseInt(parts[1] || "0", 10);
+  const period = H >= 12 ? "مساءً" : "صباحاً";
 
   let hour = H % 12;
   if(hour === 0) hour = 12;
 
-  if(M === 0) return String(hour);
-  return String(hour) + ":" + pad2(M);
+  if(M === 0) return String(hour) + " " + period;
+  return String(hour) + ":" + pad2(M) + " " + period;
 }
 
   function tripDisplayTime(item){
