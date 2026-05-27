@@ -1497,9 +1497,70 @@ function speakBilingualQueue(items){
         if(elTopD) elTopD.textContent = ended;
       }
 
-      checkAlerts(upcoming, todayISO);
+      if (typeof checkAlerts === "function") checkAlerts(upcoming, todayISO);
     }catch(e){
       showErr(String(e && e.message ? e.message : e));
+    }
+  }
+
+
+  function checkAlerts(upcoming, todayISO){
+    try{
+      if(!Array.isArray(upcoming) || !upcoming.length) return;
+
+      // Alert only for trips that are now / 2 minutes or less.
+      const due = upcoming
+        .filter(it => it && typeof it.ms === "number" && it.ms >= 0 && it.ms <= 120000)
+        .slice(0, 3);
+
+      if(!due.length) return;
+
+      const newTrips = [];
+      due.forEach(it=>{
+        const key = (it.service_date || todayISO) + "|" +
+                    (it.actual_date || "") + "|" +
+                    (it.route || "") + "|" +
+                    (it.destination_en || it.destination || "") + "|" +
+                    (it.destination_ar || "") + "|" +
+                    (it.platform || "") + "|" +
+                    (it.time || "");
+
+        if(!alerted.has(key)){
+          alerted.add(key);
+          newTrips.push(it);
+        }
+      });
+
+      if(!newTrips.length) return;
+
+      if(soundOn){
+        try{ beepPattern(); }catch(e){}
+      }
+
+      if(voiceOn){
+        const voiceItems = newTrips.map((it, idx)=>{
+          const destEn = it.destination_en || it.destination || it.route || "";
+          const destAr = it.destination_ar || getArabicDestination(destEn, it.route);
+          const platEn = platformSpeech(it.platform || "-");
+          const platAr = platformArabicSpeech(it.platform || "-");
+          const tripNoEn = newTrips.length > 1 ? ("Trip " + String(idx + 1)) : "The next trip";
+          const tripNoAr = newTrips.length > 1 ? ("الرحلة " + String(idx + 1)) : "الرحلة القادمة";
+
+          return {
+            en: "Attention passengers. " + tripNoEn + " to " + destEn +
+                ". Departure from Platform " + platEn +
+                ". Departure time " + tripVoiceTimeEn(it) + ".",
+            ar: "تنبيه للركاب. " + tripNoAr + " المتجهة إلى " + destAr +
+                ". المغادرة من المنصة " + platAr +
+                ". وقت المغادرة " + tripVoiceTimeAr(it) + "."
+          };
+        });
+
+        speakBilingualQueue(voiceItems);
+      }
+    }catch(e){
+      // Keep kiosk clean: do not show alert errors on the public display.
+      try{ console.warn("checkAlerts error:", e); }catch(_){}
     }
   }
 
@@ -1545,7 +1606,7 @@ function speakBilingualQueue(items){
       if(elTopD) elTopD.textContent = ended;
     }
 
-    checkAlerts(upcoming, todayISO);
+    if (typeof checkAlerts === "function") checkAlerts(upcoming, todayISO);
   }
 
   function onSoundToggle(){
