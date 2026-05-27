@@ -671,6 +671,13 @@
 
   /* Alert dedupe */
   const alerted = new Set();
+
+  // Voice announcement queue control.
+  // This prevents "Attention passengers..." from restarting while a previous announcement is still speaking.
+  let alertSpeechQueue = [];
+  let alertSpeechSpeaking = false;
+  let alertSpeechLastStart = 0;
+
   let audioCtx = null;
 
   const pad2 = n => String(n).padStart(2,"0");
@@ -857,37 +864,63 @@ function speakBilingualQueue(items){
       ["natural","neural","microsoft","google","zira","aria","jenny","guy","david"]
     );
 
-    window.speechSynthesis.cancel();
-
-    const queue = [];
+    // Do NOT cancel current speech here.
+    // New announcements are appended to the queue and played after the current one finishes.
     items.forEach(pair=>{
       const enText = String(pair.en || "").trim();
       const arText = String(pair.ar || "").trim();
+
       if(enText){
         const u1 = new SpeechSynthesisUtterance(enText);
         u1.lang = enVoice ? enVoice.lang : "en-US";
         u1.rate = 1.0;
         if(enVoice) u1.voice = enVoice;
-        queue.push(u1);
+        alertSpeechQueue.push(u1);
       }
+
       if(arText){
         const u2 = new SpeechSynthesisUtterance(arText);
         u2.lang = arVoice ? arVoice.lang : "ar-AE";
         u2.rate = 0.95;
         if(arVoice) u2.voice = arVoice;
-        queue.push(u2);
+        alertSpeechQueue.push(u2);
       }
     });
 
-    let i = 0;
-    function speakNext(){
-      if(i >= queue.length) return;
-      const u = queue[i++];
-      u.onend = () => setTimeout(speakNext, 350);
-      window.speechSynthesis.speak(u);
-    }
-    speakNext();
+    processAlertSpeechQueue();
   }catch(e){}
+}
+
+function processAlertSpeechQueue(){
+  try{
+    if(!("speechSynthesis" in window)) return;
+    if(alertSpeechSpeaking){
+      // Browser TTS safety: if an utterance gets stuck, unlock the queue after 90 seconds.
+      if(Date.now() - alertSpeechLastStart > 90000){
+        alertSpeechSpeaking = false;
+      }else{
+        return;
+      }
+    }
+
+    const u = alertSpeechQueue.shift();
+    if(!u) return;
+
+    alertSpeechSpeaking = true;
+    alertSpeechLastStart = Date.now();
+
+    const finish = () => {
+      alertSpeechSpeaking = false;
+      setTimeout(processAlertSpeechQueue, 350);
+    };
+
+    u.onend = finish;
+    u.onerror = finish;
+
+    window.speechSynthesis.speak(u);
+  }catch(e){
+    alertSpeechSpeaking = false;
+  }
 }
 
     function hasArabicText(s){
@@ -1626,7 +1659,7 @@ function speakBilingualQueue(items){
     if(voiceOn){
       speakBilingual("Voice alerts enabled.", "تم تفعيل التنبيه الصوتي.");
     }else{
-      try{ if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){}
+      try{ alertSpeechQueue = []; alertSpeechSpeaking = false; if("speechSynthesis" in window) window.speechSynthesis.cancel(); }catch(e){}
     }
   }
 
