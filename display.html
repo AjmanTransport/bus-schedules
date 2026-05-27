@@ -672,6 +672,53 @@
   /* Alert dedupe */
   const alerted = new Set();
 
+  // Persistent alert dedupe:
+  // Prevents the same trip from announcing again after the 5-minute kiosk page reload.
+  const ALERT_STORE_KEY = "ata_rtpi_announced_trip_alerts_v2";
+  const ALERT_KEEP_MS = 10 * 60 * 1000; // keep alert keys for 10 minutes
+
+  function getTripAlertKey(it, todayISO){
+    return [
+      it && it.service_date ? it.service_date : todayISO,
+      it && it.actual_date ? it.actual_date : "",
+      it && it.route ? it.route : "",
+      it && it.bus ? it.bus : "",
+      it && it.platform ? it.platform : "",
+      it && it.time ? it.time : ""
+    ].join("|");
+  }
+
+  function readAlertStore(){
+    try{
+      const raw = localStorage.getItem(ALERT_STORE_KEY);
+      const obj = raw ? JSON.parse(raw) : {};
+      const nowMs = Date.now();
+      Object.keys(obj).forEach(k=>{
+        if(!obj[k] || (nowMs - Number(obj[k])) > ALERT_KEEP_MS){
+          delete obj[k];
+        }
+      });
+      return obj;
+    }catch(e){
+      return {};
+    }
+  }
+
+  function wasTripAlerted(key){
+    if(alerted.has(key)) return true;
+    const obj = readAlertStore();
+    return !!obj[key];
+  }
+
+  function markTripAlerted(key){
+    alerted.add(key);
+    try{
+      const obj = readAlertStore();
+      obj[key] = Date.now();
+      localStorage.setItem(ALERT_STORE_KEY, JSON.stringify(obj));
+    }catch(e){}
+  }
+
   // Voice announcement queue control.
   // This prevents "Attention passengers..." from restarting while a previous announcement is still speaking.
   let alertSpeechQueue = [];
@@ -1556,16 +1603,10 @@ function processAlertSpeechQueue(){
 
       const newTrips = [];
       due.forEach(it=>{
-        const key = (it.service_date || todayISO) + "|" +
-                    (it.actual_date || "") + "|" +
-                    (it.route || "") + "|" +
-                    (it.destination_en || it.destination || "") + "|" +
-                    (it.destination_ar || "") + "|" +
-                    (it.platform || "") + "|" +
-                    (it.time || "");
+        const key = getTripAlertKey(it, todayISO);
 
-        if(!alerted.has(key)){
-          alerted.add(key);
+        if(!wasTripAlerted(key)){
+          markTripAlerted(key);
           newTrips.push(it);
         }
       });
