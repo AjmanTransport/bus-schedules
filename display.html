@@ -203,10 +203,21 @@
       background:rgba(1,92,146,.55);
       text-shadow:0 2px 12px rgba(0,0,0,.16);
     }
+
+ .singleLineTitle{
+  font-family:var(--font-ar-bold);
+  font-size:clamp(38px, 3vw, 64px);
+  font-weight:900;
+  text-align:center;
+  direction:rtl;
+  line-height:1.15;
+  letter-spacing:.3px;
+  color:#fff;
+ } 
     .card h2 span{
       display:block;
       font-family:var(--font-en-bold);
-      font-size:.75em;
+      font-size:.68em;
       opacity:.94;
       margin-top:6px;
       letter-spacing:.08em;
@@ -502,7 +513,10 @@
 
 <div class="grid">
   <div class="card">
-    <h2>مواعيد المغادرة القادمة<span>NEXT DEPARTURES</span></h2>
+    
+    <h2 class="singleLineTitle">
+   مواعيد المغادرة القادمة — NEXT DEPARTURES
+   </h2>
 
     <div class="pad" style="padding-top:10px">
       <table>
