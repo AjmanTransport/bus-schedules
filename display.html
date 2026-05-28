@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta http-equiv="refresh" content="300"><!-- kiosk safety reload -->
+  <!-- kiosk safety reload is controlled by JavaScript to avoid interrupting voice announcements -->
   <title>Musalla Bus Station - Live Departures</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -724,6 +724,33 @@
   let alertSpeechQueue = [];
   let alertSpeechSpeaking = false;
   let alertSpeechLastStart = 0;
+  // Controlled kiosk safety reload:
+  // Avoid hard page reload while announcements are speaking/queued.
+  const KIOSK_SAFE_RELOAD_MS = 300000; // 5 minutes
+  let lastSafeReloadCheck = Date.now();
+
+  function isVoiceBusy(){
+    try{
+      return !!(alertSpeechSpeaking || (Array.isArray(alertSpeechQueue) && alertSpeechQueue.length > 0) ||
+              (window.speechSynthesis && window.speechSynthesis.speaking));
+    }catch(e){
+      return false;
+    }
+  }
+
+  function safeKioskReload(){
+    try{
+      // If voice is active, delay reload so English/Arabic announcements are not cut.
+      if(isVoiceBusy()){
+        setTimeout(safeKioskReload, 30000);
+        return;
+      }
+      window.location.reload();
+    }catch(e){
+      window.location.reload();
+    }
+  }
+
 
   let audioCtx = null;
 
@@ -941,10 +968,15 @@ function speakBilingualQueue(items){
 function processAlertSpeechQueue(){
   try{
     if(!("speechSynthesis" in window)) return;
+
+    // Keep TTS engine active; important for Edge/Chrome Arabic voices.
+    try{ window.speechSynthesis.resume(); }catch(e){}
+
     if(alertSpeechSpeaking){
-      // Browser TTS safety: if an utterance gets stuck, unlock the queue after 90 seconds.
+      // If browser TTS gets stuck, unlock after 90 seconds and continue queue.
       if(Date.now() - alertSpeechLastStart > 90000){
         alertSpeechSpeaking = false;
+        try{ window.speechSynthesis.cancel(); }catch(e){}
       }else{
         return;
       }
@@ -961,14 +993,40 @@ function processAlertSpeechQueue(){
       setTimeout(processAlertSpeechQueue, 350);
     };
 
-    u.onend = finish;
-    u.onerror = finish;
+    let retried = false;
 
+    u.onend = finish;
+
+    u.onerror = () => {
+      // Retry once if English/Arabic voice fails to start.
+      // This helps with temporary browser TTS/voice loading issues.
+      if(!retried){
+        retried = true;
+        alertSpeechSpeaking = false;
+        setTimeout(()=>{
+          alertSpeechQueue.unshift(u);
+          processAlertSpeechQueue();
+        }, 900);
+      }else{
+        finish();
+      }
+    };
+
+    try{ window.speechSynthesis.resume(); }catch(e){}
     window.speechSynthesis.speak(u);
+
+    // Extra resume pulses reduce skipped Arabic/English on kiosk browsers.
+    setTimeout(()=>{ try{ window.speechSynthesis.resume(); }catch(e){} }, 800);
+    setTimeout(()=>{ try{ window.speechSynthesis.resume(); }catch(e){} }, 2500);
+    setTimeout(()=>{ try{ window.speechSynthesis.resume(); }catch(e){} }, 5000);
+
   }catch(e){
     alertSpeechSpeaking = false;
+    setTimeout(processAlertSpeechQueue, 1000);
   }
 }
+
+
 
     function hasArabicText(s){
     return /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]/.test(String(s||""));
@@ -1721,6 +1779,16 @@ function processAlertSpeechQueue(){
     load();
     setInterval(tick, 1000);
     setInterval(load, 60*1000);
+
+    // Keep browser TTS alive during long announcement queues.
+    setInterval(()=>{
+      try{
+        if(isVoiceBusy()) window.speechSynthesis.resume();
+      }catch(e){}
+    }, 10000);
+
+    // Safe kiosk reload: will wait if voice is speaking/queued.
+    setInterval(safeKioskReload, KIOSK_SAFE_RELOAD_MS);
   });
 
 })();
