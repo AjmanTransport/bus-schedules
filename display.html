@@ -635,6 +635,34 @@
     return p;
   }
 
+  function platformNumber(platform){
+    const p = String(platform || "").trim();
+    const m = p.match(/^P\s*([0-9]+)$/i);
+    return m ? Number(m[1]) : null;
+  }
+
+  function platformSideEn(platform){
+    const n = platformNumber(platform);
+    if(n >= 1 && n <= 6) return " on the right side";
+    if(n >= 7 && n <= 9) return " on the left side";
+    return "";
+  }
+
+  function platformSideAr(platform){
+    const n = platformNumber(platform);
+    if(n >= 1 && n <= 6) return " جهة اليمين";
+    if(n >= 7 && n <= 9) return " جهة اليسار";
+    return "";
+  }
+
+  function platformDisplay(platform){
+    const p = String(platform || "-").trim() || "-";
+    const n = platformNumber(p);
+    if(n >= 1 && n <= 6) return p + " →";
+    if(n >= 7 && n <= 9) return "← " + p;
+    return p;
+  }
+
   function getRouteDestinationEn(routeObj){
     return String((routeObj || {}).display_name_en || (routeObj || {}).destination_en || (routeObj || {}).display_name || (routeObj || {}).destination || (routeObj || {}).route || "").trim();
   }
@@ -1489,7 +1517,7 @@ function processAlertSpeechQueue(){
         : `<span class="tag ${tag.cls}">${tag.txt}</span>`;
       const tdP = document.createElement("td");
       tdP.className = "platform";
-      tdP.innerHTML = `<span class="tag warn">${item.platform || "-"}</span>`;
+      tdP.innerHTML = `<span class="tag warn">${platformDisplay(item.platform || "-")}</span>`;
 
       const tdR = document.createElement("td");
       tdR.className = "route";
@@ -1695,15 +1723,17 @@ function processAlertSpeechQueue(){
           const destAr = it.destination_ar || getArabicDestination(destEn, it.route);
           const platEn = platformSpeech(it.platform || "-");
           const platAr = platformArabicSpeech(it.platform || "-");
+          const sideEn = platformSideEn(it.platform || "-");
+          const sideAr = platformSideAr(it.platform || "-");
           const tripNoEn = newTrips.length > 1 ? ("Trip " + String(idx + 1)) : "The next trip";
           const tripNoAr = newTrips.length > 1 ? ("الرحلة " + String(idx + 1)) : "الرحلة القادمة";
 
           return {
             en: "Attention passengers. " + tripNoEn + " to " + destEn +
-                ". Departure from Platform " + platEn +
+                ". Departure from Platform " + platEn + sideEn +
                 ". Departure time " + tripVoiceTimeEn(it) + ".",
             ar: "تنبيه للركاب. " + tripNoAr + " المتجهة إلى " + destAr +
-                ". المغادرة من المنصة " + platAr +
+                ". المغادرة من المنصة " + platAr + sideAr +
                 ". وقت المغادرة " + tripVoiceTimeAr(it) + "."
           };
         });
