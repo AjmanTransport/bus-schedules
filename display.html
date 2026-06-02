@@ -329,6 +329,19 @@
       min-width:0;
     }
 
+    .platformArrow{
+      font-size:1.6em;
+      font-weight:900;
+      display:inline-block;
+      transform:scale(1.28);
+      line-height:1;
+      margin:0 10px;
+      vertical-align:middle;
+      text-shadow:
+        0 0 6px rgba(255,255,255,.40),
+        0 0 12px rgba(255,255,255,.25);
+    }
+
     .ticker{
       display:flex;
       justify-content:space-between;
@@ -658,8 +671,8 @@
   function platformDisplay(platform){
     const p = String(platform || "-").trim() || "-";
     const n = platformNumber(p);
-    if(n >= 1 && n <= 6) return p + " →";
-    if(n >= 7 && n <= 9) return "← " + p;
+    if(n >= 1 && n <= 6) return `${p}<span class="platformArrow">→</span>`;
+    if(n >= 7 && n <= 9) return `<span class="platformArrow">←</span>${p}`;
     return p;
   }
 
